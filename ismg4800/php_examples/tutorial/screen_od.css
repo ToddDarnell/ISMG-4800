@@ -1,0 +1,108 @@
+/* CSS Document */
+
+	body {
+	background:#FFFFFF url('tutorial_images/moss.gif') fixed left 50%; 
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 95%;
+	color: black;
+	padding-left:2%; 
+	padding-right:2%; 
+	padding-top:40px; 
+	padding-bottom:40px; 
+    line-height:140%; 
+  	text-align: justify;
+
+}
+	a:link {color: #000000;
+	}
+	a:hover {
+	color: #000000;
+	display: inline;
+	background-color: #c4ced7;
+	}
+	a:visited {
+	color:#000000;
+	}
+	
+th     {background-color: #CCCCCC;
+        color: #990000;}
+
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: #CCCCCC;
+  height: 2px;
+  width: 100%;
+}
+
+h1 {
+	font-family: "Haettenschweiler", "Arial Narrow", san-serif;
+	background-color: #446600;
+	padding: 10 5 10 5;
+	color: #eedfa6;
+}
+
+h2 span {
+	font-family: "Haettenschweiler", "Arial Narrow", san-serif;
+	padding: 5 5 5 5;
+	color: #446600;
+}
+
+h3 {
+	font-family: "Haettenschweiler", "Arial Narrow", san-serif;
+	padding: 5 5 5 5;
+	color: #449900;
+}
+
+	
+ 
+div { 
+	width: 100%; 
+	position: relative; 
+	border: 5px solid #449900;
+	margin-top: 10px;
+	margin: 0 auto; 
+	background: url('tutorial_images/BACKGIF3.gif'); 
+	padding: 12px;
+
+	}
+	
+	div div {
+	background: #eedfa6;
+	color: #666666;
+	border: 1px solid #ffffff;
+	list-style: none;
+	padding : 0 20px;
+	margin : 0 auto;
+	text-align: left;
+	font-family: courier new, courier, monospaced;
+	font-weight: bold;
+	}
+	
+code { font-weight: bold;
+       color: #446622; }
+       
+em { color: red;}
+dfn  { color: green; }
+cite { color: blue; }
+
+.print  {	display: none;	}
+.footer {  font-size:.8em;
+  		   line-height: 100%;}
+
+
+@media print { 	
+body {
+	font-size: 90%;
+	margin: 0 0 0 0; 
+	padding: 0 0 0 20;
+        line-height:120%; 
+}
+
+div { 
+	border: 0px;
+	margin: 0 0 0 0; 
+	padding: 0 0 0 0;
+    }
+
+}

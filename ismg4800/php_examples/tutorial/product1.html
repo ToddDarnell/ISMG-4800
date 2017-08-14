@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="od.css">
+<script src="scripts/odcart.js"></script>
+<TITLE>Women's Clothing: Hiking Shorts</TITLE>
+<SCRIPT LANGUAGE = "Javascript">
+ var name="Hiking Shorts";
+ function createCookie(form)
+ {
+  var data='';
+  // this is necessary to get data from radio buttons
+  for (var i=0; i < form.item.length; i++) 
+    if(form.item[i].checked) data=form.item[i].value;
+
+   if(form.quantity.value.length < 1) alert("Specify a quantity");   
+   else appendCookie('odCart',name + '|' + data + '|' + form.quantity.value, .125,'|');
+ }
+</SCRIPT>
+</HEAD>
+<BODY>
+<H2><span>Women's Clothing</span></H2>
+<TABLE WIDTH="80%" ALIGN=CENTER>
+  <TR>
+    <TD><IMG SRC=images/shorts.jpg
+         WIDTH=240 HEIGHT=180 ALIGN=RIGHT></TD>
+    <!-- insert retrieved item description into page heading -->
+    <TD><H2>Hiking Shorts</H2>
+    Soft, comfortable, lightweight cotton twill fabric and a classic fit highlight these shorts</TD>
+  </TR>
+</TABLE>
+<!--table and form displaying inventory data -->
+<FORM NAME=frmOrderItems>
+<H4 ALIGN=CENTER>Order Items</H4>
+<TABLE WIDTH="80%" BORDER=5 CELLSPACING=2 CELLPADDING=2 ALIGN=CENTER>
+  <TR>
+    <TH>Selection</TH>
+    <TH>Size</TH>
+    <TH>Color</TH>
+    <TH>Price</TH>
+    <TH>In Stock?</TH>
+  </TR>
+  
+  <TR ALIGN=CENTER>
+    <TD><INPUT TYPE=RADIO CHECKED NAME=item VALUE="S|Khaki|29.95"></TD>
+    <TD>S</TD>
+    <TD>Khaki</TD>
+    <TD>29.95</TD>
+    <TD>Yes</TD></TR>  
+  <TR ALIGN=CENTER>  
+    <TD><INPUT TYPE=RADIO NAME=item VALUE='M|Khaki|29.95'></TD>
+    <TD>M</TD>
+    <TD>Khaki</TD>
+    <TD>29.95</TD>
+    <TD>Yes</TD></TR>
+      
+  <TR ALIGN=CENTER>
+    <TD><INPUT TYPE=RADIO NAME=item VALUE='L|Khaki|29.95'></TD>
+    <TD>L</TD>
+    <TD>Khaki</TD>
+    <TD>29.95</TD>
+    <TD>No</TD></TR>    
+  <TR ALIGN=CENTER>
+    <TD><INPUT TYPE=RADIO NAME=item VALUE='S|Navy|29.95'></TD>
+    <TD>S</TD>
+    <TD>Navy</TD>
+    <TD>29.95</TD>
+    <TD>Yes</TD></TR>      
+  <TR ALIGN=CENTER>
+    <TD><INPUT TYPE=RADIO NAME=item VALUE='M|Navy|29.95'></TD>
+    <TD>M</TD>
+    <TD>Navy</TD>
+    <TD>29.95</TD>
+    <TD>Yes</TD></TR>      
+  <TR ALIGN=CENTER>
+    <TD><INPUT TYPE=RADIO NAME=item VALUE='L|Navy|29.95'></TD>
+    <TD>L</TD>
+    <TD>Navy</TD>
+    <TD>29.95</TD>
+    <TD>Yes</TD></TR>      
+</TABLE>
+<!--table displaying form controls -->
+<TABLE WIDTH="80%" CELLSPACING=3 CELLPADDING=5 ALIGN=CENTER>
+  <TR>
+    <TD WIDTH="70%"><BIG>Desired Quantity</BIG>
+    <INPUT TYPE=TEXT NAME=quantity SIZE=10></TD>
+    <TD ALIGN=RIGHT WIDTH="15%"><INPUT TYPE=BUTTON VALUE="Order Now"  onclick="createCookie(this.form);"></TD>
+  </TR>
+</TABLE>
+</FORM>
+</BODY></HTML>

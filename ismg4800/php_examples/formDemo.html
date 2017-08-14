@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>
+Title
+</TITLE>
+<SCRIPT> LANGUAGE="JavaScript">
+<!--
+function valid(form)
+{
+    if (form.name.value == "" || form.email.value == "")
+    {
+       alert("You must complete the form!");
+       return false;
+    }
+    return true;
+} // -->
+</SCRIPT>
+
+</HEAD>
+<BODY>
+<H2>
+This is a sample HTML form.
+</H2>
+<form method="GET" action="formFile.php" onsubmit="return valid(this);">
+<UL>
+<LI>
+Name: <input type="text" size="25" name="name">
+</LI>
+<LI>
+Email: <input type="text" size="25" name="email">
+</LI>
+<LI>
+Comment: <input type="text" size="50" name="comments">
+</LI>
+</UL>
+<input type=submit>
+</form>
+</BODY>
+</HTML>

@@ -1,0 +1,759 @@
+<html>
+<head>
+<title>Outdoor Depot Tutorial</title>
+<link rel = "stylesheet" type = "text/css"  href = "screen_od.css">
+
+</head>
+<body>
+<div id=header>
+<h1>Using PHP to Create the Outdoor Depot Web Site</h1>
+<ul>
+  <li>The purpose of this tutorial is to convert ah HTML Web site for fictitious 
+  company &quot;Outdoor 
+  Depot&quot; to a database driven Web site that is built using PHP. </li>
+  <li>We will be:<ul>
+  <li>Writing form data to a file</li>
+  <li>Creating Web page templates into which we will put our content.</li>
+  <li>Using a mix of client-side scripts (using JavaScript) and server-side 
+  scripts (using PHP).</li>
+  <li>Using include files.</li>
+  <li>Connecting to a MySQL Database.</li>
+</ul>
+
+
+
+  </li>
+  <li>All of the images and initial html pages needed for this tutorial were 
+  included in <a href="outdoorPHP.zip">outdoorPHP.zip</a> which you should have already downloaded &amp; unzipped.</li>
+</ul>
+
+
+
+<hr>
+
+
+
+<h2><span>Setting up PHP &amp; MySQL on your local computer</span></h2>
+<ul>
+  <li>
+  The Uniform Server is a package that allows you to run a server on any MS 
+  Windows OS based computer. The Uniform Server will be used to test our 
+  applications made with <acronym title="Hypertext Preprocessor">PHP and</acronym>
+  <acronym title="My Structured Query Language">MySQL</acronym>.
+  <a href="http://www.uniformserver.com/index.php">
+  http://www.uniformserver.com/index.php</a> (download UniServer3_3.exe at:<ul>
+  <li>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=53691&package_id=48193">
+  http://sourceforge.net/project/showfiles.php?group_id=53691&amp;package_id=48193</a>)<br>
+  Note: the Uniform Server package is completely free and does not expire!</li>
+</ul>
+
+  </li>
+  <li>
+  In order to run the &quot;Uniform Server&quot; you need to 
+  not be running another Web Server on your system.&nbsp; <br>
+  To stop IIS on most Windows machines: Open the &quot;Internet Information Services&quot; control panel in <br>
+  Settings <img border="0" src="tutorial_images/rarr.gif" width="18" height="15">
+  Control Panel <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> Administrative Tools (on most Windows Machines).
+   </li>
+</ul>
+
+  <center><img border="0" src="tutorial_images/stopiis.gif" width="570" height="395"></center>
+<ul>
+  <li>
+
+  Then choose Default Web Site 
+    <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> 
+  Action&nbsp; and then click Stop to Stop IIS (if it is running on your 
+  machine).</li>
+  <li>
+  Unzip the Uniform Server package - anywhere, 
+  browse to the Uniform Server folder and double click on &quot;Server_Start.bat&quot;&nbsp; 
+  This should start the uniform server and take you to the &quot;Uniform Server 
+  Admin&quot; window at: <a href="http://localhost/apanel/">http://localhost/apanel/</a> </li>
+</ul>
+
+
+
+  <center>
+  <img border="0" src="tutorial_images/uniformserver1.gif" width="702" height="448"></center>
+<ul>
+  <li>
+  Select
+   <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> 
+  Run MySQL (above) to start MySQL running on your local machine - you should 
+  get a message telling you the server is started:</li>
+</ul>
+
+
+
+  <p style="text-align: center">
+  <img border="0" src="tutorial_images/uniformserver2.gif" width="216" height="155"><ul>
+  <li>
+  Scroll down the left menu (below Run MySQL) and 
+  choose <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> 
+  phpMyAdmin to add yourself as a user of MySQL</li>
+</ul>
+
+
+
+  <p style="text-align: center">
+  <img border="0" src="tutorial_images/phpmyadmin1.gif" width="703" height="576"></p>
+ 
+  <ul>
+  <li>Use the Host: localhost</li>
+  <li>Use the username given for you to login to MySQL on Ouray (e.g. the same 
+  username as the Ouray username with one exception If the Ouray username has a 
+  hyphen '-' the hyphen is omitted).&nbsp; </li>
+  <li>Use the password given for for student databases is (e.g. mysql followed 
+  by student number).</li>
+  <li>Give yourself complete privileges on the account so you can create 
+  databases, tables, select &amp; insert ...:</li>
+</ul>
+  <p style="text-align: center">
+  <img border="0" src="tutorial_images/phpmyadmin2.gif" width="694" height="601"></p>
+  &nbsp;<ul>
+  <li>
+  Given that the Universal Server has PHP and MySQL 
+  built in - you can now use a PHP editor that does not have these:&nbsp; I 
+  recommend PHP Designer ( <a href="http://www.mpsoftware.dk/phpdesigner.php">
+  http://www.mpsoftware.dk/phpdesigner.php</a> ).&nbsp; It is free and does not 
+  expire.&nbsp; When you are setting up PHP Designer you need to point it to the 
+  folders you UnZipped the Universal Server to (Options
+
+   <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> 
+  Editor Preferences
+
+
+    <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> 
+  Debug):</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/phpDesigner.gif" width="700" height="557"></center>
+
+<hr>
+
+<h2><span>Copying Files the PHP Folder</span></h2>
+<ul>
+  <li>
+  <p align="left">Once you start the Uniform Server you will want to move all of the files provided in 
+  <code style="font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.1em; color: NAVY">
+  <samp style="color: maroon"><a href="outdoorPHP.zip">outdoorPHP.zip</a></samp></code> into the folder
+  <code>diskw/www</code>.&nbsp; You 
+  This includes the 
+  <code>html</code> files, the 
+  <code>od.css</code> file, the 
+  <code>images</code> folder and the 
+  <code>scripts</code> folder.&nbsp;
+  </li>
+  <li>
+  <p align="left">The contents of the 
+  <code style="font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.1em; color: NAVY">
+  www </code>folder will be as 
+  follows after you are done copying:</li></ul>
+  <center><img border="0" src="tutorial_images/public_html.gif" width="700" height="402"></center>
+
+<hr>
+<h1>Creating a Homepage Using Include Files</h1>
+<ul>
+  <li>When you design a Web site you often want to provide the same navigation 
+  links and footer on each of the Web pages.&nbsp; </li>
+  <li>Using standard HTML this code would be repeated on every Web page and if 
+  any of the links changed they would have to be updated on every Web page.</li>
+  <li>PHP allows you to place the repeated header, menu &amp; footer code in 
+  separate files and then allowing you to include these other files in your PHP 
+  pages.</li>
+  <li>We will be using the  <a href="index.html"><code>index.html</code></a> that was in 
+  the <code><samp><a href="outdoorPHP.zip">outdoorPHP.zip</a></samp></code> file to create 4 separate include files for this 
+  tutorial:&nbsp; <code>header.html</code>,<code> lmenu.html</code>,<code> 
+  rmenu.html </code>and <code>footer.html</code>.</li>
+  <li>The Outdoor Depot  <a href="index.html"><code>index.html</code></a> 
+  looks like this:</li>
+</ul>
+<p align="center">
+<img border="0" src="tutorial_images/index.jpg" width="700" height="586"></p>
+<ul>
+  <li>First we are going to create 4 separate html file named: <code>header.html</code>,<code> lmenu.html</code>,<code> 
+  rmenu.html </code> and <code>footer.html</code>.&nbsp; To do this we 
+  will open <code>index.html</code> in any text editor and <em>CUT</em> and 
+  paste the 
+  appropriate information into 4 new html files.</li>
+  <li>The information for the <code>header.html</code> file is highlighted in the 
+  image below.&nbsp; It begins with the first script tag (<code>&lt;script 
+  Language=...&gt;)</code>and ends following the close of the first table (<code>&lt;/TABLE&gt;</code>) 
+  (Lines 7-21):</li>
+</ul>
+<p align="center">
+<img border="0" src="tutorial_images/head.gif" width="594" height="355"></p>
+<ul>
+  <li>The information for the left menu is put in the <code> lmenu.html</code> 
+  file (as highlighted in the image below).&nbsp; It begins with the <code>&lt;TABLE&gt;</code> 
+  tag immediately following the last tag in the <code>header.html</code> 
+  and ends before the start of the &lt;Table&gt; containing the main data for the 
+  index page (through the <code>&lt;TD ALIGN=...&gt;</code> 
+  following &quot;Check on Your Order&quot;):</li>
+</ul>
+<p align="center">
+<img border="0" src="tutorial_images/lmen.gif" width="624" height="476"></p>
+<ul>
+  <li>The information for the right menu is put in the <code>rmenu.html</code> 
+  file (as highlighted in the image below).&nbsp; It begins with the <code>&lt;/TD&gt;&lt;TD Align= 
+  ...&gt;</code> tag immediately before <code>&lt;h3&gt;&lt;em&gt;Hot Items</code> and 
+  ends prior to the&nbsp; footer table (the <code>&lt;TABLE border=0 ...</code>) 
+  (Lines 76-93 in the original file):</li>
+</ul>
+<p align="center">
+<img border="0" src="tutorial_images/rmen.gif" width="655" height="370"></p>
+<ul>
+  <li>The information for the  <code>footer.html</code> file is highlighted in 
+  the image below.&nbsp; It begins with the the <code>&lt;TABLE border=0 ...</code> tag and ends 
+  with the <code>&lt;/TABLE&gt;</code> tag right before the end of the page (Lines 
+  94-104 in the original file):</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/foot.gif" width="658" height="304"></center>
+<ul>
+  <li>Once you are done cutting the content out of the <code>index.html</code> file and 
+  pasting it into the 4 other files you should rename the <code>
+  <a href="index.html">index.html</a></code> to 
+  <code>index.php </code>
+
+  (or Save As).</li>
+</ul>
+<hr>
+<h2><span>Editing the index.php File</span></h2>
+<ul>
+  <li>
+  <p align="left">You now&nbsp; want to edit the&nbsp; <code>
+  index.php</code> to have it include the <code>header.html</code>,<code> lmenu.html</code>,<code> 
+  rmenu.html </code> and <code>footer.html.</code> </li>
+  <li>
+  <p align="left">The PHP require directive is used to include within a page 
+  another's page's content.&nbsp; It has the following syntax:</li>
+</ul>
+</span>
+<blockquote>
+  <blockquote>
+  <p><code>&lt;?php require(&quot;filename.html&quot;); ?&gt;</code></p>
+
+
+  </blockquote>
+</blockquote>
+
+<span>
+
+
+<ul>
+  <li>
+  <p align="left">You will then need to add 2 lines of code to include the <code>header.html</code> 
+  and <code> lmenu.html</code> immediately following the <code>&lt;BODY&gt;</code> 
+  tag.&nbsp; </li>
+  <li>
+  <p align="left">When you are done the <code>index.php</code> file should look 
+  like the one in the image below.&nbsp; The include statements are on lines 7 &amp; 
+  8 of the file.</li>
+</ul>
+  <center>
+  <img border="0" src="tutorial_images/index_includes.gif" width="672" height="396"></center>
+<ul>
+  <li>
+  <p align="left">You will then need to add 2 lines of code to include the <code>
+  rmenu.html</code> 
+  and <code> footer.html</code> immediately following the <code>&lt;/TABLE&gt;</code> 
+  tag.&nbsp; You should not have <code>&lt;/BODY&gt;</code> and <code>&lt;/HTML&gt;</code> 
+  tags from the <code>index.php</code> file (they should be in <code> footer.html</code>).&nbsp; 
+  The 2 require lines are on lines 37 and 38 above.</li>
+  </ul>
+<hr>
+<h2><span>Running the index.php File </span></h2>
+  <ul>
+  <li>
+  Once you have created the PHP you can run it directly from 
+within PHP Designer (Or other PHP Editor) by clicking the &quot;localhost 
+  Preview&quot; button. Or you can browse the page directly on the Universal 
+  Server at: <a href="http://localhost/index.php">http://localhost/index.php</a>.</li>
+</ul>
+  <center>
+  <img border="0" src="tutorial_images/index.jpg" width="700" height="586">
+</center><hr>
+<h1>Creating a Database Driven Web Site</h1>
+<ul>
+  <li>One common use of databases on the Web is to dynamically generate Web 
+  pages based on user requests.</li>
+  <li>We are going to continue our development of the Outdoor Depot Web site by 
+  creating Product pages which are dynamically generated from an MySQL 
+  database.</li>
+  <li>The&nbsp;outdoorPHP.zip file 
+  contained 2 product pages which we will be modifying to create our database 
+  driven Web site: <code><a href="category5.html">category5.html</a></code> and <code>
+  <a href="product1.html">product1.html</a></code>.<ul>
+  <li>For simplicity these pages DO NOT already contain the header, menus &amp; 
+  footer that we developed for index.php.&nbsp; (This should make it easier to 
+  add the include files into the final .php pages).</li>
+</ul>
+  </li>
+  
+  <li>We will begin by editing <code><a href="WomenClothing.html">category5.html</a> </code>
+  which is a category page showing a list of all of the clothing choices available:</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/womens.gif" width="500" height="454"></center>
+<ul>
+  <li>We will be dynamically generating the pages using data from MySQL.</li>
+</ul>
+<hr>
+<h3><span>Update Links</span></h3>
+<ul>
+  <li>Before we start editing this file lets update the URLs in the <code>
+  header.html</code>, the <code>lmenu.html </code>and the <code>footer.html
+  </code>files to point to &quot;<code>index.php</code>&quot; (instead of index.html) and
+  <code>category5.php</code> (instead of category5.html).&nbsp; </li>
+  <li>For completeness you might want to add the 4 include files to <code>
+  <a href="feedback.html">feedback.html</a>,</code>
+  <code><a href="shoppingcart.html">shoppingcart.html</a></code>, &amp;
+  <a href="checkout.html">checkout.html</a> then you will want to update the links 
+  to the feedback and shopping cart page as well.</li>
+  <li>This will make it easier to test our PHP application.</li>
+</ul>
+<hr><h2><span>Connecting to a Database</span></h2>
+<ul>
+  <li>
+  To connect to a database using PHP, you need to create a connection that will work with your database 
+  type.
+  </li>
+  <li>
+  You can connect to MySQL, MS Access (using an ODBC bridge is an alternative to an 
+  individual driver for a specific database), Oracle and others.&nbsp;
+  </li>
+  <li>
+  <em>THE PROBLEM</em>: All PHP code to connect to a database, select data from 
+  the database and display it in your files depends on the type of database you 
+  are connecting to (that IS NOT the way it works in other languages) - so it is 
+  hard to switch back and forth between databases.</li></span>
+  <li><em>THE S</em><span><em>OLUTION</em>: We will be creating and using a 
+  MySQL database - both at home and on Ouray.</span></li>
+  <li>
+
+<span>
+
+
+  In the PHP Code you need to connect to MySQL on &quot;localhost&quot; using your 
+  username and password.&nbsp; If you created a username and password on &quot;The 
+  Uniform Server&quot; that is the same as the username and password you were 
+  assigned on Ouray - then you can copy your website to Ouray without having to 
+  change it (at all).</span></li>
+  <li>
+
+The connection string to connect to MySQL running on localhost is:<br>
+<code>&nbsp;$conn = mysql_connect('localhost','username','password')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+or die( '&lt;h2&gt;Could not connect to MySQL&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+&nbsp;</code></li>
+  <li>
+
+Once you have successfully connected to MySQL you need to select a specific 
+database running in MySQL.&nbsp; On Ouray, your database name is the same as 
+your username.&nbsp; You will want to create a database on localhost with the 
+same name as your username too.</li>
+  <li>
+
+The code below will try to select a MySQL database called 'username' if it does 
+not exist it will use a standard SQL query to create it:<br>
+<code>&nbsp;$username = 'username';<br>
+&nbsp;if(!mysql_select_db($username))<br>
+&nbsp;{ echo (&quot;Could not select database $username&lt;br&gt;&quot;);<br>
+&nbsp;&nbsp; $query = &quot;CREATE DATABASE $username&quot;;<br>
+&nbsp;&nbsp; $result = mysql_query($query);<br>
+&nbsp;&nbsp; mysql_select_db($username) or die(&quot;Could not select database 
+$username&lt;br&gt;&quot;); <br>
+&nbsp;}<br>
+&nbsp;echo &quot;Selected $username successfully&lt;br&gt;&quot;;</code></li>
+
+
+</ul>
+
+<span>
+
+
+<hr><h2><span>Creating the Outdoor Depot Database</span></h2>
+<ul>
+  <li>PHP uses SQL statements to create tables, insert values into them, 
+    query the tables, retrieve the results of the queries, and update the 
+    tables.</li></span>
+    <li>The
+
+<span>
+
+
+<code>mysql_query($query) </code>command is used to run a query against the 
+    current database.&nbsp; </span></li>
+    <li>
+
+<span>
+
+
+    Any standard SQL query learned in your database class can be used via PHP.</span></li>
+    <li>For Example to create the <code>ITEM</code> table for the Outdoor Depot 
+    Database:<br>
+    <code>$query =&nbsp; &quot;CREATE TABLE ITEM (ITEMID int primary key, CATID int, 
+    ITEMNAME char(50),&quot; .<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;ITEMDESC char(255), 
+    ITEMIMAGE char(50), ITEMTHUMB char(50));&quot;;<br>
+    mysql_query($query) or die('Query failed: ' . mysql_error() . '&lt;br&gt;' . $m);<br>
+&nbsp;</code></li>
+
+<span>
+
+
+  <li>
+  To add one ITEM to the <code>ITEM</code> table for 
+  the Outdoor Depot Database you would:<br>
+  <code>$query =&nbsp; &quot;Insert into ITEM values(1,5,'Hiking Shorts','Soft, 
+  comfortable, lightweight&quot; .<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &quot; cotton twill fabric and a classic fit ...','shorts.jpg','shorts_thumb.jpg');&quot;;<br>
+  mysql_query($query) or die('Query failed: ' . mysql_error() . '&lt;br&gt;' . $m);<br>
+&nbsp;</code></li>
+  <li>Creating the complete Outdoor Depot database in MySQL can be time consuming - you need to use queries to create 
+  3 tables and insert all of the data into those tables.</li></span>
+    <li>
+
+<span>
+
+
+    Instead I have created a <a href="SetUp.php">SetUp.php</a> file that will 
+    create the entire database for you.&nbsp; To use it you need to change the 
+    username and password on lines 8 &amp; 9&nbsp; below to be your username and 
+    password:</span></li>
+</ul>
+<p style="text-align: center">
+<img border="0" src="tutorial_images/SetUp1.gif" width="684" height="412"></p>
+
+
+<ul>
+  <li>
+  Once you have changed the username &amp; password values you will need to browse 
+  the <a href="SetUp.php">SetUp.php</a> page 1x to have it create the database, create the tables and add all of 
+  the data to the tables ( <a href="http://localhost/SetUp.php">http://localhost/SetUp.php</a> ):</li>
+</ul>
+<p style="text-align: center">
+<img border="0" src="tutorial_images/SetUp2.gif" width="700" height="470"></p>
+<hr>
+<h2><span>Creating the category5.php Page</span></h2>
+<ul>
+  <li>Rename <code><a href="category5.html">category5.html</a></code></span> to
+<span>
+
+    <code>category5.php</code> (if you haven't already done so). Then open the file in your PHP editor (or 
+  Notepad).</li>
+  <li>
+  <p align="left">You will 
+  want to edit the <code>category5.php</code> file to have it include the <code>header.html</code>,<code> lmenu.html</code>,<code> 
+  rmenu.html </code> and <code>footer.html.</code> </li>
+  <li>The <code>category5.php</code> file will look like the code below:</li>
+</ul>
+<center>
+&nbsp;<img border="0" src="tutorial_images/category5_includes.gif" width="641" height="363"></center>
+<ul>
+  <li>To add database connectivity to the file you need to add the connection 
+  and database selection code discussed previously:<br>
+<code>$conn = mysql_connect('localhost','username','password')<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+or die( '&lt;h2&gt;Could not connect to MySQL&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+  mysql_select_db('username') or die(&quot;&lt;h2&gt;Could not select database&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;&quot;); <br>
+&nbsp;</code></li>
+  <li>To get data from the database you need to write a query to extract all the 
+  data items for women's clothing from the ITEM Table in the database you 
+  created with SetUp.php (I was able to browse the table below by going to
+  <a href="http://localhost/apanel/phpMyAdmin/">
+  http://localhost/apanel/phpMyAdmin/</a>
+  <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> selecting the 
+  database with my username
+  <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> choosing ITEM 
+  <img border="0" src="tutorial_images/rarr.gif" width="18" height="15"> selecting the Browse tab at the 
+  top of the main window):<center>
+  <p><img border="0" src="tutorial_images/item.gif" width="630" height="255"><br>
+<code><br>
+  $qry = &quot;Select * from ITEM Where CATID=5;&quot;<br>
+  </code>(Where 5 is the category for Women's Clothing)
+
+    </p>
+</center>
+  </li>
+  <li>You need to pass the query to the mysql_query() function which returns a <code>ResultSet</code> containing all of the database records returned 
+  by the query.</li>
+  <li>You will need to input lines 12-21 from the figure below to accomplish 
+  this (don't forget the opening and closing <code>&lt;?php ?&gt;</code> signs):
+<br>
+
+  </li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/category5_query.gif" width="624" height="322"></center>
+
+<ul>
+  <li>Try running <code>category5.php</code> to see if the code you input works 
+  correctly.&nbsp; You will not see any new output - but if the code was input 
+  correctly you should not get an error message</li>
+</ul>
+
+<hr>
+<h2><span>Retrieving Data from the RecordSet</span></h2>
+<ul>
+  <li>To retrieve all of the records in a PHP <code>ResultSet</code> you need to 
+  retrieve the array of results:<br>
+  <code>&nbsp;&nbsp; $row = mysql_fetch_array($rs)</code></li>
+  <li>Then to reference and individual field within an HTML tag, you reference the field value using the 
+  array name and the field name:<br>
+  </span>
+<code>&nbsp;&nbsp; echo $row['fieldname']</code></li>
+  <li>To display multiple records that are retrieved by&nbsp; query and stored 
+  in a <code>ResultSet</code>, you must use a while loop to loop through and 
+  display the records until the end of the array:<code><br>
+  &nbsp;&nbsp; while(</code><span><code>$row = mysql_fetch_array($rs)</code></span><code>) 
+  { //...&nbsp; }</code></li>
+  <li>The following code creates a loop that displays the ITEMTHUMB 
+  (thumbnail image) and the ITEMNAME fields from the database.&nbsp; 
+<ul>
+  <li>The entire loop should replace the code between the opening and closing table 
+  tags in the original file.&nbsp; </li>
+  <li>The code below also closes the&nbsp; <code>ResultSet</code> and the 
+  database connection which makes their resources available to other Web server 
+  processes (lines 24-34 below):</li>
+</ul>
+  </li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/category5_table.gif" width="682" height="291"></center>
+<ul>
+  <li>Try running <code>category5.php</code> to see if the code you input works 
+  correctly.&nbsp; You should notice that the table is created but there are no 
+  hyperlinks to any product pages.&nbsp; </li>
+  <li>We will do that next.</li>
+</ul>
+<hr>
+<h2><span>Passing URL Parameters to a PHP</span></h2>
+<ul>
+  <li>When the user clicks on a hyperlink in the <code>category5.php</code> table we want&nbsp; 
+  the system to display a page about a specific product. To create this Web page 
+  we will use the product1.html </li>
+  <li> To create this Web page we will use the<code>
+  <a href="product1.html">product1.html</a></code> which is an individual item page showing details for the Women's Hiking shorts:<center>
+  <p>
+  <img border="0" src="tutorial_images/product1.jpg" width="485" height="600"></p>
+  </center>
+  </li>
+  <li>We will change the name of this file from <code>product1.html</code> to
+  <code>product.php</code> that retrieves the data about a selected item ID from 
+  the database, and displays it on the Web page.</li>
+  <li>To display this Web page, you must create a hyperlink from each item name 
+  on the <code>category5.php</code> page to the <code>product.php</code> Web 
+  page.&nbsp; Since you want to display inventory information about a particular 
+  product (and information about the product category) you need to pass the item 
+  ID and the category ID as a URL parameter in the hyperlink. </li>
+  <li>A <b>URL parameter</b> is a data value that is passed to a target PHP as a 
+  part of the PHP's URL.
+<ul>
+  <li>&nbsp;Each URL parameter consists of a name/value pair: name=value</li>
+  <li>URL parameters are separated from the regular URL with a ?</li>
+  <li>Multiple URL parameters are separated with &amp;</li>
+  <li>A full URL with 3 parameters would be:</li>
+</ul>
+  <p><code>&nbsp;&nbsp; filename.php?name1=value1&amp;name2=value2&amp;name3=value3</code></li>
+  <li>We will modify the category5.php page so that there is a hyperlink around 
+  the item name (<code>$row['ITEMNAME']</code>) 
+  the hyperlink will be to the following URL:<p><code>&nbsp;&nbsp; product.php?cat=5&amp;item=&quot; 
+  . <samp>$row['ITEMID']</samp></code></li>
+  <li>
+<span>
+
+    You will need to add line 29 and edit line 30 from the figure below to add 
+  the hyperlink (don't forget the <code>'&gt;</code> at the end of line 30 - it is 
+  the closing quote for the <code>'</code> following <code>href= </code>and the 
+  closing <code>&gt;</code> for the <code>&lt;a href</code> tag): </span></li>
+</ul>
+
+<center>
+<img border="0" src="tutorial_images/category5_final.gif" width="692" height="277"></center>
+
+<ul>
+<span>
+
+  <li>If all has gone well, we are done editing <code>category5.php.</code> The 
+  final <code>category5.php</code> page should look like the one below (&amp; work like
+  <a href="http://ouray.cudenver.edu/~dgregg/outdoor/category5.php">this</a>):</li></span>
+</ul>
+<center>
+<img border="0" src="tutorial_images/category5.jpg" width="700" height="558"></center>
+
+<ul>
+  <li>Notice the URL includes the 2 parameters we set.</li>
+</ul>
+<hr>
+<h2><span>Creating the product.php Page</span></h2>
+<ul>
+<span>
+
+  <li>Once you rename <code><a href="product1.html">product1.html</a></code> to <code>product.php</code> you 
+  can open the file in your PHP editor (or Notepad).</li>
+  <li>
+  <p align="left">You will 
+  want to edit the <code>product.php</code> file to have it include the <code>header.html</code>,<code> lmenu.html</code>,<code> 
+  rmenu.html </code> and <code>footer.html.</code> </li>
+  <li>The updated <code>product.php</code> file will look like the code below:</li>
+</ul>
+
+<center>
+<img border="0" src="tutorial_images/product_includes.gif" width="642" height="499"></center>
+</span>
+
+<ul>
+  <li>Notice that this page contains embedded JavaScript code (lines 6-18).&nbsp; 
+  This code is not inside <code><cite>&lt;?php ?&gt;</cite></code> tags so it will be 
+  ignored by the PHP server and passed through to the client browsing the Web 
+  page.&nbsp; It will be executed exactly like the JavaScript code embedded in a 
+  regular HTML page.</li>
+<span>
+
+    </span>
+</ul>
+
+<hr><h2><span>Retrieving Input Parameters into a PHP</span></h2>
+<ul>
+  <li>To retrieve the value of a variable that is passed as a URL parameter you 
+  use the same&nbsp; $_GET array used to retrieve form 
+  data.<br>
+&nbsp;&nbsp;&nbsp; <code>$cat =$_GET[&quot;cat&quot;];<br>
+&nbsp; $item=$_GET[&quot;item&quot;];</code></li>
+<span>
+
+
+  <li>We need to edit the product.php page to:<ul>
+  <li>Retrieve the 2 parameters above.</li>
+  <li>Establish a connection to the database.&nbsp; (the same as we did for 
+  category5.php).</li>
+  </span>
+  <li>Run 3 separate queries in to get all of the information we 
+  need for the <code>product.php</code> page</li>
+  <li>Get the data from the queries and insert it in appropriate locations in 
+  the Web page</li>
+</ul>
+  </li>
+  <li>First we need to query the category page to get the name of the category this 
+  page is being browsed from.</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/category.gif" width="567" height="365"></center>
+<ul>
+  <li>You will need to edit the <code>product.php</code> page to add the code in 
+  the red box below and replace the text &quot;Women's Clothing&quot; in the <code>
+  product.php</code> page with <code>&lt;?php echo $cname; ?&gt;</code> the 2 places it occurs 
+  in the Web page (yellow highlighted text on lines 22 &amp; 40).</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/product_cname.gif" width="670" height="767"></center>
+<ul>
+  <li>Try running <code>product.php</code> to see if the code you input works 
+  correctly (e.g. you see the text Women's Clothing and you get no error 
+  messages).&nbsp; </li>
+</ul>
+<hr>
+<ul>
+  <li>We also need to query the item table to get the name of the product, its 
+  description, and a 
+  larger version of the product image to display.&nbsp; You will need to edit 
+  your code to add the code in the red box below and&nbsp; replace the item 
+  name, item image name and item description with the appropriate database data 
+  (yellow highlighted text on lines 29, 32, 50, 53 &amp; 54).</li>
+  <li>Notice that after I ran the second query I created a variable to hold the 
+  ITEMNAME but just called $row[&quot;ITEMIMAGE&quot;] and $row[&quot;ITEMDESC&quot;] 
+  directly in the location where the data should go.&nbsp; This is because I was 
+  only using ITEMIMAGE and&nbsp; ITEMDESC one time so it was easier just to 
+  remove the data from the $row array once.&nbsp; I used ITMENAME multiple times 
+  so it was simpler to create a variable I could reuse.</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/product_item.gif" width="694" height="714"></center>
+<ul>
+  <li>Try running <code>product.php</code> to see if the code you input works 
+  correctly.&nbsp; Remember to browse the <code>category5.php</code> page first 
+  so you call the <code>product.php</code> page with the appropriate parameters.&nbsp; 
+  You should now see different products depending on which product you select.&nbsp; 
+  However the table at the bottom of the page is the same for all products.</li>
+  <li>We need to query the inventory table so we can update the table at the 
+  bottom of the page to have the correct sizes &amp; colors for all of 
+  the products &amp; whether or not they are in stock:</li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/inventory.gif" width="667" height="463"></center>
+
+<ul>
+  <li>You will need to edit your code to add the code in the red box below.&nbsp;&nbsp;&nbsp; The entire loop should replace the code between the end 
+  of the table header row and closing table tag in the original file.&nbsp; </li>
+</ul>
+<center>
+<img border="0" src="tutorial_images/product_inventory1.gif" width="692" height="612"></center>
+
+<ul>
+  <li>Try running <code>product.php</code> to see if the code you input works 
+  correctly.&nbsp; The table at the bottom of the page should now be different for 
+  each of the products.</li>
+</ul>
+
+<center>
+<img border="0" src="tutorial_images/product_inventory.jpg" width="700" height="496"></center>
+
+<ul>
+  <li>There are 3 remaining things to be done to complete this Web page:<ul>
+    <li>Note that in the code above all of the &quot;IN STOCK&quot; values are hardcoded 
+    to &quot;Yes.&quot;&nbsp; You can use if statements to determine if the quantity on 
+    hand (QOH) is greater than 0 and dynamically determine Whether the value 
+    should be YES or NO.</li>
+    <li>The prices do not have a $ and are not fixed to 2 decimal places.</li>
+    <li>Also notice that the last option button is always selected.&nbsp; This 
+    is because the &quot;checked&quot; attribute is set for all of the radio buttons.</li>
+  </ul>
+  </li>
+  <li>The code below shows what the final code should look like.&nbsp; It 
+  includes changes/additions to lines 73, 76, 83-88, 92, 94-95.</li>
+</ul>
+
+<center>
+<img border="0" src="tutorial_images/product_inventory2.gif" width="690" height="609"></center>
+
+<ul>
+  <li>
+Try running <code>product.php</code> to see if the code you input works 
+  correctly.&nbsp; The final version of the <code>product.php</code> page should 
+look like the one below.</li>
+</ul>
+
+<p></p>
+<p></p>
+<p style="text-align: center">
+<img border="0" src="tutorial_images/product.jpg" width="700" height="662"></p>
+
+<hr>
+<h1>Deploying Your Project</h1>
+<ul>
+
+
+  <span>
+  <li style="margin-bottom: 8">
+<p align="left">An application server that supports PHP and MySQL is 
+required for your code to run online. Ouray is a UNIX machine that supports PHP 
+and MySQL.</p>
+  </li>
+  <li>
+If you gave yourself the same MySQL username and password and named your 
+database to be the same name as your username, then all you need to do to deploy 
+your project is upload the individual files to Ouray using ftp and then browse SetUp.php to created the database tables on Ouray.</li>
+  </span>
+</ul>
+<hr>
+
+
+<i class=footer>
+Updated March 23, 2006<br>
+by Dawn Gregg</i>
+</div>
+</body>
