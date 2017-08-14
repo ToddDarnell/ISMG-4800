@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<!DOCTYPE catalog SYSTEM "outdoor.dtd">
+<?xml-stylesheet href="outdoor.xsl" type="text/xsl"?>
+<catalog>
+  <item id="1">
+      <category>Women's Clothing</category> 
+      <category>Men's Clothing</category> 
+      <name>Hiking Shorts</name> 
+      <description>Soft, comfortable, lightweight cotton twill ...</description> 
+      <image>shorts.jpg</image> 
+      <thumbnail>shorts_thumb.jpg</thumbnail> 
+    <inventory>
+      <size>S</size> 
+      <color>Khaki</color> 
+      <price>$29.95</price> 
+      <qoh>150</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Khaki</color> 
+      <price>$29.95</price> 
+      <qoh>147</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Khaki</color> 
+      <price>$29.95</price> 
+      <qoh>0</qoh> 
+    </inventory>
+    <inventory>
+      <size>S</size> 
+      <color>Navy</color> 
+      <price>$29.95</price> 
+      <qoh>139</qoh> 
+      </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Navy</color> 
+      <price>$29.95</price> 
+      <qoh>137</qoh> 
+      </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Navy</color> 
+      <price>$29.95</price> 
+      <qoh>115</qoh> 
+      </inventory>
+  </item>
+
+  <item id="2">
+      <category>Women's Clothing</category> 
+      <category>Men's Clothing</category> 
+      <name>Fleece Pullover</name> 
+      <description>A superb springtime layering choice, ...</description> 
+      <image>fleece.jpg</image> 
+      <thumbnail>fleece_thumb.jpg</thumbnail> 
+    <inventory>
+      <size>S</size> 
+      <color>Twilight</color> 
+      <price>$59.95</price> 
+      <qoh>135</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Twilight</color> 
+      <price>$59.95</price> 
+      <qoh>0</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Twilight</color> 
+      <price>$59.95</price> 
+      <qoh>187</qoh> 
+    </inventory>
+    <inventory>
+      <size>XL</size> 
+      <color>Twilight</color> 
+      <price>$59.95</price> 
+      <qoh>18</qoh> 
+    </inventory>
+    <inventory>
+      <size>S</size> 
+      <color>Hunter</color> 
+      <price>$59.95</price> 
+      <qoh>124</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Hunter</color> 
+      <price>$59.95</price> 
+      <qoh>14</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Hunter</color> 
+      <price>$59.95</price> 
+      <qoh>112</qoh> 
+    </inventory>
+    <inventory>
+      <size>XL</size> 
+      <color>Hunter</color> 
+      <price>$59.95</price> 
+      <qoh>102</qoh> 
+    </inventory>
+    <inventory>
+      <size>S</size> 
+      <color>Red</color> 
+      <price>$59.95</price> 
+      <qoh>183</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Red</color> 
+      <price>$59.95</price> 
+      <qoh>83</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Red</color> 
+      <price>$59.95</price> 
+      <qoh>95</qoh> 
+    </inventory>
+    <inventory>
+      <size>XL</size> 
+      <color>Red</color> 
+      <price>$59.95</price> 
+      <qoh>18</qoh> 
+    </inventory>
+  </item>
+
+  <item id="3">
+      <category>Women's Clothing</category> 
+      <name>Airstream Canvas Shoes</name> 
+      <description>These comfortable shoes tackle ...</description> 
+      <image>shoes.jpg</image> 
+      <thumbnail>shoes_thumb.jpg</thumbnail> 
+    <inventory>
+      <size>7</size> 
+      <color>Navy</color> 
+      <price>$39.99</price> 
+      <qoh>81</qoh> 
+    </inventory>
+    <inventory>
+      <size>8</size> 
+      <color>Navy</color> 
+      <price>$39.99</price> 
+      <qoh>61</qoh> 
+    </inventory>
+    <inventory>
+      <size>9</size> 
+      <color>Navy</color> 
+      <price>$39.99</price> 
+      <qoh>48</qoh> 
+    </inventory>
+    <inventory>
+      <size>7</size> 
+      <color>Black</color> 
+      <price>$39.99</price> 
+      <qoh>134</qoh> 
+    </inventory>
+    <inventory>
+      <size>8</size> 
+      <color>Black</color> 
+      <price>$39.99</price> 
+      <qoh>94</qoh> 
+    </inventory>
+    <inventory>
+      <size>9</size> 
+      <color>Black</color> 
+      <price>$39.99</price> 
+      <qoh>35</qoh> 
+    </inventory>
+  </item>
+
+  <item id="4">
+      <category>Women's Clothing</category> 
+      <name>All-Weather Mountain Parka</name> 
+      <description>This two-layer parka offers ...</description> 
+      <image>parka.jpg</image> 
+      <thumbnail>parka_thumb.jpg</thumbnail> 
+    <inventory>
+      <size>S</size> 
+      <color>Spruce</color> 
+      <price>$199.95</price> 
+      <qoh>114</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Spruce</color> 
+      <price>$199.95</price> 
+      <qoh>17</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Spruce</color> 
+      <price>$209.95</price> 
+      <qoh>0</qoh> 
+    </inventory>
+    <inventory>
+      <size>S</size> 
+      <color>Black</color> 
+      <price>$199.95</price> 
+      <qoh>101</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Black</color> 
+      <price>$199.95</price> 
+      <qoh>4</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Black</color> 
+      <price>$209.95</price> 
+      <qoh>2</qoh> 
+    </inventory>
+    <inventory>
+      <size>S</size> 
+      <color>Red</color> 
+      <price>$199.95</price> 
+      <qoh>79</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Red</color> 
+      <price>$199.95</price> 
+      <qoh>5</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Red</color> 
+      <price>$209.95</price> 
+      <qoh>13</qoh> 
+    </inventory>
+  </item>
+</catalog>

@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+  <TITLE>Outdoor Depot Home Page</TITLE>
+  <link rel="stylesheet" type="text/css" href="../od.css">
+</HEAD>
+<BODY>
+<script LANGUAGE="JavaScript" src="../scripts/odcart.js"></script>
+<script LANGUAGE="JavaScript" SRC="../scripts/odimages.js"></script>
+<script LANGUAGE="JavaScript" SRC="../scripts/ajax.js"></script>
+<script>
+function writeAJAXCart(cookiename, cnum, delim, nitem, cframe)
+{   
+ var products = GetCookie(cookiename)
+ var total=0
+ var ajax = '';
+ var formn = 'cartform';
+ if(cnum==1) ajax = '<div id="ajax"><center><h1>Outdoor Depot<br/>Shopping Cart</h1><form name="'+formn+'" id="cartform">';
+
+ if ( products != null)
+ {
+    // Write the table headings
+   ajax += '<table class="bg1" style="font-size: .917em;" cellpadding=1><tr class="bg2"><th>Product</th><th>Size</th><th>Color</th><th>Price</th><th>Quantity</th><th>Total Price</th></tr>';
+   products = products.split(delim);
+   var j = 0;
+   var numprod = products.length/nitem;
+   // Loop to write each row in the cart
+   for ( var i=0; i < products.length; i += nitem)
+   {  
+      // Write the Product Name, Description & Price
+      // to hidden elements, then show them as plain text
+      ajax += '<tr>';
+      for( var k = 0; k < (nitem-2); k++)
+      {  ajax += '<td><input type="hidden" name="field' + k + '" value = "' + products[i+k] + '">' + products[i+k] + '</td>'; }
+      ajax += '<td><input type="hidden" name="field' + k + '" value = "' + products[i+k] + '">$' + F2(products[i+k]) + '</td>';
+      k++;
+      if(cnum <= 1)
+      {
+        ajax += '<td align="center"><input type="text" size=4 name="field' + k + '" value = "' + products[i+k] + '"></td>';
+      }
+      else
+      { 
+        ajax += '<td><input type="hidden" name="field' + k + '" value = "' + products[i+k] + '">' + products[i+k] + '</td>';
+      }
+
+      ajax += '<td align="right"><input type="hidden" name="tot" value = "' + F2(products[i+k-1]*products[i+k]) + '">$' + F2(products[i+k-1]*products[i+k]) + '</td></tr>';
+      total = total + products[i+k-1]*products[i+k];
+      j++;
+   }
+   // Calculate the total (price*quantity) & put it in a
+   // hidden element, then show it as plain text
+   // Use the F2 function to show it with 2 decimal places
+   ajax += '<td colspan=' + nitem + ' align="right"><font color="005000"><strong>Subtotal:&nbsp;</strong></font></td><td align="right"><input type="hidden" name="stotal" value = "' + F2(total) + '">$' + F2(total) + '</td></tr>';
+   if(cnum <= 1)
+   {
+     ajax += '<tr><td colspan=' + (nitem + 1) + ' align="center">';
+     ajax += '<input type="button" name="update" value="Update Cart" onclick="UpdateCookie(\'' + cookiename + '\',' + formn + ',' + numprod+ ',' + nitem + ',\'' + delim + '\');writeAJAXCart(\'odCart\', 1, \'' + delim + '\', ' + nitem+ ', \''+cframe+'\');">';
+     ajax += '<input type="button" name="clear" value="Clear Cart" onclick="DeleteCookie(\'' + cookiename + '\');writeAJAXCart(\'odCart\', 1, \'' + delim + '\', ' + nitem+ ', \''+cframe+'\');">';
+     ajax += '<input type="button" name="checkout" value="Check Out" onclick="loadPageJS(\'checkout.html\', \''+cframe+'\'); ">';
+     ajax += '</td></tr>';
+   }
+   else
+   {
+      // Display the sub total with a $ and 2 decimal places
+      ajax += '<td colspan=' + nitem + ' align="right"><font color="005000"><strong>Shipping:&nbsp;</strong></font></td><td align="right"><input type="hidden" name="ship" value = "' + F2(Math.max(Math.ceil(.08*total),5)) + '">$' + F2(Math.max(Math.ceil(.08*total),5)) + '</td></tr>';
+      // Display the total with a $ and 2 decimal places
+      ajax += '<td colspan=' + nitem + ' align="right"><font color="005000"><strong>Total:&nbsp;</strong></font></td><td align="right"><input type="hidden" name="total" value = "' + F2(total + Math.max(Math.ceil(.08*total),5)) + '">$' + F2(total + Math.max(Math.ceil(.08*total),5)) + '</td></tr>';
+      // Store the number of products in a hidden element
+      ajax += '<input type="hidden" name="numprod" value = "' + numprod + '">';
+   }
+   ajax += '</td></tr></center></table></form></center>';
+ }
+ else
+ {  ajax += "<h2>Your cart is empty</h2></form></center>"; }
+
+ if(cnum==1) ajax += "</div>";
+  var object= document.getElementById(cframe);
+  object.innerHTML = ajax;
+
+}
+
+function loadPageJS(page, cfram)
+{
+   loadPage(page, cfram);
+   var object= document.getElementById(cfram);
+   var text = object.innerHTML;	
+   Timer= setTimeout("writeAJAXCart('odCart', 2, '|', 5, 'x');",1000);
+}
+
+
+</script>
+  <TABLE BORDER="0" width=100% CELLPADDING=0 cellspacing="0" id=header>	
+  <TR>
+  <TD ALIGN=left valign="bottom" width="250" id=logo>
+  <img border="0" src="../images/odlogo2.jpg" width="250" height="125" align="absleft" alt="Outdoor Depot: Camping, Hiking, Biking and Backpacing Gear"></TD>
+  <TD></TD>
+  <TD ALIGN=right valign="bottom">
+   <form method="POST" action="search.php"> 
+      Search: <input type=text name=search size=25>&nbsp;
+       <button name=gobutton type=submit  onmouseover="swap('go', 'on');" 
+                                          onmouseout="swap('go', 'off');">
+         <img src=images/ball_red.gif name="go" onmouseover="swap('go', 'on');" 
+              width="12" height="12"            onmouseout="swap('go', 'off');"> Go
+       </button></form>
+   <br>
+   <a onclick="loadPage('home.html', 'content');"><img border="0" src="../images/home.gif" name="home" align="bottom"       width="100" height="32" onmouseover="swap('home', 'on');" onmouseout="swap('home', 'off');"></a>&nbsp;
+   <a onclick="loadPage('feedback.html', 'content');"><img border="0" src="../images/feedback.gif" name="feedback" width="100" height="32" onmouseover="swap('feedback', 'on');" onmouseout="swap('feedback', 'off');"></a>&nbsp;
+   <a onclick="writeAJAXCart('odCart', 1, '|', 5, 'content');"><img border="0" src="../images/cart.gif" name="cart" width="100" height="32" onmouseover="swap('cart', 'on');" onmouseout="swap('cart', 'off');"></a></TD>
+  </TR>
+  </TABLE>  <TABLE BORDER="0" width=100% CELLPADDING=3 cellspacing="0">	
+  <TR>	
+   <TD valign="top" class=linklist>
+  <div id=linklist1>
+    <ul><li><p>Camping Gear</li>
+        <li><p>Hiking Gear</li>
+        <li><p>Biking Gear</li>
+        <li><p>Backpacking Gear</li>
+        <li><a onclick="loadPage('category5.php', 'content');">Women's Clothes</a></li>
+        <li><p>Men's Clothes</li>
+        <li><p>Kid's Clothes</li>
+</ul>
+<br>
+<ul>
+        <li><p>About Us</li>
+        <li><p>Contact Us</li>
+        <li><p>Site Map</li>
+        <li><p>Customer Service</li>	
+        <ul>
+          <li><p>How to Order</li>
+          <li><p>Shipping and Returns</li>
+          <li><p>Check on Your Order</li>
+        </ul></ul>
+        </div>
+   </TD>
+   <TD valign="top" id=content>   <TABLE width=100%>
+     <TR><TD ALIGN=center valign="top">	
+       <br><img border="0" src="../images/arches2.jpg" width="400" height="263">
+       <br><br>
+       <H4 class=darkT>Outdoor Depot where your outdoor adventures begin...
+       <br>&nbsp;</H4></TD>	
+     </TR>
+     <TR>
+       <TD class=moss align=center>
+         <H3>Hot Items for Summer </H3>
+         <table width="90%" height="70%" cellpadding="5" cellspacing="5">
+           <tr>
+             <td  valign="top" align="center" width="33%">
+               <img border="0" src="../images/shorts_thumb.jpg" width="120" height="120"><br>
+               <h4>Hiking Shorts<br>$29.95</h4>
+             </td>             
+             <td valign="top" align="center" width="33%">
+                  <img border="0" src="../images/fleece_thumb.jpg" width="120" height="120"><br>
+               <h4>Fleece Pullover<br>$59.95</h4>
+             </td>
+             <td  valign="top" align="center" width="34%">
+               <img border="0" src="../images/shoes_thumb.jpg" width="120" height="120"><br>
+               <h4>Airstream Canvas Shoes<br>$39.95</h4>
+             </td>
+            </tr>
+         </table>
+<br>
+     </TD></TR>  
+   </TABLE>
+  </TD>
+  <TD ALIGN=LEFT valign="top" class=linkList2>	
+  <h3><em>Hot Items</em></h3>
+  <ol class="light">
+     	   <LI>Women's Shorts
+     	   <LI>Men's Shorts
+     	   <LI>Mummy Bag
+     	   <LI>Canvas Shoes
+     	   <LI>Fleece Pullover
+     	   <LI>Women's Tank
+     	   <LI>Men's Tee Shirt
+     	   <LI>Kid's Shorts
+     	   <LI>Kid's Tee Shirt
+     	   <LI>Kids Canvas Shoes
+ </ol>
+ </TD>	
+ </TR>
+</TABLE>  <link rel="stylesheet" type="text/css" href="../od.css">
+<table border=0 width=100% cellpadding=0 cellspacing=0>
+<tr><td  class=linkList><div class=linkList>&nbsp;</div></td>
+<td id=footer>
+<br>
+  <p><a onclick="loadPage('home.html', 'content');">Home</a> | Site Map | 
+  <a onclick="loadPage('feedback.html', 'content');">Feedback</a> | About Us | Contact Us | 
+  <a onclick="writeAJAXCart('odCart', 1, '|', 5, 'content');">Shopping Cart</a><br>
+  <br>
+  This site is for educational purposes only.<br>
+  The products are not for sale.</p>
+</td><td  class=linkList2><div class=linkList2>&nbsp;</div></td></tr></table>
+</BODY>
+</HTML>

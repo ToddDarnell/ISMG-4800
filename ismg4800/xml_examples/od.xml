@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<catalog>
+   <item id="1">
+     <catID>5</catID>
+     <name>Hiking Shorts</name>
+     <description>Soft, comfortable, lightweight cotton twill ...</description>
+     <image>shorts.jpg</image>
+     <thumbnail>shorts_thumb.jpg</thumbnail>
+   </item>
+
+   <item id="2">
+     <catID>5</catID>
+     <name>Fleece Pullover</name>
+     <description>A superb springtime layering choice, ...</description>
+     <image>fleece.jpg</image>
+     <thumbnail>fleece_thumb.jpg</thumbnail>
+   </item>
+
+   <item id="3">
+     <catID>5</catID>
+     <name>Airstream Canvas Shoes</name>
+     <description>These comfortable shoes tackle ...</description>
+     <image>shoes.jpg</image>
+     <thumbnail>shoes_thumb.jpg</thumbnail>
+   </item>
+
+   <item id="4">
+     <catID>5</catID>
+     <name>All-Weather Mountain Parka</name>
+     <description>This two-layer parka offers ...</description>
+     <image>parka.jpg</image>
+     <thumbnail>parka_thumb.jpg</thumbnail>
+   </item>
+
+   <item id="5">
+     <catID>1</catID>
+     <name>Goose Down Sleeping Bag</name>
+     <description>This rectangular or mummy cold weather bag ...</description>
+     <image>bags.jpg</image>
+     <thumbnail>bags_thumb.jpg</thumbnail>
+   </item>
+</catalog>

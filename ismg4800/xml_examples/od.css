@@ -1,0 +1,136 @@
+body {
+	background-color: white; 
+	font-family: Geneva, Arial, Helvetica, sans-serif; 
+	color:#333333;
+	margin: 0px 0px 0px 0px; 
+	padding: 0px 0px 0px 0px;
+	}
+	
+a:link {
+	text-decoration: none; 
+	color: 	#446600; ;
+	}
+	
+a:visited { 
+	text-decoration: none; 
+	color: 	#446600;
+		}
+		
+a:hover, a:active { 
+	text-decoration: underline; 
+	color: 	#449900;
+	}
+	
+A        { text-decoration: underline;
+           color: lime;}
+
+
+em    { color: red;  }
+
+H1    {  text-align: center; 
+         font-size: 1.5em;
+         font-weight: bold;
+         background-image: url('images/moss.jpg');
+         color: white;
+         background-color:darkgreen;
+         padding-top: 10;
+         padding-bottom: 10;}
+
+H2     { color:darkgreen;  
+         font-size:1.17em }
+
+H2 span {  background-color: #449900; 
+           color: #FFFFCC;
+           padding-top: 5;
+           padding-left: 5;
+           padding-right: 5;
+           padding-bottom: 5;}
+           
+#header {
+    background-color: #FFFFCC; 
+    margin:0px 0px 0px 0px; 
+    padding:0px 10px 0px 0px; 
+}
+
+#content {
+    background-color:#FFFFFF;
+    margin-bottom:0px; 
+    padding-bottom:0px; 
+    font-size: .95em;
+}
+
+.linkList {
+    background-color: #446600; 
+    background-image: url('images/moss.jpg');
+    margin:0px 0px 0px 0px; 
+    padding:0px 0px 0px 0px; 
+    width:250px; 
+}
+
+#linkList1 {
+	background-color: #449900; 
+    margin:0px 0px 0px 0px; 
+    padding:0px 0px 70px 0px; 
+    width:210; 
+}
+
+.linkList2 { 
+    background-color: #446600 ; 
+    margin:0px 0px 0px 0px; 
+    padding:0px 0px 0px 5px; 
+    width:210px; 
+    color: #FFFFCC;
+    font: .85em Geneva, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+}
+	
+#linkList1 a {color: #FFFFCC; padding:3px 5px 3px 5px; margin:0; width:100%; }
+            
+#linkList1 a:hover { color:#FFFFCC; 
+                     background-color:  #446600 ; 
+                     background-image: url('images/moss.jpg');
+                     text-decoration:none;}
+
+
+#linkList1 ul {
+	font: .9em Geneva, Arial, Helvetica, sans-serif; 
+	list-style: none;
+	font-weight: bold;
+	margin:0px 0px 0px 0px;
+        padding:0;
+}
+
+
+#linkList1 li p, .linkList2 li {
+	padding:3px 5px 3px 5px;
+	margin:0;
+	color:#FFFFCC;
+}
+
+#linkList1 ul ul {
+	list-style: disc;
+	font-weight: normal;
+	padding: 0px 0px 0px 25px;
+    }
+
+	
+#footer {
+	text-align: center;
+	width: 100%;
+	font-size:0.8em;
+    margin:0px 0px 0px 0px; 
+    padding:0px 0px 0px 0px; 
+        width: 100%;
+	}
+
+.moss {		background-color: #449900; 
+/*        background: #446600 url('images/moss.jpg') right;*/
+        color: #FFFFCC;
+}
+
+.moss table tr td  { 
+    background-color:white; 
+    color: #446600;
+}
+
+.bg1 { background-color: #FFFFCC;}

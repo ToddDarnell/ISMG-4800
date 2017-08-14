@@ -1,0 +1,14 @@
+<!ELEMENT catalog (item*)>
+<!ELEMENT item (category+, name, description, image, thumbnail, inventory+)>
+<!ELEMENT inventory (size, color, price, qoh)> 
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT name  (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT image (#PCDATA)>
+<!ELEMENT thumbnail (#PCDATA)> 
+<!ELEMENT size  (#PCDATA)> 
+<!ELEMENT color (#PCDATA)> 
+<!ELEMENT price (#PCDATA)> 
+<!ELEMENT qoh   (#PCDATA)> 
+
+<!ATTLIST item id ID #REQUIRED>

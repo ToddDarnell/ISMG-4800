@@ -1,0 +1,143 @@
+    <HTML><HEAD>
+    <link rel="stylesheet" type="text/css" href="../od.css"/>
+    <TITLE>Outdoor Depot: Women's Clothing</TITLE>
+    <script src="../scripts/odcart.js"></script>
+    <script LANGUAGE="JavaScript" SRC="../scripts/odimages.js"></script>
+    </HEAD>
+    <BODY>  
+<script LANGUAGE="JavaScript" SRC="../scripts/odimages.js"></script>
+  <TABLE BORDER="0" width=100% CELLPADDING=0 cellspacing="0" id=header>	
+  <TR>
+  	<TD ALIGN=left valign="bottom" width="250" id=logo>
+     <img border="0" src="../images/odlogo2.jpg" width="250" height="125" align="absleft" alt="Outdoor Depot: Camping, Hiking, Biking and Backpacing Gear"></td>
+     <td></td>
+     <TD ALIGN=right valign="bottom"><form method="POST" action="outdoordepot.html?file=index"> Search: <input type=text name=search size=25>&nbsp; <button name=gobutton type=submit  onmouseover="swap('go', 'on');" onmouseout="swap('go', 'off');">
+     <img src=images/ball_red.gif name="go" width="12" height="12" onmouseover="swap('go', 'on');" onmouseout="swap('go', 'off');"> Go
+     </button></form>
+     <br>
+     <a href="outdoordepot.html?file=index"><img border="0" src="../images/home.gif" name="home" align="bottom" width="100" height="32" onmouseover="swap('home', 'on');" onmouseout="swap('home', 'off');"></a>&nbsp;
+     <a href="outdoordepot.html?file=feedback"><img border="0" src="../images/feedback.gif" name="feedback" width="100" height="32" onmouseover="swap('feedback', 'on');" onmouseout="swap('feedback', 'off');"></a>&nbsp;
+     <a href="outdoordepot.html?file=shopcart"> <img border="0" src="../images/cart.gif" name="cart" width="100" height="32" onmouseover="swap('cart', 'on');" onmouseout="swap('cart', 'off');"></a></TD>
+  </TR>
+  </TABLE>
+  <TABLE BORDER="0" width=100% CELLPADDING=3 cellspacing="0">	
+   <TD valign="top" class=linklist>
+  <div id=linklist1>
+        <p align="left">
+   	  Camping Gear<br/>
+        Hiking Gear<br/>
+        Biking Gear<br/>
+        Backpacking Gear<br/>
+        <a href="outdoordepot.html?cat=5">Women's Clothes</a><br/>
+        Men's Clothes<br/>
+        Kid's Clothes<br/>
+        <br/>
+        About Us<br/>
+        Contact Us<br/>
+        Site Map<p align="left">Customer Service</p>	
+        <ul>
+          <li><font size="2">How to Order </font></li>
+          <li><font size="2">Shipping and Returns </font></li>
+          <li><font size="2">Check on Your Order</font></li>
+        </ul>
+   	</div></TD>
+       
+    <TD valign="top" id=content>
+
+       <script language="JavaScript">
+           var p = ["file", "cat", "item"];
+           var xmlfile = ["outdoor_pages.xml", "outdoordepot.xml", "outdoordepot.xml"];
+           var xslfile = ["outdoordepot_pages.xsl", "outdoordepot_category.xsl", "outdoordepot_item.xsl"];
+           
+           var i=0;
+           var param="index";
+          
+           
+           for(i=0; i < p.length; i++)
+           {   param = getParameter(p[i]);
+               if(param != "false") break;
+           }
+           
+           if(param == "false" || param ==  false) 
+           { i = 0;
+             param="index";
+           }
+           
+
+           // Create an Version 3 XML DOMDocument and load the category source document into it
+           var xmlDoc = new ActiveXObject("Msxml2.DomDocument");
+           //xmlDoc.loadXML(document.XMLDocument.xml)
+           xmlDoc.load(xmlfile[i])
+                    
+           var xslDoc = new ActiveXObject("Msxml2.FreeThreadedDOMDocument");
+           xslDoc.async = false;
+           xslDoc.validateOnParse = false;
+           xslDoc.load(xslfile[i])
+        
+           var xslTemplate = new ActiveXObject("Msxml2.XSLTemplate");
+           xslTemplate.stylesheet = xslDoc;
+
+           xslProc = xslTemplate.createProcessor();
+           xslProc.input = xmlDoc;
+           xslProc.addParameter(p[i], param);
+           xslProc.transform;
+           var xmlOutput = xslProc.output;
+
+           if(xmlOutput.length < 10) 
+           {  //alert('reloading');
+              Timer= setTimeout("window.location.reload()",1000); 
+           }           
+           else
+              document.write(xmlOutput);
+                       
+          function getParameter(pname)
+          {
+            var input = '', output = '';
+
+             if (location.search.length > 0)
+               input = location.search.substring(1);
+
+             if(input.indexOf(pname+"=") < 0) return "false";
+             while (input.length > 0) 
+             {
+                variableName = input.substring(0,input.indexOf('='));
+                if(variableName == pname)
+                {
+                    variableValue = input.substring(input.indexOf('=')+1);
+                    if (variableValue.indexOf('&')>0)
+                       variableValue = input.substring(input.indexOf('=')+1,input.indexOf('&'));
+                   return variableValue;
+                }
+
+             if (input.indexOf('&')>0)
+             input = input.substring(input.indexOf('&')+1);
+           }
+           return "false";
+         }
+     </script>
+  </TD>
+  <TD ALIGN=LEFT valign="top" class=linkList2>	
+  <h3><em>Hot Items</em></h3>
+       <ol class="light">
+     	   <LI>Women's Shorts</LI>
+     	   <LI>Men's Shorts</LI>
+     	   <LI>Mummy Bag</LI>
+     	   <LI>Canvas Shoes</LI>
+     	   <LI>Fleece Pullover</LI>
+     	   <LI>Women's Tank</LI>
+     	   <LI>Men's Tee Shirt</LI>
+     	   <LI>Kid's Shorts</LI>
+     	   <LI>Kid's Tee Shirt</LI>
+     	   <LI>Kids Canvas Shoes</LI>
+       </ol>
+      </TD>	
+     </TR>
+    </TABLE>
+    <p align="center" class="footer"><a href="outdoordepot.html?file=index">Home</a> | Site Map | 
+    <a href="outdoordepot.html?file=feedback">Feedback</a> | About Us | Contact Us | 
+    <a href="outdoordepot.html?file=shopcart">Shopping Cart</a><br/>
+    <br/>
+    This site is for educational purposes only.<br/>
+    The products are not for sale.</p>
+    </BODY>
+    </HTML>

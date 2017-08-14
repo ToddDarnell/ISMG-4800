@@ -1,0 +1,27 @@
+<html>
+<!--
+ Code for Applying an XSL file to an XML file on the Client 
+ only works with Internet Explorer Version 6.0 & above
+-->
+<head>
+    <link rel="stylesheet" type="text/css" href="od.css"/>
+    <TITLE>Outdoor Depot: Women's Clothing</TITLE>
+</head>
+<body>
+  <h1>Outdoor Depot: Women's Clothing</h1>
+
+  <script type="text/javascript">
+
+  var xmlDoc = new ActiveXObject("Msxml2.DomDocument")
+  xmlDoc.async="false"
+  xmlDoc.validateOnParse="false"
+  xmlDoc.load("../outdoor.xml")
+  var xslSS = new ActiveXObject( "Msxml2.DomDocument" ) ;
+  xslSS.async = false ;   // disable multithreading
+  xslSS.load( "../outdoor_category.xsl" ) ;
+
+  document.writeln( xmlDoc.transformNode( xslSS ) ) ;    
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<HTML>
+<HEAD>
+  <TITLE>Outdoor Depot Home Page</TITLE>
+  <link rel="stylesheet" type="text/css" href="../od.css">
+    <script src="../scripts/misc.js" type="text/javascript"></script>
+    <script src="../scripts/dom.js" type="text/javascript"></script>
+    <script src="../scripts/xpath.js" type="text/javascript"></script>
+    <script src="../scripts/xslt.js" type="text/javascript"></script>
+    <script src="xslt_script.js" type="text/javascript"></script>
+    <script LANGUAGE="JavaScript" SRC="../scripts/odimages.js"></script>
+    <script LANGUAGE="JavaScript" SRC="../scripts/ajax.js"></script>
+</HEAD>
+<BODY onload="test_xslt();">
+  <TABLE BORDER="0" width=100% CELLPADDING=0 cellspacing="0" id=header>	
+  <TR>
+  <TD ALIGN=left valign="bottom" width="250" id=logo>
+  <img border="0" src="../images/odlogo2.jpg" width="250" height="125" align="absleft"        alt="Outdoor Depot: Camping, Hiking, Biking and Backpacing Gear"></TD>
+  <TD></TD>
+  <TD ALIGN=right valign="bottom">
+   <form method="POST" action="search.php"> 
+      Search: <input type=text name=search size=25>&nbsp;
+       <button name=gobutton type=submit  onmouseover="swap('go', 'on');" 
+                                          onmouseout="swap('go', 'off');">
+         <img src=images/ball_red.gif name="go" onmouseover="swap('go', 'on');" 
+              width="12" height="12"            onmouseout="swap('go', 'off');"> Go
+       </button></form>
+   <br>
+   <a href="index.php"><img border="0" src="../images/home.gif" name="home" align="bottom"       width="100" height="32" onmouseover="swap('home', 'on');" onmouseout="swap('home', 'off');"></a>&nbsp;
+   <a href="feedback.php"><img border="0" src="../images/feedback.gif" name="feedback" width="100" height="32" onmouseover="swap('feedback', 'on');" onmouseout="swap('feedback', 'off');"></a>&nbsp;
+   <a href="shopping_cart.php"><img border="0" src="../images/cart.gif" name="cart" width="100" height="32" onmouseover="swap('cart', 'on');" onmouseout="swap('cart', 'off');"></a></TD>
+  </TR>
+  </TABLE>  <TABLE BORDER="0" width=100% CELLPADDING=3 cellspacing="0">	
+  <TR>	
+   <TD valign="top" class=linklist>
+  <div id=linklist1>
+    <ul><li><p>Camping Gear</li>
+        <li><p>Hiking Gear</li>
+        <li><p>Biking Gear</li>
+        <li><p>Backpacking Gear</li>
+        <li><a onclick="loadPage('outdoor_category.xml', 'xml');loadPage('outdoor_category.xsl', 'xslt');test_xslt('content');">Women's Clothes</a></li>
+        <li><p>Men's Clothes</li>
+        <li><p>Kid's Clothes</li>
+</ul>
+<br>
+<ul>
+        <li><p>About Us</li>
+        <li><p>Contact Us</li>
+        <li><p>Site Map</li>
+        <li><p>Customer Service</li>	
+        <ul>
+          <li><p>How to Order</li>
+          <li><p>Shipping and Returns</li>
+          <li><p>Check on Your Order</li>
+        </ul></ul>
+        </div>
+   </TD>
+   <TD valign="top" id=content>   <TABLE width=100%>
+     <TR><TD ALIGN=center valign="top">	
+       <br><img border="0" src="../images/arches2.jpg" width="400" height="263">
+       <br><br>
+       <H4 class=darkT>Outdoor Depot where your outdoor adventures begin...
+       <br>&nbsp;</H4></TD>	
+     </TR>
+     <TR>
+       <TD class=moss align=center>
+         <H3>Hot Items for Summer </H3>
+         <table width="90%" height="70%" cellpadding="5" cellspacing="5">
+           <tr>
+             <td  valign="top" align="center" width="33%">
+               <img border="0" src="../images/shorts_thumb.jpg" width="120" height="120"><br>
+               <h4>Hiking Shorts<br>$29.95</h4>
+             </td>             
+             <td valign="top" align="center" width="33%">
+                  <img border="0" src="../images/fleece_thumb.jpg" width="120" height="120"><br>
+               <h4>Fleece Pullover<br>$59.95</h4>
+             </td>
+             <td  valign="top" align="center" width="34%">
+               <img border="0" src="../images/shoes_thumb.jpg" width="120" height="120"><br>
+               <h4>Airstream Canvas Shoes<br>$39.95</h4>
+             </td>
+            </tr>
+         </table>
+<br>
+     </TD></TR>  
+   </TABLE>
+  </TD>
+  <TD ALIGN=LEFT valign="top" class=linkList2>	
+  <h3><em>Hot Items</em></h3>
+  <ol class="light">
+     	   <LI>Women's Shorts
+     	   <LI>Men's Shorts
+     	   <LI>Mummy Bag
+     	   <LI>Canvas Shoes
+     	   <LI>Fleece Pullover
+     	   <LI>Women's Tank
+     	   <LI>Men's Tee Shirt
+     	   <LI>Kid's Shorts
+     	   <LI>Kid's Tee Shirt
+     	   <LI>Kids Canvas Shoes
+ </ol>
+ </TD>	
+ </TR>
+</TABLE>  <link rel="stylesheet" type="text/css" href="../od.css">
+<table border=0 width=100% cellpadding=0 cellspacing=0>
+<tr><td  class=linkList><div class=linkList>&nbsp;</div></td>
+<td id=footer>
+<br>
+  <p><a href="index.php">Home</a> | Site Map | 
+  <a href="feedback.php">Feedback</a> | About Us | Contact Us | 
+  <a href="shopping_cart.php">Shopping Cart</a><br>
+  <br>
+  This site is for educational purposes only.<br>
+  The products are not for sale.</p>
+</td><td  class=linkList2><div class=linkList2>&nbsp;</div></td></tr></table>
+<div id='xml' style="visibility:hidden"><?xml version="1.0"?>
+<?xml:stylesheet href="outdoor_item.xsl" type="text/xsl"?>
+<catalog>
+  <item id="1">
+      <category>Women's Clothing</category> 
+      <category>Men's Clothing</category> 
+      <name>Hiking Shorts</name> 
+      <description>Soft, comfortable, lightweight cotton twill ...</description> 
+      <image>shorts.jpg</image> 
+      <thumbnail>shorts_thumb.jpg</thumbnail> 
+    <inventory>
+      <size>S</size> 
+      <color>Khaki</color> 
+      <price>29.95</price> 
+      <qoh>150</qoh> 
+    </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Khaki</color> 
+      <price>29.95</price> 
+      <qoh>147</qoh> 
+    </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Khaki</color> 
+      <price>29.95</price> 
+      <qoh>0</qoh> 
+    </inventory>
+    <inventory>
+      <size>S</size> 
+      <color>Navy</color> 
+      <price>29.95</price> 
+      <qoh>139</qoh> 
+      </inventory>
+    <inventory>
+      <size>M</size> 
+      <color>Navy</color> 
+      <price>29.95</price> 
+      <qoh>137</qoh> 
+      </inventory>
+    <inventory>
+      <size>L</size> 
+      <color>Navy</color> 
+      <price>29.95</price> 
+      <qoh>115</qoh> 
+      </inventory>
+  </item>
+
+</catalog></div>
+<div id='xslt' style="visibility:hidden"><?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="catalog">
+      <FORM NAME="frmOrderItems">
+      <xsl:apply-templates select="item"/>
+ 
+      <H4 ALIGN="CENTER">Order Items</H4>
+      <TABLE WIDTH="80%" BORDER="5" CELLSPACING="2" CELLPADDING="2" ALIGN="CENTER">
+         <TR>
+            <TH WIDTH="20%">Selection</TH><TH WIDTH="20%">Size</TH>
+            <TH WIDTH="20%">Color</TH><TH WIDTH="20%">Price</TH><TH WIDTH="20%">In Stock?</TH></TR>
+            <xsl:apply-templates select="item/inventory"/>
+      </TABLE>
+      <P> 
+      <!--table displaying form controls -->
+      <TABLE WIDTH="80%" CELLSPACING="3" CELLPADDING="5" ALIGN="CENTER">
+      <TR>
+         <TD WIDTH="70%"><BIG>Desired Quantity</BIG>
+         <INPUT TYPE="TEXT" NAME="quantity" SIZE="10"/></TD>
+         <TD ALIGN="RIGHT" WIDTH="15%"><INPUT TYPE="BUTTON" VALUE="Order Now"  onclick="createCookie(this.form);"/></TD>
+       </TR>
+       </TABLE></P>
+     </FORM>
+
+    </xsl:template>
+
+    <xsl:template match="item">
+      <TABLE WIDTH="80%" ALIGN="CENTER">
+      <TR><TD><IMG SRC="../images/{image}" WIDTH="240" HEIGHT="180" ALIGN="RIGHT"/></TD>
+      <TD><H2><xsl:value-of select="name"/></H2>
+      <INPUT TYPE="hidden" NAME="name" VALUE="{name}"/>
+      <xsl:value-of select="description"/></TD></TR></TABLE>
+
+    </xsl:template>
+    
+    <xsl:template match="inventory">
+                <tr>
+                    <td><input type="radio" name="x" value="{size}|{color}|{price}"/></td>
+                    <td><xsl:value-of select="size"/></td>
+                    <td><xsl:value-of select="color"/></td>
+                    <td>$<xsl:value-of select="price"/></td>
+                    <td><xsl:value-of select="qoh"/></td>
+                </tr>
+     </xsl:template>
+    
+</xsl:stylesheet>
+</div>
+</BODY>
+</HTML>
