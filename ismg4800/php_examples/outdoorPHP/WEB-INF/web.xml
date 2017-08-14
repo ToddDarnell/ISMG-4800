@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+<web-app>
+   <description>Outdoor Depot web.xml file</description>
+   <context-param>
+      <param-name>dbdriver</param-name>
+      <param-value>sun.jdbc.odbc.JdbcOdbcDriver</param-value>
+   </context-param>
+   <context-param>
+      <param-name>dburl</param-name>
+      <param-value>jdbc:odbc:outdoordepot</param-value>
+   </context-param>
+   <session-config>
+      <session-timeout>30</session-timeout>
+   </session-config>
+   <mime-mapping>
+      <extension>html</extension>
+      <mime-type>text/html</mime-type>
+   </mime-mapping>
+   <mime-mapping>
+      <extension>txt</extension>
+      <mime-type>text/plain</mime-type>
+   </mime-mapping>
+   <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+      <welcome-file>index.html</welcome-file>
+   </welcome-file-list>
+</web-app>
