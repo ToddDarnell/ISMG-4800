@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Submit URL</title>
+<script language="JavaScript">
+<!-- hide
+function get_url()
+{
+   var your_url = prompt('Enter your web page URL!','http://');
+   var is_protocol_ok = your_url.indexOf('http://');
+   var is_dot_ok = your_url.indexOf('.');
+
+   if (is_protocol_ok != 0)
+   {
+      alert('Error: url needs to start with http://!');
+      get_url();
+   }
+   else if (is_dot_ok == -1)
+   {
+      alert('Error: url needs to have at least one dot (.)!');
+      get_url();
+   }
+
+   else
+      alert('Thanks!');
+}
+//-->
+</SCRIPT>
+</head>
+<body>
+<FORM>
+Submit your URL here: 
+<input type = "button" value = "Submit URL" onclick=get_url()>
+</FORM>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<HTML>
+<HEAD>
+<STYLE TYPE='text/css'>
+  A{   text-decoration: none;}
+
+  A:hover {   text-decoration: none;}
+</STYLE> 
+
+<SCRIPT>
+// Control parameters
+var theCharacterTimeout = 50;
+var theStoryTimeout     = 5000;
+var theWidgetOne        =  "_";
+var theWidgetTwo        =  "-";
+var theWidgetNone       =  "";
+var theLeadString       = "LATEST: ";
+
+// Styling parameters
+var theBackgroundColor  = "yellow";
+var theBackgroundImage  = "../../images/background/hearts.gif";
+var theForegroundColor  = "#333366";
+var theFontFamily       = "Verdana, Arial, Helvetica, sans-serif";
+var theFontSize         = "11px";
+var theLineHeight       = "11px";
+var theFontWeight       = "bold";
+var theTextDecoration   = "none";
+var theHoverColor       = "#CC3300";
+
+// Content parameters
+var theSummaries = new Array();
+var theSiteLinks = new Array();
+
+var theItemCount = 4;
+
+theSummaries[0] = "This is the stext for story 1";
+theSiteLinks[0] = "story1.htm";
+
+theSummaries[1] = "Here is story 2.";
+theSiteLinks[1] = "/newsid_1405000/1405821.htm";
+
+theSummaries[2] = "Story three has its headline here";
+theSiteLinks[2] = "./Story3.html";
+
+theSummaries[3] = "This is headline number four";
+theSiteLinks[3] = "/stories/Four.htm";
+
+
+
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+function buildSpaceFiller(aCount)
+{
+   var myResult = "";
+   
+   for(var ii=0; ii<aCount; ii++)
+   {
+      myResult = myResult + "  ";
+   }
+   
+   return myResult;
+}
+
+function whatWidget()
+{
+   if(theCurrentLength == theStorySummary.length)
+   {
+      return theWidgetNone;
+   }
+
+   if((theCurrentLength % 2) == 1)
+   {
+      return theWidgetOne;
+   }
+   else
+   {
+      return theWidgetTwo;
+   }
+}
+
+function startTicker()
+{
+   // Define run time values
+   theCurrentStory     = -1;
+   theCurrentLength    = 0;
+   theSpaceFiller      = buildSpaceFiller(200);
+          
+          
+   // Locate base objects
+   theAnchorObject     = document.getElementById("Anchor");
+
+   // Locate style sheet objects
+   theStyleSheet = document.styleSheets[0];
+          
+          
+   // Fix the missing cssRules property for MSIE
+   if(!theStyleSheet.cssRules)
+   {
+      theStyleSheet.cssRules = theStyleSheet.rules;
+   }
+
+   // Locate the style objects we want to modify
+   theBodyStyle   = document.body.style;
+   theAnchorStyle = theStyleSheet.cssRules[0].style;
+   theHoverStyle  = theStyleSheet.cssRules[1].style;
+          
+   // Apply data driven style changes          
+   theBodyStyle.backgroundColor = theBackgroundColor;
+   theBodyStyle.backgroundImage = theBackgroundImage;
+
+   theAnchorStyle.color = theForegroundColor;
+   theAnchorStyle.fontFamily = theFontFamily;          
+   theAnchorStyle.fontSize = theFontSize;          
+   theAnchorStyle.lineHeight = theLineHeight;          
+   theAnchorStyle.fontWeight = theFontWeight;          
+   theAnchorStyle.textDecoration = theTextDecoration;          
+
+   theHoverStyle.color = theHoverColor;
+
+   // Fire up the ticker
+   runTheTicker();
+}
+
+function runTheTicker()
+{
+   var myTimeout;
+   
+   // Go for the next story data block
+   if(theCurrentLength == 0)
+   {
+      theCurrentStory++;
+      theCurrentStory      = theCurrentStory % theItemCount;
+      theStorySummary      = theSummaries[theCurrentStory];
+      theTargetLink        = theSiteLinks[theCurrentStory];
+      theAnchorObject.href = theTargetLink;
+   }
+
+   // Stuff the current ticker text into the anchor
+   theAnchorObject.innerHTML = theLeadString + 
+                               theStorySummary.substring(0,theCurrentLength) + 
+                               whatWidget() + theSpaceFiller;
+
+   // Modify the length for the substring and define the timer
+   if(theCurrentLength != theStorySummary.length)
+   {
+      theCurrentLength++;
+      myTimeout = theCharacterTimeout;
+   }
+   else
+   {
+      theCurrentLength = 0;
+      myTimeout = theStoryTimeout;
+   }
+   
+   // Call up the next cycle of the ticker
+   setTimeout("runTheTicker()", myTimeout);
+
+}
+
+   </SCRIPT>
+</HEAD>
+<BODY onLoad='startTicker();'>
+<A ID='Anchor' HREF='/' target=_top></A>
+</BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+  <TITLE>JavaScript Cookieless Cart</TITLE>
+<script type = "text/javascript">
+<!--
+var IEDOM  = document.all    ?true : false;
+var W3CDOM = ((document.getElementById)&&(!IEDOM))?true:false;// get an object from another frame
+function getObjectFrame(id, num)
+{ var obj;
+  if(IEDOM) obj = eval("top.window.frames["+num+"]." + id);
+  else if(W3CDOM) obj = top.window.frames[num].document.getElementById(id);
+  return obj;
+}
+function writeProd(prod)
+{ 
+   var obj=getObjectFrame('t1',0)
+   // get contents of current cart
+   var text = obj.innerHTML ;
+   // remove table & </table> tags
+   text = text.substring(18, text.length - 8);
+   // write old contents plus new contents to other frame
+   obj.innerHTML = '<table border="1">' + text + prod + '</table>';}
+// -->
+</script>
+</HEAD>
+<BODY>
+<h2>Product Listing Product 1</h2>
+<form>
+  <center>
+  <table border="0" cellspacing="1" width="75%">
+    <tr>
+      <td align="right"><p><font color="#0000FF">Zilly Zizz<br>
+        <a name="19"></a>
+        A Silly Toy<br>
+        $35.00</font><br>
+        <input type="button" value="Buy It!" 
+  onclick="writeProd('<tr><td>Zilly Zizz</td><td>A Silly Toy</td><td>1</td><td>35.00</td></tr>');">
+
+        </p></td>
+      <td><img border="0" src="../../images/balloons.gif" width="69" height="90"></td>
+    </tr>
+  </table>
+  <div id=t2></div>
+
+  </center>
+</form>
+</BODY>

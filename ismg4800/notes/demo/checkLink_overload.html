@@ -1,0 +1,30 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<script LANGUAGE=JavaScript>
+<!-- Hide 
+   function confirmLink(link, message)
+   {
+      if (!message)
+         message =  "Are you sure?";
+
+      answer = window.confirm(message,'yes', 'no');
+      
+      if (answer)
+      {
+         if(!link)
+            history.back();
+         else 
+            top.location.href = link;
+      }
+   }
+   
+  // -->
+</script>
+</head>
+<body onload="confirmLink('http://www.disney.com', 'Are You Under 18?')">
+<a href="#" onClick="confirmLink()">Back to
+Notes</a>
+<br>
+</body>
+</html>

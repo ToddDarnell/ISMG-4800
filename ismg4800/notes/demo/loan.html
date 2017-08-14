@@ -1,0 +1,153 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.51 [en] (Win95; I) [Netscape]">
+<script language="JavaScript">
+ function Minterest(interest)
+ {
+    return (interest/100)/12;
+ }
+
+ function Payment(yri, amt, dur)
+ {
+   var r = Minterest(yri);
+   return (r*amt*Math.pow((1+r),dur)/(Math.pow((1+r),dur)-1));
+ }
+
+ function TotalInterest (yri, amt, dur)
+ {
+   var payment = Payment(yri, amt, dur);
+   return dur*payment-amt ;
+ }   
+ 
+ function F2(num)
+ {
+    return Math.round(num*100)/100;
+ }     
+
+ function Loan()
+ { 
+   window.status = "Calculating Loan Payment";
+   var yri = parseFloat(document.loanForm.interest.value);
+   var dur = parseInt(document.loanForm.duration.value);
+   var amt = parseInt(document.loanForm.amount.value);
+   
+   document.loanForm.payment.value = F2(Payment(yri, amt, dur));
+   document.loanForm.total.value = F2(TotalInterest(yri, amt, dur)); 
+   
+   window.status = "Loan Calculation Complete";
+ }
+</script>
+</head>
+<body>
+<form name = "loanForm">
+<table BORDER >
+<tr>
+<td>Enter Loan Amount:</td>
+
+<td><input name="amount" type="text"></td>
+</tr>
+
+<tr>
+<td>Enter Interest Rate:</td>
+
+<td><input name="interest" type="text"></td>
+</tr>
+
+<tr>
+<td>Enter Duration:</td>
+
+<td><input name="duration" type="text"></td>
+</tr>
+
+<tr>
+<td>Calculated Payment:</td>
+
+<td><input name="payment" type="text"></td>
+</tr>
+
+<tr>
+<td>Calculate Total Interest:</td>
+
+<td><input name="total" type="text"></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER COLSPAN="2"><input onclick="Loan()" type="button" value="Calculate"></td>
+</tr>
+</table>
+</form>
+<p>
+<hr WIDTH="100%">
+<br><tt>html></tt>
+<br><tt>&lt;head></tt>
+<br><tt>&lt;script language="JavaScript"></tt>
+<br><tt>&nbsp;function Minterest(interest)</tt>
+<br><tt>&nbsp;{</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; return (interest/100)/12;</tt>
+<br><tt>&nbsp;}</tt><tt></tt>
+<p><tt>&nbsp;function Payment(yri, amt, dur)</tt>
+<br><tt>&nbsp;{</tt>
+<br><tt>&nbsp;&nbsp; var r = Minterest(yri);</tt>
+<br><tt>&nbsp;&nbsp; return (r*amt*Math.pow((1+r),dur)/(Math.pow((1+r),dur)-1));</tt>
+<br><tt>&nbsp;}</tt><tt></tt>
+<p><tt>&nbsp;function TotalInterest (yri, amt, dur)</tt>
+<br><tt>&nbsp;{</tt>
+<br><tt>&nbsp;&nbsp; var payment = Payment(yri, amt, dur);</tt>
+<br><tt>&nbsp;&nbsp; return dur*payment-amt ;</tt>
+<br><tt>&nbsp;}</tt>
+<br><tt>&nbsp;</tt>
+<br><tt>&nbsp;function F2(num)</tt>
+<br><tt>&nbsp;{</tt>
+<br><tt>&nbsp;&nbsp;&nbsp; return Math.round(num*100)/100;</tt>
+<br><tt>&nbsp;}</tt><tt></tt>
+<p><tt>&nbsp;function Loan()</tt>
+<br><tt>&nbsp;{</tt>
+<br><tt>&nbsp;&nbsp; window.status = "Calculating Loan Payment";</tt>
+<br><tt>&nbsp;&nbsp; var yri = parseFloat(document.loanForm.interest.value);</tt>
+<br><tt>&nbsp;&nbsp; var dur = parseInt(document.loanForm.duration.value);</tt>
+<br><tt>&nbsp;&nbsp; var amt = parseInt(document.loanForm.amount.value);</tt>
+<br><tt>&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; document.loanForm.payment.value = F2(Payment(yri,
+amt, dur));</tt>
+<br><tt>&nbsp;&nbsp; document.loanForm.total.value = F2(TotalInterest(yri,
+amt, dur));</tt>
+<br><tt>&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; window.status = "Loan Calculation Complete";</tt>
+<br><tt>&nbsp;}</tt>
+<br><tt>&lt;/script></tt>
+<br><tt>&lt;/head></tt>
+<br><tt>&lt;body></tt>
+<br><tt>&lt;form name = "loanForm"></tt>
+<br><tt>&lt;table BORDER ></tt>
+<br><tt>&lt;tr></tt>
+<br><tt>&lt;td>Enter Loan Amount:&lt;/td></tt><tt></tt>
+<p><tt>&lt;td>&lt;input name="amount" type="text">&lt;/td></tt>
+<br><tt>&lt;/tr></tt><tt></tt>
+<p><tt>&lt;tr></tt>
+<br><tt>&lt;td>Enter Interest Rate:&lt;/td></tt><tt></tt>
+<p><tt>&lt;td>&lt;input name="interest" type="text">&lt;/td></tt>
+<br><tt>&lt;/tr></tt><tt></tt>
+<p><tt>&lt;tr></tt>
+<br><tt>&lt;td>Enter Duration:&lt;/td></tt><tt></tt>
+<p><tt>&lt;td>&lt;input name="duration" type="text">&lt;/td></tt>
+<br><tt>&lt;/tr></tt><tt></tt>
+<p><tt>&lt;tr></tt>
+<br><tt>&lt;td>Calculated Payment:&lt;/td></tt><tt></tt>
+<p><tt>&lt;td>&lt;input name="payment" type="text">&lt;/td></tt>
+<br><tt>&lt;/tr></tt><tt></tt>
+<p><tt>&lt;tr></tt>
+<br><tt>&lt;td>Calculate Total Interest:&lt;/td></tt><tt></tt>
+<p><tt>&lt;td>&lt;input name="total" type="text">&lt;/td></tt>
+<br><tt>&lt;/tr></tt><tt></tt>
+<p><tt>&lt;tr></tt>
+<br><tt>&lt;td ALIGN=CENTER COLSPAN="2">&lt;input onclick="Loan()" type="button"
+value="Calculate">&lt;/td></tt>
+<br><tt>&lt;/tr></tt>
+<br><tt>&lt;/table></tt>
+<br><tt>&lt;/form></tt>
+<br><tt>&lt;/body></tt>
+<br><tt>&lt;/html></tt>
+</body>
+</html>

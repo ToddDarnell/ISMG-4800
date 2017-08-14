@@ -1,0 +1,180 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Basketball Jerseys</title>
+<SCRIPT LANGUAGE = "Javascript">
+  jersey0 = new Image();            // Creating the image
+  jersey0.src = "jerseys/den.jpg";  // & loading the files
+  jerseyAH = new Image();           // Creating the image
+  jerseyAH.src = "jerseys/atl.jpg"; // & loading the files
+  jerseyBC = new Image();           // preloads the images
+  jerseyBC.src = "jerseys/bos.jpg"; // reducing delays
+  jerseyCH = new Image();   
+  jerseyCH.src = "jerseys/cha.jpg"; 
+  jerseyCB = new Image();   
+  jerseyCB.src = "jerseys/chi.jpg"; 
+  jerseyCC = new Image();   
+  jerseyCC.src = "jerseys/cle.jpg"; 
+  jerseyDM = new Image();   
+  jerseyDM.src = "jerseys/dal.jpg"; 
+  jerseyDN = new Image();   
+  jerseyDN.src = "jerseys/den.jpg"; 
+  jerseyDD = new Image();   
+  jerseyDD.src = "jerseys/det.jpg"; 
+  jerseyGW = new Image();   
+  jerseyGW.src = "jerseys/gol.jpg"; 
+  jerseyHR = new Image();   
+  jerseyHR.src = "jerseys/hou.jpg"; 
+  jerseyIP = new Image();   
+  jerseyIP.src = "jerseys/ind.jpg"; 
+  jerseyLC = new Image();   
+  jerseyLC.src = "jerseys/lac.jpg"; 
+  jerseyLL = new Image();   
+  jerseyLL.src = "jerseys/los.jpg"; 
+  jerseyMH = new Image();   
+  jerseyMH.src = "jerseys/mia.jpg"; 
+  jerseyMB = new Image();   
+  jerseyMB.src = "jerseys/mil.jpg"; 
+  jerseyMT = new Image();   
+  jerseyMT.src = "jerseys/min.jpg"; 
+  jerseyNN = new Image();   
+  jerseyNN.src = "jerseys/nyj.jpg"; 
+  jerseyNK = new Image();   
+  jerseyNK.src = "jerseys/nyk.jpg"; 
+  jerseyOM = new Image();   
+  jerseyOM.src = "jerseys/orl.jpg"; 
+  jerseyP7 = new Image();   
+  jerseyP7.src = "jerseys/phi.jpg"; 
+  jerseyPS = new Image();   
+  jerseyPS.src = "jerseys/phx.jpg"; 
+  jerseyPB = new Image();   
+  jerseyPB.src = "jerseys/por.jpg"; 
+  jerseySK = new Image();   
+  jerseySK.src = "jerseys/sac.jpg"; 
+  jerseySA = new Image();   
+  jerseySA.src = "jerseys/san.jpg"; 
+  jerseySS = new Image();   
+  jerseySS.src = "jerseys/sea.jpg"; 
+  jerseyTR = new Image();   
+  jerseyTR.src = "jerseys/tor.jpg"; 
+  jerseyUJ = new Image();   
+  jerseyUJ.src = "jerseys/uta.jpg"; 
+  jerseyVG = new Image();   
+  jerseyVG.src = "jerseys/van.jpg"; 
+  jerseyWW = new Image();   
+  jerseyWW.src = "jerseys/was.jpg"; 
+
+  function swap(name, sel, form) {    //replace original image
+     document[name].src = eval(name + sel.value + ".src");
+     form.org.value = sel.value;
+    // alert(form.org.value);
+  }
+  
+  function dataFromForm(form)
+  {
+     var team, name, num, size, color, quan;
+     
+     team = form.org.value;
+     name = form.name.value;
+     num = form.number.value;
+     size = form.size.value;
+     if(form.color[0].checked) color =form.color[0].value;
+     else if(form.color[1].checked) color = form.color[1].value;
+     quan = form.quantity.value;
+     alert("Team: " + team + "\nName: " + name + "\nNumber: " + num 
+           + "\nSize: " + size + "\nColor: " + color + "\nQuantity: " + quan);
+  
+  }
+</SCRIPT>
+
+</head>
+
+<body text="#0000FF">
+<center>
+<form name="basketball" onsubmit="dataFromForm(this);return false;">
+<select name="team" onclick="swap('jersey', this, this.form);">
+<OPTION VALUE="0" SELECTED="SELECTED">Select a Team</OPTION>
+<OPTION VALUE="AH">Atlanta Hawks</OPTION>
+<OPTION VALUE="BC">Boston Celtics</OPTION>
+<OPTION VALUE="CH">Charlotte Hornets</OPTION>
+<OPTION VALUE="CB">Chicago Bulls</OPTION>
+<OPTION VALUE="CC">Cleveland Cavaliers</OPTION>
+<OPTION VALUE="DM">Dallas Mavericks</OPTION>
+<OPTION VALUE="DN">Denver Nuggets</OPTION>
+<OPTION VALUE="DP">Detroit Pistons</OPTION>
+<OPTION VALUE="GW">Golden State Warriors</OPTION>
+<OPTION VALUE="HR">Houston Rockets</OPTION>
+<OPTION VALUE="IP">Indiana Pacers</OPTION>
+<OPTION VALUE="LC">Los Angeles Clippers</OPTION>
+<OPTION VALUE="LL">Los Angeles Lakers</OPTION>
+<OPTION VALUE="MH">Miami Heat</OPTION>
+<OPTION VALUE="MB">Milwaukee Bucks</OPTION>
+<OPTION VALUE="MT">Minnesota Timberwolves</OPTION>
+<OPTION VALUE="NN">New Jersey Nets</OPTION>
+<OPTION VALUE="NK">New York Knicks</OPTION>
+<OPTION VALUE="OM">Orlando Magic</OPTION>
+<OPTION VALUE="P7">Philadelphia 76ers</OPTION>
+<OPTION VALUE="PS">Phoenix Suns</OPTION>
+<OPTION VALUE="PB">Portland Trail Blazers</OPTION>
+<OPTION VALUE="SK">Sacramento Kings</OPTION>
+<OPTION VALUE="SA">San Antonio Spurs</OPTION>
+<OPTION VALUE="SS">Seattle SuperSonics</OPTION>
+<OPTION VALUE="TR">Toronto Raptors</OPTION>
+<OPTION VALUE="UJ">Utah Jazz</OPTION>
+<OPTION VALUE="VG">Vancouver Grizzlies</OPTION>
+<OPTION VALUE="WW">Washington Wizards</OPTION>
+
+</SELECT><input type="hidden" name="org" value="0">
+
+  
+<table bordercolor="#808080" border="1" bordercolorlight="#0000FF">
+	
+	<tr valign="top">
+	<!-- table for product picture -->
+	<td bordercolor="#808080" valign="middle" align="center">
+       <img border="0" src="jerseys/den.jpg" width="173" height="170" align="right" name="jersey"></td>
+		
+    <td valign="middle" align="left">		
+
+		<b>Personalized Information </b>
+		<br><br>Your Name: <input type="text" name="name" maxlength="11" size="23">
+		<br><br>Number:    <input type="text"  name="number" maxlength="2" size="2">
+		<BR>
+	</td>
+		
+   <td valign="middle" align="left">
+		Size: <SELECT NAME='size'>
+		         <OPTION Value='M'>M
+		         <OPTION value='L'>L
+		         <OPTION value='XL'>XL
+		     </select>
+		<br>
+		<br>
+		<INPUT TYPE="radio" NAME="color" CHECKED VALUE='Home'> Home
+		<INPUT TYPE="radio" NAME="color" VALUE='Away'> Away  &nbsp;&nbsp;&nbsp;
+		<br>
+		<br>
+			
+		Quantity: <input type="text" name ="quantity" size="2" maxlength="2" value="1">
+          
+	  </td>
+    </tr>		
+	<!-- add to shopping  -->
+    <tr>	
+    <td colspan=3 align=center>
+    <font size="5" color="#FF0000">$99.00</font>
+    </td>
+    </tr>
+    <tr>
+       <td colspan=3 align=center>
+	   <input type="submit" value="Buy It!"></td>
+    </tr>	
+	
+	</table>
+    </center>
+  </form>
+	
+</body>
+</html>

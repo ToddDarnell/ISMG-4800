@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>JavaScript Objects</TITLE>
+<style>
+  .hearts   {background-image: url("../../images/background/hearts.gif");}
+  .money    {background-image: url("../../images/background/money_bkg.gif");}
+  .lavalamp {background-image: url("../../images/background/lava_lamp.gif");}
+</style>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<link rel = "stylesheet" type = "text/css"  href = "../../styles/main.css">
+
+<SCRIPT LANGUAGE = "JavaScript">
+<!--
+       
+    function changeBackground() 
+    {
+       var inputImg = prompt(
+         "Enter an image name for the " + 
+         "background of this page:", "../../images/background/hearts.gif" );
+          document.body.background = inputImg;  
+    }
+    
+    function changeBackgroundCSS() 
+    {
+       var inputClass = prompt(
+         "Enter an image class for the " + 
+         "background of this page (hearts, money, lavalamp):", "hearts" );
+        document.body.className = inputClass; 
+    }
+
+ // -->
+</SCRIPT>
+
+</head>
+<body>
+
+<h1><a name="12"></a>Dynamic Styles</h1>
+<ul>
+  <li>Dynamic styles allow you to dynamically set different style attributes for 
+  the document.</li>
+  <li>For example: the function 
+  changeBackground prompts the user to enter an image name and then sets the 
+  background to that image.&nbsp; (Note: the first function does not work if the original 
+  background image was set using CSS).</li>
+</ul>
+<blockquote>
+<p>
+<input type="button" value="Change Background Image" name="B3" onclick="changeBackground()">&nbsp; &nbsp; &nbsp; &nbsp;
+<input type="button" value="Change Background Image for CSS Page" name="B4" onclick="changeBackgroundCSS()">
+</p>
+
+</blockquote>
+
+<div><pre>
+&lt;style>
+  .body {background-image: url("../../images/background/hearts.gif");}
+&lt;/style>
+
+&lt;script type = &quot;text/javascript&quot;&gt;
+  &lt;!--
+       
+    function changeBackground() 
+    {
+       var inputImg = prompt(
+         "Enter an image name for the " + 
+         "background of this page:", "../../images/background/hearts.gif" );
+          document.body.background = inputImg;  
+    }
+    
+    function changeBackgroundCSS() 
+    {
+       document.body.className = "body"; 
+    }
+
+ // --></pre>
+  &lt;/script&gt;</div>
+
+<hr>
+<p class=footer><i>Updated January 15, 2004&nbsp;<br>
+Dawn G. Gregg</i> </p>
+
+</BODY>

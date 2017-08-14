@@ -1,0 +1,51 @@
+<html>
+    <head>
+       <title>Dynamic Positioning</title>
+<script language="JavaScript" src="../../scripts/browserAPI.js"></script>       <script type = "text/javascript">
+          <!--
+var item_width = 500;
+var margin=40;
+var speed = 10;
+var count = 0;
+var direction = 1;
+var traverselenght = screen.width - 250;
+
+function startMove(id) 
+{  var page_width=screen.width;
+   // find screen size 
+   if(IEDOM) page_width=document.body.clientWidth;
+   else if(W3CDOM) {
+      page_width=innerWidth;
+   }
+   // set up initial traverse distances 
+   traverselenght = page_width - item_width/2-margin;
+   window.setInterval( "moveObject('" +id+ "')", 100 ); 
+}
+
+function moveObject(id) 
+{ 
+   count += speed;
+   if ( ( count % (traverselenght) ) < 
+         Math.abs(speed) && count % (traverselenght) >= 0 ) 
+   {
+     speed *= -1;
+     direction = !direction;
+     var col = ( speed < 0 ) ? "red" : "blue"
+     var object=getObject(id);
+     if(NS4DOM) object.color = col;
+     else if(IEDOM || W3CDOM) object.style.color = col;
+   }
+   shiftIt(id, speed, 0);
+}
+//-->
+       </script>
+    </head>
+ 
+    <body onload = "startMove('dText')">
+          <div id = "dText" style = "position: absolute; left: 0; 
+                                     font-family: serif; color: blue; 
+                                     font-size:2em;">
+          Welcome to <b>ISMG 4800!</b></div>
+    </body>
+ </html>
+

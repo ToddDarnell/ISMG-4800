@@ -1,0 +1,11 @@
+P { font-family: Arial, sans-serif;
+    color: blue;
+    font-size: 1.17em; }
+
+em { color: red; 
+     font-size: 1.17em;}
+
+strong { color: green;
+         background-color:#ccffcc;
+       }
+             

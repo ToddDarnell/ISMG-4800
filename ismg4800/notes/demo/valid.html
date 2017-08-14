@@ -1,0 +1,113 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dawn Gregg">
+   <title>JavaScript: Form Validation</title>
+</head>
+<body >
+
+<h2><span>
+JavaScript for Form Validation </span></h2>
+
+<blockquote>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var val = "";
+function valid(form) 
+{
+  if (form.age.checked) 
+  {  
+     if (form.job.value == "" || form.resume.value == "")
+     {
+           alert("You must enter a job and a reusme."); 
+           return false;
+     } 
+     else
+     {
+           window.location = 'thankyou.html'; 
+           return true;
+     }
+  } 
+  else 
+  {
+      alert("Try again when you are 18."); 
+      return false;
+  }
+}
+// -->
+  </SCRIPT>
+<FORM METHOD="POST"
+      ACTION="mailto:you@yourdomain.com"
+      ENCTYPE="text/plain"
+      onSubmit="return valid(this)">
+<a name="27"></a>
+Over 18?:<INPUT TYPE="checkbox" NAME="age" value="18"> <br>
+Desired Job:<BR><INPUT TYPE="text" NAME="job" SIZE="40"><BR>
+Resume:<BR><TEXTAREA NAME="resume" COLS="40" ROWS="5"></TEXTAREA><BR>
+<INPUT TYPE="submit" VALUE="Send Resume">
+</FORM>
+</blockquote>
+<hr>
+<kbd>&lt;HTML&gt;
+<br>
+&lt;HEAD&gt;<br>
+&lt;TITLE&gt;JavaScript: Form Validation&lt;/TITLE&gt;<br>
+&lt;/HEAD&gt;&nbsp;<br>
+&lt;BODY&gt;
+  &nbsp; <br>
+&lt;SCRIPT&gt; LANGUAGE=&quot;JavaScript&quot;&gt;
+  &nbsp; <br>
+  <dfn>&lt;!--</dfn>
+  &nbsp; <br>
+  <a name="28"></a>function valid(form)&nbsp; <br>
+  {<br>
+  &nbsp; if     (form.age.checked)&nbsp;<dfn>//Checkbox
+  is checked</dfn><br>
+   &nbsp; {<br>
+  &nbsp;&nbsp;&nbsp; if (form.job.value == "" ||<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; form.resume.value == "")<br>
+  &nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert(&quot;You must
+  complete the form!&quot;);&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;<br>
+  &nbsp;&nbsp;&nbsp; }<br>
+  &nbsp;&nbsp;&nbsp; else <dfn>//All
+  fields are completed</dfn><br>
+   &nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert(&quot;Thank your for your resume.&quot;);&nbsp; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return true;<br>
+  &nbsp;&nbsp;&nbsp; } <br>
+    &nbsp; } &nbsp; <br>
+   &nbsp; <a name="29"></a>else &nbsp; <br>
+   &nbsp; {<br>
+   &nbsp;&nbsp;&nbsp; alert(&quot;Try again when you are 18.&quot;);&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; return false;&nbsp; <br>
+      &nbsp; }
+      &nbsp; <br>
+} <dfn>// --&gt; </dfn>&nbsp; <br>
+&lt;/SCRIPT&gt;
+
+   <br>
+&lt;h2&gt;Java Script Form Validation&lt;/h2&gt;&nbsp;<br>
+&lt;FORM METHOD=<cite>&quot;POST&quot;</cite>&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACTION=<cite>&quot;mailto:you@yourdomain.com&quot;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENCTYPE=<cite>&quot;text/plain&quot;</cite>
+&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; onSubmit=<cite>&quot;return valid(this);&quot;</cite>&gt;
+   &nbsp;<br>
+Your age:&lt;BR&gt;<br>
+   &lt;INPUT TYPE=<cite>&quot;checkbox&quot;</cite> NAME=<cite>&quot;age&quot;</cite>&gt;&lt;BR&gt;<br>
+   Desired Job:&lt;BR&gt;<br>
+   &lt;INPUT TYPE=<cite>&quot;text&quot;</cite> NAME=<cite>&quot;job&quot;</cite> SIZE=<cite>&quot;40&quot;</cite>&gt;&lt;BR&gt;
+Resume:&lt;BR&gt;<br>
+   &lt;TEXTAREA NAME=<cite>&quot;resume&quot;</cite>  COLS=<cite>&quot;40&quot;</cite> ROWS=<cite>&quot;5&quot;</cite>&gt;<br>
+   &lt;/TEXTAREA&gt;&lt;BR&gt;&nbsp;<br>
+&lt;INPUT TYPE=<cite>&quot;submit&quot;</cite> VALUE=<cite>&quot;Send Resume&quot;</cite>&gt;&nbsp;<br>
+&lt;/FORM&gt;&nbsp;<br>
+&lt;/BODY&gt;&nbsp;<br>
+&lt;/HTML&gt; </kbd>
+<hr>
+</body>
+</html>

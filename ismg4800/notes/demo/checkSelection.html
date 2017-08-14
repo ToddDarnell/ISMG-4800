@@ -1,0 +1,120 @@
+<html>
+<head>
+   <title>JavaScript: Check Selection</title>
+   <meta name="Author" content="Dawn Gregg">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <script language="JavaScript">
+    <!-- Hide
+    function checkSelection(sel)
+    {
+        var message = "The " + sel.name + " list has " + sel.length + " options\n";
+        message += "The list has option " + sel.selectedIndex + " selected first\n";
+        message += "The first selected option is " + sel.options[sel.selectedIndex].text +"\n";
+        message += "The first selected option's value is " + sel.options[sel.selectedIndex].value  +"\n\n";
+        
+        if(sel.multiple)
+        {
+           for(var i=0; i < sel.length; i++)
+           {
+             if(sel.options[i].selected)
+             {
+               message += "List options[" +i+ "].text is " + sel.options[i].text +"\n";
+               message += "List options[" +i+ "].value is " + sel.options[i].value +"\n";
+             }
+           }
+        }
+        alert(message);
+    }
+
+      // -- End Hiding Here -->
+   </script>
+
+</head>
+
+
+<body>
+<p>
+Multiple Selection List:
+    <select name=selection_multiple size=3 multiple onblur=checkSelection(this);>
+          <option value=R>Red
+          <option value=G selected>Green
+          <option value=B>Blue
+          <option value=Y>Yellow
+          <option value=w>White
+          <option value=B>Black
+    </select>&nbsp;</p>
+
+<p>
+Single Selection List:    
+    <select name=selection_single size=1 onblur=checkSelection(this);>
+          <option value=R>Red
+          <option value=G selected>Green
+          <option value=B>Blue
+          <option value=Y>Yellow
+          <option value=w>White
+          <option value=B>Black
+    </select>&nbsp; 
+ 
+</p>
+<hr><pre>&lt;!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+&lt;html>
+&lt;head>
+   &lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   &lt;meta name="Author" content="Dawn Gregg">
+   &lt;title>JavaScript: Check Selection&lt;/title>
+   &lt;script language="JavaScript">
+    &lt;!-- Hide
+    function checkSelection(sel)
+    {
+        var message = "The " + sel.name + " list has " + sel.length + " options\n";
+        message += "The list has option " + sel.selectedIndex + " selected first\n";
+        message += "The first selected option is " + sel.options[sel.selectedIndex].text +"\n";
+        message += "The first selected option's value is " + sel.options[sel.selectedIndex].value  +"\n\n";
+        
+        if(sel.multiple)
+        {
+           for(var i=0; i &lt; sel.length; i++)
+           {
+             if(sel.options[i].selected)
+             {
+               message += "List options[" +i+ "].text is " + sel.options[i].text +"\n";
+               message += "List options[" +i+ "].value is " + sel.options[i].value +"\n";
+             }
+           }
+        }
+        alert(message);
+    }
+
+      // -- End Hiding Here -->
+   &lt;/script>
+&lt;/head>
+&lt;body>
+&lt;p>
+Multiple Selection List:
+
+    &lt;select name=selection_multiple size=3 multiple onblur=checkSelection(this);>
+          &lt;option value=R>Red
+          &lt;option value=G selected>
+          Green&lt;option value=B>Blue
+          &lt;option value=Y>Yellow
+          &lt;option value=w>White
+          &lt;option value=B>Black&lt;/select>&nbsp; &lt;
+
+&lt;p>
+Single Selection List:
+    &lt;select name=selection_single size=1 onblur=checkSelection(this);>
+          &lt;option value=R>Red
+          &lt;option value=G selected>
+          Green&lt;option value=B>Blue
+          &lt;option value=Y>Yellow
+          &lt;option value=w>White
+          &lt;option value=B>Black&lt;/select>&nbsp; 
+&lt;/p>
+</pre>
+<hr>
+
+<i>Updated January 15, 2004<br>
+by Dawn G. Gregg
+</i>
+
+</body></html>

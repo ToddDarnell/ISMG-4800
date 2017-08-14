@@ -1,0 +1,37 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Test Style Sheet Page</title>
+<LINK rel = "stylesheet" type = "text/css" href = "../styles/style1.css">
+</head>
+<body>
+
+<h2>
+Heading 2- Normal no CSS set</h2>
+
+<p>
+Paragraph with font-face:Arial, font-size:14 and font-color:blue.&nbsp; It 
+contains
+<strong>
+strong text. The strong text is green with a light green background.&nbsp; The 
+text is also Arial &amp; 14pt because the &lt;strong&gt; tag is inside the &lt;p&gt; with those 
+properties.&nbsp; &lt;strong&gt; text is also BOLD because by default &lt;strong&gt; is bold 
+and we did not reset that with our style sheet...
+</strong> After the closing &lt;/strong&gt; tag this text is not green or bold...
+
+<p>In this paragraph some &lt;em&gt; text starts here:
+<em> &lt;em&gt; text is red and italic because italic is the default for the &lt;em&gt; tag.&nbsp; 
+The &lt;em&gt; text is larger than the &lt;p&gt; it is in even though both font-sizes are 
+set to 1.17em;&nbsp; The &quot;em&quot; size attribute is a relative size to what the text 
+would be without the size setting.&nbsp; Thus this text is 1.17*1.17 larger than 
+the default. </em>&nbsp;The paragraph can continue after the &lt;/em&gt; tag. Note --- 
+the em size specification is completely different from the &lt;em&gt; tag which stands 
+for emphasis.</p>
+ 
+<p><strong>This paragraph started with the &lt;strong&gt; tag then has:<em> &lt;em&gt;
+ text here </em> The em style does not reset the background-color or the 
+font-weight so &lt;strong&gt;&lt;em&gt; text appears
+on the green background and is 
+bold.&nbsp;</strong> The Strong tag ended here so&nbsp; you get 
+the blue paragraph text for the remainder of the paragraph...</body></html>

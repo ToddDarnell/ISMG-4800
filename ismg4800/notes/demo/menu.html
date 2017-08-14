@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>JavaScript Objects</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<script language="JavaScript" src="../../scripts/browserAPI.js"></script>
+<script language="JavaScript">
+var rightboundary=130
+var leftboundary=-150
+var themenu;
+var menuname;
+
+function setthemenu(id)  
+{ 
+  menuname=id;
+  return getObject(id);
+}
+
+function pull(id){
+  if(menuname != id) placeObject(leftboundary, yCoord(id)) ;
+  if(id != null) setthemenu(id);
+  if (window.drawit)
+     clearInterval(drawit)
+  pullit=setInterval("pullengine('" + id + "')",10)
+}
+
+function draw(id){
+  if(id != null) setthemenu(id);
+
+  clearInterval(pullit)
+  drawit=setInterval("drawengine('" + id + "')",1)
+}
+
+function pullengine(id){
+   if (xCoord(id)<rightboundary)
+    shiftIt(menuname,5,0);
+}
+
+function drawengine(id){
+  if (xCoord(id)>leftboundary)
+    shiftIt(menuname,-5,0);
+}
+</script>
+<link rel = "stylesheet" type = "text/css"  href = "../../styles/main.css">
+</head>
+<body onload = "setthemenu('menu',10);">
+
+
+<h2><span>Using Dynamic Positioning to Create a Slide Menu</span></h2>
+<b><a style"position:absolute;left:10;top:yCoord('menu');font-family: text-decoration:none; 
+            Arial,sans-serif; font-size:12pt; 
+            font-weight:normal;"
+            onMouseover="pull('menu');" onMouseout="draw('menu');">See Menu</a></b>
+<div id="menu" style="position:absolute;overflow:hidden;white-space:nowrap;
+                      left:-150;top:80; width=150;font-size:12pt; 
+                      font-family: Arial,sans-serif; font-weight:normal;z-index=5"
+                      onMouseover="pull('menu');" onMouseout="draw('menu');">
+  <a href="../../styles/browserAPI.js">browserAPI.js</a><br>
+  <a href="../../styles/menu.js">menu.js</a><br>
+  <a href="child.html">child.html</a><br>
+  <a href="clock.html">clock.html</a><br>
+  <a href="tickerDemo.html">tickerDemo.html</a><br>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<hr>
+<p class=footer><i>Updated January 18, 2004&nbsp;<br>
+Dawn G. Gregg</i> </p>
+</BODY>
+</HTML>

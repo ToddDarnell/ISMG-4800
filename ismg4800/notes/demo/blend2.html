@@ -1,0 +1,73 @@
+<html>
+
+<head>
+<style>
+body {background-color:  #efece3;}
+</style>
+<SCRIPT LANGUAGE = "JavaScript">
+function blend(to)
+{ 
+  if(!IEDOM) window.setInterval("swap()", 3000);
+  else {
+    to.filters( "blendTrans" ).apply();
+    to.style.visibility = "hidden";
+    to.filters( "blendTrans" ).play();
+  }
+}
+
+function reBlend ( from, to ,next)
+{
+  from.style.zIndex -= 2;
+  to.style.zIndex += 1;
+  next.style.zIndex += 1;
+  from.style.visibility = "visible";
+  blend(to);
+}
+
+if(document.images) {
+  imagex = new Array();
+  imagex[0] = new Image();
+  imagex[0].src = "nature/yosemite.jpg";
+  imagex[1] = new Image();
+  imagex[1].src = "nature/zion.jpg";
+  imagex[2] = new Image();
+  imagex[2].src = "nature/isleroyal.jpg";
+  imagex[3] = new Image();
+  imagex[3].src = "nature/rockymountain2.jpg";
+  imagex[4] = new Image();
+  imagex[4].src = "nature/kenaifjord2.jpg";
+}
+var iindex=0;
+
+function swap() {
+  if(iindex < 4) iindex++;
+  else iindex=0;
+  document['imageSwap'].src = eval("imagex[" + iindex + "].src");
+}
+    </SCRIPT>
+  <script language="JavaScript" src="../../scripts/browserAPI.js"></script>
+
+<title>Blend</title>
+</head>
+
+<body  onload = "if(IEDOM)blend(image1);else blend();">
+<pre><IMG ID = "image1" NAME="imageSwap" SRC = "nature/yosemite.jpg"
+ONFILTERCHANGE = "reBlend( image1, image2, image3 )"
+STYLE = "position:relative; left: 100; top: 0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 3"><IMG ID = "image2" SRC = "nature/zion.jpg"
+ONFILTERCHANGE = "reBlend( image2, image3, image4 )"
+STYLE = "position:relative; visible: false; left: -300; top: 0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 2"><IMG ID = "image3" SRC = "nature/isleroyal.jpg"
+ONFILTERCHANGE = "reBlend( image3, image4, image5 )"
+STYLE = "position:relative; visible: false; left:-700; top: 0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 1"><IMG ID = "image4" SRC = "nature/rockymountain2.jpg"
+ONFILTERCHANGE = "reBlend( image4, image5, image1 )"
+STYLE = "position:relative; visible: false; left:-1100; top:0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 1"><IMG ID = "image5" SRC = "nature/kenaifjord2.jpg"
+ONFILTERCHANGE = "reBlend( image5, image1, image2 )"
+STYLE = "position:relative; visible: false; left:-1500; top:0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 1">
+</pre>
+</body>
+
+</html>

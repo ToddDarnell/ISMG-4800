@@ -1,0 +1,50 @@
+<html><head>
+<script Language="JavaScript">
+<!-- hide
+var timeStr, dateStr;
+
+function clock() {
+  now= new Date();
+
+  // time 
+  hrs= now.getHours();
+  mins= now.getMinutes();
+  secs= now.getSeconds();
+  timeStr= "" + hrs;
+  timeStr+=((mins < 10) ? ":0" : ":") + mins;
+  timeStr+=((secs < 10) ? ":0" : ":") + secs;
+  // Write time to the time textbox
+  document.clock.time.value = timeStr;
+
+  // date
+  date= now.getDate();
+  month= now.getMonth()+1;
+  year= now.getYear();
+  dateStr= "" + month;
+  dateStr+=((date < 10) ? "/0" : "/") + date;
+  dateStr+= "/" + year;
+
+  // Write date to the date textbox
+  document.clock.date.value = dateStr;
+      
+   // function calls itself every 1 sec. 
+  Timer= setTimeout("clock()",1000);  
+}  // end clock()                       // -->
+</script>
+</head>
+<body onLoad="clock()">
+<blockquote>
+<FORM name=clock>
+<table border="0" width="15%">
+ <tr>
+  <td width="7%">Time:</td>
+  <td width="8%"><INPUT name=time size=10>
+      </td>
+  </tr>
+  <tr>
+   <td width="7%">Date:</td>
+   <td width="8%"><INPUT name=date size=10></td>
+  </tr>
+</table>
+</FORM></blockquote>
+</body></html>
