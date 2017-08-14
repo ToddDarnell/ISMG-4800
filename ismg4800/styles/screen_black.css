@@ -1,0 +1,119 @@
+p, ul, ol, li, h1, h2, h3, h4, h5, h6 {
+	padding : 0;
+	margin-top: 5;
+}
+
+a:link {
+	font-weight: bold;
+	text-decoration: none;
+	color: #ec0000;
+	}
+a:visited { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #c30;
+	}
+a:hover, a:active { 
+	text-decoration: underline; 
+	}
+
+h1, h2, h3 {
+	margin-top : 10;
+	margin-bottom : 5;
+	font-variant: small-caps;}
+
+h1 {	font-size: 1.5em;        }
+        
+h1:first-letter {text-transform: uppercase; 
+                 color:red; 
+                 font-size:1.5em; }
+
+h2 {	font-size: 1.2em;
+        color: red;}
+h3 {	font-size: 1.1em;}
+
+
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: gray;
+  height: 1px;
+  width: 100%;
+}
+
+th     {background-color: gray;
+        color: #ffeeaa;}
+   
+#header hr { visibility:hidden;  
+             height: 0px;
+             padding: 0;
+             margin:0; }
+
+body {
+	background-position: center 40px; 
+	color : black;
+	font-style:normal; 
+	font-variant:normal; 
+	font-weight:normal; 
+	font-size:95%; 
+	font-family:Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+	padding-left:40; 
+	padding-right:40; 
+	padding-top:20px; 
+	padding-bottom:20px; 
+	background-color:black; 
+    line-height:150%; 
+}
+
+ul {
+	list-style-image: url('../imageszen/punto_elenco.gif');
+}
+
+
+
+div{
+	text-align : justify;
+	margin : 0 auto;
+	padding : 0 20px ;
+	width : 100%;
+}
+
+div div{
+	font-family: courier new, courier, monospaced;
+	background-color : #dddddd;
+	margin : 0 auto;
+	padding : 0 20px;
+	width : 100%;
+	font-weight: bold;
+	border-top: 5px solid #ffeeaa;
+	border-left: 5px solid #ffeeaa;
+}
+
+
+#header, #sec1, #sec2, #sec3, #sec4, #sec5, #sec6, #sec7, #footer
+ {
+	background-color : white ;
+	margin : 0 0 20px 0;
+	border: 2px solid red;
+}
+
+
+#header {
+	background-color : #cccccc;
+}
+
+code { font-weight: bold;
+       color: #6666cc; }
+dfn  { color: green; }
+cite { color: navy; }
+
+#footer
+{   padding-top: 10px;
+    padding-bottom: 10px;
+	background-color : #cccccc ;
+	font-size: .8em;
+	line-height: 100%;
+}
+
+
+.print  {	display: none;	}

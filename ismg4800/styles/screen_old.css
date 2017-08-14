@@ -1,0 +1,10 @@
+@import url(main.css);
+@import url(main_blue.css);
+.screen {	border:none medium white; visible: true;	
+            text-align: center; 
+            background-color: white; 
+            font-family: Arial, Helvetica, sans-serif;                  
+            font-weight: normal;
+       }
+
+.print  {	display: none;	}

@@ -1,0 +1,95 @@
+p, ul, ol, li, h1, h2, h3, h4, h5, h6 {
+	padding : 0;
+	margin-top: 5;
+}
+
+pre { padding:0; margin:0; }
+
+h1, h2, h3 {
+	margin-top : 10;
+	margin-bottom : 5;
+        text-align:left;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+h1 {	
+        font-size: 1.5em;
+        padding-left: 50; margin-left:50;    
+        background: url('../noteszen/images/title2.gif') no-repeat left;
+        }
+h2 {	font-size: 1.2em;
+        color: #980101;}
+h3 {	font-size: 1.1em;}
+
+
+hr {
+  border: 0px none;
+  color: #043;
+  background-color: #043;
+  height: 1px;
+  width: 100%;
+  text-align: 
+   left
+}
+
+/* table { border: none;
+        margin-top: 5px;}
+th, td {  border: 1px solid #043;
+          margin: 0; padding:5;}*/
+th     {background-color:#e6e1d3;}
+   
+#header hr { visibility:hidden;  
+             height: 0px;
+             padding: 0;
+             margin:0; }
+
+
+a {
+	color : #909ab4;
+	text-decoration : none;
+}
+a:hover {
+	color : #b49a90;
+	text-decoration : underline;
+}
+
+body {
+	background-position: center 40px; 
+	color : #484d5a;
+	text-align : left; 
+	font-style:normal; 
+	font-variant:normal; 
+	font-weight:normal; 
+	font-size:95%; 
+	font-family:sans-serif; 
+	padding:0; 
+	background-color:#efece3; 
+    line-height:150%; 
+}
+
+ul {
+	list-style-type: square;; 
+}
+
+li li {font-size:90%;}
+
+
+
+div div div {
+	font-family: courier new, courier, monospaced;
+	background-color : white;
+	margin-bottom: 0 ;
+	padding-bottom: 0 ;
+	width : 100%;
+	font-weight: bold;
+	border-left: 20px solid #3a3e49;
+        line-height:120%; 
+}
+
+
+
+code { font-weight: bold;
+       color: #6666cc; }
+dfn  { color: green; }
+cite { color: navy; }
+

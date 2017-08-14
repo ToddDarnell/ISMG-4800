@@ -1,0 +1,41 @@
+A         { color: blue;}
+
+A:hover   { background-color: #CCFFFF;}
+
+A:visited { color: maroon; }
+
+A:active  { color: red; }
+
+body      { background-image: url(../images/background/greenspots.gif);
+            background-repeat: repeat-y;
+            background-color: white;
+            color:black; }
+
+h1	  {   color: CCFFFF;
+            background-color:lime;}
+
+h2 span {  background-color: #CCFFFF; 
+           color:navy} 
+
+h3  {  color:navy; }
+        
+hr  {  color: #CCFFFF; }
+
+em    { color: red;  }
+
+code  { color:navy; } 
+
+div   { background-color: #eeFFFF; 
+        border-color: green; }
+
+div div { border-color: navy; }
+
+div div div { border-color: lime; }
+
+th  { color:lime;
+      background-color: #CCFFFF;}
+                    
+.code  { color: black; }
+
+
+.bg  { background-color: #CCFFFF;}

@@ -1,0 +1,99 @@
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, pre {
+	padding : 0;
+	margin-top: 2;
+	margin-bottom: 0;
+}
+
+body {
+	color:#101C4C;
+	margin:0;
+	padding:5%; 
+	font-style:normal; 
+	font-variant:normal; 
+	font-weight:normal; 
+	line-height:1.2; 
+	font-size:90%; 
+	font-family:Tahoma, Verdana, Helvetica, Arial, sans-serif
+}
+
+a:link {
+	color:#101C4C;
+	text-decoration:underline;
+}
+
+a:visited {
+	color:#A082A7;
+}
+
+a:hover {
+	text-decoration:none;
+}
+
+div, div div {
+	clear: both;
+	width: 100%;
+	background-color: transparent;
+	text-align: left;
+}
+
+h1 { background:#CC0000 url('none') repeat-y top left;
+	 font-weight:bold;
+	 color:#E9E6D9;
+	 font-size:120%; 
+	 margin-left:0px; 
+	 margin-right:0px; 
+	 margin-top:2px; 
+	 margin-bottom:10px; 
+	 padding-left:15px; 
+	 padding-right:5px; 
+	 padding-top:5px; 
+	 padding-bottom:5px
+}
+
+h2 {
+	/* overflow:hidden;
+	background: url('../imageszen/header_long.gif') no-repeat top left; */
+	margin-left:0; 
+	margin-right:0; 
+	margin-top:0; 
+	margin-bottom:0px;
+        z-index:3;
+}
+
+h2 span {
+	display:block;
+	padding:5px;
+	font-size:80%;
+	color:#101C4C;
+	font-weight:bold;
+}
+
+
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: #CCCCCC;
+  height: 2px;
+  width: 100%;
+}
+
+th  {background:#CC0000 url('none') repeat-y top left;
+ 	 color:#E9E6D9;
+ 	 font-size: 90%;}
+
+
+
+div div div {
+	font-family: courier new, courier, monospaced;
+	background-color : #ccddcc;
+	padding : 0 20px;
+	width : 100%;
+	font-weight: bold;
+	border: thin solid #CC0000;
+	color:black;
+}
+
+code { font-weight: bold;
+       color: navy; }
+dfn  { color: green; }
+cite { color: blue; }

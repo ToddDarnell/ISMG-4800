@@ -1,0 +1,115 @@
+/* CSS Document */
+
+	body {
+    background: #0C3D66 url('../imageszen/body_bg2.jpg') no-repeat fixed left top;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #D4D4D4;
+	font-size: 95%;
+	padding-left:12%; 
+	padding-right:2%; 
+	padding-top:40px; 
+	padding-bottom:40px; 
+    line-height:140%; 
+  	text-align: justify;
+
+}
+a, a:link, a:visited, a:active, a:focus {
+    text-decoration: underline;
+    color: #FFA905;
+}
+a:hover {
+    text-decoration: none;
+}
+	
+th     {   color: #FFA905;
+           background: url('../imageszen/box_bg.png');
+   	       background-color: #587992;
+       }
+   
+#header hr { visibility:hidden;  
+             height: 0px;
+             padding: 0;
+             margin:0; }
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: #CCCCCC;
+  height: 2px;
+  width: 100%;
+}
+
+h1 {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 110%;
+    text-transform: uppercase;
+    color: #FFA905;
+    background: url('../imageszen/box_bg.png');
+    border-top: 1px solid #2F6487;
+    border-right: 1px solid #061E32;
+    border-bottom: 1px solid #061E32;
+    border-left: 1px solid #2F6487
+   	background-color: #587992;
+}
+
+h2  {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 95%;
+    text-transform: uppercase;
+    color: #FFA905;
+}
+
+h3 {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 85%;
+    text-transform: uppercase;
+    color: #FFA905;
+}
+
+	
+	div { 
+	width: 100%; 
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #D4D4D4;
+    width: 100%;
+    border-top: 1px solid #2F6487;
+    border-right: 1px solid #061E32;
+    border-bottom: 1px solid #061E32;
+    border-left: 1px solid #2F6487;
+
+
+	}
+	
+	div div {
+	background: #587992;
+    color: #FFA905;
+	list-style: none;
+	padding : 0 20px;
+	margin : 0 auto;
+	text-align: left;
+	font-family: courier new, courier, monospaced;
+	font-weight: bold;
+    background: url('../imageszen/box_bg.png');
+    border-top: 1px solid #2F6487;
+    border-right: 1px solid #061E32;
+    border-bottom: 1px solid #061E32;
+    border-left: 1px solid #2F6487
+	}
+
+ul {
+	list-style-image: url('../imageszen/a_select_bg.gif');
+}
+
+	
+code { font-weight: bold;
+       color: ffeebb; }
+dfn  { color: lime; }
+cite { color: blue; }
+
+.print  {	display: none;	}
+.footer {  font-size:.8em;
+  		   line-height: 100%;}
+
+iframe {     background-color:transparent; }

@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+  <TITLE>Outdoor Depot Home Page</TITLE>
+  <link rel="stylesheet" type="text/css" href="../od.css">
+</HEAD>
+<BODY>
+<?php require("../includes/header.inc"); ?>
+<?php require("../includes/lmenu.inc"); ?>
+   <TABLE width=100%>
+     <TR><TD ALIGN=center valign="top">	
+       <br><img border="0" src="../images/arches2.jpg" width="400" height="263">
+       <br><br>
+       <H4 class=darkT>Outdoor Depot where your outdoor adventures begin...
+       <br>&nbsp;</H4></TD>	
+     </TR>
+     <TR>
+       <TD class=moss align=center>
+         <H3>Hot Items for Summer </H3>
+         <table width="90%" height="70%" cellpadding="5" cellspacing="5">
+           <tr>
+             <td  valign="top" align="center" width="33%">
+               <img border="0" src="../images/shorts_thumb.jpg" width="120" height="120"><br>
+               <h4>Hiking Shorts<br>$29.95</h4>
+             </td>             
+             <td valign="top" align="center" width="33%">
+                  <img border="0" src="../images/fleece_thumb.jpg" width="120" height="120"><br>
+               <h4>Fleece Pullover<br>$59.95</h4>
+             </td>
+             <td  valign="top" align="center" width="34%">
+               <img border="0" src="../images/shoes_thumb.jpg" width="120" height="120"><br>
+               <h4>Airstream Canvas Shoes<br>$39.95</h4>
+             </td>
+            </tr>
+         </table>
+<br>
+     </TD></TR>  
+   </TABLE>
+<?php require("../includes/rmenu.inc"); ?>
+<?php require("../includes/footer.inc"); ?>

@@ -1,0 +1,71 @@
+/* CSS Document */
+p, ul, ol, li, h2, h3, h4, h5, h6, pre {
+	padding : 0;
+	margin-top: 2;
+	margin-bottom: 0;
+}
+
+	body {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 95%;
+	color: black;
+        line-height:120%; 
+  	text-align: justify;
+}
+	a:link {color: #000000;
+	}
+	a:hover {
+	color: #000000;
+	display: inline;
+	background-color: #c4ced7;
+	}
+	a:visited {
+	color:#000000;
+	}
+	
+th     {background-color: #CCCCCC;
+        color: #990000;}
+   
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: #CCCCCC;
+  height: 2px;
+  width: 100%;
+}
+
+h1 {
+	font-family: "Haettenschweiler", "Arial Narrow", san-serif;
+	background-color: #cccccc;
+        text-align: bottom;
+	color: white;
+        height: 35px;
+        text-indent: 5px;
+}
+
+h2 span {
+	font-family: "Haettenschweiler", "Arial Narrow", san-serif;
+	color: gray;
+}
+
+h3 {
+	font-family: "Arial", san-serif;
+}
+	
+	div div div {
+	background: #eedfa6;
+	color: #666666;
+	border: 1px solid #ffffff;
+	list-style: none;
+	padding : 0 20px;
+	margin : 0 auto;
+	text-align: left;
+	font-family: courier new, courier, monospaced;
+	font-weight: bold;
+        width: 98%;
+	}
+	
+code { font-weight: bold;
+       color: #999999; }
+dfn  { color: green; }
+cite { color: blue; }

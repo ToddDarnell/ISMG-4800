@@ -1,0 +1,135 @@
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, pre {
+	padding : 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+A         { color: blue;}
+
+A:hover   { background-color:#FFCC00;}
+
+A:visited { color: maroon; }
+
+A:active  { color: red; 
+            background-color:#ffcccc; } 
+
+body      { background-color: white;
+            color:black }
+
+h1	  {   color:#ffcc00;
+            background-color: #6633CC;}
+
+h2 span {  background-color:#FFCC00; 
+           color:#6633CC} 
+
+h3  {  color:#6633CC; }
+        
+hr  {  color: #6633CC; }
+
+em    { color: red;  }
+
+code  { color:#6633CC; } 
+
+div div div  { background-color: #EEDDFF; 
+        border-color: blue; }
+
+div div div div { border-color: red; }
+
+div div div div div { border-color: green; }
+
+th  { color:#330066;
+      background-color:#FFCC00;}
+td b { color:#6633CC;}
+                    
+.code  { color: black; }
+
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, pre {
+	padding-bottom : 0;
+	margin-top: 2;
+	margin-bottom: 0;
+}
+
+A        { text-decoration: underline;
+           color: blue;}
+
+A:hover { text-decoration: underline;}
+
+A:visited { font-weight: normal;}
+
+A:active {  font-weight: bold;}
+
+body      { font-family: Arial, sans-serif;
+            padding-left: 45;
+            padding-right: 5; }
+
+h1	  {   font-size: 1.5em;
+          text-align: center;
+          padding-top: 3;
+          padding-bottom: 3;}
+
+h2     {   font-size: 1.17em; 
+           padding-left:5;
+           padding-right: 5;
+           padding-top: 2;
+           padding-bottom: 2;
+        } 
+
+h2 span {  padding-left:5;
+           padding-right: 5;
+           padding-top: 2;
+           padding-bottom: 2;
+        } 
+
+
+h3  {  font-size: 1.17em; 
+       padding-top: 2;
+       padding-bottom: 2;
+       padding-left:5;
+       padding-right: 5; 
+    }
+
+h4  {  font-size: .83em; 
+       font-style: italic;
+    } 
+
+ul    { font-weight: normal;  }
+
+li, dl    { margin-bottom: 9;}
+
+ul ul, ul ol, ol ul { font-size: .83em; }
+ul ul ul  { font-size: 1em; }
+       
+em    { color: red;  }
+
+cite  { font-family: Courier New, Courier, monospace; 
+        color:blue;
+        font-style:normal;
+        font-weight: bold;}
+
+code  { font-family: Courier New, Courier, monospace; 
+        font-weight: bold; 
+        font-size: 1em; }
+ 
+dfn   { color: #008000;
+        font-style:normal;}
+
+var   { color: "#800000"; 
+        font-style:normal;}
+
+tt    { font-size: 1em; }
+pre   { font-size: 1em; }
+
+div div div { font-family: Courier New, Courier, monospace; 
+        font-weight: bold; 
+        text-align: left; 
+        border-style: solid; 
+        border-width: thin;
+        font-size: 0.85em; 
+        margin: 5;
+        padding:2;
+       }
+
+div div div em { font-family: Times New Roman, serif;
+         font-weight: bold; 
+         font-style: normal;}
+

@@ -1,0 +1,128 @@
+body {
+	background-position: center 40px; 
+	margin: 0;
+	padding: 60px 30px 20px 30px;
+	text-align: center; 
+	font-style:normal; 
+	font-variant:normal; 
+	font-weight:normal; 
+	font-size:95%; 
+	font-family:georgia, times, serif;
+	background-color:#333333; 
+    line-height:140%; 
+    background: #cc6600 url('../imageszen/bg_red.png') repeat left;
+
+}
+
+p, ul, ol, li, h1, h2, h3, h4, h5, h6 {
+	padding : 0;
+	margin-top: 5;
+}
+
+h1, h2, h3 {
+	margin-top : 10;
+	margin-bottom : 5;
+    text-transform: uppercase;
+}
+
+h1 {	
+        font-size: 1.5em;
+        padding: 10;     
+        padding-left: 35;     
+        background: black url('../imageszen/h1.png') no-repeat left;
+        border: 5px double white ;
+        color: white;
+        }
+
+h2 { margin-top: 10; 
+     font-size: 105%;} 
+h2 span {  border: 5px double #333333 ; 
+           padding-right: 10;
+           padding-left: 10;  }
+
+h3 { font-size:95%;}
+
+/* table { border: none;
+        margin-top: 5px;}
+th, td {  border: 1px solid #043;
+          margin: 0; padding:5;}*/
+th     {  background: #cc6600 url('../imageszen/bg_red.png') repeat left;
+          color : #F0DEB6 ;}
+   
+hr { visibility:hidden;  
+             height: 0px;
+             padding: 0;
+             margin:0; }
+
+
+a {
+	color : #909ab4;
+	text-decoration : none;
+}
+a:hover {
+	color : #b49a90;
+	text-decoration : underline;
+}
+
+
+ul {
+	list-style-image: url('../imageszen/ul.gif');
+}
+
+
+ul li li {
+	list-style-image: url('../imageszen/ul2.gif');
+}
+
+
+div{
+	text-align : left;
+	margin : 0 auto;
+	padding : 0 20px ;
+	width : 95%;
+}
+
+div div{
+	font-family: courier new, courier, monospaced;
+	background-color : #EEE8D8 ;
+    background: #EEE8D8 url('../imageszen/div.png') repeat left;
+	margin : 0 auto;
+	padding : 0 20px;
+	width : 100%;
+	font-weight: bold;
+	border: 5px double #333333;
+}
+
+
+#header, #sec1, #sec2, #sec3, #sec4, #sec5, #sec6, #sec7, #footer
+ {
+	background-color : #F0DEB6 ;
+    background: #F0DEB6 url('../imageszen/bg_tan.png') repeat left;
+	margin : 30px 3px 50px 3px;
+	padding : -10px;
+	border: 3px dashed #333333;
+}
+
+
+#header {
+	background-color : #cc6600 ;
+    background: #cc6600 url('../imageszen/head.png') no-repeat bottom right;
+	border: 3px dashed #333333;
+}
+
+code { font-weight: bold;
+       color: #6666cc; }
+dfn  { color: green; }
+cite { color: navy; }
+
+#footer
+{   padding-top: 5px;
+	background-color : #cc6600 ;
+    background: #cc6600 url('../imageszen/div.png') repeat left;
+	font-size: .8em;
+	line-height: 100%;
+	border: 3px dashed #333333;
+}
+
+
+.print  {	display: none;	}

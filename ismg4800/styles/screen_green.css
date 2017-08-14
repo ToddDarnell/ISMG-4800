@@ -1,0 +1,137 @@
+body {
+	background:#7ea486 url('../imageszen/header_green.gif') fixed center 50%; 
+	color:#101C4C;
+	margin:0;
+	padding:5%; 
+	font-style:normal; 
+	font-variant:normal; 
+	font-weight:normal; 
+	line-height:1.4; 
+	font-size:90%; 
+	font-family:Tahoma, Verdana, Helvetica, Arial, sans-serif;
+}
+
+a:link {
+	color:#000099;
+	text-decoration:underline;
+}
+
+a:visited {
+	color:#A082A7;
+}
+
+a:hover {
+	text-decoration:none;
+	color:blue;
+}
+
+#footer
+{   border-bottom: outset; }
+
+#header
+{   border-top: outset;}
+
+div {
+	clear: both;
+	width: 100%;
+	background-color: white;
+	padding: 12px;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+
+	border-left: 5px outset;
+	border-right: 5px outset;
+	border-top-width:5; border-bottom-width:5}
+
+h1 { background:#CC0000 url('none') repeat-y top left;
+	 font-weight:bold;
+	 color:#E9E6D9;
+	 font-size:120%; 
+	 margin-left:0px; 
+	 margin-right:0px; 
+	 margin-top:2px; 
+	 margin-bottom:10px; 
+	 padding-left:15px; 
+	 padding-right:5px; 
+	 padding-top:5px; 
+	 padding-bottom:5px
+}
+
+h2 {
+	overflow:hidden;
+	background: url('../imageszen/header_long.gif') no-repeat top left; 
+	margin-left:0; 
+	margin-right:0; 
+	margin-top:0; 
+	margin-bottom:15px;
+	height:68px;
+}
+
+h2 span {
+	display:block;
+	padding-left:45px;
+	padding-top:10px;
+	padding-bottom:20px;
+	font-size:80%;
+	color:#101C4C;
+	font-weight:bold;
+}
+
+
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: #CCCCCC;
+  height: 2px;
+  width: 100%;
+}
+
+th  {background:#CC0000 url('none') repeat-y top left;
+ 	 color:#E9E6D9;
+ 	 font-size: 90%;}
+ 	 
+li  { padding-bottom: 10; }
+li li  { padding-bottom: 0; }
+   
+#header hr { visibility:hidden;  
+             height: 0px;
+             padding: 0;
+             margin:0; }
+
+
+div div{
+	font-family: courier new, courier, monospaced;
+	background-color : #ccddcc;
+	padding : 0 20px;
+	width : 100%;
+	font-weight: bold;
+	border: thin solid #CC0000;
+	color:black;
+}
+
+code { font-weight: bold;
+       color: mediumblue; 
+       font-family: courier new, courier, monospaced;}
+       
+dfn  { font-weight: bold;
+       color: green; 
+       font-style:normal; 
+       	font-family: courier new, courier, monospaced;} 
+var  { font-weight: bold; 
+       color: crimson; 
+       font-style:normal; 
+       	font-family: courier new, courier, monospaced;} 
+samp { font-weight: bold; 
+       font-style:normal; 
+       color: orange;
+       font-family: courier new, courier, monospaced;}
+cite { font-weight: bold;
+       color: blue; 
+       font-family: courier new, courier, monospaced;}
+
+
+.print  {	display: none;	}
+.footer {  font-size:.8em;
+   	       line-height: 100%;}
+em { color: red; }

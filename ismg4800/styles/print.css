@@ -1,0 +1,101 @@
+body      { font-family: Arial, sans-serif; 
+            padding:0; margins:0;}
+
+
+h1	  {   font-size: 1.5em;
+          text-align: center;
+          padding-top: 10;
+          padding-bottom: 10;}
+
+h2     {   font-size: 1.17em; 
+           padding-left:5;
+           padding-right: 5;
+           padding-top: 10;
+           padding-bottom: 10;
+        } 
+
+
+h3  {  font-size: 1.17em; 
+       padding-top: 10;
+       padding-bottom: 10;
+       padding-left:5;
+       padding-right: 5; 
+    }
+
+h4  {  font-size: .83em; 
+       font-style: italic;
+    } 
+
+ul    { font-weight: normal;  }
+
+li, dl    { margin-bottom: 9;}
+
+ul ul, ul ol, ol ul { font-size: .83em; }
+ul ul ul  { font-size: 1em; }
+       
+em    { color: red;  }
+
+
+tt    { font-size: 1em; }
+pre   { font-size: 1em; }
+
+code { font-weight: bold;
+       color: mediumblue; 
+       font-family: courier new, courier, monospaced;}
+dfn  { font-weight: bold;
+       color: green; 
+       font-style:normal; 
+       	font-family: courier new, courier, monospaced;} 
+var  { font-weight: bold; 
+       color: crimson; 
+       font-style:normal; 
+       	font-family: courier new, courier, monospaced;} 
+samp { font-weight: bold; 
+       font-style:normal; 
+       color: orange;
+       font-family: courier new, courier, monospaced;}
+cite { font-weight: bold;
+       color: blue; 
+       font-family: courier new, courier, monospaced;}
+
+
+div, #header, #sec1, #sec2, #sec3, #sec4, #sec5, #sec6, #sec7, #footer
+ { border:none medium white; visible: true; padding:0; }
+
+div  div { font-family: Courier New, Courier, monospace; 
+        font-weight: bold; 
+        text-align: left; 
+        border: thin solid black; 
+        font-size: 0.917em; 
+        margin-left: 5;
+        padding-left:2;
+        padding-top:2;
+        padding-bottom:2;
+        padding-right:2;
+       }
+
+div div em { font-family: Times New Roman, serif;
+         font-weight: bold; 
+         font-style: normal;}
+                                       
+table caption  {  font-size: 1.17em;
+                  font-weight: bold;}
+
+.largeT { font-size: .83em; }
+
+.smallT {  }
+
+.footer { font-size: .75em; }
+
+.blank  { background:white;
+          border:medium none;
+          font-family:Arial,sans-serif; }
+
+.print {  border:none medium white; visible: true;	
+          text-align: center; 
+          background-color: white; 
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: normal;
+       }
+
+.screen  { display: none; }

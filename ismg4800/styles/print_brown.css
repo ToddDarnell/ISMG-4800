@@ -1,0 +1,13 @@
+@import url(screen.css);
+.print {  border:none medium white; visible: true;	
+          text-align: center; 
+          background-color: white; 
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: normal;
+       }
+
+.screen  { display: none; }
+
+div, #header, #sec1, #sec2, #sec3, #sec4, #sec5, #sec6, #sec7, #footer
+ { border:none medium white; visible: true; padding:0; }
+body { padding:0; margins:0;}

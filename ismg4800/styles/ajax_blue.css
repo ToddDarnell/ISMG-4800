@@ -1,0 +1,104 @@
+/* CSS Document */
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, pre {
+	padding : 0;
+	margin-top: 2;
+	margin-bottom: 0;
+}
+
+body {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #D4D4D4;
+    font-size: 95%;
+    line-height:120%; 
+    text-align: justify;
+    background-color:transparent;
+}
+a, a:link, a:visited, a:active, a:focus {
+    text-decoration: underline;
+    color: #FFA905;
+}
+a:hover {
+    text-decoration: none;
+}
+	
+th     {   color: #FFA905;
+           background: url('../imageszen/box_bg.png');
+   	       background-color: #587992;
+       }
+   
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: #CCCCCC;
+  height: 2px;
+  width: 100%;
+}
+
+h1 {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 110%;
+    text-transform: uppercase;
+    color: #FFA905;
+    background: url('../imageszen/box_bg.png');
+    border-top: 1px solid #2F6487;
+    border-right: 1px solid #061E32;
+    border-bottom: 1px solid #061E32;
+    border-left: 1px solid #2F6487
+   	background-color: #587992;
+}
+
+h2  {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 95%;
+    text-transform: uppercase;
+    color: #FFA905;
+}
+
+h3 {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 85%;
+    text-transform: uppercase;
+    color: #FFA905;
+}
+
+	
+	div { 
+	width: 100%; 
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    color: #D4D4D4;
+    background-color:transparent;
+
+	}
+	
+	div div div {
+	background: #587992;
+    color: #FFA905;
+	list-style: none;
+	padding : 0 20px;
+	margin : 0 auto;
+	text-align: left;
+	font-family: courier new, courier, monospaced;
+	font-weight: bold;
+    background: url('../imageszen/box_bg.png');
+    border-top: 1px solid #2F6487;
+    border-right: 1px solid #061E32;
+    border-bottom: 1px solid #061E32;
+    border-left: 1px solid #2F6487
+	}
+
+ul {
+	list-style-image: url('../imageszen/a_select_bg.gif');
+}
+
+	
+code { font-weight: bold;
+       color: ffeebb; }
+dfn  { color: lime; }
+cite { color: blue; }
+
+.print  {	display: none;	}
+.footer {  font-size:.8em;
+  		   line-height: 100%;}

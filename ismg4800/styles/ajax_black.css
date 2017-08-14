@@ -1,0 +1,77 @@
+body {
+	color : black;
+	font-style:normal; 
+	font-variant:normal; 
+	font-weight:normal; 
+	font-size:95%; 
+	font-family:Trebuchet MS, Verdana, Arial, Helvetica, sans-serif;
+    line-height:120%; 
+    text-align : justify;
+	width : 100%;
+    background-color : white ;
+}
+
+p, ul, ol, li, h1, h2, h3, h4, h5, h6, pre {
+	padding : 0;
+	margin-top: 5;
+	margin-bottom: 0;
+}
+
+a:link {
+	font-weight: bold;
+	text-decoration: none;
+	color: #ec0000;
+	}
+a:visited { 
+	font-weight: bold; 
+	text-decoration: none; 
+	color: #c30;
+	}
+a:hover, a:active { 
+	text-decoration: underline; 
+	}
+
+h1, h2, h3 {
+	margin-top : 10;
+	margin-bottom : 5;
+	font-variant: small-caps;}
+
+h1 {	font-size: 1.5em;        }
+        
+h1:first-letter {text-transform: uppercase; 
+                 color:red; 
+                 font-size:1.5em; }
+
+h2 {	font-size: 1.2em;
+        color: red;}
+h3 {	font-size: 1.1em;}
+
+
+hr {
+  border: 0px none;
+  color: gray;
+  background-color: gray;
+  height: 1px;
+  width: 100%;
+}
+
+th     {background-color: gray;
+        color: #ffeeaa;}
+   
+ul {	list-style-image: url('../imageszen/punto_elenco.gif'); }
+
+div div div {
+	font-family: courier new, courier, monospaced;
+	background-color : #dddddd;
+	margin : 0 auto;
+	padding : 0 20px;
+	width : 100%;
+	font-weight: bold;
+	border-top: 5px solid #ffeeaa;
+	border-left: 5px solid #ffeeaa;
+}
+
+code { font-weight: bold;
+       color: #6666cc; }
+dfn  { color: green; }
+cite { color: navy; }

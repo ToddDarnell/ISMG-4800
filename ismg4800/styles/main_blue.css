@@ -1,0 +1,46 @@
+A         { color: blue;}
+
+A:hover   { background-color:#FFCC00;}
+
+A:visited { color: maroon; }
+
+A:active  { color: red; 
+            background-color:#ffcccc; } 
+
+body      { background-image: url('../images/background/bluecurtain.jpg');
+            background-repeat: repeat-y;
+            background-color: white;
+            color:black }
+
+h1	  {   color:#ffcc00;
+            background-color: #6633CC;}
+
+h2 span {  background-color:#FFCC00; 
+           color:#6633CC} 
+
+h3  {  color:#6633CC; }
+        
+hr  {  color: #6633CC; }
+
+em    { color: red;  }
+
+code  { color:#6633CC; } 
+
+div div  { background-color: #EEDDFF; 
+        border-color: blue; }
+
+div div div { border-color: red; }
+
+div div div div { border-color: green; }
+
+th  { color:#330066;
+      background-color:#FFCC00;}
+td b { color:#6633CC;}
+                    
+.code  { color: black; }
+
+
+.bg  { background-color: #FFCC00;}
+.bglight  { background-color: #FFEECC;}
+ 
+.bWhite { background-color: transparent; }

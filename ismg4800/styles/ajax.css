@@ -1,0 +1,122 @@
+html, body 
+         {
+	height              :    100%;
+	width               :    100%;
+	margin              :    0px;
+	padding             :    0px;
+	overflow            :    hidden;
+        font-size           :    .95em;
+}
+
+img 
+         {
+	margin              :    0px;
+	padding             :    0px;
+	border              :    0px;
+}
+
+
+
+#titleLYR {
+	position            :    absolute;
+	height              :    20px;
+	width               :    98%;
+	top                 :    5px;
+	left                :    1%;
+	z-index             :    1; 
+	text-align          :    left;
+	vertical-alignment  :    middle;
+}
+
+#contentparentLYR {
+	position            :    absolute;
+	height              :    590px;
+	width               :    95%;
+	top                 :    30px;
+	left                :    1%;
+	z-index             :    1;
+	visibility          :    visible;
+	overflow            :    hidden;
+}
+
+#headerLYR {
+	position            :    absolute;
+	height              :    40px;
+	width               :    auto;
+	top                 :    20px;
+	left                :    30px;
+	z-index             :    2; 
+}
+
+#linetopLYR {
+	position            :    absolute;
+	height              :    1px;
+	width               :    100%;
+	top                 :    43px;
+	left                :    4px;
+	z-index             :    3;
+	border-bottom       :    1px solid #3a3e49;
+        background-color: transparent;
+}
+
+#linemiddleLYR {
+	position            :    absolute;
+	height              :    15px;
+	width               :    100%;
+	top                 :    485px;
+	left                :    4px;
+	z-index             :    3; 
+	border-top          :    1px solid #3a3e49;
+        background-color: transparent;
+} 
+
+#linebottomLYR {
+	position            :    absolute;
+	height              :    15px;
+	width               :    100%;
+	top                 :    530px;
+	left                :    4px;
+	z-index             :    3; 
+	border-top          :    1px solid #3a3e49; 
+        background-color: transparent;
+} 
+
+#contentLYR {
+	position            :    absolute;
+	height              :    465px;
+	width               :    auto;
+	top                 :    70px;
+	left                :    30px;
+	z-index             :    2; 
+}
+
+#footerLYR {
+	position            :    absolute;
+	height              :    90px;
+	width               :    98%;
+	top                 :    520px;
+	left                :    1%;
+	z-index             :    5; 
+    text-align          :    center;
+}
+
+#forwardLYR {
+	position            :    absolute;
+	height              :    auto;
+	width               :    95%;
+	top                 :    0px;
+	left                :    0px;
+	z-index             :    2; 
+    text-align          :    right;
+
+}
+
+#reverseLYR {
+	position            :    absolute;
+	height              :    auto;
+	width               :    auto;
+	top                 :    0px;
+	left                :    27px;
+	z-index             :    3; 
+}
+
