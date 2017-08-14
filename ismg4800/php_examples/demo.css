@@ -1,0 +1,17 @@
+h1,h2	{ font-size: 1.5em;
+        text-align: center;
+        padding-top: 10;
+        padding-bottom: 10;	 
+        background-color:#FFCC00; 
+        color:#6633CC;} 
+
+
+body  { font-family: Arial, sans-serif; }
+
+ul       { font-weight: normal;  }
+
+li       { margin-bottom: 9;}
+li span  { background-color:#FFCC00; }
+
+
+p     { color:#6633CC; }

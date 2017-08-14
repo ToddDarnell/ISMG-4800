@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>Sends Data to form2.jsp</TITLE>
+<link  rel="stylesheet" type="text/css" href="demo.css">
+</HEAD>
+<BODY>
+<h2>Provide Feedback</h2>
+<form ACTION="form2.php" METHOD="POST" NAME="frmRating">
+<input type="hidden" Name="txtH" value="ISMG 4800 Rating Form">
+  <center>
+  <table WIDTH="80%" class="largeT">
+    <tr>
+      <td>Your Name:
+      <td><input TYPE="text" NAME="txtName" SIZE="30">
+    </tr>
+    <tr>
+      <td>Email Address:
+      <td><input TYPE="text" NAME="txtEmail" SIZE="30">
+    </tr>
+    <tr>
+      <td colspan="2">Rate ISMG 4800 at CU Denver so far:
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="radio" NAME="optRate" Value="A" checked>
+      <td>Excellent!
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="radio" NAME="optRate" VALUE="C">
+      <td>Okay, I guess...
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="radio" NAME="optRate" Value="F">
+      <td>Keep your day job!
+    </tr>
+    <tr>
+      <td>Describe yourself
+      <td><select NAME="lstDesc">
+          <option value="overachiever">Overachiever
+          <option selected value="ok student">OK Student
+          <option value="lazy slug">Lazy Slug
+        </select>
+    </tr>
+    <tr>
+      <td colspan="2">Suggestions for improving the class?
+    </tr>
+    <tr>
+      <td align="right">
+      Shorter Lecture  <input Type="checkbox" name="chk1" ON value="short lectures">
+      <td>&nbsp; More Tutorials <input Type="checkbox" name="chk2" value="tutorials">
+
+    </tr>
+    <tr>
+      <td align="right">Easy Assignments <input Type="checkbox" name="chk3" value="easy assignments">
+      <td>&nbsp;&nbsp;&nbsp; Longer Break <input Type="checkbox" name="chk4" value="long breaks">
+    </tr>
+    <tr>
+      <td>Comments:
+      <td>
+    </tr>
+    <tr>
+      <td colspan="2"><textarea NAME="comment" ROWS="5" COLS="60"></textarea>
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="submit" VALUE="Submit">
+      <td><input TYPE="Reset" VALUE="Reset">
+  </table>
+  </center>
+</form>
+
+</BODY>
+</HTML>
