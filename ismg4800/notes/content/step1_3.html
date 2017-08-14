@@ -1,0 +1,17 @@
+      <div class=screen><pre>http_request.open('GET', 'http://www.example.org/some.file', true);
+http_request.send(null);
+</pre></div>
+    <ul>
+      <li>The parameter to the <code>send()</code> method can be any data you want 
+    to send to the server if POST-ing the request. The data should be in the 
+    form of a query string, like: </li>
+    </ul>
+    <blockquote>
+    <p><code>name=value&amp;anothername=othervalue&amp;so=on</code> </p>
+    <p>Note that if you want to POST data, you have to change the 
+    MIME type of the request using the following line: <br>
+
+    <code>http_request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+</code>  <br>  
+    Otherwise, the server will discard the POSTed data.</p>
+    </blockquote>

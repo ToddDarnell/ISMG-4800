@@ -1,0 +1,1223 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+   <TITLE>ISMG 4800: Cascading Style Sheets</TITLE>
+   <STYLE> 
+     <!-- 
+     .P       { color:purple; font-style:italic; font-size:1.5em } 
+     .redfont { color: red; background-color: #ffcccc; }
+     .span    { color: red; font-style: italic; }
+     .greenfont { color: green; background-color:ccffcc; }
+     .em       { color: red; font-size:1.17em; font-style:italic;}
+     h6        {font-family: Courier New, Courier, monospaced;
+                font-style: oblique;
+                font-weight: bolder;
+                font-size: 2em;
+                font-variant:small-caps;} 
+     .limedemo { color: lime; background-color:white;font-weight: bolder; padding-left:0; background-image:none;}
+     .bgimage  { background-image:url('../images/background/hearts.gif');}
+     
+     ol       { list-style: upper-roman outside; }
+     ol ol    { list-style: decimal outside; }
+     ol ol ol { list-style: lower-roman inside; } 
+     .fl:first-letter { text-transform: uppercase; color:gray; font-size:2em}
+     --> 
+   </STYLE>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+    ftext = '<p class=footer><I>Updated January 15, 2004<BR>Dawn G. Gregg</I></p? ';
+   </script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<H1>Cascading Style Sheets</H1>
+<h2><span>What are Style Sheets?</span></h2>
+<ul>
+  <li>
+Cascading Style Sheets separate the
+appearance of web pages from the content of web pages.&nbsp;
+    <ul>
+      <li>This means that the information goes into HTML files, but HTML files should not contain
+        information about how that information is displayed.&nbsp;</li>
+      <li>Information about how the pages should appear goes into style sheet files.</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="2"></a>Advantages of Style Sheets</span></h2>
+<ul>
+  <li>
+The traditional HTML approach is to &quot;hardcode&quot; all of the appearance information about a page.&nbsp;
+    <ul>
+      <li>eg. Every heading, in every page, the font size and face properties
+        etc. need to be set.&nbsp;</li>
+      <li>As the page count increases the editing/re-editing times increases as
+        does the possibility for introducing errors.</li>
+    </ul>
+  </li>
+  <li>Cascading Style Sheets allow formats for headings etc. to be set
+    once.&nbsp;</li>
+  <li>They allow whole organizations to share style sheets, ensuring consistency across
+    the site.</li>
+</ul>
+<hr>
+<h2><span><a name="3"></a>Using the Style Attribute (Inline Styles)</span></h2>
+<ul>
+  <li>Styles can be declared inside an HTML tag by adding the style=" "
+    attribute:&nbsp;&nbsp;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>style=&quot;property:value&quot;&nbsp;</code>
+    <ul>
+      <li>eg. for red text in a paragraph:&nbsp;&nbsp;
+        <code><br>
+        &lt;p style=&quot;color:red&quot;&gt;Totally red!&lt;/p&gt;</code>&nbsp;
+     <p style="color:red">Totally red!</p>
+        
+      </li>
+      <li>
+        To add more than one property in a style. Put a &quot;<code>;</code>&quot;
+        after your first property:value, &amp; add another:&nbsp;<br>
+        <code>&lt;p style=&quot;color:red; font-style:italic&quot;&gt; Red-hot italic!&lt;/p&gt;</code>&nbsp;
+       <p style="color:red;font-style:italic">Red-hot italic!</p>
+        
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+
+<h1><a name="4"></a>Embedded Styles</h1>
+<ul>
+  <li>Styles can also be declared for an entire document.</li>
+  <li>These styles are declared inside the head section of the page and begin with the
+    <code> &lt;STYLE></code> tag and end with the <code> &lt;/STYLE></code> tag.</li>
+</ul>
+
+<ul>
+  <li>Below is an example that declares the style for<br>
+     the <code> &lt;P&gt;</code> tag in the head of the document:&nbsp;</li>
+</ul>
+
+<div><a name="5"></a>&lt;HEAD>&nbsp;<br>
+     &lt;STYLE type=&quot;text/css&quot;><img border="0" src="../images/arrow.gif" width="40" height="17"><em>Begin
+  style definition</em><br>
+     <dfn>&lt;!--</dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>Comment
+  to hide style from older browsers</em><br>
+     P { color:purple;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>Set
+  text color to purple for a paragraph</em><br>
+  &nbsp;&nbsp;&nbsp; font-style:italic;&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="17"><em>Add
+  italics&nbsp;<br>
+  </em>&nbsp;&nbsp;&nbsp; font-size: 1.5em;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>font
+  1.5*surrounding size&nbsp;</em><br>
+  &nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>End
+  definition&nbsp; for a span</em><br>
+  <dfn>// --></dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>End
+  comment to hide style</em><br>
+     &lt;/STYLE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>End
+  style definition</em><br>
+    &lt;/HEAD>&nbsp;
+</div>
+<ul>
+  <li>The following HTML in the body of the document:</li>
+</ul>
+<blockquote>
+<p>
+<code>&lt;P&gt;Big and italic paragraph&lt;/P>&nbsp; </code> </p>
+</blockquote>
+<ul>
+  <li>Yields:</li>
+  <p class=p>Big and italic paragraph .............!</p>
+</ul>
+
+
+<hr>
+<h2><span>Adding Style to Multiple Tags</span></h2>
+
+<ul>
+  <li>Styles can also be declared for multiple tags at once.</li>
+  <li>Below is an example that declares the style for<br>
+     the <code> &lt;h1&gt;, &lt;h2&gt; </code>&amp;<code> &lt;h3&gt;</code> tags :&nbsp;</li>
+</ul>
+
+<div><a name="5"></a>&lt;HEAD>&nbsp;<br>
+     &lt;STYLE type=&quot;text/css&quot;><img border="0" src="../images/arrow.gif" width="40" height="17"><em>Begin
+  style definition</em><br>
+     <dfn>&lt;!--</dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>Comment
+  to hide style from older browsers</em><br>
+     h1, h2 { color:lime;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>Set
+  text color to lime for 2 headings</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-weight:bold;&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="17"><em>Add
+  bold&nbsp;<br>
+  </em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>End 
+  definition&nbsp; for h1, h2 style </em><br>
+  <dfn>// --></dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>End
+  comment to hide style</em><br>
+     &lt;/STYLE>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>End
+  style definition</em><br>
+    &lt;/HEAD>&nbsp;
+</div>
+<center>
+<br>
+<table border="1" cellpadding="5"  width="80%">
+  <tr>
+    <td width="100%" bgcolor="#FFFFFF">
+    <h1 class=limedemo style="text-align: left">Green Dragon Restaurant</h1>
+    <h2 class=limedemo>Welcome.....</h2>
+    <p>Welcome to the Green Dragon restaurant.</font></b></td>
+  </tr>
+</table>
+</center>
+<hr><script language="JavaScript">writeFooter(0);</script>
+
+<h1><a name="8"></a>Using External Style Sheets</h1>
+<ul>
+  <li>External style sheets allow the use of one group of styles on many pages at once.&nbsp;</li>
+  <li>External style sheets are TEXT files ending with the <code> .css</code> 
+  extension.&nbsp;</li>
+  <li>They just contain style definitions for different types of elements.&nbsp;&nbsp;They
+  <em>DO NOT</em> contain <code>&lt;style&gt;</code> &amp; <code>&lt;/style&gt;</code> tags.</li>
+  <li> The following was saved in a file <a href="styles/style1.css">style1.css</a>
+    and imported into in a file <a href="demo/test1CSS.html">test1CSS.html</a>. 
+  </li>
+</ul>
+    <div>P&nbsp; &nbsp;&nbsp;&nbsp; { font-family: Arial, sans-serif;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; color: blue;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-size: 1.17em; } &lt;!-- 
+      Approximately 14pt --&gt;<br>
+    <br>
+      EM&nbsp;&nbsp;&nbsp;&nbsp; { color:red; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-size:1.17em;}<br>
+    <br>
+      STRONG { color: green;<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      background-color:#ccffcc;}&nbsp; 
+     </div>
+   
+<hr>
+   
+<h2><span>Using &lt;Link&gt; to Use an External Style Sheet</span></h2>
+   
+<ul>
+  <li>
+     To link to or import a style sheet, you need to add the <code> &lt;LINK></code> tag inside the head section of your html
+    document:&nbsp;
+<br>
+    <code>&lt;LINK rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;styles/style1.css&quot;&gt;</code>&nbsp;</li>
+  <li>
+     <a name="10"></a>
+     Now, any time you use the <code>&lt;P&gt;</code> tag in one of your pages linking to the style sheet, you will get:
+    <ul>
+      <li>Blue,  1.17em (approximately 14 point), Arial text (or if Arial is not available you
+        will get the default sans-serif font)<br>
+        <code>&lt;P>I am Arial!&lt;/P>&nbsp;</code></li>
+    </ul>
+  </li>
+</ul>
+<blockquote>
+<p><font size="4" color="blue" face="Arial">I am Arial</font></p>
+
+</blockquote>
+
+<ul>
+  <li>
+
+     When you use <code>&lt;strong&gt;</code>, you will get a green font, &amp; green 
+     background:&nbsp;&nbsp;
+    <ul>
+      <li>
+     <code>
+     &lt;p&gt;This line is &lt;strong&gt;really&lt;/strong&gt; important!&lt;/p&gt;</code>&nbsp;
+      </li>
+     </ul>
+  </li>
+</ul>
+<blockquote>
+     <font size="4" color="blue" face="Arial" weight=normal>This line is <span class=greenfont><b> 
+     really</b></span> important!</font>
+  </blockquote>
+
+<ul>
+  <li>
+
+     When you use <code>&lt;em&gt;</code>, you will get a red font &amp; 1.17em 
+     (1.17*neighboring size):&nbsp;
+    <ul>
+      <li>
+     <code>
+     &lt;p&gt;This line is &lt;em&gt;really&lt;/em&gt; important!&lt;/p&gt;</code>&nbsp;
+      </li>
+     </ul>
+  </li>
+</ul>
+<blockquote>
+     <p>
+     <font size="4" color="blue" face="Arial" weight=normal>This line is <span class=em> 
+     also</span> important!</font> </p>
+  </blockquote>
+  <hr>
+   
+<h2><span>Using @import to Use an External Style Sheet</span></h2>
+   
+<ul>
+  <li>You can also include a stylesheet using the @import statement instead of 
+  using the special &lt;link&gt; tag (above).</li>
+  <li>To import a stylesheet into a HTML page do the following:<br>
+  <code>&lt;style&gt;<br>
+&nbsp;&nbsp; @import url(styles/style1.css);<br>
+  &lt;style&gt;</code></li>
+  <li>You can also import Eternal Style Sheets into .css files:<br>
+  <code>&nbsp;&nbsp; @import url(styles/style1.css);<br>
+  <i>&nbsp;&nbsp; other style declarations... </i></code></li>
+  <li>Advantage of using <code>@import</code> in other style sheets is it allows 
+  you to build a set of &quot;generic&quot; styles that you use always and then to add to 
+  those styles for a specific application.<ul>
+  <li>e.g. You can create a stylesheet for all pages on a Web site and then 
+  create special style sheets for product pages, information pages, internal 
+  pages external pages ...&nbsp; that imports the baseline styles.</li>
+</ul>
+  </li>
+  <li>Another use for the <code>@import</code> statement is to quickly allow you 
+  to change your site color scheme - perhaps to adapt to changing seasons...</li>
+  <li>For example: this file uses the style sheet <a href="../styles/main.css">main.css</a>.
+   
+<ul>
+  <li>It contains styles definitions for fonts, sizes, styles, weights but not 
+  for colors &amp; background images.</li>
+  <li>It @import url(<a href="../styles/main_blue.css">main_blue.css</a>); to 
+  provide the look and feel you see now.</li>
+  <li>If I change that one line to @import url(<a href="../styles/main_greenspots.css">main_greenspots.css</a>); 
+  all of my notes pages would look like:</li>
+</ul>
+  </li>
+</ul>
+<center>
+<img border="0" src="../images/greenspotscss.gif" width="532" height="432"></center>
+<hr>
+<h1><a name="11"></a>Style Inheritance</h1>
+<ul>
+  <li>Styles inherit attributes from the tags they are within.</li>
+  <li>If you set the font-color property to <font color="#00FFFF">AQUA</font> in 
+  the <code>&lt;body&gt;</code> tag - then all text on the page will be
+  <font color="#00FFFF">AQUA </font>unless the font color is explicitly set for 
+  that object.</li>
+  <li>In the previous example - style1.css sets properties for <code>&lt;p&gt;</code>,
+  <code>&lt;em&gt;</code> and <code>&lt;strong&gt;</code>.&nbsp; The page <a href="demo/test1CSS.html">test1CSS.html</a> 
+  shows how <code>&lt;body&gt;</code> properties are inherited by the <code>&lt;p&gt;</code> 
+  and how <code>&lt;p&gt;</code> properties are inherited by the <code>&lt;em&gt;</code> &amp;
+  <code>&lt;strong&gt;</code> tags...</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/CSS1.gif" width="561" height="424"></p>
+<hr><script language="JavaScript">writeFooter(1);</script>
+
+<h1>CSS Properties</h1>
+<ul>
+  <li>So far we have looked at a few properties that can be set with cascading
+    style sheets.&nbsp; There are actually many properties that can be set:
+    <ul>
+      <li><a href="cssprops.html#font">Font Properties</a></li>
+      <li><a href="cssprops.html#text">Text Properties</a></li>
+      <li><a href="cssprops.html#color">Color/Background Properties</a></li>
+      <li><a href="cssprops.html#box">Box Properties</a></li>
+      <li><a href="cssprops.html#classif">Positioning &amp; Classification Properties</a></li>
+    </ul>
+  </li>
+  <li>If you follow the links above describe the properties and the values that
+    can be set for them.</li>
+</ul>
+<hr>
+<h2><span><a name="12"></a>Font Properties</span></h2>
+<ul>
+  <li>You have seen many of the basic font properties already,&nbsp;
+    <ul>
+      <li><code>font-family: </code>eg. Arial (sans-serif), Times (serif) and
+        Courier (monospaced).&nbsp;<br>
+        <font size="4">Include the generic font family name (serif etc.) so an alternate font can be
+        used if the one specified is not available.&nbsp;&nbsp;</font>
+  </li>
+  <li><code>font-weight:</code> normal, bold, bolder, lighter, 100-900</li>
+  <li><code>font-style:</code> normal, italic, or oblique</li>
+  <li><code>font-size:</code> in inches (0.5in) points (14pt), pixels (40px) or percent
+    (1.5em or 1.5ex).&nbsp;&nbsp;&nbsp;</li>
+  <li><code>font-variant:</code>
+     normal or
+     small-caps</li>
+    </ul>
+  </li>
+</ul>
+<div>
+H6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {font-family: Courier New, Courier, monospaced;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-style: oblique;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-weight: bolder;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-size: 2em;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-variant:small-caps;
+}
+</div>
+<ul>
+  <li>
+
+     And when you use the &lt;H6&gt;tag you will test all the font
+     properties:&nbsp;
+    <ul>
+      <li>
+     <code>&lt;H6&gt;This is a test!!!&lt;H6&gt;</code>
+      </li>
+     </ul>
+  </li>
+</ul>
+<blockquote>
+  <blockquote>
+    <h6>This is a test!!!</h6>
+  </blockquote>
+</blockquote>
+<ul>
+  <li>Note - it is best to specify font sizes in percent (em) because these font 
+  sizes will resize based on user preferences. Thus, if someone selects View -&gt; 
+  Text Size -&gt; largest in Internet Explorer - the text size will increase.&nbsp; 
+  If you specify a fixed size in inches, points or pixels it will not.</li>
+</ul>
+<hr>
+<h2><span><a name="14"></a>Text Properties</span></h2>
+<ul>
+  <li>Text properties also control the way HTML text is displayed.&nbsp; The
+    text properties that can be set are:
+    <ul>
+      <li>letter-spacing, text-align, vertical-align, text-decoration, text-transform,
+     text-indent, line-height</li>
+    </ul>
+  </li>
+  <li>For example:<br>
+    <code>&lt;p style=&quot;<dfn>text-align: right</dfn>; <dfn>text-decoration:
+    line-through</dfn>&quot;&gt;</code>Sample equation: E=mc<code>&lt;font style=&quot;<dfn>vertical-align:
+    super</dfn>&quot;&gt;</code>2<code>&lt;/font&gt;&lt;/p&gt;</code>
+   <p style="text-align: right; text-decoration: line-through">Sample equation: E=mc<Font style="vertical-align:super">2</font></p> 
+  </li>
+   </ul>
+&nbsp;
+<hr>
+<h2><span><a name="15"></a>Color and Background Properties</span></h2>
+<ul>
+  <li>Style Sheets will allow you to use background colors and images for your entire page and for
+certain sections you would like backgrounds on.&nbsp;</li>
+  <li>Common properties include: 
+color, background-color &amp; background-image</li>
+  <li>A common use of <a href="cssprops.html#color">Color/Background properties</a>
+    is to change the colors of a link when your mouse passes over it.&nbsp; This
+    is accomplished by creating a style for <code>a:hover</code>:</li>
+</ul>
+<blockquote>
+  <p><code>A:hover { text-decoration: underline;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-color:#BBBBFF;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; color: navy;}</code></p>
+</blockquote>
+<h3 class=bgimage>Background Images</h3>
+<ul>
+  <li class=bgimage>You can also apply a background image to any element on a Web page using 
+  <code>background-image</code>:</li>
+</ul>
+
+<blockquote>
+  <p><code>h3,li { background-image:url(../images/background/hearts.gif);}</code></p>
+  <p><code>&lt;li&gt;You can also apply ....<br>
+&nbsp;</code></p>
+</blockquote>
+<ul>
+  <li>You can set the background image for the whole Web page by setting the 
+  image property for the body tag:</li>
+  <li>&nbsp;</li>
+  <li><a name="16"></a>The properties background-attachment and
+    background-repeat can also be set.
+    <ul>
+      <li><code>background-attachment</code> allows the background to either <code>scroll</code> along with the
+        page (default) or be&nbsp;<br>
+        <code>fixed</code> so that the background will remain in place while the page contents scroll over it.&nbsp;</li>
+      <li><code>background-repeat</code> determines how the background is
+        repeated on the page.&nbsp; It can be <code>repeat</code> (default), <code>no-repeat</code>,
+        <code>repeat-x</code> or <code>repeat-y</code><br>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2><span>                                <a name="17"></a>                                
+List Properties</span></h2>
+<ul style="list-style-type:square;">
+  <li>CSS allows you to customize the appearance of lists it includes 
+  properties:<ul style="list-style-type:square;">
+  <li>list-style-type (disc, circle, square, decimal, decimal-leading-zero, 
+  lower-roman, upper-roman, lower-alpha, upper-alpha). The default is disc but 
+  this list is using &quot;square.&quot;</li>
+  <li style="list-style-image:url('../images/orangeball.gif')">list-style-image: url(../images/orangeball.gif);</li>
+  <li style="list-style-position:inside">
+  list-style-position controls where the bullet appears relative to the list 
+  text.&nbsp; The default value is &quot;outside&quot; However, this bullet uses the other 
+  property &quot;inside&quot;.</li>
+</ul>
+
+  </li>
+  <li>You can combine all three above properties into a single style definition:<br>
+  <code>list-style: list-style-type list-style-image list-style-position</code></li>
+</ul>
+
+<blockquote>
+  <p><code>ol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; { list-style: upper-roman 
+  outside; }<br>
+  ol ol&nbsp;&nbsp;&nbsp; { list-style: decimal outside; }<br>
+  ol ol ol { list-style: lower-roman inside; } </code></p>
+  <p>Yields:</p>
+</blockquote>
+<table border=1>
+<tr><td>
+<ol>
+  <li>An indented outline type list.<ol>
+  <li>It has different number styles at each sub level.<ol>
+  <li>&nbsp;And the lowest sublevel also has the number designed to wrap inside 
+  the paragraph instead of hanging out front.</li>
+</ol>
+
+  </li>
+  <li>....</li>
+</ol>
+
+  </li>
+</ol>
+</td></tr></table>
+<hr>
+<script language="JavaScript">writeFooter(2);</script>
+
+
+<h1><a name="6"></a>Using Classes to Define Styles</h1>
+<ul>
+  <li>Style classes allow styles to be defined without using up a tag each time you wish to have a
+    new style.&nbsp;</li>
+  <li>     Define 2 classes,&nbsp; one gives you a red font, another gives you a green
+    font, both w/ background color by:&nbsp;</li>
+</ul>
+<div>
+     &lt;HEAD>&nbsp;<br>
+     &lt;STYLE type=&quot;text/css&quot;&gt;&nbsp;&lt;!--&nbsp;<br>
+     &nbsp; .redfont&nbsp;&nbsp; { color:red;<img border="0" src="../images/arrow.gif" width="40" height="17"><em>Note 
+     a
+    &quot;.&quot; immediately precedes the class name</em><br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-color:#ffcccc;} <em><br>
+     </em>&nbsp; .greenfont { color: green;<br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; background-color:#ccffcc;}&nbsp;<em>&nbsp;</em><br>
+     -->&lt;/STYLE>&nbsp;<br>
+     &lt;/HEAD>&nbsp;
+</div>
+<ul>
+   <li><a name="7"></a>If you would like to have a section with a red font and a section with a green font, but wish to use the
+   <code>&lt;p&gt;</code> tag for both, you can!<code> <br>
+     &lt;p class=&quot;redfont&quot;&gt;I am red, &amp; I'm important&lt;/p&gt;&nbsp;<br>
+     &lt;p class=&quot;greenfont&quot;&gt;I am green, so there&lt;/p&gt;<br>
+    </code>
+   Note: No &quot;.&quot; when the class name is used!
+
+   <li>This gives:&nbsp;  
+
+     <p class="redfont">I am red, &amp; I'm important</p>
+     <p class="greenfont">I am green, so there</p>
+   </li>
+   <li>There are some built in pseudo-classes that you can use<ul>
+   <li>first-line</li>
+   <li>first-letter</li>
+   <li>The class below &quot;changes&quot; the first letter of any text object it is used 
+   with<p><code>.fl:first-letter { text-transform: uppercase; color:gray; 
+   font-size:2em}<br>
+   &lt;p class=&quot;fl&quot;&gt;These allow ....</code></li>
+</ul>
+
+<p class=fl>These allow you to define special behavior for the first character in a 
+paragraph or a list ... </p>
+   </li>
+</ul>
+
+<hr>
+
+
+<h1><span>Container Elements</span></h1>
+
+<ul>
+  <li>There are 2 different types of container elements that you can also use to 
+  format your HTML: 
+
+<ul>
+  <li><code>&lt;DIV&gt;</code> : A BOX containing text.&nbsp; There is always a 
+  line break before the start of a <code>&lt;DIV&gt;</code> and after the closing
+  <code>&lt;/DIV&gt;</code>.&nbsp; The BOX below the next bullet is an example of a 
+  &lt;DIV&gt; container.</li>
+  <li><code>&lt;SPAN&gt;</code> A division in a page. It won't break to the next 
+  line after you close the tag.&nbsp; The <code>&lt;DIV&gt;</code> box below declares 
+  a style for
+     the <code> &lt;SPAN></code> tag.</li>
+</ul>
+
+  </li>
+</ul>
+
+<div><a name="5"></a>&lt;HEAD>&nbsp;<br>
+     &lt;STYLE typ=&quot;text/css&quot;><br>
+     &lt;!--&nbsp;&nbsp; <br>
+     SPAN { color:red;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>Set
+  text color to red for a span</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-style:italic;&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="17"><em>Add
+  italics&nbsp;<br>
+  &nbsp;</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-size: 1.5em;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="17"><em>font
+  1.5*surrounding size&nbsp;</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+  // -->&nbsp;<br>
+     &lt;/STYLE>&nbsp;<br>
+    &lt;/HEAD>&nbsp;
+</div>
+<ul>
+  <li>The following HTML in the body of the document:</li>
+</ul>
+<blockquote>
+<p>
+<code>&lt;SPAN&gt;Red &amp; italic 1,&lt;/SPAN> not anything<br>
+     &lt;SPAN&gt;Red and italic too!&lt;/SPAN>&nbsp;</code> </p>
+</blockquote>
+<ul>
+  <li>Yields:<font size=5> </font><font size=3><span class=span><br>
+  Red and italic 1,</span> not anything <span class=span>Red and italic too!</span></font> 
+  </li>
+</ul>
+
+
+<hr>
+
+<h2><span>                                <a name="17"></a>                                
+Box Properties</span></h2>
+<ul>
+  <li>Box properties allow the properties of HTML box elements to be set.&nbsp;
+    These elements include <code>&lt;DIV&gt;</code>, <code>&lt;TABLE&gt;</code>,
+    <code>&lt;IMG&gt;</code> etc.</li>
+  <li>The primary Box Properties are <code>width</code> and <code>height</code>
+    which allow you to set the dimensions of the box element in either pixels or
+    as a percent of the available space.
+  </li>
+  <li><a name="18"></a>The appearance of the borders on the box can also be changed
+    using (or just <code>border:</code>):
+    <ul>
+      <li><code>border-style:</code> none,
+     solid, double, dotted, dashed, ridge, inset, outset, and groove.&nbsp;</li>
+      <li><code>
+     border-width:</code> number of pixels, thin, medium, thick</li>
+      <li><code>border-color:</code> color name or hex-number</li>
+      <li><code>border: style width color</code> Which sets all 3 properties at 
+      once.</li>
+    </ul>
+  </li>
+  <li>The style sheet defined for this page (<a href="../main.css">main.css</a>) has the following
+    border properties set for the <code> &lt;DIV&gt;</code> element.&nbsp; The 
+  colors are set in the <a href="../styles/main_blue.css">main_blue.css</a> file 
+  which is <code>@imported</code> into <code>main.css</code>:</li>
+</ul>
+<div>div   { font-family: Courier New, Courier, monospace; 
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-weight: bold; 
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font-size: .83em; 
+        <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text-align: left; 
+        <br>
+  <font SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; border-style: solid; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; border-width: thin; </font>&nbsp;}
+
+</div>
+<ul>
+  <li><a name="19"></a>The margins around the outside of the box and the padding between the text
+    and the inside of the box can be set using:
+    <ul>
+      <li>
+     margin-left,
+     margin-right,
+     margin-top &amp; margin-bottom</li>
+      <li>padding-left, padding-right, padding-top &amp; padding-bottom</li>
+      <li>Possible Values are the number in pixels, a percentage or auto</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+
+<h1>In Class</h1>
+
+<ul>
+  <li>
+Create an CSS document that create special styles for the following tags:
+&lt;p&gt;, &lt;li&gt;, &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;a&gt;
+    and &lt;a:hover&gt;</li>
+  <li>Set Font, Text and Color properties. Each element may some or all of the
+    types of properties set.</li>
+  <li>Apply the external style sheet to the simple html document:
+  <a href="demo/sample.html">sample.html</a>.&nbsp;</li>
+</ul>
+<hr><script language="JavaScript">writeFooter(3);</script>
+
+<h1><a name="9"></a>Forms</h1>
+<ul>
+  <li>Web forms are used either to return information to a Web server for some
+    action or to submit information to a local client function (JavaScript or
+    VBScript).</li>
+  <li>The form starts with a <code>&lt;form&gt;</code> tag and ends with <code>&lt;/form&gt;</code>.
+    Here's what it looks like:</li>
+</ul>
+<blockquote>
+  <p class="code"><code>&lt;FORM NAME=&quot;frmInput&quot; METHOD=&quot;POST&quot;
+  ACTION=&quot;MAILTO:me@myserver.com&quot;&gt;&nbsp;</code></p>
+</blockquote>
+<ul>
+  <li><a name="10"></a>The <code>NAME </code>attribute specifies the forms internal identifier
+    within the Web page (It is similar to the NAME property in Visual Basic).</li>
+  <li>The <code>ACTION</code>  attribute indicates the action taken when the
+    form is completed.&nbsp; In this case<code> &quot;MAILTO:me@myserver.com&quot;</code> denotes
+    this is a mailable form and the data is sent to <code>me@myserver.com</code>.</li>
+  <li>Forms can have <code>METHOD=&quot;POST&quot;</code>  or <code>METHOD=&quot;GET&quot;
+    </code>attributes.&nbsp; Some form processing programs are designed to work 
+  with post, some work with get &amp; some work with both.&nbsp; The <code>method</code> 
+  is interpreted by <code>HTTP</code> and controls how the data is returned to the 
+  server based program. 
+<ul>
+  <li><code>POST</code> writes the data back to the server after an initial 
+  connection is established. Essentially the browser begins talking to the Web 
+  URL (specified in action) and then sends the data.</li>
+  <li><code>GET</code> uses URL rewriting so the data is sent at the same time 
+  the connection to the page is established. With <code>get</code> you will see the form data displayed in the URL 
+  as parameters for the page that is returned:</li>
+</ul>
+  <p>
+  <code>&lt;FORM NAME=&quot;frmInput2&quot; METHOD=&quot;Get&quot;
+  ACTION=&quot;http://carbon.cudenver.edu/~dgregg/ismg4800/readform.php&quot;&gt;<br>
+  &nbsp;
+  &lt;input type=&quot;text&quot; name=myname value=&quot;dawn&quot;&gt;<br>
+  &nbsp;
+  &lt;input type=submit&gt;<br>
+  &lt;/form&gt;</code><br>
+  </p>
+  <FORM NAME="frmInput2" METHOD="Get" ACTION="http://carbon.cudenver.edu/~dgregg/ismg4800/readform.php">
+   <input type="text" name=myname value="dawn" size="20">
+   <input type=submit>
+  </form>
+  </li>
+</ul>
+<blockquote>
+  <p>Sends this URL:<code><span style="font-size: 0.9em"><br>
+  http://carbon.cudenver.edu/~dgregg/ismg4800/readform.php?myname=dawn</span></code></p>
+</blockquote>
+<hr>
+<h2><span><a name="11"></a>Form Elements</span></h2>
+<form method="post" onsubmit="getData(this)" name="frmExamples">
+<table border="1" cellspacing="1" class="largeT">
+  <tr>
+    <th width="65%">Tag</th>
+    <th>Description</th>
+    <th>Appearance<br>
+      in Form</th>
+  </tr>
+  <tr>
+    <td><code>&lt;INPUT TYPE=&quot;text&quot;&nbsp;NAME=&quot;txt1&quot;
+      SIZE=&quot;10&quot;&gt;</code></td>
+    <td>Single line textbox&nbsp;</td>
+    <td><INPUT TYPE="text" NAME="txt1" SIZE="10" onblur="checkInput(this)"></td>
+  </tr>
+  <tr>
+    <td><code>&lt;TEXTAREA NAME=&quot;txtInfo&quot;&nbsp;ROWS=2 COLS=8&gt; &lt;/TEXTAREA&gt;&nbsp;</code></td>
+    <td>Scrollable text input area</td>
+    <td><TEXTAREA NAME="txt2" ROWS=2 COLS=8></TEXTAREA></td>
+  </tr>
+  <tr>
+    <td><code>&lt;INPUT TYPE=&quot;hidden&quot;&nbsp;NAME=&quot;txtH&quot; VALUE=&quot;t&quot;&gt;</code></td>
+    <td>Hidden textbox (not displayed).&nbsp;</td>
+    <td><INPUT TYPE="hidden" NAME="txth1" VALUE="text"></td>
+  </tr>
+  <tr>
+    <td><code>&lt;INPUT TYPE=&quot;password&quot; NAME=&quot;txtPW&quot; SIZE=&quot;10&quot;&gt;</code></td>
+    <td>Password input box&nbsp;</td>
+    <td><INPUT TYPE="password" NAME="txtPass" size=10 name="1" ></td>
+  </tr>
+  <tr>
+    <td><code><a name="12"></a>&lt;INPUT TYPE=&quot;radio&quot; CHECKED&nbsp;NAME=&quot;optGd&quot;
+      VALUE=&quot;A&quot;&gt;<br>
+      &lt;INPUT TYPE=&quot;radio&quot;&nbsp;NAME=&quot;optGd&quot;
+      VALUE=&quot;B&quot;&gt;</code></td>
+    <td>Radio button (only 1 is ON at a time)</td>
+    <td><INPUT TYPE="radio" CHECKED NAME="r3" VALUE="A">
+    <br><INPUT TYPE="radio" NAME="r3" VALUE="B"></td>
+  </tr>
+  <tr>
+    <td><code>&lt;INPUT TYPE=&quot;checkbox&quot;&nbsp;NAME=&quot;chkPt1&quot;
+      VALUE=&quot;1&quot;&gt;<br>
+      &lt;INPUT TYPE=&quot;checkbox&quot;&nbsp;NAME=&quot;chkPt2&quot;
+      VALUE=&quot;2&quot;&gt;</code></td>
+    <td>Checkbox (more than one can be ON)</td>
+    <td><INPUT TYPE="checkbox" NAME="chkPts1" VALUE="10"><br>
+         <INPUT TYPE="checkbox" NAME="chkPts" VALUE="20">
+         </td>
+  </tr>
+  <tr>
+    <td><code>&lt;SELECT NAME=&quot;lstJunk&quot;&nbsp;SIZE=2&gt;<br>
+      &nbsp; &lt;OPTION&gt;Choice 1<br>
+      &nbsp; &lt;OPTION&gt;Choice 2<br>
+      &lt;/SELECT&gt;</code></td>
+    <td>Pull down list</td>
+    <td><SELECT NAME="lstChoice" size="2">
+        <OPTION>Choice 1
+        <OPTION>Choice 2
+        </SELECT></td>
+  </tr>
+  <tr>
+    <td><code><a name="13"></a>&lt;INPUT TYPE=&quot;button&quot;&nbsp;NAME=&quot;cmdCalc&quot;&nbsp;VALUE=&quot;Calculate&quot;&gt;</code></td>
+    <td>Command Button</td>
+    <td><INPUT TYPE="button" NAME="cmdCalc" VALUE="Calculate"></td>
+  </tr>
+  <tr>
+    <td><code>&lt;INPUT TYPE=&quot;submit&quot;&nbsp;VALUE=&quot;Submit&quot;&gt;</code></td>
+    <td>Button to submit form</td>
+    <td><INPUT TYPE="submit" value="Submit"></td>
+  </tr>
+  <tr>
+    <td><code>&lt;INPUT TYPE=&quot;reset&quot;&gt;</code></td>
+    <td>Button to reset form</td>
+    <td><INPUT TYPE="reset"></td>
+  </tr>
+</table></form>
+<hr>
+<h2><span>Input Elements</span></h2>
+<form name=testform2>
+<ul>
+  <li>The <code>&lt;INPUT&gt;</code> tag is used to create a new Input field,
+    hidden field, password field, check box, radio button, command button, submit
+    button or reset button.
+    <ul>
+      <li><a name="14"></a>The <code>TYPE</code> attribute of the <code>&lt;INPUT&gt;</code> tag
+        determines the type of input control that is being created.</li>
+      <li>The <code>NAME</code> attribute specifies the fields internal identifier
+        within the Web Page.</li>
+      <li>The <code>VALUE</code> attribute specifies the control's current or
+        default value.&nbsp;</li>
+    </ul>
+  </li>
+  <li><code>&lt;input type=text&gt;</code>: Allows a user to whatever data they 
+  want into a text field.&nbsp; <ul>
+  <li>The maximum number of characters that can be 
+  entered in these text fields can be set using the attribute <code>maxlength</code></li>
+  <li>If an initial <code>value</code> is supplied for the text field it will 
+  appear in the form as the default value for the field.</li>
+</ul>
+  </li>
+</ul>
+  <blockquote><blockquote>
+  <code>&lt;input type=&quot;text&quot; name=&quot;name&quot; size=&quot;12&quot; maxlength=&quot;20&quot; 
+  value=&quot;ismg 4800&quot;&gt; </code><input type="text" name="name" id="firstName" size="12" maxlength="20" value="ismg 4800">
+  </blockquote></blockquote>
+<ul>
+  <li><code>&lt;input type=password&gt;</code>: is just like a text field - except 
+  that for each character typed an * appears in the text box instead of the 
+  actual letter.&nbsp; It is good for accepting passwords or credit card numbers 
+  online.&nbsp; However, they do not &quot;encrypt&quot; the text passed so by them 
+  selves, they are not secure.</li>
+  <li><code>&lt;input type=hidden&gt;</code>: Hidden text fields do not accept 
+  user input.&nbsp; Instead they are used to 
+  store data in a form but not display it in the browser.&nbsp; Hidden form 
+  elements are frequently used on multi-page forms where the information entered 
+  on the first page of the form is stored in &quot;hidden&quot; form elements so it can be 
+  submitted to the server with all of the data on the second page of the form.</li>
+</ul>
+<hr>
+<h2><span>Form Labels</span></h2>
+<ul>
+  <li>On most Web pages the label for each form element was simply written 
+  in HTML immediately prior to the form element.</li>
+  <li>For accessibility purposes, people who create forms may need to add extra 
+  markup to help screen readers translate a visually-based association of a text 
+  label (like a question or description) and its form input field into a literal 
+  association of these elements.
+  </li>
+  <li>For example: Enclose the question or description associated with a form 
+    field in a <code>&lt;label for=&quot;&quot;&gt;</code> tag. Then, add an 
+  <code>ID </code>attribute to the input field 
+    and make both the <code>ID </code>and <code>FOR</code> equal to the same value.<p><code>&lt;label for=&quot;name&quot;&gt;Your Name&lt;/label&gt;<br>
+  &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;name&quot; size=&quot;10&quot;&gt; </code>
+  </li>
+  <li>Once a label is created - if you click on it Internet Explorer will place 
+  the curser in the appropriate text box.</li>
+  <li>If the form elements are laid out correctly on a page by using tables or 
+    CSS, adding that extra markup isn't as important. What's important is that 
+    the users know what the question or description is for a form's field 
+    immediately before they're prompted to enter a response. </li>
+</ul>
+<hr>
+<h2><span>Selection Lists</span></h2>
+<ul>
+  <li>Selection lists are popular form elements. They are used either as 
+  drop-down boxes or scrollable lists.</li>
+  <li>Selection lists have a number of attributes that can be set:<ul>
+    <li><code>size</code> controls how many items are displayed in the selection list</li>
+    <li><code>multiple</code> allows you to select more than 1 item in the list.</li>
+    <li><code>selected</code> is used in the <code>&lt;option&gt;</code> tag to pre-select one item.
+    <li><code>value</code> can be set in the <code>&lt;option&gt;</code> tag - If 
+    value is set, it will be submitted when the form is submitted.&nbsp;&nbsp; 
+    Otherwise the text following the <code>&lt;option&gt;</code> tag will be 
+    submitted.</li>
+  </ul>
+  </li>
+</ul>
+<blockquote>
+<table><tr valign=top><td><code>
+    &lt;select multiple name=s1 size=?&gt;<br>
+    &nbsp;&nbsp;
+    &lt;option value=1&gt;Red<br>
+    &nbsp;&nbsp;
+    &lt;option selected value=2&gt;Green<br>
+    &nbsp;&nbsp;
+    &lt;option value=3&gt;Blue<br>
+      &lt;/select&gt;</code></td><td>
+    size=1<br>
+    no multiple<br>
+    <select name=d1 size=1>
+          <option>Red
+          <option selected>Green
+          <option>Blue
+        </select></td><td>
+    size=1<br>
+    multiple<br>
+    <select multiple name=d1b size=1>
+          <option>Red
+          <option selected>Green
+          <option>Blue
+        </select></td>
+<td>
+    size=2<br>
+    no multiple<br>
+    <select name=d2 size=2>
+          <option>Red
+          <option selected>Green
+          <option>Blue
+        </select></td>
+    <td>size=3<br>
+      multiple<br>
+    <select multiple name=d3 size=3>
+          <option>Red
+          <option selected>Green
+          <option>Blue
+        </select>
+        </td></tr>
+        </table>
+        </blockquote>
+<ul>
+  <li>In the example above - do any of the selection boxes seem poorly designed? 
+  Why?</li>
+  <li>You can also create <code>&lt;optgroup&gt;</code> to group several options in 
+  the selection list.&nbsp; However, I have never seen this feature used on the 
+  Web.</li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(4);</script>
+
+<h2><span>Radio Buttons</span></h2>
+<ul>
+  <li>The principle characteristic of radio buttons is that for a single &quot;group&quot; 
+  of radio buttons only one can be selected. </li>
+  <li>For the browser to know which radio buttons go together ALL radio buttons 
+  that go together must have the same name!</li>
+  <li>If you want one radio button to be <code>checked</code> when the form&nbsp; 
+  loads add the checked attribute to the radio button.</li>
+  <li>To create a set of radio buttons to input a grade use the following HTML tags:</li>
+  </ul>
+  <center>
+  <table><tr><td>
+  <code>A&lt;input type=radio name=grade value=A&gt;&lt;br&gt;<br>
+  B&lt;input type=radio name=grade value=B&gt;&lt;br&gt;<br>
+  C&lt;input type=radio name=grade value=C checked&gt;&lt;br&gt; <br>
+  D&lt;input type=radio name=grade value=D&gt;&lt;br&gt; <br>
+  F&lt;input type=radio name=grade value=F&gt;</code>
+  <code>&lt;br&gt;</code></td><td>
+  A<input type=radio name=grade value=A><br>
+  B<input type=radio name=grade value=B><br>
+  C<input type=radio name=grade value=C checked><br>
+  D<input type=radio name=grade value=D><br>
+  F<input type=radio name=grade value=F>
+</td>
+  </tr>
+  </table>
+  </center>
+  <ul>
+  <li>You can display the radio buttons in a &quot;group box&quot;</li>
+</ul>
+<blockquote>
+  <table><tr><td>
+  <code>&lt;fieldset&gt;<br>
+&nbsp;&lt;legend align=top&gt;Grades&lt;/legend&gt;<br>
+&nbsp;A&lt;input type=radio name=gr2 value=A&gt;&lt;br&gt;<br>
+  ...<br>
+  &lt;/fieldset&gt;</code></td><td>
+  <fieldset>
+ <legend align=top>Grades</legend>
+  A<input type=radio name=grade1 value=A> <br>
+  B<input type=radio name=grade1 value=B> <br>
+  C<input type=radio name=grade1 value=C checked> <br>
+  D<input type=radio name=grade1 value=D> <br>
+  F<input type=radio name=grade1 value=F>
+  </fieldset>
+</td>
+  </tr>
+  </table>
+  </blockquote>
+<ul>
+  <li>Checkboxes are identical to radio buttons - except since more than one can 
+  be checked they do not have the same names.</li>
+</ul>
+<hr>
+<h2><span>Text Areas&nbsp;</span></h2>
+<ul>
+  <li>Text areas are multi-line form elements, frequently used for capturing 
+  comments or displaying output from client side programs.</li>
+  <li>The generic form for a TEXTAREA is:<br>
+  <code>&lt;textarea name=comment rows=5 cols=80&gt;&lt;/textarea&gt;<br>
+  </code>Where rows is the number of lines of text you want displayed and cols 
+  represents the number of characters per line.</li>
+  <li>If you want default text to appear in the text area - just enter the text 
+  between the opening <code>&lt;textarea&gt;</code> tag and the closing <code>&lt;/textarea&gt;</code> 
+  tag.</li>
+  <li>You can also control whether or not the text area automatically wraps the 
+  text input by setting the <code>wrap</code> attribute to on (default), <code>
+  off</code>, <code>soft</code> or <code>hard</code>.</li>
+</ul>
+<hr>
+<h2><span>Form Buttons&nbsp;</span></h2>
+<ul>
+  <li>There are 4 types of buttons that can appear on a form.</li>
+  <li><code>&lt;input type=button&gt;</code> does nothing unless a client side script 
+  is written to cause it to do something when it is &quot;clicked&quot;.</li>
+  <li><code>&lt;input type=submit&gt;</code> is a special button that submits the form 
+  somewhere for processing.<ul>
+    <li>The form can be mailed to an email address, sent to a CGI program, sent 
+    to a JavaServerPage, to ASP, to PHP, to Perl, to Python etc...</li>
+    <li>The form is sent to the location specified in the action attribute of 
+    the <code>&lt;form&gt;</code> tag.<br>
+    <code>&lt;form method=get action=&quot;mailto:dawn.gregg@cudenver.edu&quot;&gt;</code> would 
+    send the form to me via email.</li>
+  </ul>
+  </li>
+  <li><code>&lt;input type=reset&gt;</code> just resets all of the values in the form 
+  to their default values.</li>
+  <li><code>&lt;input type=file name=filename&gt;</code> creates a button that opens a file dialog 
+  box that allows a user to browse for a file name on the local computer:<br>
+<input type=file size="20"></li>
+  <li>If you specify a <code>value=???</code> for any of the above button types - that 
+  value will be the label shown on the button.</li>
+  <li>You can also create &quot;Custom&quot; submit, reset and button buttons by using the 
+  <table><tr>
+  <td>&lt;button&gt; tag instead of the &lt;input&gt; tag:<br>
+      &lt;button name=gobutton type=submit&gt;<code><br>
+      &nbsp;&nbsp; &lt;img src=../images/go-button.gif&gt;<br>
+      &nbsp;&nbsp; Search This Site<br>
+      &lt;/button&gt;</code></td>
+  <td>
+      <button name=gobutton type=submit>
+         <img src=../images/go-button.gif width="21" height="21">
+         Search This Site
+      </button></td></tr>
+  </table>
+
+</li>
+</ul>
+<hr>
+<h2><span>Image Buttons</span></h2>
+<ul>
+  <li>You can also use an image as the submit button on a form using the 
+  following tag:<br>
+  <code>&lt;input type=image src=../images/go-button.gif&nbsp; name=go value=go&gt;<br>
+&nbsp;</code><input type=image src=../images/go-button.gif  name=go value=go width="21" height="21"> </li>
+  <li>The x &amp; y location (in pixels) of where the button is clicked is also 
+  submitted with the form so they can be used to send image map type data back 
+  to the server.</li>
+</ul>
+</form>
+<hr>
+<h2><span>Sample Form (in a table)&nbsp;</span></h2>
+<form ACTION="mailto:person@cudenver.edu" METHOD="POST" NAME="frmRating">
+<input type="hidden" Name="txtH" value="ISM 411 Rating Form">
+  <center>
+  <table WIDTH="80%" class="largeT">
+    <tr>
+      <td><a name="15"></a>Your Name:
+      <td><input TYPE="text" NAME="txtName" SIZE="30">
+    </tr>
+    <tr>
+      <td>Email Address:
+      <td><input TYPE="text" NAME="txtEmail" SIZE="30">
+    </tr>
+    <tr>
+      <td colspan="2">Rate ISMG 4800 at CU Denver so far:
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="radio" NAME="optRate" Value="1" checked>
+      <td>Excellent!
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="radio" NAME="optRate" VALUE="2">
+      <td>Okay, I guess...
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="radio" NAME="optRate" Value="3">
+      <td>Keep your day job!
+    </tr>
+    <tr>
+      <td>Describe yourself
+      <td><select NAME="lstDesc">
+          <option>Overachiever
+          <option selected>OK Student
+          <option>Lazy Slug
+        </select>
+    </tr>
+    <tr>
+      <td colspan="2">Suggestions for improving the class?
+    </tr>
+    <tr>
+      <td align="right">
+      Shorter Lecture  <input Type="checkbox" name="chk1" value="ON">
+      <td>&nbsp; More Tutorials <input Type="checkbox" name="chk2" value=2>
+
+    </tr>
+    <tr>
+      <td align="right">Easy Assignments <input Type="checkbox" name="chk3" value=3>
+      <td>&nbsp;&nbsp;&nbsp; Longer Break <input Type="checkbox" name="chk4" value=4>
+    </tr>
+    <tr>
+      <td>Comments:
+      <td>
+    </tr>
+    <tr>
+      <td colspan="2"><textarea NAME="suggest" ROWS="5" COLS="60"></textarea>
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="submit" VALUE="Submit">
+      <td><input TYPE="Reset" VALUE="Reset">
+  </table>
+  </center>
+</form>
+<p>
+<br>
+</p>
+<div>
+  <a name="16"></a>
+  &lt;FORM ACTION=&quot;mailto:person@cudenver.edu&quot;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; METHOD=&quot;POST&quot;
+  NAME=&quot;frmRating&quot;&gt;<br>
+  &lt;input TYPE=&quot;hidden&quot; NAME=&quot;txtH&quot;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VALUE=&quot;ISMG 4800 Rating Form&quot;&gt;<br>
+  &lt;CENTER&gt;&lt;TABLE WIDTH=&quot;80%&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="20"><em>Start
+  table centered &amp;</em><br>
+  &lt;TR&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; covering 80 % of the window</em><br>
+  &nbsp; &lt;TD&gt;Your Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="20"><em>HTML
+  text labels the textbox</em><br>
+  &nbsp; &lt;TD&gt;&lt;INPUT TYPE=&quot;text&quot; NAME=&quot;txtName&quot;
+  SIZE=&quot;30&quot;&gt;<br>
+  &lt;/TR&gt;&nbsp;<br>
+  &lt;TR&gt;<br>
+  &nbsp; &lt;TD&gt;Email Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="20"><em>Another
+  textbox&nbsp;</em><br>
+  &nbsp; &lt;TD&gt;&lt;INPUT TYPE=&quot;text&quot; NAME=&quot;txtEmail&quot;
+  SIZE=&quot;30&quot;&gt;<br>
+  &lt;/TR&gt;&nbsp;<br>
+  &lt;TR&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // HTML label that spans 2 columns</em><br>
+  &nbsp; &lt;TD colspan=&quot;2&quot;&gt;Rate ISMG 4800 so far...<img border="0" src="../images/arrow.gif" width="40" height="20"><br>
+  &lt;/TR&gt;&nbsp;<br>
+  <a name="17"></a>
+  &lt;TR&gt;&nbsp; <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // A set of radio buttons with button in left column&nbsp;</em><br>
+  &nbsp; &lt;TD ALIGN=&quot;right&quot;&gt;<br>
+  &nbsp; &lt;INPUT TYPE=&quot;radio&quot;
+  NAME=&quot;optRate&quot; VALUE=&quot;1&quot;&gt;<br>
+  &nbsp; &lt;TD&gt;Excellent!<img border="0" src="../images/arrow.gif" width="40" height="20"><em>radio's&nbsp;
+  HTML label in the right column</em><br>
+  &lt;/TR&gt;<br>
+  &lt;TR&gt; <em>// All radio buttons have the same name<img border="0" src="../images/arrow_d.gif" width="26" height="26"></em><br>
+  &nbsp; &lt;TD ALIGN=&quot;right&quot;&gt;&nbsp;<br>
+  &nbsp; &lt;INPUT TYPE=&quot;radio&quot; NAME=&quot;optRate&quot;
+  VALUE=&quot;2&quot;&gt;<br>
+  &nbsp; &lt;TD&gt;Okay, I guess...<br>
+  &lt;/TR&gt;&nbsp;<br>
+  &lt;TR&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>// All radio buttons have
+  different values<img border="0" src="../images/arrow_d.gif" width="26" height="26"></em><br>
+  &nbsp; &lt;TD ALIGN=&quot;right&quot;&gt;<br>
+  &nbsp; &lt;INPUT TYPE=&quot;radio&quot;
+  NAME=&quot;optRate&quot; VALUE=&quot;3&quot;&gt;<br>
+  &nbsp; &lt;TD&gt;Keep your day job!<br>
+  &lt;/TR&gt;&nbsp;<br>
+  <a name="18"></a>
+  &lt;TR&gt;<br>
+  &nbsp; &lt;TD&gt;Describe yourself<br>
+  &nbsp; &lt;TD&gt;&lt;SELECT NAME=&quot;lstDesc&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="20"><em>Size
+  not given so</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;OPTION&gt;Overachiever&nbsp;&nbsp;&nbsp;<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Pull Down Box</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;OPTION SELECTED&gt;OK Student<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;OPTION&gt;Lazy Slug<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/SELECT&gt;&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="20"><em>End
+  Pull Down Box</em><br>
+  &lt;/TR&gt;&nbsp;<br>
+  &lt;TR&gt;<br>
+  &nbsp; &lt;TD colspan=&quot;2&quot;&gt;Suggestions for improving&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  the class?<img border="0" src="../images/arrow.gif" width="40" height="20"><em>2
+  column label</em><br>
+  &lt;/TR&gt;&nbsp;<br>
+  <a name="19"></a>
+    &lt;TR&gt;<br>
+  &nbsp; &lt;TD align="right">Shorter Lecture&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; &lt;INPUT TYPE=&quot;checkbox&quot; NAME=&quot;chk1&quot;&gt;<br>
+  &nbsp; &lt;TD&gt;More Tutorials&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; &lt;INPUT TYPE=&quot;checkbox&quot; NAME=&quot;chk2&quot;&gt;<br>
+    &lt;/TR&gt;&nbsp; <em>// checkboxes have different names</em><img border="0" src="../images/arrow_u.gif" width="30" height="29"><br>
+    &lt;tr&gt;<br>
+  &nbsp; &lt;TD align="right">Easy Assignments&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; &lt;INPUT TYPE=&quot;checkbox&quot; NAME=&quot;chk3&quot;&gt;<br>
+  &nbsp; &lt;TD&gt;Longer Break&nbsp;<br>
+  &nbsp;&nbsp;&nbsp; &lt;INPUT TYPE=&quot;checkbox&quot; NAME=&quot;chk4&quot;&gt;<br>
+  &lt;/TR&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <em>// checkboxes have no value</em><img border="0" src="../images/arrow_u.gif" width="30" height="29"><br>
+  <a name="20"></a>
+    &lt;TR&gt;<br>
+  &nbsp; &lt;TD colspan=&quot;2&quot;&gt;Comments:<br>
+    &lt;/TR&gt;<br>
+  &lt;TR&gt;<br>
+  &nbsp; &lt;TD colspan=&quot;2&quot;&gt;&lt;TEXTAREA
+  NAME=&quot;suggest&quot;<br>
+  &nbsp; ROWS=&quot;5&quot; COLS=&quot;60&quot;&gt;<br>
+  &lt;/TEXTAREA&gt;<img border="0" src="../images/arrow.gif" width="40" height="20"><em>Text
+  Area spans 2 cols &amp; 60 char wide</em><br>
+  &lt;/TR&gt;&nbsp;<br>
+  &lt;TR&gt;<br>
+  &nbsp; &lt;TD ALIGN=&quot;center&quot; colspan=&quot;2&quot;&gt;<br>
+  &nbsp; &lt;INPUT TYPE=&quot;Submit&quot;&gt; &lt;INPUT TYPE=&quot;Reset&quot;&gt;<br>
+  &lt;TR&gt; <em>// Submit
+  &amp; Reset buttons <img border="0" src="../images/arrow_u.gif" width="17" height="27"></em><br>
+  &lt;/TABLE&gt;&lt;/CENTER&gt;<img border="0" src="../images/arrow.gif" width="40" height="20"><em>End Table and centering</em><br>
+  &lt;/FORM&gt;<img border="0" src="../images/arrow.gif" width="40" height="20"><em>End
+  Form (MUST include this end tag!)</em>
+</div>
+<ul>
+  <li><a name="21"></a>When the Email is received the data will look something like this:<br>
+    <br>
+    <kbd>txtH=ISMG+4800+Rating+Form&amp;txtName=Jane+Doe&amp;<br>
+    txtEmail=jane.doe@yahoo.com&amp;optRate=1&amp;<br>
+    lstDesc=Lazy+Slug&amp;chk1=on&amp;chk4=on&amp;suggest=None</kbd>
+  </li>
+  <li>If you do not give the form elements a name then what ever is in them will
+    not be mailed!
+  </li>
+  <li>If you forget either of your form tags - the form may not be submitted 
+  when you click submit or the form elements will not be displayed by the 
+  browser (depending on the browser)!</li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(5);</script>
+
+ </BODY>
+</HTML>

@@ -1,0 +1,27 @@
+      <span>
+    <ul>
+      <li>When you send the AJAX request, you provide the name of 
+    a JavaScript function that handles the response. <br>
+      <code>&nbsp;&nbsp;&nbsp;http_request.onreadystatechange = nameOfTheFunction;</code> <br>
+      This function needs to check for the state of the request. </li>
+      <li>The full list of the <code>readyState</code> values is as follows:
+      <center>
+      <table border="0" width=50% cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" >
+        <tr valign=top><td align=left width="50%"><font size="2">0 (uninitialized)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+          1 (loading) <br>
+          2 (loaded) </font>
+          </td>
+          <td width="50%" ><span><font size="2">3 (interactive) <br>
+          4 (complete) </font>
+          </td>
+        </tr>
+      </table></center>
+      If the state has the value of 4, that means that the full server response 
+is received and it&#39;s OK for you to continue processing it.
+</li>
+    </ul>
+    <div><pre>if (http_request.readyState == 4) {
+    <dfn>// everything is good, the response is received
+    // so do something</dfn>
+} 
+</pre></div>

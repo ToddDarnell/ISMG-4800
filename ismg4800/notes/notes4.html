@@ -1,0 +1,906 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dawn Gregg">
+   <meta name="Classification" content="WWW Programming">
+   <meta name="Description" content="Introduction to JavaScript">
+   <meta name="KeyWords" content="JavaScript, Variables, Operators, Internet, WWW">
+   <title>JavaScript: Introduction</title>
+   <script language = javascript>
+      <!--
+      function quote()
+      {
+         var quotes = new Array();
+         quotes[0] = 'Form Ever Follows Function';
+         quotes[1] = 'E pluribus unum';
+         quotes[2] = 'When you call me that smile.';
+         quotes[3] = 'Good as it is to inherit a library, it is better to collect one';
+         quotes[4] = 'The test of greatness is the page of history';
+         quotes[5] = 'Let\'s look at the record';
+         quotes[6] = 'WYSIWYG';
+         quotes[7] = 'High thoughts must have high language';
+         var value = Math.floor(Math.random() * quotes.length);
+         document.write("<p><i>" + quotes[value] + "</i></p>");
+      }
+      //-->
+   </script>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated January 15, 2004<BR>Dawn G. Gregg</I><br><br>' +
+          '<i>Portions of this Lecture were obtained from:</i><br>' +
+          'EchoEcho.Com Tutorials: <i><a href="http://www.echoecho.com/javascript.htm">http://www.echoecho.com/javascript.htm</a> <br>'+
+          'Internet &amp; World Wide Web: How to Program 2e</i> by Deitel, Deitel and Nieto, Upper Saddle River, NJ: Prentice Hall, 2002</p>';
+   </script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<h1>Introduction to JavaScript</h1>
+<h2><span>What is JavaScript?</span></h2>
+<ul>
+  <li>It is an object-based scripting language developed by Netscape to add 
+  interactivity and power to Web documents. </li>
+  <li>It is interpreted by the Web browser when the Web Page is downloaded or 
+  when another event occurs. </li>
+  <li>JavaScript can be used to create dynamic effects (live clocks, rollover 
+  effects, form validations, etc.) or fully functional &quot;Client side&quot; programs 
+  (Programs that run on the end-user's computer). </li>
+</ul>
+<hr>
+<h2><span>Why learn JavaScript?</span></h2>
+<ul>
+  <li>With HTML, you are restricted to creating static, non interactive Web 
+  pages. This, in today's Internet standards, is unacceptable. </li>
+  <li>With JavaScript, you can create interactive Web pages. </li>
+  <li>JavaScript differs from most other programming languages in that it is 
+  relatively easy to master, even for people who have no programming experience.
+  </li>
+</ul>
+<hr>
+<h2><span>What's the difference between Java &amp; JavaScript?</span></h2>
+<ul>
+  <li>Java, C++, C and JavaScript have some basic syntax in common (like <code>
+  if</code> statements, <code>for</code> loops etc.). </li>
+  <li>However, Java is completely different from JavaScript
+  <ul>
+    <li>It's a lot more powerful, more complex, and unfortunately, a lot harder 
+    to master. </li>
+    <li>It allows you to create more complex Objects (Object-oriented vs. 
+    Object-based). </li>
+    <li>You need to compile Java programs before you can run them. In 
+    JavaScript, no compilation is needed. Open a text editor, type the code, 
+    save it, and your browser can run it! </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Can JavaScript programs run on Netscape &amp; Internet Explorer browsers?</span></h2>
+<ul>
+  <li>Unfortunately, not necessarily. JavaScript&nbsp; was created by Netscape, and 
+  JScript was created by Microsoft (they are both referred to as &quot;JavaScript&quot;).
+  </li>
+  <li>They are very similar but things can run differently in different 
+  browsers. </li>
+  <li>A good rule to follow is to always test your codes using both browsers 
+  before uploading it onto the Internet. </li>
+</ul>
+<hr>
+<h1>Defining JavaScripts</h1>
+<ul>
+  <li>Every script begins with an opening <code>&lt;SCRIPT&gt;</code> tag to indicate 
+  to the browser that the text that follows is part of a script. </li>
+  <li>The language attribute specifies the scripting language: <code>&lt;SCRIPT 
+  LANGUAGE=&quot;JavaScript&quot;&gt;</code>
+  <ul>
+    <li>Both JScript &amp; JavaScript are referred to as &quot;JavaScript&quot;. </li>
+  </ul>
+  </li>
+  <li>Each script ends with a closing script tag:&nbsp;<code>&nbsp;&lt;/script&gt;</code> </li>
+  <li>Often the code between the opening and closing script tags is &quot;hidden&quot; 
+  inside HTML comments: <code>&lt;!-- ~ code ~ //--&gt;</code>. This keeps the code 
+  from being displayed in browsers that do not support JavaScript. </li>
+  <li>Scripts can be defined either in the HTML document header or within the 
+  body of the HTML document. </li>
+</ul>
+<h3>For Example: </h3>
+<div style="border-left-width: 10px ;	border-color: #3a3e49;">
+  &lt;html&gt; <br>
+  &lt;head&gt; <br>
+  &lt;title&gt;Sample JavaScript&lt;/title&gt; <br>
+  &lt;script language=&quot;JavaScript&quot;&gt;<br>
+  &nbsp;&nbsp; &lt;!-- Hides script from non JavaScript browsers <br>
+  &nbsp;&nbsp; document.writeln('&lt;h1&gt;Welcome to ISMG 4800&lt;/h1&gt;'); <br>
+  &nbsp;&nbsp; // --&gt; end hiding<br>
+  &lt;/script&gt; <br>
+  &lt;/head&gt; <br>
+  &lt;body&gt;&lt;/body&gt; <br>
+  &lt;/html&gt;
+</div>
+<center>
+<table border="1">
+  <tr>
+    <td><a href="demo/welcome.html">Try this Script</a></td>
+  </tr>
+</table>
+</center>
+
+<hr><script language="JavaScript">writeFooter(0);</script>
+
+<h1>Variables</h1>
+<ul>
+  <li>A Variable is an Identifier that refers to a chunk of computer memory.
+  </li>
+  <li>Variable names can only consist of letters, numbers, and the underscore ( 
+  _ ) and must begin with a letter (x3 is a valid name but not 3x). </li>
+  <li><em>JavaScript is case sensitive</em>: Upper and lower case characters are
+  <i>different </i>(Total, total and TOTAL are considered to be three different 
+  variables). </li>
+  <li>JavaScript keywords are words that have special meaning in the JavaScript 
+  language. You should <b><i>not </i></b>use them as variable names.&nbsp; </li>
+  <li>Variables need to be declared before they can be used. </li>
+  <li>All variables are declared using the <code>var</code> command. </li>
+  <li>Variables may be given an initial value when they are declared (This is 
+  called <i>initializing the variable</i>). </li>
+  <li>General form:<font face="Arial">
+  <blockquote>
+    <blockquote>
+      <i>
+      <p><code>var variable [ = initialization];</code></p>
+    </blockquote>
+  </blockquote>
+  </i></font>
+  <ul>
+    <ul>
+      <p><code>var number1, number2;</code> <br>
+      <code>var string2 = &quot;cow&quot;;</code></p>
+    </ul>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h1>Operators</h1>
+<ul>
+  <li>Arithmetic: <code>+</code>,<code> -</code>,<code> *</code>,<code> /</code>,<code>
+  </code>and <code>%</code>
+  <ul>
+    <li>Examples of arithmetic expressions: <br>
+    <code>&nbsp;&nbsp;&nbsp; 3 + 7</code> (evaluates to 10)<br>
+    <code>&nbsp;&nbsp;&nbsp; 2.5 + 7.5</code> (evaluates to 10.0)<br>
+    <code>&nbsp;&nbsp;&nbsp; 12.6 / 2</code> (evaluates to 6.3)<br>
+    <code>&nbsp;&nbsp;&nbsp; 17 % 3</code> (evaluates to 2, the remainder after 17 is divided 
+    by 3)<br>
+    <code>&nbsp;&nbsp;&nbsp; &quot;A&quot; + &quot;BC&quot;</code> (evaluates to &quot;ABC&quot;)<br>
+&nbsp;</li>
+  </ul>
+  </li>
+  <li>Relational: <code>&lt;</code>,<code> &lt;=</code>,<code> &gt;</code>,<code> &gt;=</code>,<code> 
+  ==</code>, and<code> !=</code>
+  <ul>
+    <li>A relational expression, such as <code>a == 10</code>, evaluates to 0 or 
+    1 depending on the whether it is FALSE or TRUE. </li>
+    <li>Equivalency versus assignment... </li>
+  </ul>
+  </li>
+  <li>Logical: <code>!</code>,<code> &amp;&amp; </code>and<code> ||</code>
+  <ul>
+    <li>The negation operator ! changes an expression's value from zero to 
+    non-zero or vice-versa. </li>
+    <li>Boolean names may be defined using symbolic constants <code>&amp;&amp;</code> 
+    and<code> ||</code> </li>
+    <li>Logical operators combine logical expressions.&nbsp; Evaluation stops as soon 
+    as the truth-value is determined </li>
+  </ul>
+  </li>
+  <li>Increment and Decrement: <code>++ </code>and<code> --</code>
+  <ul>
+    <li>Pre- and post-increment (decrement) operators perform the operation 
+    before (after) use. </li>
+    <li><code>a++ </code>is the same as<code> a = a + 1</code> </li>
+  </ul>
+  </li>
+  <li>Assignment:&nbsp; <code>=, +=, -=, *=, /=</code>&nbsp; and&nbsp; <code>%=</code>
+  <ul>
+    <li><code>a+=5 </code>is the same as<code> a = a + 5</code> </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Precedence</span></h2>
+<center>
+<table class="largeT" border="1">
+  <tr>
+    <th>Operators</th>
+    <th>Associativity</th>
+    <th>Type</th>
+  </tr>
+  <tr>
+    <td><code>()&nbsp;</code></td>
+    <td>left to right</td>
+    <td>parentheses</td>
+  </tr>
+  <tr>
+    <td><code>*&nbsp; /&nbsp; %</code></td>
+    <td>left to right</td>
+    <td>multiplicitive</td>
+  </tr>
+  <tr>
+    <td><code>+&nbsp; -&nbsp;</code></td>
+    <td>left to right</td>
+    <td>additive</td>
+  </tr>
+  <tr>
+    <td><code>&lt; &lt;= &gt; &gt;=&nbsp;</code></td>
+    <td>left to right</td>
+    <td>relational</td>
+  </tr>
+  <tr>
+    <td><code>==&nbsp;&nbsp; !=&nbsp;</code></td>
+    <td>left to right</td>
+    <td>equality</td>
+  </tr>
+  <tr>
+    <td><code>= += -=&nbsp; *= /= %=&nbsp;</code></td>
+    <td>right to left</td>
+    <td>assignment</td>
+  </tr>
+</table>
+</center><hr>
+<h2><span>Example: + (Addition and String Concatenation!)</span></h2>
+<ul>
+  <li>The <code>+</code> operator is an addition operator when both of its 
+  operands are numbers. It is a concatenation operator when one of its operands 
+  is a string.&nbsp; </li>
+  <li>Every expression including a string operand yields a string.&nbsp; </li>
+  <li>JavaScript's interpreter evaluates expressions from left to right, and 
+  only parentheses can change the order of evaluation. </li>
+</ul>
+<div>
+  8 + 8 <font color="#008000">// 16</font>&nbsp;<br>
+  &quot;8&quot; + 8 <font color="#008000">// &quot;88&quot;</font>&nbsp;<br>
+  8 + &quot;8&quot; <font color="#008000">// &quot;88&quot;&nbsp;</font><br>
+  &quot;8&quot; + &quot;8&quot; <font color="#008000">// &quot;88&quot;&nbsp;</font><br>
+  8 + 8 + &quot;8&quot; <font color="#008000">// &quot;168&quot;&nbsp;</font><br>
+  &quot;8&quot; + 8 + 8 <font color="#008000">// &quot;888&quot;<img height="21" src="../images/arrow.gif" width="40" border="0"><em>Why 
+  is it not 816??</em></font>
+</div>
+<ul>
+  <li>What would the following code output (a=5 &amp; b=10)? </li>
+  <li><code>document.write('a + b');&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ______</code> </li>
+  <li><code>document.write(a + b);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ______</code> </li>
+  <li><code>document.write('a' + b);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;______</code> </li>
+  <li><code>document.write('a+b = ' + a+b);&nbsp;&nbsp; ______</code> </li>
+  <li><code>document.write('a+b = ' + (a+b)); ______</code> </li>
+</ul>
+<hr><script language="JavaScript">writeFooter(1);</script>
+
+<h1><span>
+<a NAME="10"></a>On-the-fly text</span></h1>
+<ul>
+<li>
+Text inside a HTML document is static (the same every time you reload the 
+document)</li>
+
+<li>JavaScript allows you to generate text on the fly. You could, for example, 
+have the document greet you &quot;Good morning&quot; in the morning, and &quot;Good night&quot; at 
+night.</li>
+
+
+<li>
+The basic way to write out text in JavaScript is by using the <code>
+document.write()</code>, or the <code> document.writeln()</code> methods, as 
+follows:</li>
+</ul>
+
+<div>
+<a NAME="11"></a>&lt;script language=&quot;JavaScript&quot;&gt;
+<br>&nbsp;&nbsp;&nbsp; document.write('&lt;h3&gt;&lt;font color=&quot;magenta&quot;&gt;');
+<br>&nbsp;&nbsp;&nbsp; document.write('Some text to be displayed');
+<br>&nbsp;&nbsp;&nbsp; document.writeln('etc...&lt;/font&gt;&lt;/h3&gt;');
+<br>&lt;/script&gt;
+</div>
+
+<center><table BORDER >
+<tr>
+<td><script language="JavaScript"> 
+    document.write('<h3><font color="magenta">'); 
+    document.write('Some text to be displayed '); 
+    document.writeln('etc...</font></h3>'); 
+</script>
+</td>
+</tr>
+</table></center>
+
+<ul>
+<li>
+The <code> document.write()</code> method writes what is in the parentheses 
+directly to the screen.</li>
+
+
+<li>
+The <code> document.writeln()</code> method adds a new line at the end of the 
+statement (in HTML code not in displayed document).</li>
+
+
+<li>
+<a NAME="12"></a>You can create script that writes out the current date:</li>
+</ul>
+
+<div>
+&lt;script language=&quot;JavaScript&quot;&gt;
+<br>&nbsp; var today=new Date()
+<br>&nbsp; document.write('&lt;h2&gt;'+ today +'&lt;/h2&gt;')
+<br>&lt;/script&gt;
+</div>
+<center><table border=1>
+<tr>
+<td>
+<script language="JavaScript">
+   var today=new Date()
+   document.write('<h2><span>'+today+'</span></h2>')
+</script>&nbsp;</td>
+</tr>
+</table></center>
+
+<ul>
+<li>
+The text&nbsp; reflects the date and time your page was downloaded is updated 
+automatically whenever you refresh your page.</li>
+</ul>
+
+<hr>
+<h1>JavaScript: Dialog Boxes</h1>
+<ul>
+  <li>JavaScript dialog boxes are &quot;pop-up&quot; boxes that can be used to display a 
+  message, ask for confirmation, user input etc. </li>
+</ul>
+<ul>
+  <li>The three basic types of dialog boxes in JavaScript are: alert, confirm, 
+  and prompt: </li>
+</ul>
+<p><a href="" onclick="alert('Welcome to ISMG 4800');">Alert</a> </p>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt; <br>
+  &nbsp;&nbsp; alert('Welcome to ISMG 4800'); <br>
+  &lt;/script&gt;
+</div>
+<p><a href="http://cnn.com" onclick="return confirm('Go to CNN?');">Confirm</a> </p>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt; <br>
+  &nbsp; var answ=confirm('Go to CNN?'); <br>
+  &nbsp; if (answ) <br>
+  &nbsp;&nbsp;&nbsp; location='http://cnn.com'; <br>
+  &lt;/script&gt;
+</div>
+<p><a href="" onclick="alert('Hello ' + prompt('Enter name'));">Prompt</a> </p>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt; <br>
+  &nbsp; var answ = prompt('Enter name'); <br>
+  &nbsp; alert('Hello ' + answ); <br>
+  &lt;/script&gt;
+</div>
+<hr>
+<h1>External JavaScript Files</h1>
+<ul>
+  <li>External JavaScript files allow the use of JavaScript code in many pages 
+  at once.&nbsp; </li>
+  <li>External JavaScript files are TEXT files ending with the <code>.js</code> 
+  extension.&nbsp;They contain multiple JavaScript Functions (next week we do 
+  functions) that can be called from any page that references them.&nbsp;&nbsp; </li>
+  <li>To link to an external JavaScript file, you need to add a script tag that 
+  links to the external file inside the head section of your html document:&nbsp; <br>
+  <code>&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot; SRC=&quot;../scripts/sample.js&quot;&gt;&lt;/script&gt;</code>
+  </li>
+  <li>The following was saved in a file <a href="../scripts/sample.js">sample.js</a> 
+  and linked to in a <b>file <a href="demo/testJS.html">testJS.html</a>. </b>
+  </li>
+</ul>
+<div>
+  loaded = true;<br>
+  <br>
+  var answ=prompt(&quot;Enter your name&quot;);<br>
+  document.writeln(&quot;&lt;p&gt;Hello &quot;+answ);
+</div>
+<hr>
+<h1>In Class</h1>
+<ul>
+  <li>Create an HTML document that displays a message when the page loads. </li>
+  <li>The page should also use a prompt box to get the user's name and then use 
+  the person's name in the document: </li>
+</ul>
+<blockquote>
+  <p>Welcome to my Web page Jane Doe!</p>
+</blockquote>
+<hr><script language="JavaScript">writeFooter(2);</script>
+
+<h1>JavaScript: Statements </h1>
+<ul>
+  <li>JavaScript statements should end in a <code>;</code>. </li>
+  <li>A statement is any&nbsp; &quot;complete sentence&quot; of JavaScript code, that causes 
+  some program action to occur. </li>
+  <li><code>var dog;&nbsp;&nbsp;&nbsp; <dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // a variable declaration</dfn></code> </li>
+  <li><code>dog = prompt('Enter an Integer', '0'); <dfn>// initialization</dfn></code>
+  </li>
+  <li><code>parseInt(dog); <dfn>&nbsp;&nbsp;&nbsp;&nbsp; // a function call</dfn></code> </li>
+</ul>
+<p>&nbsp; </p>
+<hr>
+<h1>JavaScript: Control Structures </h1>
+<ul>
+  <li>Branching or&nbsp; </li>
+  <li>Selection Repetition/Iteration </li>
+</ul>
+<hr>
+<h2><span>Selection: &quot;if&quot; Statement</span></h2>
+<p>&nbsp; </p>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt;&nbsp; <br>
+  &nbsp; var temp=prompt('Enter a temperature'); <br>
+  &nbsp; <dfn>if</dfn> (temp &lt; 35)&nbsp; <br>
+  &nbsp;&nbsp;{&nbsp; document.write('&lt;h1&gt;It's cold!&lt;/h1&gt;'); }<br>
+  &lt;/script&gt;
+</div>
+<center>
+<table cellSpacing="1" border="1">
+  <tr>
+    <td vAlign="center"><a href="demo/temp.html">Test temp.html</a></td>
+  </tr>
+</table>
+</center>
+<ul>
+  <li>If the <i>expression </i>in the parenthesis is true, the statements inside 
+  the brackets will be executed. If the expression is not true, the code will be 
+  skipped. </li>
+  <li>If there is more than one line to be executed in the code block, that code
+  <i>must</i> be enclosed in brackets <code>{&nbsp;&nbsp;&nbsp; }</code>.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (See example 
+  below) </li>
+</ul>
+<hr>
+<h2><span>Selection: Nested if , if/else and if/else if Statements</span></h2>
+<ul>
+  <li><code>if </code>statements can be written within other if statements, 
+  which are called <i>nested</i> if statements: </li>
+</ul>
+<ul>
+  <li><code>if-else</code> statements are used when two blocks of code could 
+  potentially be executed – the first block if <i>expressionA</i> is <i>
+  <font color="#0000ff">true</font></i>, and the second block if <i>expressionA</i> 
+  is <em>false</em>. </li>
+  <li><code>if-else if </code>statements are used when multiple blocks of code 
+  could potentially be executed – the first block if <i>expressionA</i> is <i>
+  <font color="#0000ff">true</font></i>, and the second block if <i>expressionB</i> 
+  is <i><font color="#0000ff">true</font></i>, etc. and the else block if all 
+  the expressions are <em>false</em>. </li>
+</ul>
+<ul>
+  <li><a href="demo/temp3.html">For Example</a> for multiple temperatures:</li>
+</ul>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt;&nbsp;<br>
+  &nbsp; var t=prompt('Enter a temperature (F)');<br>
+  &nbsp; if (t &lt; 35)&nbsp;{<br>
+  &nbsp;&nbsp;&nbsp; document.write('&lt;h1&gt;'+t+' is cold!&lt;/h1&gt;');&nbsp;<br>
+  &nbsp; }<br>
+  &nbsp;&nbsp;else if (t &lt; 60) {<br>
+  &nbsp;&nbsp;&nbsp; document.write('&lt;h1&gt;'+t+' is chilly!&lt;/h1&gt;');&nbsp;<br>
+  &nbsp; }<br>
+  &nbsp;&nbsp;else if (temp &lt; 90) {<br>
+  &nbsp;&nbsp;&nbsp; document.write('&lt;h1&gt;'+t+' is warm!&lt;/h1&gt;');&nbsp;<br>
+  &nbsp; }<br>
+  &nbsp;&nbsp;else {<br>
+  &nbsp;&nbsp;&nbsp; document.write('&lt;h1&gt;'+t+' is hot!&lt;/h1&gt;');&nbsp;<br>
+  &nbsp; }<br>
+  &lt;/script&gt;
+</div>
+<p>What would the page say if 95 was entered? ____________ 70?___________ 
+35?______________.</p>
+<hr>
+<h2><span>if-else if Example</span></h2>
+<ul>
+  <li>One use <code>if/else if </code>on a Web page is to customize the 
+  greeting: </li>
+</ul>
+<table width="100%" border="0">
+  <tr>
+    <td>
+    <script language="javascript">
+   var now = new Date();
+   var hrs = now.getHours();
+   document.writeln("<center><h2><span>");
+   if (hrs > 5 && hrs < 12)
+      document.write ("Good Morning");
+   else if (hrs >= 12 && hrs <= 18)
+      document.write ("Good Afternoon");
+   else if (hrs >= 18 && hrs <= 23)
+      document.write ("Good Evening");
+   else
+   document.write ("What are you doing up?");
+   document.writeln("</span></h2></CENTER><br>");
+    </script></td>
+  </tr>
+</table>
+<div>
+  &lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;&nbsp;<font color="#777777"><i>&lt;!--</i></font> &nbsp;<br>
+  &nbsp;&nbsp; var today = new Date ();&nbsp;<img height="20" src="../images/arrow.gif" width="40" border="0"><em>Get 
+  current Date/Time</em><br>
+  &nbsp;&nbsp; var hrs = today.getHours();&nbsp;<img height="20" src="../images/arrow.gif" width="40" border="0"><em>Get 
+  hours for Date</em><br>
+  &nbsp;&nbsp; document.writeln(&quot;&lt;CENTER&gt;&lt;BR&gt;&lt;H2&gt;&quot;);&nbsp;<br>
+  &nbsp;&nbsp; <dfn>if</dfn> (hrs &gt; 5 &amp;&amp; hrs &lt; 12)&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write (&quot;Good Morning&quot;);&nbsp;<br>
+  &nbsp;&nbsp; <dfn>else if</dfn> (hrs &gt;= 12 &amp;&amp; hrs &lt;= 18)&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write (&quot;Good Afternoon&quot;);&nbsp;<br>
+  &nbsp;&nbsp; <dfn>else&nbsp;if</dfn> (hrs &gt;= 18 &amp;&amp; hrs &lt;= 23)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write (&quot;Good Evening&quot;);<br>
+  &nbsp;&nbsp; <dfn>else</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write (&quot;What are you doing up?&quot;);<br>
+  &nbsp;&nbsp; document.writeln(&quot;&lt;/h2&gt;&lt;/CENTER&gt;&lt;br&gt;&quot;);<br>
+  <i><font color="#777777">//--&gt;</font> </i>&lt;/SCRIPT&gt;
+</div>
+<hr>
+<h2><span>Selection: &quot;switch&quot; Statement</span></h2>
+<ul>
+  <li>Provides an alternative to the if-else-if statement. A variable is matched 
+  to multiple cases, each having its own block of code: </li>
+  <li><a href="demo/marriage2.html">For Example</a>: </li>
+</ul>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt;<br>
+  &nbsp; var mc=prompt(&quot;Enter Marital Status (M,S,D,W)&quot;);<br>
+  &nbsp; <dfn>switch</dfn>(mc)<br>
+  &nbsp; {<br>
+  &nbsp;&nbsp;&nbsp; <dfn>case</dfn> 'M'<dfn>:</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write(&quot;&lt;p&gt;You are married.&lt;/p&gt;&quot;);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>break</dfn>;<br>
+  &nbsp;&nbsp;&nbsp; <dfn>case</dfn> 'S'<dfn>:</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write(&quot;&lt;p&gt;You are single.&lt;/p&gt;&quot;);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>break</dfn>;<br>
+  &nbsp;&nbsp;&nbsp; <dfn>case</dfn>'D'<dfn>:</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write(&quot;&lt;p&gt;You are divorced.&lt;/p&gt;&quot;);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>break</dfn>;<br>
+  &nbsp;&nbsp;&nbsp; <dfn>case</dfn> 'W'<dfn>:</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write(&quot;&lt;p&gt;You are widowed.&lt;/p&gt;&quot;);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<dfn> break</dfn>;<br>
+  &nbsp;&nbsp;&nbsp; <dfn>default:</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write(&quot;&lt;p&gt;Invalid code.&lt;/p&gt;&quot;);<br>
+  &nbsp; }<br>
+  &lt;/script&gt;</div>
+<hr>
+<h2><span>Repetition/Iteration: while, do while and for </span></h2>
+<ul>
+  <li><code>while</code>:&nbsp; if the expression in the parenthesis is true, the 
+  code inside the brackets is executed. If it is false, the code is skipped 
+  (pretest loop). <br>
+  <code>while ( condition ) <br>
+  &nbsp; statement;&nbsp;</code> </li>
+  <li><code>do-while</code>: the block of code is executed then the expression 
+  is evaluated to see if the block of code should be executed again. <br>
+  <code>do <br>
+  { <br>
+  &nbsp; statement1; <br>
+  &nbsp; statement2; <br>
+  }while ( condition );</code></li>
+</ul>
+<ul>
+  <li><code>for</code>: repeats a series of statements a particular number of 
+  times.&nbsp;<br>
+  <code>for ( initialization; condition; increment) <br>
+  {&nbsp; <br>
+  &nbsp;&nbsp; statement1; <br>
+  &nbsp;&nbsp; statement2; <br>
+  &nbsp;&nbsp; statement3; <br>
+  }</code> </li>
+  <li><a href="demo/total.html">For Example</a>: </li>
+</ul>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt;&nbsp; <br>
+  &nbsp; var result = 0, c; <br>
+  &nbsp; document.write('&lt;h1&gt;while result'); <br>
+  &nbsp; <dfn>do</dfn>&nbsp;<br>
+  &nbsp; { <br>
+  &nbsp; &nbsp;&nbsp; c = prompt('Enter a # (0 to Exit):'); <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; result = result + c;&nbsp; <br>
+  &nbsp; } <dfn>while</dfn> (c &gt; 0)<dfn>;</dfn> <br>
+  &nbsp; document.write(' = ' + result +'&lt;br&gt;');<br>
+  &nbsp;&nbsp;<br>
+  &nbsp; result = 0; <br>
+  &nbsp; document.write('&lt;br&gt;for result'); <br>
+  &nbsp; <dfn>for</dfn> (var i=0; i &lt; 10; i++)<br>
+  &nbsp; { <br>
+  &nbsp; &nbsp; &nbsp; c = prompt('Enter a #:'); <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; result = result + c; <br>
+  &nbsp; }<br>
+  &nbsp; document.write(' = ' + result +'&lt;br&gt;&lt;/h1&gt;'); <br>
+  &lt;/script&gt;</div>
+<p>&nbsp;</p>
+<hr>
+<h2><span>Control Structures: break/continue </span></h2>
+<ul>
+  <li>break, continue statements:
+  <ul>
+    <li>break will jump completely out of a loop or out of the switch statement 
+    as above. </li>
+    <li>continue will jump from current position back to the loop statement 
+    (statement2 would be skipped): </li>
+  </ul>
+  </li>
+</ul>
+<div>
+  while (...){ <br>
+  &nbsp; if (...)&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; statement1; <br>
+  &nbsp; else continue; <br>
+  &nbsp; statement2; <br>
+  }</div>
+<ul>
+  <li>No GoTo statement in JavaScript. </li>
+</ul>
+<hr><script language="JavaScript">writeFooter(3);</script>
+
+<h1>Comments </h1>
+<ul>
+  <li>JavaScript has 2 ways to indicate comments in the code:
+  <ul>
+    <li><code><dfn>//</dfn></code>- 2 forward slashes indicates a single line 
+    comment </li>
+  </ul>
+  </li>
+</ul>
+<blockquote>
+  <blockquote>
+    <p><code>x = 5;&nbsp; <dfn>// Set the value of x</dfn></code></p>
+  </blockquote>
+</blockquote>
+<ul>
+  <ul>
+    <li><code><dfn>/*&nbsp; */</dfn></code>&nbsp; - bracket the comment with <code><dfn>/* 
+    and */</dfn></code> </li>
+  </ul>
+</ul>
+<blockquote>
+  <blockquote>
+    <p><code><dfn>/* <br>
+    &nbsp;* Popular to use a column&nbsp; <br>
+    &nbsp;* of asterisks to indicate&nbsp; <br>
+    &nbsp;* a comment block <br>
+    &nbsp;*/</dfn></code> </p>
+  </blockquote>
+</blockquote>
+<ul>
+  <li><em>Good Programming Practice</em>: Always comment every major block of 
+  code (if block, for loop or a function) to indicate what the purpose of that 
+  block of code is: </li>
+</ul>
+<blockquote>
+  <p><code><dfn>// Loop to get grades and sum them</dfn></code></p>
+  <p>or</p>
+  <p><code><dfn>/* Select the correct message for a given&nbsp;<br>
+  &nbsp;&nbsp; temperature input (t) */</dfn></code></p>
+</blockquote>
+<hr>
+<h1>JavaScript: Arrays</h1>
+<ul>
+  <li>An array is a consecutive group of related memory locations where elements 
+  are stored &amp; retrieved via integer indices. </li>
+  <li>JavaScript uses zero-based arrays. </li>
+  <li>Usually array elements are of the same data type (although this is not 
+  required). </li>
+  <li>Arrays in JavaScript are &quot;dynamic&quot; - can grow to accommodate new values 
+  assigned to it. </li>
+</ul>
+<hr width="100%">
+<h1>Arrays: Allocation and Initialization</h1>
+<ul>
+  <li>Allocate a 10 element Array
+  <ul>
+    <p><code>myArray = new Array(10);</code></p>
+  </ul>
+  </li>
+  <li>Allocate an Empty Array
+  <ul>
+    <p><code>myArray = new Array();</code></p>
+  </ul>
+  </li>
+  <li>Allocate and Initialize a 5 element Array
+  <ul>
+    <p><code>myArray = new Array(10, 20, 30, 40, 50);</code> <br>
+    <code>var myArray = [10, 20, 30, 40, 50];</code></p>
+  </ul>
+  </li>
+  <li>Allocate and Initialize a 5 element Array skipping one element
+  <ul>
+    <p><code>var myArray = [10, 20, , 40, 50];</code> <br>
+    the third element in myArray is &quot;undefined&quot;</p>
+  </ul>
+  </li>
+</ul>
+<ul>
+  <li>Array elements must be initialized individually after declaration<code><br>
+  &nbsp; myArray[2] = 37;</code> </li>
+  <li>Remember a 5 element array's first element is [0] and last element is [4]
+  </li>
+</ul>
+<hr width="100%">
+<h2><span>Array: Examples</span></h2>
+<ul>
+  <li>Here's a simple example of an array used to store a list of &quot;zeroes&quot; </li>
+</ul>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt;&nbsp; <br>
+  &nbsp;&nbsp; n = Array(10), i ; <br>
+  &nbsp;&nbsp; for(i = 0; i &lt; 10; i++)&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n[i] = 0;&nbsp;<em><img height="22" src="../images/arrow.gif" width="40" border="0">initialize 
+  each array element</em> <br>
+  &nbsp;&nbsp; document.writeln('&lt;center&gt;&lt;table border&gt;'); <br>
+  &nbsp;&nbsp; for(i = 0; i &lt; 10; i++) <br>
+  &nbsp;&nbsp; { <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.write('&lt;tr&gt;&lt;td&gt;&lt;b&gt; n['+i+']='); <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.writeln(n[i]+' &lt;b&gt;&lt;/td&gt;&lt;/tr&gt;'); <br>
+  &nbsp;&nbsp; } <br>
+  &nbsp;&nbsp; document.writeln('&lt;/table&gt;&lt;/center&gt;'); <br>
+  &lt;/script&gt;
+</div>
+<p>
+<script language="JavaScript"> 
+     n = Array(10);
+     var i ;
+     for(i = 0; i < 10; i++) // initialize array
+        n[i] = 0;
+
+     document.writeln('<center><table border="1">');
+     for(i = 0; i < 10; i++)
+     {
+         document.write('<tr><td> n['+i+'] = ');
+         document.writeln(n[i]+' </td></tr>');
+     }
+     document.writeln('</table></center>');
+</script>
+</p>
+<hr width="99%">
+<h1>Array: Variable Subscripts</h1>
+<ul>
+  <li>Usually individual array elements are accessed using integer variables 
+  instead of &quot;hardcoded&quot; integer values </li>
+  <li>These integer variables can be changed
+  <ul>
+    <li>Using a loop (as above) </li>
+    <li>Based on user input </li>
+    <li>Using some random # </li>
+  </ul>
+  </li>
+  <li>Here's an example of an array that stores strings&nbsp; and uses a random 
+  number to select an individual array element (<a href="demo/quote.html">quote.html</a>).
+  </li>
+</ul>
+
+<script>
+         var quotes = new Array();
+         quotes[0] = 'Form Ever Follows Function';
+         quotes[1] = 'E pluribus unum';
+         quotes[2] = 'When you call me that smile.';
+         quotes[3] = 'Good as it is to inherit a library, it is better to collect one';
+         quotes[4] = 'The test of greatness is the page of history';
+         quotes[5] = 'Let\'s look at the record';
+         quotes[6] = 'WYSIWYG';
+         quotes[7] = 'High thoughts must have high language';
+         var value = Math.floor(Math.random() * quotes.length);
+         document.writeln("<p align=center><i>" + quotes[value] + "</i></p>");
+</script>
+<div>
+  &lt;script language=&quot;JavaScript&quot;&gt; <br>
+  &nbsp;&nbsp; q = new Array();&nbsp;<em><img height="22" src="../images/arrow.gif" width="40" border="0">array 
+  w/o size</em> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>// Each element added increases array size</em> <br>
+  &nbsp;&nbsp; q[0] = 'Form Ever Follows Function'; <br>
+  &nbsp;&nbsp; q[1] = 'E pluribus unum'; <br>
+  &nbsp;&nbsp; q[2] = 'When you call me that smile'; <br>
+  &nbsp;&nbsp; q[3] = 'Let\'s look at the record'; <br>
+  &nbsp;&nbsp; q[4] = 'WYSIWYG'; <br>
+  <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Random # between 0 and the array length <br>
+  </em>&nbsp;&nbsp; var v=Math.floor(Math.random()*q.length); <br>
+  &nbsp;&nbsp; document.write(&quot;&lt;p&gt;&lt;i&gt;&quot; + q[v] + &quot;&lt;/i&gt;&lt;/p&gt;&quot;); <br>
+  &lt;/script&gt;</div>
+<hr><script language="JavaScript">writeFooter(4);</script>
+
+<h1>Developing and Debugging Code </h1>
+<h2><span>Design </span></h2>
+<ul>
+  <li>Programs follow algorithms, step-by-step processes for solving a problem
+  </li>
+  <li>Designs specify the algorithms and data needed
+  <ul>
+    <li>They establish the objects, methods &amp; functions required </li>
+  </ul>
+  </li>
+</ul>
+<ul>
+  <li>Details of algorithms may be expressed in pseudocode, an English 
+  description of an algorithm (code-like w/o specific syntax) </li>
+  <li>Make a flowchart or pseudocode description of your algorithm FIRST. </li>
+</ul>
+<hr>
+<h2><span>Why Design &amp; Requirements Analysis is Important </span></h2>
+<ul>
+  <li>Preplanning what needs to be accomplished in a program and the logic of 
+  how it is to be carried out:
+  <ul>
+    <li>reduces development times </li>
+    <li>reduces logic errors </li>
+    <li>allows better code to be developed </li>
+  </ul>
+  </li>
+  <li>Pseudocode -- Make a detailed description of your algorithm's logic before 
+  worrying about specific language syntax and data layout. </li>
+  <li>Flowchart -- A graphical layout of the algorithm is often very useful in 
+  spotting &quot;illogical&quot; logic! </li>
+</ul>
+<hr>
+<h2><span>Implementation </span></h2>
+<ul>
+  <li>Implementation is the process of translating a design into source code
+  </li>
+  <li>Most novice programmers think that writing code is the heart of software 
+  development, but it actually should be the least creative </li>
+  <li>Almost all important decisions are made during requirements analysis and 
+  design </li>
+  <li>Implementation should focus on coding details, including style guidelines 
+  and documentation </li>
+  <li>When developing JavaScript code it is helpful to use Visual InterDev.&nbsp; It 
+  helps locate Syntax errors and then can be used as a Debugger once code is 
+  syntactically correct. </li>
+</ul>
+<hr>
+<h2><span>Finding Errors JavaScript</span></h2>
+<ul>
+  <li>JavaScript is interpreted directly by the browser when a Web page is 
+  displayed &amp; thus the JavaScripts will execute until a syntax error is found 
+  and then no other code will be run on the page. </li>
+  <li>If you re testing your JavaScript code in Internet Explorer you can find 
+  out where you have an error by turning on &quot;Script Debugging&quot;.&nbsp;
+  <ul>
+    <li>Go to Tools -&gt; Internet Options and choose the Advanced tab. </li>
+    <li>Under &quot;Browsing&quot; Uncheck &quot;Disable Script Debugging&quot; </li>
+    <li>Immediately below that Check &quot;Display a notification about every script 
+    error&quot; </li>
+    <li>This will give you a line number and error message for each script error 
+    as you come to them. </li>
+  </ul>
+  </li>
+  <li>You can also use alert boxes to display variable values at selected 
+  locations throughout your code. </li>
+  <li>When Debugging Look for
+  <ul>
+    <li>Entering and exiting if conditions, case statements, and loops </li>
+    <li>Entering function calls </li>
+    <li>Whether True/False conditions are correctly written </li>
+    <li>Value of variables kept in a loop </li>
+    <li>Values of other variables and expressions </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Testing </span></h2>
+<ul>
+  <li>A program should be executed multiple times with various input in an 
+  attempt to find errors. </li>
+  <li>Debugging is the process of discovering the cause of a problem and fixing 
+  it. </li>
+  <li>Programmers often erroneously think that there is &quot;only one more bug&quot; to 
+  fix </li>
+  <li>Tests should focus on design details as well as overall requirements </li>
+  <li>Once you have gotten JavaScript code to run in a single browser on a 
+  single development machine, it is necessary to test the code in different 
+  browsers on different machines.</li>
+</ul>
+<hr>
+<h1>In Class</h1>
+<ul>
+  <li>To practice finding errors in JavaScript lets try to test an existing 
+  JavaScript. </li>
+  <li>The Web page &quot;<a href="demo/fortune.html">fortune.html</a>&quot; has both 
+  syntax (5) and logic errors (2). </li>
+</ul>
+<hr><script language="JavaScript">writeFooter(5);</script>
+
+</body></html>

@@ -1,0 +1,1543 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Color & Graphics</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated January 12, 2004<BR>Dawn G. Gregg</I> ' +
+          '<br><br><i>Portions of this &nbsp;lecture were obtained from: <br>' +
+          '<a href="http://www.inherent.com/tools/colortheory101/home.cfm">http://www.inherent.com/tools/colortheory101/home.cfm</a> </i>' +
+          '<br><i>Introduction to HTML Design</i> by S. Sol at: <a href="http://www.stars.com/Style/HTML/Tutorial/">' +
+          'http://www.stars.com/Style/HTML/Tutorial/</a><i> <br>' +
+          'Internet &amp; World Wide Web: How to Program 2e</i> by Deitel, Deitel and Nieto, Upper Saddle River, NJ: Prentice Hall, 2002<br><br>'
+          '<i>Some images and Logo generation was obtained from:<br>Flaming Text: Free online tool for generating custom web page graphics </i>at:<i></i><a href="http://flamingtext.com/">http://flamingtext.com/</a></p>';
+  </script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<h1>Color</h1>
+<ul>
+<li>
+Most well designed Web sites include Graphics and color to draw people to their
+sites, to make them more attractive and easier to use.
+<li>
+However, the incorrect use of color in many Web sites creates unreadable text or
+navigation confusion for the user.
+<span class="text">
+</ul>
+
+<hr>
+
+<h2><span><a name="2"></a>Colors</span></h2>
+</span>
+<ul>
+<span class="text">
+<li>HTML identifies color in 1 of 2 ways:
+  <ul>
+    <li>Using a color name</li>
+    <li>Using color values for the amount of <font color="#ff0000">red,</font> <font color="#00ff00">
+    green,</font>
+</span>
+    and<span class="text"><font color="#0000ff"> blue</font> found in the 
+    particular color.</span></li>
+  </ul>
+  </li>
+<li><span class="text">The 16 basic color supported by all browsers are:</span></li>
+</ul>
+<center>
+<table border="1" width=90% cellpadding="0" cellspacing="0" height="119" >
+  <tr>
+    <td align="center" bgcolor="#666666"><font color="#FFFFFF">Red<br>
+&nbsp;</font></td>
+    <td align="center" bgcolor="#666666"><font color="#FFFFFF">Red/Green<br>
+&nbsp;</font></td>
+    <td align="center" bgcolor="#666666"><font color="#FFFFFF">Green<br>
+&nbsp;</font></td>
+    <td align="center" bgcolor="#666666"><font color="#FFFFFF">Green/Blue<br>
+&nbsp;</font></td>
+    <td align="center" bgcolor="#666666"><font color="#FFFFFF">Blue<br>
+&nbsp;</font></td>
+    <td align="center" bgcolor="#666666"><font color="#FFFFFF">Blue/Red<br>
+&nbsp;</font></td>
+    <td colspan=2 align="center" bgcolor="#666666"><font color="#FFFFFF">All 3<br>
+&nbsp;</font></td>
+    
+  </tr>
+  <tr>
+    <td bgcolor=red align="center">Red<br>#FF0000</td>
+    <td align="center" bgcolor=yellow >Yellow<br>
+    #FFFF00</td>
+    <td align="center" bgcolor=lime>Lime<br>
+    #00FF00</td>
+    <td align="center" bgcolor=aqua>Aqua<br>
+    #00FFFF</td>
+    <td align="center" bgcolor=blue><font color="#FFFFFF">Blue<br>
+    #0000FF</font></td>
+    <td align="center" bgcolor=fuchsia>Fuchsia<br>
+    #FF00FF</td>
+    <td align="center" bgcolor=white>White<br>
+    #FFFFFF</td>
+    <td align="center" bgcolor=silver>Silver<br>
+    #C0C0C0</td>
+  </tr>
+  <tr>
+    <td align="center" bgcolor=maroon>Maroon<br>
+    #800000</td>
+    <td align="center" bgcolor=olive>Olive<br>
+    #808000</td>
+    <td align="center" bgcolor=green>Green<br>
+    #008000</td>
+    <td align="center" bgcolor=teal>Teal<br>
+    #008080</td>
+    <td align="center" bgcolor=navy><font color="#FFFFFF">Navy<br>
+    #000080</font></td>
+    <td align="center" bgcolor=purple><font color="#FFFFFF">Purple<br>
+    #800080</font></td>
+    <td align="center" bgcolor=gray>Gray<br>
+    #808080</td>
+    <td align="center" bgcolor=black><font color="#FFFFFF">Black<br>
+    #000000</font></td>
+  </tr>
+</table>
+
+</center>
+<span class="text">
+<ul>
+  <li>HTML requires the color values be entered as hexadecimal numbers (base 
+  16).&nbsp;
+  <ul>
+    <li>Individual digits can be 0 (0) through F(15).&nbsp; </li>
+    <li>Two digit numbers can range from 00 (0) to FF (255), where 10 in Hex is 
+    16 in decimal.</li>
+  </ul>
+  </li>
+  <li>In the numbers above the first 2 digits are for <font color="#FF0000">red</font>, 
+  the second 2 digits are for <font color="#00FF00">green</font></span>,<span class="text"> 
+  and the final 2 are for <font color="#0000FF">blue</font>.</li>
+</ul>
+<hr>
+
+<h2><span><a name="2"></a>Browser Safe Colors</span></h2>
+<ul>
+  <li>Although many browsers and monitors can display a wide array of colors - 
+  there are only 217 colors that are guaranteed to display the same way on every 
+  browser.</li>
+</ul>
+<p align="center"><a href="browser_safe_color.html">Browser Safe Colors</a></p>
+<hr>
+
+<h2><span><a name="2"></a>Web Color Selection</span></h2>
+<ul>
+  <li>The <i>Color Wheel</i> is a tool/principle that 
+  illustrates color relationships by organizing colors in a circle so you can 
+  visualize how they relate to each other. It is based on the <b>primary colors</b> 
+  of <font color="#ff0000">red,</font> <font color="#ffcc33">&nbsp;yellow,</font> <font color="#0000ff">&nbsp;</font></span>&amp;<span class="text"><font color="#0000ff">&nbsp; blue.</font>
+  </li>
+</ul>
+<p align="center">
+<img border="0" src="../images/colorwheel.gif" width="364" height="441"></p>
+</span>
+<ul>
+  <span class="text">
+  <li>All of the other colors that appear in the color wheel are derivatives of 
+  those three primary colors. <b>Secondary colors</b> are created by mixing 
+  primary colors together and <b>tertiary colors</b> are created by mixing 
+  secondary colors together. </li>
+</ul>
+</span>
+<ul>
+  <span class="text">
+  <li>Although there are many color combinations that can be used on your Web 
+  pages, not all combinations work well.</li>
+  <li>Normally, Web designers try to choose a color scheme consisting of 2 or 3 
+  colors for their entire site. Any other colors are used very sparingly (as an 
+  &quot;accent&quot; only).</li>
+</span>
+
+  <span class="text">
+  <li>Generally there are 4 different types of color schemes that should be used 
+  when designing your Web site:<ul>
+  <li> <b>monochromatic scheme: </b>One color (or &quot;hue&quot;), used alone. </li>
+  <li> <b>analogous color scheme: </b>Hues beside each other on the wheel, which share the same undertones (i.e, 
+  red, red-orange, orange).</li>
+  <li>
+  <b>complementary color scheme: </b>Hues opposite each other across the color wheel (i.e,. red and green, 
+  or yellow-orange and blue-purple) are 
+  used together for high contrast.</li>
+  <li>&nbsp;<b>triadic 
+  color harmony: </b>involves 3 hues equally spaced on the wheel (in the case of 
+  the illustrated color wheel to the right, orange-red, yellow-green and 
+  blue-purple) which creates a 3-hue mix that is vivid and contrasting. </li>
+</ul>
+  </li>
+</ul>
+<p align="center">
+<img border="0" src="../images/triadic.gif" width="602" height="820"></p>
+</span>
+
+<ul>
+  <span class="text">
+  <li>Using complementary colors (blue and orange) creates exciting, even 
+  vibrating, effects - think along the lines of MTV.
+
+  </li>
+  <li>Analogous color harmony (blue and blue-green) is less vivid, even calming 
+  - think along the lines of Martha Stewart.
+
+  </li>
+</ul>
+
+</span>
+
+<hr>
+
+<script language="JavaScript">writeFooter(0);</script>
+
+<h1><span><a name="24"></a>Formatting Text</span></h1>
+
+<ul>
+  <li>The &lt;FONT&gt; tag allows your to set a number of text attributes:
+    <ul>
+      <li>COLOR, SIZE, and FACE (font type)</li>
+    </ul>
+ </LI> 
+</ul> 
+ 
+<blockquote>
+ 
+<p><code>&lt;FONT COLOR="red" SIZE=&quot;+1&quot;
+FACE=&quot;ARIAL&quot;&gt;</code><br>
+<FONT COLOR="red" SIZE="+1" FACE="ARIAL">Red Arial 14 pt</font><br>
+<code>&lt;/FONT&gt;</code><br>
+
+<br>
+<code>&lt;FONT COLOR=&quot;#FF0000&quot; SIZE=&quot;4&quot;
+FACE=&quot;sans-serif&quot;&gt;</code><br>
+<font face="sans-serif" size="4" color="#FF0000">
+Red Arial 14 pt</font><br>
+<code>&lt;/FONT&gt;</code></blockquote>
+ 
+
+
+<hr>
+
+
+<h2><span><a name="24"></a>Font Size</span></h2>
+
+<ul>
+  <li>Font sizes can be specified 2 different ways:<ul>
+    <li>Using a built in size number (1-7)</li>
+    <li>Using a relative size when compared to the surrounding text (+2, -1)</li>
+  </ul>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <td align="center"><font size="1">size="1"</font></td>
+      <td align="center"><font size="-2">size="-2"</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font size="2">size="2&quot;</font></td>
+      <td align="center"><font size="-1">size="-1&quot;</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font size="3">size="3&quot;</font></td>
+      <td align="center"><font size="-0">size="-0&quot;</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font size="4">size="4&quot;</font></td>
+      <td align="center"><font size="+1">size="+1&quot;</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font size="5">size="5&quot;</font></td>
+      <td align="center"><font size="+2">size="+2&quot;</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font size="6">size="6&quot;</font></td>
+      <td align="center"><font size="+3">size="+3&quot;</font></td>
+    </tr>
+    <tr>
+      <td align="center"><font size="7">size="7&quot;</font></td>
+      <td align="center"><font size="+4">size="+4&quot;</font></td>
+    </tr>
+  </table>
+  </li>
+</ul>
+<hr>
+
+
+<h2><span><a name="24"></a>Font Face </span></h2>
+
+<ul>
+  <li>Font face allows you to select the type of text that will be used when 
+  displaying your web page.&nbsp; Font face can be specified using either:<ul>
+  <li>An explicit name (Arial, Times, Courier), or </li>
+  <li>Using a generic name representing a general class of styles (serif, 
+  monospace).</li>
+</ul>
+  </li>
+</ul>
+<blockquote>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <tr>
+      <th width="25%">Generic Name</th>
+      <th colspan=3>Specific Names</th>
+    </tr>
+    <tr>
+      <td width="25%"><font face="serif">serif</font></td>
+      <td width="25%"><font face="Times">Times</font></td>
+      <td width="25%"><font face="Times New Roman">Times New Roman</font></td>
+      <td width="25%"><font face="Palatino">Palatino</font></td>
+    </tr>
+    <tr>
+      <td width="25%"><font face="sans-serif">sans-serif</font></td>
+      <td width="25%"><font face="Arial">Arial</font></td>
+      <td width="25%"><font face="Helvetica">Helvetica</font></td>
+      <td width="25%"><font face="Verdana">Verdana</font></td>
+    </tr>
+    <tr>
+      <td width="25%"><font face="monospace">monospace</font></td>
+      <td width="25%"><font face="Courier New">Courier New</font></td>
+      <td width="25%"><font face="Courier">Courier</font></td>
+      <td width="25%"><font face="Terminal">Terminal</font></td>
+    </tr>
+    <tr>
+      <td width="25%"><font face="cursive">cursive</font></td>
+      <td width="25%"><font face="Marigold">Marigold</font></td>
+      <td width="25%"><font face="Coronet">Coronet</font></td>
+      <td width="25%"><font face="Monotype Corsiva">Monotype Corsiva</font></td>
+    </tr>
+    <tr>
+      <td width="25%"><font face="fantasy">fantasy</font></td>
+      <td width="25%"><font face="Comic Sans MS">Comic Sans MS</font></td>
+      <td width="25%"><font face="Impact">Impact</font></td>
+      <td width="25%"><font face="Wingdings">Wingdings</font></td>
+    </tr>
+  </table>
+</blockquote>
+<ul>
+  <li>Since you have no idea what fonts have been installed on a particular 
+  computer - nor which one is the default font of a particular type - it is good 
+  practice to specify a list of fonts in order of preference:<br>
+  <br>
+  <code>&lt;font face=&quot;Arial, Helvetica, Verdana, sans-serif&quot;&gt;</code><font face="Arial, Helvetica, Verdana, sans-serif">A sans-serif font</font><code>&lt;/font&gt;</code></li>
+</ul>
+<hr>
+ 
+<script language="JavaScript">writeFooter(1);</script>
+
+
+
+<h1><a name="31"></a>Images</h1>
+<ul>
+  <li>
+Most Web browsers can display inline images (that is, images next to text) that are in
+Bitmap, GIF, JPEG or PNG format.&nbsp;
+  </li>
+  <li>Images take time to download and slows down the initial display of a document.
+    So be careful when adding images to a document.&nbsp;</li>
+  <li>To include an inline image, enter:&nbsp;<br>
+      <font class="code">&lt;IMG SRC=&quot;ImageName&quot;&gt; </font>or<font class="code"> &lt;IMG SRC=&quot;ImageName&quot;/&gt;</font><br>
+      where ImageName is the URL of the image file.&nbsp;</li>
+</ul>
+<hr>
+
+
+
+<h2><span><a name="2"></a>Basic Graphics File Formats</span></h2>
+<p>Currently only 3 image file formats are supported on all major browsers: GIF, JPG and PNG.
+</p>
+<ul>
+  <li>GIF, <i>Graphics Interchange Format</i>:&nbsp; is designed for online
+        delivery of graphics.&nbsp;&nbsp;
+    <ul>
+      <li> <code> GIF</code> uses a lossless compression technique
+        meaning no color information is discarded when the image is compressed.&nbsp;</li>
+      <li>
+        <code>
+        GIF</code> is based on a palette of only 256 colors.&nbsp;</li>
+      <li> It is best used in
+        screenshots, line drawings, and other situations with sharp edges (e.g.
+        cartoons).&nbsp;</li>
+      <li> It is
+        well suited to the Web, because it has transparency.&nbsp; A transparent 
+      image (like the arrow below) works on any background color or image 
+      because it allows the background to show through.&nbsp; (Without 
+      transparency it looks a little silly).</li>
+    </ul>
+    <center>
+  <table border="0" cellpadding="15" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" >
+    <tr>
+      <td><img border="0" src="../images/arrow.gif" width="40" height="30"></td>
+      <td bgcolor="#6633CC"><img border="0" src="../images/arrow.gif" width="40" height="30"></td>
+      <td background="../images/background/greenspots.gif"><img border="0" src="../images/arrow.gif" width="40" height="30"></td>
+      <td bgcolor="red">
+        <table border="0" cellpadding="0" cellspacing="0" >
+        <tr><td bgcolor="white"><img border="0" src="../images/arrow.gif" width="40" height="30"></td></tr>
+        </table>
+     </td>
+    </tr>
+  </table>
+  </center>
+  </li>
+  <li><a name="3"></a>JPG (or JPEG), <i>Joint Photographic Experts Group</i>:&nbsp;is best for photographs
+    or continuous tone images.&nbsp;&nbsp;
+    <ul>
+      <li><code>JPG</code>s are 24-bit images that allow millions of colors.&nbsp;&nbsp;</li>
+      <li><code>JPG</code> uses a lossy compression routine especially designed for
+        photographs.&nbsp; This results in a slightly lower quality photograph
+        but the quality difference is not noticeable on current computer
+        monitors.</li>
+    </ul>
+  </li>
+  <li><a name="4"></a>PNG&nbsp; <i>Portable Network Graphics</i>: was developed in response
+        to a decision by the UniSys corporation to start charging royalties on
+        the GIF format.&nbsp;
+    <ul>
+      <li> <code> PNG</code> can encode in RGBA-The A stands for <i>alpha
+        transparency</i>, which can make images transparent against any
+        background.&nbsp;</li>
+      <li>Use <code> PNG</code> as a substitute for <code> GIF</code> but since <code> PNG</code> does not compress your
+        24-bit images as well do not use it as a substitute for <code>JPG</code>.</li>
+      <li> Many graphics packages support
+        the <code> PNG</code> format, as do the latest versions of both Netscape Navigator and
+        Internet Explorer.</li>
+    </ul>
+  </li>
+  <li><a name="5"></a><i>GIF Animation</i>: The GIF format allows you to store multiple images and
+    timing information about the images in a single file.&nbsp; This means that
+    you can build animations consisting of multiple static images that play
+    continuously, creating the illusion of motion.</li>
+</ul>
+
+<p align="center">
+<img border="0" src="../images/felix_an.gif" width="230" height="100"></p>
+
+<hr>
+
+<h2><span>
+<a name="32"></a>Image Attributes</span></h2>
+<ul>
+  <li>
+You should include three other attributes on <code> &lt;IMG></code> tags.&nbsp;
+<ul>
+  <li> The <code> HEIGHT</code> and
+<code> WIDTH</code> attributes let your browser
+    set aside the appropriate space (in pixels) for the images as it downloads the rest of the
+    file.&nbsp;</li>
+  <li>The <code>ALT</code> attribute gives the image a name that appears when
+    your mouse passes over the image or if the image does not load into the
+    browser:</li>
+  <li>For example, to include CU's mascot):&nbsp;<br>
+  <code>&lt;img border=&quot;0&quot; src=&quot;images/buffs.gif&quot; width=&quot;106&quot; height=&quot;78&quot; alt=&quot;CU's 
+  Mascot&quot;/&gt;<br>
+    </code>
+  <img border="0" src="../images/buffs.gif" width="106" height="78" alt="CU's Mascot"/></li>
+</ul>
+  </li>
+  <li>Remember, the larger the image, the longer it will take to download.&nbsp; 
+  Do Not reduce the size of an image using the <code>height</code> &amp; <code>width</code> 
+  attributes.&nbsp; This will not reduce the image file size at all and thus 
+  will not reduce download time. Instead use a graphics program to reduce the 
+  image size.</li>
+  <li><code>Alt</code> attributes are very important because they are used by 
+  screen readers to enable sight-impaired people to understand your Web page.&nbsp; 
+  They are also displayed in place of the image for non graphical browsers 
+  (think PDA and phone surfers here).</li>
+</ul>
+
+<hr>
+
+<h2><span>
+
+<a name="33"></a>Images as Hyperlinks</span></h2>
+<ul>
+  <li>
+Inline images can be used as hyperlinks just like plain text:&nbsp;<a href="../glossary.html"><img src="../images/bball.gif" alt="Glossary" width="86" height="100" align="right"/></a></li>
+</ul>
+<blockquote>
+  <p><code>&lt;A HREF=&quot;../glossary.html&quot;&gt;<br>
+  &lt;IMG SRC=&quot;ball.gif&quot; ALT=&quot;Glossary&quot;
+  ALIGN=&quot;right&quot;/&gt;&lt;/A></code></p>
+</blockquote>
+<ul>
+  <li>
+The border around the image indicates that it's a clickable hyperlink.&nbsp;
+    <ul>
+      <li>If you do not want this border to be displayed, you can adding the <code> BORDER</code> attribute and setting it to
+        zero.</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="34"></a>Background Graphics</span></h2>
+<ul>
+  <li>
+Background images can be a texture (linen finished paper, for example) or an image of an<br>
+object (a logo possibly).&nbsp;</li>
+  <li>The background image can be very small. Using a feature called tiling, a browser takes the image and repeats it across and down to fill your browser window.&nbsp;</li>
+  <li>
+The background image is included in the &lt;BODY> statement as an attribute:&nbsp;
+<br>
+    <code>
+&lt;BODY BACKGROUND=&quot;../images/mainbg.jpg&quot;&gt;</code></li>
+  <li>
+Generally, Web-based businesses keep their backgrounds neutral usually 
+preferring a plain white background:</li>
+</ul>
+<p align="center"><img border="0" src="../images/bg1.GIF" width="792" height="432"></p>
+<ul>
+  <li>Occasionally, a background image can add interest to a site - but it is 
+  usually light or has a large light area that covers most of the image:</li>
+</ul>
+<center><img border="0" src="../images/bg2.GIF" width="792" height="432"></center>
+<ul>
+  <li>However, in most cases, background images detract from the professionalism 
+  of the Web site:</li>
+</ul>
+<center><img border="0" src="../images/bg3.GIF" width="792" height="432"></center>
+<hr>
+<h1><a name="35"></a>Image Maps</h1>
+<ul>
+  <li>An image map is an image with certain sections designated as &quot;hotspots&quot; 
+  that can be used as anchors for linking.</li>
+  <li>In the picture below, the rectangular and circular regions outlined in red 
+  are linked to different parts of CU Denver's Web site:</li>
+</ul>
+<map id = "cudenver">
+  <area href = "http://www.cudenver.edu/CAM/" shape="rect" coords="128, 235, 261, 334"/>
+  <area href = "http://www.cudenver.edu/business/" shape="circle" coords="210, 133, 66"/>
+  <area href = "http://www.cudenver.edu/engineer/" shape="circle" coords="346, 118, 66"/>
+  <area href = "http://www.cudenver.edu/CLAS/" shape="rect" coords="261, 186, 402, 285"/>
+  <area href = "http://thunder1.cudenver.edu/aandP/home.html" shape="poly" coords="56,235, 56, 168, 82, 133, 186, 199, 128, 235, 57, 235"/>
+</map> 
+  
+<center>
+<p></p>
+</center>
+<ul>
+  <li><a name="36"></a>The map uses measurements in Pixels to determine what area's of a given 
+  picture should be linked where.&nbsp; In the picture above, pixel locations in 
+  X &amp; Y are shown on the left &amp; bottom of the image.<ul>
+    <li>Rectangles require the pixel coordinates of 2 corners, </li>
+    <li>Circles require the pixel coordinates of the center &amp; radius, and</li>
+    <li>Polygons require the pixel coordinates of every corner: </li>
+  </ul>
+  </li>
+  <li>The following code was used to generate the image map and make the image 
+  above reference it:</li>
+</ul>
+<div>&lt;map id = &quot;cudenver&quot;&gt;<br>
+  <font size="2">&nbsp;&lt;area href = &quot;http://www.cudenver.edu/CAM/&quot; shape=&quot;rect&quot; 
+  coords=&quot;128,235,261,334&quot;/&gt;<br>
+&nbsp;&lt;area href = &quot;http://www.cudenver.edu/business/&quot; shape=&quot;circle&quot; coords=&quot;210,133,66&quot;/&gt;<br>
+&nbsp;&lt;area href = &quot;http://www.cudenver.edu/engineer/&quot; shape=&quot;circle&quot; coords=&quot;346,118,66&quot;/&gt;<br>
+&nbsp;&lt;area href = &quot;http://www.cudenver.edu/CLAS/&quot; shape=&quot;rect&quot; coords=&quot;261,186,402,285&quot;/&gt;<br>
+&nbsp;&lt;area href = &quot;http://thunder1.cudenver.edu/aandP/home.html&quot; shape=&quot;poly&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; coords=&quot;56,235, 56, 168, 82, 133, 186, 199, 
+  128, 235, 57, 235&quot;/&gt;</font><br>
+  &lt;/map&gt; <br>
+  &lt;img border=&quot;0&quot; src=&quot;../images/imap.gif&quot; width=&quot;468&quot; height=&quot;432&quot; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; usemap=&quot;#cudenver&quot; alt=&quot;CU Denver Programs Image Map 
+  Demo&quot;/&gt;</div>
+<p align="center">
+<img border="0" src="../images/imap.gif" width="468" height="432" usemap="#cudenver" alt="CU Denver Programs Image Map Demo"/>
+</p>
+<hr>
+
+<h2><span><a name="6"></a>Image Sources</span></h2>
+
+<ul>
+  <li>You can acquire images form a variety of sources:
+    <ul>
+      <li><em>Stock Photo Collections</em>: Stock photo collections can cost
+        from thousands of dollars for a few images to under $20.00 for thousands
+        of images at your local computer discount store or mail-order
+        retailer.&nbsp; These collections contain royalty-free images you can
+        use for any Web site.</li>
+      <li><em>Digital Camera/Scanner</em>: A digital camera or a scanner allows
+        you to take your own photos and use them on the Web.&nbsp; Remember to
+        set the photo resolution to 72 dpi to match the computer display
+        resolution.</li>
+      <li><a name="7"></a><em>Public Domain Web sites</em>: Many Web sites maintain catalogs of
+        images online that are available for download.&nbsp; Some of these sites
+        charge a small fee and many others are free! Often these sites will
+        require that you reference or link to their site when using the image
+        and if this is their policy it is important to do so!</li>
+      <li><em>Clip art</em>:&nbsp; Clip art collections are also a viable source
+        of images for the Web.&nbsp; Most graphics packages can covert the
+        images to the GIF format and allow you to customize the clip art to your
+        particular needs.</li>
+      <li><em>Do not borrow images from other sites.&nbsp; Many sites have their
+        images copyrighted and you could face litigation if you use someone
+        else's graphics,&nbsp; especially on a commercial site!</em></li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span> <a name="8"></a>Graphics Tools</span></h2>
+<ul>
+  <li>You can create your own own graphics using a shareware/freeware graphics
+    design tool or a graphics design package.&nbsp; However, unless you have a
+    graphics design background - stick to text on colored backgrounds or
+    fundamental shapes and lines:</li>
+  <li>Sources of shareware and freeware packages:
+    <ul>
+      <li>Tucows: <a href="http://www.tucows.com/">www.tucows.com/</a></li>
+      <li>Pass the Shareware: <a href="http://www.passtheshareware.com/c-multimedia.htm">www.passtheshareware.com/c-multimedia.htm</a></li>
+      <li>and many, many more ....</li>
+    </ul>
+  </li>
+  <li>Sources of professional graphics packages:
+    <ul>
+      <li>Adobe Photoshop and Illustrator:&nbsp; <a href="http://www.adobe.com">www.adobe.com</a></li>
+      <li>LView Pro:&nbsp; <a href="http://www.lview.com">www.lview.com</a></li>
+      <li>Macromedia Fireworks and Flash: <a href="http://www.macromedia.com">www.macromedia.com</a></li>
+      <li>Paint Shop Pro:&nbsp; <a href="http://www.jasc.com">www.jasc.com</a></li>
+      <li>Ulead PhotoImpact:&nbsp; <a href="http://www.ulead.com">www.ulead.com</a></li>
+    </ul>
+  </li>
+</ul>
+<hr>
+
+<script language="JavaScript">writeFooter(2);</script>
+
+
+<h1><a name="1"></a>Tables</h1>
+<ul>
+  <li>HTML tables allow Web designers to create grid-based page layouts.</li>
+  <li>Tables are used to create templates that allow the Web page designer to
+    control how your content display's in the browser.</li>
+  <li>Tables are also used to present tabular information</li>
+</ul>
+<hr>
+<h2><span><a name="2"></a>Table Elements</span></h2>
+<ul>
+  <li>The HTML <code>&lt;TABLE&gt;</code> element contains the table
+    information. The following are a list of the table elements (tags):</li>
+</ul>
+<center>
+<table border="1" cellspacing="1">
+  <tr>
+    <th>Tag</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;TABLE&gt;...&lt;/TABLE&gt;</code></td>
+    <td>
+      Required!</td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;CAPTION&gt;...&lt;/CAPTION&gt;</code></td>
+    <td>
+      An optional table title
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;TR&gt;...&lt;/TR&gt;</code></td>
+    <td>
+      A table row (1 or more cells)</td>
+  </tr>
+  <tr>
+    <td>
+      <code> &lt;TH>...&lt;/TH></code></td>
+    <td>
+      a table header cell</td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;TD>...&lt;/TD></code></td>
+    <td>
+      a table data cell</td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;THEAD&gt;...&lt;/THEAD&gt;</code></td>
+    <td>
+      Caption and header rows here</td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;TBODY&gt;...&lt;/TBODY&gt;</code></td>
+    <td>
+      All table data goes in body</td>
+  </tr>
+  <tr>
+    <td>
+      <code>&lt;COLGROUP&gt;..&lt;/COLGROUP&gt;</code></td>
+    <td>
+      Allows alignment of column groups</td>
+  </tr>
+</table>
+</center>
+<ul>
+  <li>
+
+<a name="3"></a>
+
+The <code> &lt;TABLE></code> and <code> &lt;/TABLE></code> tags must surround the entire table definition.&nbsp;</li>
+  <li> You can have any number of rows (<code>&lt;TR&gt; &lt;/TR&gt;</code>).</li>
+  <li> Each row of a table is, essentially, formatted independently of the rows above and below it.</li>
+  <li> Within a row you can have any number of cells defined by the <code> &lt;TD>...&lt;/TD></code> or
+    <code> &lt;TH>...&lt;/TH></code> tags.&nbsp;</li>
+</ul>
+
+<hr>
+
+<h2><span>
+<a name="4"></a> General Table Format</span></h2>
+
+<ul>
+  <li>
+
+The most common table tags are &lt;TR&gt; for rows and &lt;TD&gt;
+for cells.&nbsp; The example below uses these two elements inside &lt;TABLE&gt;
+tags to make a 2X2 grid of data.</li>
+</ul>
+
+<div>
+&lt;TABLE BORDER=1&gt;&nbsp;<dfn>&lt;!-- a demo table --></dfn><br>
+&lt;TR&gt;&nbsp;<br>
+&nbsp; &lt;TD> first row, first cell &lt;/TD><br>
+&nbsp; &lt;TD> first row, last cell &lt;/TD>&nbsp;<br>
+&lt;/TR&gt;&nbsp;<br>
+<br style="font-size: .5em">
+&lt;TR&gt;&nbsp;<br>
+&nbsp; &lt;TD> last row, first cell &lt;/TD><br>
+&nbsp; &lt;TD> last row, last cell &lt;/TD>&nbsp;<br>
+&lt;/TR&gt;&nbsp;<br>
+&lt;/TABLE>
+</div>
+
+<ul>
+  <li>
+
+<a name="5"></a>
+The above example looks like this when rendered in a browser. &nbsp;</li>
+</ul>
+
+<TABlE BORDER=1> <!-- comment -->
+<TR> 
+   <TD> first row, first cell </TD> 
+   <TD> first row, last cell </TD>
+</TR>
+<TR> 
+   <TD> last row, first cell </TD> 
+   <TD> last row, last cell  </TD>
+</TR>
+</TABLE>
+
+<hr>
+
+<h2><span>
+<a name="6"></a> Table Headers and Captions</span></h2>
+<ul>
+  <li>You may occasionally want to add a <code>&lt;CAPTION&gt;</code> or a
+    header <code>&lt;TH&gt; </code>to your table.&nbsp; These make tabular data
+    easier to read&nbsp;</li>
+</ul>
+<div>
+&lt;TABLE BORDER=1&gt;&nbsp;<dfn>&lt;!-- a demo table --></dfn><br>
+&lt;CAPTION> caption contents &lt;/CAPTION>&nbsp;<br>
+&lt;TR&gt;&nbsp;<br>
+&nbsp; &lt;TH&gt; first header cell &lt;/TH&gt;&nbsp;<br>
+&nbsp; &lt;TH&gt; last header cell &lt;/TH&gt;&nbsp;<br>
+&lt;/TR&gt;&nbsp;<br>
+<br style="font-size: .5em">
+&lt;TR&gt;&nbsp;<br>
+&nbsp; &lt;TD> first row, first cell &lt;/TD><br>
+&nbsp; &lt;TD> first row, last cell &lt;/TD>&nbsp;<br>
+&lt;/TR&gt;&nbsp;<br>
+<br style="font-size: .5em">
+&lt;TR&gt;&nbsp;<br>
+&nbsp; &lt;TD> last row, first cell &lt;/TD><br>
+&nbsp; &lt;TD> last row, last cell &lt;/TD>&nbsp;<br>
+&lt;/TR&gt;&nbsp;<br>
+&lt;/TABLE>
+</div>
+
+<ul>
+  <li>
+
+<a name="7"></a>The above example looks like this when rendered in a browser. &nbsp;</li>
+</ul>
+
+<TABlE BORDER=1> <!-- comment -->
+<CAPTION> <font color="#000000"> caption contents</font> </CAPTION>
+<TR background="../images/mainbg.jpg">
+   <TH background="../images/mainbg.jpg"> <b><font color="#000000"> first header cell</font></b> </TH>
+   <TH background="../images/mainbg.jpg"> <b><font color="#000000"> last header cell</font></b>  </TH>
+</TR>
+<TR> 
+   <TD> first row, first cell </TD> 
+   <TD> first row, last cell </TD>
+</TR>
+<TR> 
+   <TD> last row, first cell </TD> 
+   <TD> last row, last cell  </TD>
+</TR>
+</TABLE>
+
+<hr>
+
+<h2><span>
+<a name="8"></a>Table Attributes</span></h2>
+<ul>
+  <li>Table Attributes let you further define a number of table
+    characteristics.&nbsp; You can apply attributes to the whole table, to a row
+    or to an individual cell.</li>
+</ul>
+<table border=1>
+<caption>Table Attributes</caption>
+  <tr>
+    <th>ATTRIBUTE</th>
+    <th>DESCRIPTION</th>
+  </tr>
+  <tr>
+    <td><code>ALIGN</code></td>
+    <td>Specifies the position of the table with respect to the document. This
+      works the same as the ALIGN parameter for images. Valid values include
+      LEFT, CENTER and RIGHT.</td>
+  </tr>
+  <tr>
+    <td><code>BGCOLOR</code></td>
+    <td>Colors the table background just as it would when used with the
+      &lt;BODY&gt; tag.</td>
+  </tr>
+  <tr>
+    <td><code>BORDER</code></td>
+    <td>Specifies the pixel width of the border that divides table cells and the
+      table itself. This table is set to BORDER = &quot;1&quot;.</td>
+  </tr>
+  <tr>
+    <td><code>CELLPADDING</code></td>
+    <td>Specifies the amount of space between the borders of a table and the
+      actual data in the cell.</td>
+  </tr>
+  <tr>
+    <td><code><a name="9"></a>CELLSPACING</code></td>
+    <td>Specifies the amount of space inserted between table cells.</td>
+  </tr>
+  <tr>
+    <td><code>HEIGHT</code></td>
+    <td>Specifies the height of the table in absolute pixels or as a percentage
+      of the available space.</td>
+  </tr>
+  <tr>
+    <td><code>WIDTH</code></td>
+    <td>Specifies the width of the table in absolute pixels or as a percentage
+      of the available space</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<table border=1>
+<caption><a name="10"></a>Table Row Properties</caption>
+  <tr>
+    <th>ATTRIBUTE</th>
+    <th>DESCRIPTION</th>
+  </tr>
+  <tr>
+    <td><code>ALIGN</code></td>
+    <td>Specifies the alignment of the text within the cells in the row. Valid
+      values can be LEFT, RIGHT, or CENTER</td>
+  </tr>
+  <tr>
+    <td><code>BGCOLOR</code></td>
+    <td>Specifies the background color for the table cells in the row. It works
+      just the same as the corresponding attribute for the &lt;BODY&gt; tag</td>
+  </tr>
+  <tr>
+    <td><code>VALIGN</code></td>
+    <td>Specifies the vertical alignment of text within the cells in the row.
+      Valid values are TOP, BOTTOM, or CENTER.</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<table border="1">
+<caption><a name="11"></a>Table Cell Properties</caption>
+  <tr>
+    <th>ATTRIBUTE</th>
+    <th>DESCRIPTION</th>
+  </tr>
+  <tr>
+    <td><code>ALIGN</code></td>
+    <td>Specifies the alignment of the text within the cell. Valid values can be
+      LEFT, RIGHT, or CENTER</td>
+  </tr>
+  <tr>
+    <td><code>BGCOLOR</code></td>
+    <td>Specifies the background color for the table cell. It works just the
+      same as the corresponding attribute for the &lt;BODY&gt; tag</td>
+  </tr>
+  <tr>
+    <td><code>COLSPAN</code></td>
+    <td>Specifies the number of columns that a single cell should span. The
+      default value of colspan is 1. A value of zero means the cell will span
+      all columns from the current column to the last column.</td>
+  </tr>
+  <tr>
+    <td><code>HEIGHT</code></td>
+    <td>Specifies the height of the cell in absolute pixels or as a percentage
+      of the total area. Note that all cells in that row will be sized to match
+      this height.</td>
+  </tr>
+  <tr>
+    <td><code>NOWRAP</code></td>
+    <td>Specifies that the text within the cell should not be word-wrapped.</td>
+  </tr>
+  <tr>
+    <td><code>ROWSPAN</code></td>
+    <td>Specifies the number of rows the cell should span. The default value of
+      rowspan is one. A value of zero means that the cell spans all rows from
+      the current row to the last row.</td>
+  </tr>
+  <tr>
+    <td><code>VALIGN</code></td>
+    <td>Specifies the vertical alignment of text within the cell. Valid values
+      are TOP, BOTTOM, or MIDDLE.</td>
+  </tr>
+  <tr>
+    <td><code>WIDTH</code></td>
+    <td>Specifies the width of the cell in absolute pixels or as a percentage of
+      the total area. Note that all cells in that column will be sized to match
+      this width.</td>
+  </tr>
+</table>
+<hr>
+<h2><span><a name="12"></a>Table Attribute Example</span></h2>
+<ul>
+  <li>This table demonstrates table color, cell color and cell and row
+    alignment.</li>
+</ul>
+<center>
+<table border="1" width="85%" bgcolor="honeydew">
+<caption>Table with border 1, width 85%, and bgcolor honeydew</caption>
+  <tbody>
+    <tr bgcolor="lemonchiffon">
+      <td align="middle"><b><font size="3" color="#000000">Row bgcolor &quot;lemonchiffon&quot;<br>
+        Centered Header&nbsp;</font></b></td>
+      <td align="left"><b><font size="3" color="#000000">Left-Aligned Header</font></b></t>
+      <td align="right"><b><font size="3" color="#000000">Right-Aligned Header</font></b></td>
+    </tr>
+    <tr>
+      <td vAlign="top">Text Row 1/Col 1, valign top<br>
+      </td>
+      <td bgcolor="orchid"> cell color orchid</td>
+      <td vAlign="bottom">valign bottom</td>
+    </tr>
+    <tr>
+      <td align="right" bgcolor="coral">right-align horizontally<br>
+        cell color coral</td>
+      <td align="left" vAlign="bottom">bottom-aligned and left-aligned&nbsp;</td>
+      <td align="middle" vAlign="center">True center alignment</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+<ul>
+  <li><a name="13"></a>The code for this table is:</li>
+</ul>
+<div><dfn>&lt;!-- table tag where table attributes are set --&gt;</dfn><br>
+  &lt;table border="1" width="85%" bgcolor="honeydew"><br>
+  &lt;caption>Table with border 1, width 85%, and&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bgcolor &lt;/caption><br>
+    &lt;tr bgcolor=&quot;lemonchiffon&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>Set
+  Row Attributes</em><br>
+  &nbsp; &lt;th align=&quot;middle&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>Set
+  Header Cell Attributes</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; Row bgcolor &amp;quot;lemonchiffon&amp;quot;&lt;br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; Centered Header&amp;nbsp;&lt;/th><br>
+  &nbsp; &lt;th align="left">Left-Aligned Header&lt;/th><br>
+  &nbsp; &lt;th align="right">Right-Aligned Header&lt;/th><br>
+    &lt;/tr><br>
+  <a name="14"></a>&lt;tr><br>
+  &nbsp; &lt;td vAlign=&quot;top&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>Set
+  valign for cell</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Text Row 1/Col 1, valign top&lt;/td><br>
+  &nbsp; &lt;td bgcolor=&quot;orchid&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>Set
+  bgcolor for cell</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cell color orchid&lt;/td><br>
+  &nbsp; &lt;td vAlign=&quot;center&quot;&gt;valign center&lt;/td><br>
+    &lt;/tr><br>
+    &lt;tr><br>
+  &nbsp; &lt;td align="right" bgcolor=&quot;coral&quot;&gt;<img border="0" src="../images/arrow.gif" width="18" height="18"><em>align &amp; bgcolor</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; right-align horizontally&lt;br&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; cell color coral&lt;/td><br>
+  &nbsp; &lt;td align="left" vAlign=&quot;bottom&quot;&gt;<img border="0" src="../images/arrow.gif" width="18" height="18"><em>align &amp; valign</em><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; bottom-aligned and left-aligned&amp;nbsp;&lt;/td><br>
+  &nbsp; &lt;td align="middle" vAlign=&quot;center&quot;&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; True center alignment&lt;/td><br>
+    &lt;/tr&gt;<br>
+  &lt;/table></div>
+<hr>
+<script language="JavaScript">writeFooter(3);</script>
+
+
+<h2><span>
+<a name="15"></a> Tables with colspan &amp; rowspan (for page layout)</span></h2>
+<ul>
+  <li>
+Most HTML authors use tables as the main tool to layout their Web pages.&nbsp;
+    <ul>
+      <li>eg. use a table with no borders to create "one" image from separate images.&nbsp;
+        (used like an image map).&nbsp;</li>
+      <li>eg. use a table to format text with images.&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+
+
+<table border="1" width="100%" cellspacing="4" cellpadding="3">
+  <tbody>
+    <tr>
+      <td colSpan="3"><font color="#000000">Colspan
+        of &quot;3&quot;</font>
+      <td align="right"><font color="#000000">Right-align
+        Column</font>
+    </tr>
+    <tr>
+      <td colSpan="2">Colspan of &quot;2&quot;</td>
+      <td colSpan="2" align="right">Colspan of &quot;2&quot;, Right-aligned</td>
+    </tr>
+    <tr>
+      <td rowSpan="2" valign="top">Rowspan of &quot;2&quot;<br>
+        valign at top</td>
+      <td>Normal Column</td>
+      <td>Normal Column</td>
+      <td valign="top" rowspan="2">Rowspan of &quot;2&quot;<br>
+        valign at top</td>
+    </tr>
+    <tr>
+      <td>Normal Column</td>
+      <td>Normal Column</td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">Colspan of &quot;4&quot; Center align</td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp; </p>
+
+<div>
+<a name="16"></a>
+&lt;table border="1" width=&quot;100%&quot;&gt;<br>
+    &lt;tr&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>Start
+row 1</em><br>
+&nbsp;&nbsp; &lt;td colSpan=&quot;3&quot;&gt;Colspan of 3&lt;/td&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>row 1,
+col 1-3</em><br>
+&nbsp;&nbsp; &lt;td align="right">Right-align&lt;/td&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>row 1,
+col 4</em><br>
+    &lt;/tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>End
+row 1</em><br>
+    &lt;tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>Start
+row 2</em><br>
+&nbsp;&nbsp; &lt;td colSpan="2">Colspan of 2&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+2, col 1&amp;2</em><br>
+&nbsp;&nbsp; &lt;td colSpan="2" align=&quot;right&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+2, col 3&amp;4</em><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colspan of 2, Right-aligned&lt;/td><br>
+    &lt;/tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>End
+row 2</em><br>
+    &lt;tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>Start
+row 3</em><br>
+&nbsp;&nbsp; &lt;td rowSpan=&quot;2&quot; valign=&quot;top&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+3&amp;4, col 1</em><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rowspan of 2&lt;br&gt;valign at top&lt;/td><br>
+&nbsp;&nbsp; &lt;td>Normal Column&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+3, col 2</em><br>
+&nbsp;&nbsp; &lt;td>Normal Column&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+3, col 3</em><br>
+&nbsp;&nbsp; &lt;td valign="top" rowspan=&quot;2&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+3&amp;4, col 4</em><br>
+&nbsp;&nbsp;&nbsp;&nbsp; Rowspan of 2&lt;br&gt;valign at top&lt;/td><br>
+<a name="17"></a>
+    &lt;/tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>End
+row 3</em><br>
+    &lt;tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>Start
+row 4, No col 1 because of rowspan</em><br>
+&nbsp;&nbsp; &lt;td>Normal Column&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+4, col 2</em><br>
+&nbsp;&nbsp; &lt;td>Normal Column&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+4, col 3</em><br>
+    &lt;/tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>End
+row 4, No col 4 because of rowspan</em><br>
+    &lt;tr><img border="0" src="../images/arrow.gif" width="40" height="18"><em>Start
+row 5</em><br>
+&nbsp;&nbsp; &lt;td colspan="4" align=&quot;center&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>row
+5, col 1-4</em><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Colspan of 4 Center align&lt;/td><br>
+    &lt;/tr&gt;<img border="0" src="../images/arrow.gif" width="40" height="18"><em>End
+row 5</em><br>
+&lt;/table>
+</div>
+
+<ul>
+  <li>Here is the same table but with page layout type content and
+    borders=&quot;0&quot;:</li>
+</ul>
+
+
+<hr>
+
+
+<table border="0" width="100%" cellspacing="0" cellpadding="4" bgcolor="#FFFFFF" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td colSpan="3"><a name="18"></a>
+      <img border="0" src="../images/b_starburst-logo.jpg" width="275" height="58">
+      <td align="right" valign="bottom">
+    <font face="Arial" color="#333300"><b><i>A Retailing Company</i></b></font>
+    </tr>
+    <tr>
+      <td colSpan="2" bgcolor="#333300">&nbsp;</td>
+      <td colSpan="2" align="right" bgcolor="#333300">
+      <img border="0" src="../images/eb_tn_myaccount.gif" width="68" height="49"><img border="0" src="../images/eb_tn_catalogorder.gif" width="78" height="49"><img border="0" src="../images/eb_tn_viewcart.gif" width="71" height="49"></td>
+    </tr>
+    <tr>
+      <td rowSpan="2" valign="top">
+      <img border="0" src="../images/home.gif" width="100" height="32"><br>
+        <img border="0" src="../images/products.gif" width="100" height="32"><br>
+        <img border="0" src="../images/feedback.gif" width="100" height="32"></td>
+      <td align="center"><b><font face="Arial">
+      <img border="0" src="../images/us-small.gif" width="143" height="76"><br>
+        North America</font></b></td>
+      <td align="center"><b><font face="Arial">
+      <img border="0" src="../images/uk-small.gif" width="151" height="76"><br>
+        United Kingdom</font></b></td>
+      <td valign="top" rowspan="2" align="right"><form>
+        <p><font face="Arial" size="1"><b>Search:</b></font><input type=text width=8 size="16"></p>
+      </form></td>
+    </tr>
+    <tr>
+      <td align="center"><b><font face="Arial">
+      <img border="0" src="../images/fr-small.gif" width="113" height="76"><br>
+        France</font></b></td>
+      <td align="center"><b><font face="Arial">
+      <img border="0" src="../images/gm-small.gif" width="123" height="76"><br>
+        Germany</font></b></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center"><b><font color="#333311"><u>Home</u> | <u>Products</u>
+        | <u>Shopping Cart</u> | <u>Site Map</u> | <u>Customer Service</u></font></b></td>
+    </tr>
+</table>
+
+<hr>
+<h2><span><a name="19"></a>Some Home Page Tables&nbsp;</span></h2>
+<ul>
+  <li>The eToys Web page has a main navigation bar and then is organized in 3
+    major columns to present site content.&nbsp; The columns have space between
+    them and resize themselves as the window grows (Active White Space):</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/active_etoysS.gif" width="617" height="302"></p>
+<p align="center"><a name="20"></a>
+<img border="0" src="../images/active_etoysL.gif" width="770" height="302"></p>
+<ul>
+  <li><a name="21"></a>Other Web sites are obviously designed for either a large screen (Flowers.com
+    shopping cart and search tool disappear at smaller screen
+    sizes) or as small screen (Nordstrom has a wide white margin at the right of
+    the screen at larger screen sizes):</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/active_flowers.gif" width="622" height="241"></p>
+<p align="center"><a name="22"></a>
+<img border="0" src="../images/active_nordstrom.gif" width="770" height="347"></p>
+<hr>
+<h2><span><a name="23"></a>Creating Table Templates</span></h2>
+<ul>
+  <li>Web designers often create templates to place their content in.</li>
+  <li>These templates consist of multiple tables stacked on top of or nested
+    inside of each other.</li>
+  <li>The Yahoo site below uses multiple tables to organize content and to
+    provide background color changes:</li>
+</ul>
+<p align="center"><a name="24"></a>
+<img border="0" src="../images/grid_yahoo.gif" width="647" height="384">
+
+
+<hr><script language="JavaScript">writeFooter(4);</script>
+
+
+<h1><a name="25"></a>Frames
+</h1>
+<h2><span>
+What Are Frames?
+</span></h2>
+<ul>
+  <li>
+    A frames page is a way of displaying more than one web page
+    on the same screen.</li>
+  <li>
+    If you have two web pages you'd like to display side by side,
+    you can do this by writing a third page with it's own distinct url. This page will contain instructions for the viewers
+    browser, telling it where to find the two pages, and how to carve the screen up while displaying them in the same
+    window.&nbsp;</li>
+</ul>
+<hr>
+<h2><span><a name="26"></a>How do Frames work?</span></h2>
+<ul>
+  <li>Frames pages use two tags:&nbsp;FRAMESET and FRAME&nbsp;</li>
+  <li>The FRAMESET tag tells the viewers browser how to divide up the window into columns and rows, and how big to make
+    each.&nbsp;</li>
+  <li>The FRAME tag tells the browser what to put into the columns and rows you just
+    created.&nbsp;</li>
+  <li><em>Thus, FRAMESET divides the page into sections, FRAME describes those sections.&nbsp;</em></li>
+</ul>
+<hr>
+<p><a name="27"></a>For example you could have a file:
+<a target="_top" href="demo/frames.html">frames.html</a>
+that displays the 2 lecture files, each taking up 50% of the screen:<br>
+</p>
+<div>
+
+&lt;HTML><br>
+&lt;HEAD><br>
+&lt;TITLE>My Frames Page&lt;/TITLE><br>
+&lt;/HEAD><img border="0" src="../images/arrow.gif" width="40" height="19"><em>End
+normal head but no body tag!!</em><br>
+&lt;FRAMESET COLS=&quot;50%,50%&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>2
+Columns each 1/2 page</em><br>
+&lt;FRAME NAME="left" SRC=&quot;notes1.html&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>Column
+1</em><br>
+&lt;FRAME NAME="right" SRC=&quot;notes2.html&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>Column
+2</em><br>
+&lt;/FRAMESET&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>End
+Frames definition</em><br>
+&lt;/HTML> 
+
+</div>
+<p>&nbsp;</p>
+<ul>
+  <li><a name="28"></a>A FRAME tag does two things, it tells the browser where
+    to find a web page to place in a section we created, and it names that
+    section.&nbsp;
+    <ul>
+      <li>You need to name the frames so you can do linking.</li>
+    </ul>
+  </li>
+  <li>If you want to combine four different Pages to make<br>
+                     one page...You would use FRAMESET ROWS tags.&nbsp;</li>
+  <li>
+This example displays 4 frames (<a target="_top" href="demo/frames4.html">frames4.html</a>).
+The first lecture at top_left, second lecture at top_right, the third lecture at bottom_left
+&amp; fourth lecture at bottom_right.</li>
+</ul>
+<div>
+
+<a name="29"></a>&lt;HTML><br>
+&lt;HEAD><br>
+&lt;TITLE>My Frames Page&lt;/TITLE><br>
+&lt;/HEAD><img border="0" src="../images/arrow.gif" width="40" height="19"><em>End
+normal head but no body tag!!<br>
+</em>&lt;FRAMESET ROWS=&quot;50%,50%&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>2
+Rows each 1/2 page</em><br>
+&nbsp; &lt;FRAMESET COLS=&quot;20%,80%&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>2
+Columns in Row 1</em><br>
+&nbsp;&nbsp; &lt;FRAME NAME=&quot;tl&quot; SRC="notes1.html"><img border="0" src="../images/arrow.gif" width="40" height="19"><em>R1C1</em><br>
+&nbsp;&nbsp; &lt;FRAME NAME=&quot;tr&quot; SRC="notes2.html"><img border="0" src="../images/arrow.gif" width="40" height="19"><em>R1C2</em><br>
+&nbsp; &lt;/FRAMESET><img border="0" src="../images/arrow.gif" width="40" height="19"><em>End
+Columns in Row 1</em><br>
+&nbsp; &lt;FRAMESET COLS=&quot;20%,80%&quot;&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>2
+Columns in Row 2</em><br>
+&nbsp;&nbsp;&nbsp; &lt;FRAME NAME=&quot;bl&quot; SRC="notes3.html"><img border="0" src="../images/arrow.gif" width="40" height="19"><em>R2C1</em><br>
+&nbsp;&nbsp;&nbsp; &lt;FRAME NAME=&quot;br&quot; SRC="notes4.html"><img border="0" src="../images/arrow.gif" width="40" height="19"><em>R2C2</em><br>
+&nbsp; &lt;/FRAMESET><img border="0" src="../images/arrow.gif" width="40" height="19"><em>End
+Columns in Row 2</em><br>
+&lt;/FRAMESET><img border="0" src="../images/arrow.gif" width="40" height="19"><em>End
+Frames definition</em><br>
+&lt;NOFRAMES&gt;This page contains frames<br>
+&lt;/NOFRAMES&gt;<img border="0" src="../images/arrow.gif" width="40" height="19"><em>Displays text for browsers w/o frame support&nbsp;</em><br>
+&lt;/HTML> 
+
+</div>
+<p>&nbsp; </p>
+<hr>
+<h2><span><a name="30"></a>Linking with Frames</span></h2>
+<ul>
+  <li>By default a link clicked in any given frame will load into that frame
+    unless directed otherwise.</li>
+  <li>To place a <a href="../links.html" target="menu">link</a> clicked in one
+    frame in another frame you use the <code>TARGET</code>  attribute where <code>menu</code>
+    is the <em>name</em> assigned to the frame in the <code>&lt;frame
+    name=&quot;menu&quot;&gt;</code> tag:<br>
+    <code>&lt;A HREF=&quot;../links.html&quot; TARGET=&quot;menu&quot;&gt;</code></li>
+  <li>To have the <a target="_top" href="../links.html">link</a> load in the
+    main window (leave frames) use &quot;_top&quot; as the target:<br>
+    <code>&lt;A HREF=&quot;../links.html&quot; TARGET=&quot;_top&quot;&gt;</code></li>
+  <li>To have the <a target="_blank" href="../links.html">link</a> load in a new
+    window use &quot;_blank&quot; as the target:<br>
+    <code>&lt;A HREF=&quot;../links.html&quot; TARGET=&quot;_blank&quot;&gt;</code></li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(5);</script>
+
+
+<h1><span><a name="spec"></a>Specification Document</span></h1>
+<ul>
+  <li>A specification document describes your concepts for a Web site to your 
+  customs - whether they be your boss, your client, or your partner in a Web 
+  based venture.</li>
+  <li>At a minimum the specification document should include:</li>
+
+<ul>
+  <li>Why are you building the site?</li>
+  <li>What is the business model / plan for the site?
+    <ul>
+      <li>What is the goal for the site: Billboard, Publishing, Special
+        interest, Virtual Gallery, E-commerce, Product support, Intranet or
+        Extranet...</li>
+      <li>If you are generating revenue what will be the primary source of
+        revenue? The secondary?&nbsp;&nbsp;</li>
+      <li>Is the business exclusively web based or the extension of a
+        brick-and-mortar business?</li>
+      <li>How will you judge the success of the site 
+      (hits/revenue/positive feedback)</li>
+      <li>Who is the target audience? (gender, age, location)</li>
+    </ul>
+  </li>
+      <li>What are the essential features of the site? (products, shopping cart, 
+      chat room, technical support)</li>
+      <li>How will site navigation work? (menus, site map, information 
+      structure, location cues)?</li>
+      <li>How will the site look? (color, layout)</li>
+      <li>How will the site be implemented (file naming convention, technologies planned)<ul>
+  <li>What are the limiting technical factors&nbsp; affecting your site? 
+      (system requirements, secure socket layer, application server, anticipated 
+      number of visitors)</li>
+</ul>
+  </li>
+</ul>
+  </ul>
+<hr>
+<h2><span>Creating a Specification Document</span></h2>
+<h2><span>Determining the Business Objective</span></h2>
+ <ul><li>The business objective should be determined through interviews between 
+   you and the person you are designing the Web site for.  
+
+  </li>
+   <li>Assume I am creating a Web site for a local store called 
+&quot;Outdoor Domain.&quot; I would need to talk to them to find out the 
+   following:<ul>
+     <li>They sell outdoor clothing and equipment. </li>
+     <li>
+They want to create a brand new Web business to reach more 
+customers, and to provide online product information to their current customers.
+
+     </li>
+     <li>
+They do not want to deal with international trade laws and 
+shipping costs so they only will ship to the USA and Canada.
+
+     </li>
+     <li>
+Their&nbsp; URL will be: www.outdoordomain.com
+
+     </li>
+  </ul>
+
+  </li>
+  </ul>
+<hr>
+<h2><span>Understanding the Business Model/Plan</span></h2>
+<ul>
+    <li>
+The business model should be included in the specification 
+document because it will give a clear indication of the size and scope of the 
+project.&nbsp; It should also be used when making major design choices.</li>
+    <li>
+Again, the business model will largely be determined by the 
+through interviews between you and the person you are designing the Web site 
+for. 
+
+    </li>
+    <li>
+In our example scenario:<ul>
+    <li>
+Web site will be an eCommerce site and will accept orders 
+online. </li>
+    <li>
+The business will be a &quot;click &amp; mortar&quot; business (both Web and 
+in a store). </li>
+    <li>
+Revenue will be generated directly through sales at the site 
+with additional revenue coming from sales in the store after the customer 
+browses online.
+
+    </li>
+    </li>
+    <li>
+Success will primarily be judged by any increased revenue (store 
+or Web site). </li>
+    <li>
+Positive feedback from current customers will also be a success 
+factor. </li>
+    <li>
+The target audience will be Men &amp; Women between 18 and 45 years of age who regularly engage 
+in outdoor activities (hiking, camping, backpacking, bird watching ...).
+
+    </li>
+  </ul>
+
+    </li>
+  </ul>
+<hr>
+<h2><span>Essential Features</span></h2>
+<ul>
+  <li>
+Essential features
+should be identified based on the purpose and business model for the Web site.</li>
+  <li>
+One good way to determine essential features is to use the Web sites for several competitors 
+to determine what they include and do not include.</li>
+  <li>
+For the example scenario I examined Web pages from REI.com and 
+gearpro.com and discovered both sites contained the following features:<ul>
+  <li>A Navigation Menu on the far left of the screen that grouped links to 
+  individual sections like: Gear, Clothing, and Company Info</li>
+  <li>Additional links to Home, Contact us &amp; Help</li>
+  <li>A Search tool</li>
+  <li>A shopping cart</li>
+  <li>A best sellers list</li>
+  <li>Product images featured prominently on the home page</li>
+  <li>A logo in the upper left hand corner - both logos were mountain themed</li>
+  <li>A footer containing copyright info and text links to major pages in the 
+  site.</li>
+</ul>
+  </li>
+</ul>
+<p align="center">
+<img border="0" src="../images/designdoc1.gif" width="720" height="540"></p>
+<hr>
+<h2><span>Site Navigation</span></h2>
+<ul>
+  <li>Site navigation involves determining 4 things:</li>
+</ul>
+<blockquote>
+  <ol>
+    <li>Where will the primary menus be (location on the page)?</li>
+    <li>What will each menu contain?</li>
+    <li>Will the menus be the same (or substantially similar on all pages)?</li>
+    <li>What navigation cues will appear on each page?</li>
+    <li>How will one navigate through the site? (information structure)</li>
+  </ol>
+</blockquote>
+<ul>
+  <li>Based on the sample pages examined above I propose the following site 
+  navigation menus:<ul>
+    <li>Left Menu: Contains links to product categories in Logical groupings - 
+    Gear (Camping, Hiking, Bird Watching); Clothing (Men's, Women's, Kid's); 
+    Other ...</li>
+    <li>Top Menu (below logo) with links to: home, contact us, company info, 
+    site map, help and shopping cart</li>
+    <li>Bottom Menu: Small menu at the bottom of the page contains links to the 
+    same items as in the top menu.</li>
+  </ul>
+  </li>
+  <li>Navigation cues:<ul>
+    <li>Each product category page (e.g. &quot;Sleeping bags&quot;) will contain a title 
+    indicating where you are in the site:&nbsp; Camping Gear - Sleeping Bags.</li>
+    <li>There will also be links to the prior page: (Sleeping bags will link 
+    back to Camping Gear, an individual Sleeping Bag page will link back to 
+    Sleeping Bags).</li>
+  </ul>
+  </li>
+  <li>Information Structure<ul>
+  <li>Even though I am proposing a Web based Catalog - the Web site will 
+  predominantly use a hierarchical structure with main navigation assumed to 
+  pass through the home page:</li>
+</ul>
+  <p align="center">
+  <img border="0" src="../images/designdoc3.gif" width="396" height="266"></li>
+</ul>
+<hr>
+<h2><span>Site Appearance</span></h2>
+<ul>
+  <li>The definition of the site appearance needs to convey enough information 
+  so that the customer understands your vision for the Web site.</li>
+  <li>This section should include:<ul>
+    <li>Description of the way you want the Web site to look and feel.&nbsp; You 
+    could include images of other Web sites that have a similar &quot;look&quot; to the 
+    one you are proposing.</li>
+    <li>Sketch or drawing of the homepage for the Web site - with enough detail 
+    so the viewer knows were things will be located.</li>
+    <li>Definition of the overall color scheme for the Web site.&nbsp; This 
+    should be consistent with the business type and with any color schemes the 
+    company already uses.</li>
+  </ul>
+  </li>
+  <li>For the Outdoor Domain Web site I would propose:<ul>
+    <li>A Web site that features an &quot;Outdoor&quot; look and feel.&nbsp; It will 
+    contain images of people engaged in out door activities - appropriate to the 
+    season.&nbsp; I might include a sample of the REI home page to show the 
+    skier prominently featured on the home page.</li>
+    <li>I would include a sketch of how I would lay out the Home page:</li>
+  </ul>
+  </li>
+</ul>
+<p align=center>
+<img border="0" src="../images/designdoc2.gif" width="432" height="324"></p>
+<ul>
+  <li>I would discuss the color scheme selected.&nbsp; The scheme I am proposing 
+  is an Analogous color scheme centering around the color green.&nbsp; It has 
+  more variation than a Monochromatic color scheme while still conveying the 
+  outdoor feel:</li>
+</ul>
+<center>
+<table border="1" width="50%">
+  <tr>
+    <td bgcolor=#ccff66 width="33%">&nbsp;</td>
+    <td bgcolor=#009900 width="33%">&nbsp;</td>
+    <td bgcolor=#339999 width="34%">&nbsp;<p>&nbsp;</td>
+  </tr>
+</table>
+</center>
+<ul>
+  <li>In addition to proposing colors you could also suggest some background 
+  images that could be used either in menus or other small areas to provide 
+  added interest:</li>
+</ul>
+<center>
+<table border="1" width="50%">
+  <tr>
+    <td width="33%" background="../images/background/ivy.gif">&nbsp;</td>
+    <td width="33%" background="../images/background/leaves.gif">&nbsp;</td>
+    <td width="34%" background="../images/background/moss.jpg">&nbsp;<p>&nbsp;<p>&nbsp;</td>
+  </tr>
+</table>
+</center>
+<hr>
+<h2><span>Site Implementation</span></h2>
+<ul>
+  <li>Site implementation should discuss the principle technologies to be used 
+  within the Web site.<ul>
+    <li>These can include: HTML; Cascading Style Sheets; Forms; </li>
+    <li>Scripts and Programs: JavaScript; Server side scripts like JSP, ASP, 
+    Perl, or PHP; Flash, Fireworks, Database connectivity.</li>
+    <li>Hardware can include: Operating platform designing for (Unix/Windows), 
+    Web server to be used.</li>
+    <li>Secure transaction capability</li>
+    <li>Limiting technical factors can include the number of concurrent visitors 
+    the proposed Web server can support, database &amp; other software speed, 
+    maintaining accurate inventory so system knows if items are in stock, 
+    processing of credit information, and maintaining security of transaction 
+    data.</li>
+  </ul>
+  </li>
+  <li>For the example scenario the Web site will be implemented using:<ul>
+    <li>A mix of static HTML pages and dynamically created pages from an 
+    database (Using JSP).</li>
+    <li>A JavaScript shopping cart.</li>
+    <li>It will be deployed on a UNIX machine running the Apache Web server and 
+    the JBoss/Tomcat application server.</li>
+  </ul>
+  </li>
+</ul>
+
+<hr><script language="JavaScript">writeFooter(6);</script>
+
+
+</BODY>
+</HTML>

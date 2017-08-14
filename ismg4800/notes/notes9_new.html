@@ -1,0 +1,1380 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script language="JavaScript">
+  ftext = '<p class=footer><I>Updated January, 18 2006<BR>Dawn G. Gregg</I> ';
+</script>
+<title>PHP Pages</title>
+<link rel="stylesheet" type="text/css" href="../styles/screen.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../styles/print.css" media="print">
+<script language="JavaScript" src="../scripts/notes.js" type="text/javascript"></script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<h1>Static vs. Dynamic Web Pages</h1>
+<ul><li>To date we have been developing static Web pages -
+that is pages whose content has been predetermined before the request for the
+Web page is made.</li>
+<li>Dynamic Web pages are Web pages that has content determined
+at the time that the Web page is requested. </li>
+<li>Dynamic Web pages that are built on the fly are used for a number of reasons:
+<ul><li>The Web page is based on data submitted by the user. </li>
+<li>The data changes frequently. </li>
+<li>The Web page uses information from corporate databases or other such sources.</li>
+</ul></li>
+<li>Dynamic Web pages are created using Server-Side programs</li>
+<li>You can use Server-side programs for:&nbsp;
+<ul><li>Browser detection,&nbsp; </li>
+<li>Server variables such as what IP and referring page a site's user comes from,&nbsp; </li>
+<li>Reading from and writing to a database or text file,&nbsp; </li>
+<li>Surveys and quizzes,&nbsp; </li>
+<li>Electronic commerce,&nbsp; </li>
+<li>Chat,&nbsp; </li>
+<li>Message boards, </li>
+<li>With add-on server components, you can email web form responses, upload and download files, etc. </li>
+</ul></li></ul>
+<hr>
+<h2><span>How Do Server-side Programs Work?</span></h2>
+<ul><li>Server-side code is interpreted by the server and the
+information is returned to the browser to display.&nbsp;
+<ul><li>This makes it is cross - browser compatible.&nbsp; </li>
+</ul></li><li>Since server-side code is run by the Web server before it
+ever gets to your Web browser if you open a Web page containing server-side code on your local computer using a file URL
+(file:///C:\data\myfile.php) the Server-side code will not run.&nbsp; Server-side code must be developed and tested using a
+Web server and browsed via the Internet. </li>
+<li>While standard HTML is only a display language, Server-side
+programs allow you to tailor the information displayed on the page based on user interaction. </li>
+</ul><hr>
+<h1>Server-side Programming Languages</h1>
+<ul><li>The first server side programming languages utilized the Common Gateway Interface (CGI): a standard that specifies how Web
+servers and compiled programs that run on Web servers communicate with each other.&nbsp;</li>
+<li>A CGI application can either be a script or a compiled program&nbsp; that is <strong>executed</strong> in on
+the server to output <strong>dynamic</strong> information.</li>
+<li>A CGI program can be written in any language that allows it to read from the standard system
+input and write to the standard system output, such as:&nbsp; C/C++, Java, Fortran, PERL, Python, PHP, TCL, Any Unix shell, Visual
+Basic, and AppleScript.</li>
+<li>Since a CGI program is executable, it is basically the equivalent of letting the world run a program on your system, which
+isn't the safest thing to do. Therefore, there are some security precautions that need to be implemented when it comes to using CGI
+programs.&nbsp;</li>
+<li>One thing implemented on many systems is the requirement that CGI programs reside in a special directory (usually <code>cgi-bin</code>).
+This directory is usually under direct control of the webmaster, prohibiting the average user from creating CGI programs.&nbsp;</li>
+<li>Some Web sites do not allow CGIs on their site.&nbsp; In these cases users can use CGIs that are Remotely Hosted. These
+scripts are housed and run on some other computer and you can use them.&nbsp; Some are free and some charge a small fee.</li>
+</ul>
+<hr>
+<h2><span>Server Side Programming Alternatives</span></h2>
+<ul><li>There are numerous alternatives to CGI programs.&nbsp;
+Most are more secure than CGI programs.&nbsp;</li>
+<li>Active Server Page (ASP) and ASP.Net were developed by Microsoft to run on their IIS Web Servers
+<ul><li>ASP pages are a mix od code and HTML. &nbsp;They can be written using Visual Basic, Scripting
+Edition (VBScript), JScript or PerlScript. However, VBScript is the standard language used for most ASP applications.</li>
+<li>ASP.Net pages are precompiled and are usually written in Visual Basic or C#.</li>
+</ul></li>
+<li>Java Server Pages (JSP) and Java Servlets are the 2 Java server-side programming options, They require a special Java compatible
+server to be running (e.g. Apache Tomcat).</li>
+<ul><li>A Servlet is a "normal" Java class that is compiled and contains&nbsp;Java code that writes out valid HTML.</li>
+<li>JSP is a mix of HTML, scripts and Java code&nbsp;</li>
+</ul>
+<li>Perl is a cross-platform server-side scripting language that works on both Unix and Windows servers.
+<ul><li>Perl's strength is simple - powerful text processing capabilities which have helped make it the most popular scripting
+language for the Web.</li>
+</ul></li>
+<li>PHP (Hypertext Preprocessor) is a widely-used general-purpose scripting language that was designed specifically for
+Web development and can be embedded into HTML.
+<ul><li>PHP is an <i>open-source</i> technology &amp; is one of the fastest growing languages for the Web with over
+6 million domains now using PHP.</li>
+<li>PHP works in a similar fashion to JSP &amp; ASP and is now implemented on most Unix servers (the Ouray server at CU
+Denver allows PHP) and Windows servers.</li>
+</ul></li></ul><ul><li>Python is a interpreted, byte-compiled, extensible, largely
+procedural (imperative) programming language good at text processing and sometimes even general-purpose or GUI programming -- just as Perl
+is. <ul><li>It is considered a reasonable language for applications development, and is commonly used for Internet search engines, small
+administration scripts, GUI applications, etc. however, it still isn't used by as many people as Perl. </li>
+</ul></li>
+<li>There's a great deal of overlap in functionality between Python,&nbsp; Perl &amp; PHP. The extent to which you prefer
+one over the other will probably depend on how comfortable you already
+are with C and Unix shell programming in general.</li>
+<li>ASP/ASP.Net and JSP/Servlets are more complet solutions that offer complete programming environments that can be used in
+conjunction with the Web applications. &nbsp;The also allow programs to be precompiled which can improve response time.
+&nbsp;However, for most Web applicaitons the availability of these
+additional features is not necessary.</li>
+</ul><hr><script language="JavaScript">writeFooter(0);</script>
+<h1><span style="font-size: 15.0pt; font-family: Verdana">What is PHP?</span></h1>
+<ul>
+  <li>PHP stands for PHP: Hypertext Preprocessor</li>
+  <li>PHP is a server-side scripting language, like ASP</li>
+  <li>PHP scripts are executed on the server</li>
+  <li>PHP supports many databases (MySQL, Informix, Oracle, Sybase, Solid, 
+  PostgreSQL, Generic ODBC, etc.)</li>
+  <li>PHP is an open source software (OSS)</li>
+  <li>PHP is free to download and use</li>
+</ul>
+<hr>
+<h2><span style="font-size: 15.0pt; font-family: Verdana">What is a PHP File?</span></h2>
+<ul>
+  <li>PHP files may contain text, HTML tags and scripts</li>
+  <li>PHP files are returned to the browser as plain HTML&nbsp;</li>
+  <li>PHP files have a file extension of &quot;.php&quot; or &quot;.phtml&quot;</li>
+</ul>
+<p class="MsoNormal"><span style="font-size: 9.0pt; font-family: Verdana">&nbsp;</span></p>
+<hr>
+<h2><span style="font-size: 15.0pt; font-family: Verdana">PHP 4</span></h2>
+<ul>
+  <li>The design goals for PHP 4 were to improve performance of complex 
+  applications, and improve the modularity of PHP's code base. PHP 4.0, based on 
+  the &quot;Zend engine&quot;, and coupled with a wide range of additional new features, 
+  was officially released in May 2000.&nbsp; PHP 4.0 includes&nbsp; key features 
+  such as support for many more Web servers, HTTP sessions, output buffering, 
+  more secure ways of handling user input and several new language constructs.
+  </li>
+  <li>Today, PHP is being used by hundreds of thousands of developers 
+  (estimated), and several million sites report as having it installed, which 
+  accounts for over 20% of the domains on the Internet. </li>
+  <li>PHP's development team includes dozens of developers, as well as dozens 
+  others working on PHP-related projects such as PEAR and the documentation 
+  project. </li>
+</ul>
+<h2><span>PHP 5</span></h2>
+<ul>
+  <li>PHP 5 was released in July 2004 after long development and several pre-releases. It 
+is mainly driven by its core, the Zend Engine 2.0 with a new object model and 
+dozens of other new features.</span></li>
+  <li>PHP 5 is the version supported by most new PHP downloads - but many 
+  servers (e.g. Ouray) still use PHP 4.</li>
+  </ul>
+
+<hr>
+<h2><span>Characteristics of PHP</span></h2>
+<ul>
+  <li>
+<p style="text-autospace: none">
+As you may have realized, 
+the PHP language revolves around the central theme of</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+practicality. PHP is about 
+providing the programmer with the necessary tools to get</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+the job done in a quick and 
+efficient fashion. Five important characteristics make</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+PHP's practical nature 
+possible:</p>
+  <ul>
+    <li>
+<p style="text-autospace: none">
+Familiarity</p>
+    </li>
+    <li>
+<p style="text-autospace: none">
+Simplicity</p>
+    </li>
+    <li>
+<p style="text-autospace: none">
+Efficiency</p>
+    </li>
+    <li>
+<p style="text-autospace: none">
+Security</p>
+    </li>
+    <li>
+<p style="text-autospace: none">
+Flexibility</p>
+    </li>
+  </ul>
+  </li>
+  <li>
+<p style="text-autospace: none">
+One final characteristic 
+makes PHP particularly interesting: it's free!</p>
+  </li>
+</ul>
+<hr>
+<h3 style="text-autospace: none">Familiarity</h3>
+<ul>
+  <li>
+<p style="text-autospace: none">
+Programmers from many 
+backgrounds will find themselves already accustomed to the PHP language. Many of 
+the language's constructs are borrowed from C and Perl, and in many cases PHP code 
+is almost indistinguishable from that found in the typical C or Pascal 
+program. This minimizes the learning curve considerably.</p>
+  </li>
+</ul>
+<h3 style="text-autospace: none">Simplicity</h3>
+<ul>
+  <li>
+<p style="text-autospace: none">
+A PHP script can consist of 
+10,000 lines or one line: whatever you need to get the job done. There is no need to 
+include libraries, special compilation directives, or anything of the sort. The 
+PHP engine simply begins executing the code after the first escape sequence (<code>&lt;?php</code>) 
+and continues until it passes the closing escape sequence (<code>?&gt;</code>). 
+If the code is syntactically correct, it will be executed exactly as it is 
+displayed.</p>
+  </li>
+</ul>
+<h3 style="text-autospace: none">Efficiency</h3>
+<ul>
+  <li>
+<p style="text-autospace: none">
+Efficiency is an extremely 
+important consideration for working in a multiuser environment such as the 
+WWW. PHP 4.0 introduced resource allocation mechanisms and more pronounced support 
+for object-oriented programming, in addition to session management 
+features. Reference counting has also been introduced in the latest version, eliminating 
+unnecessary memory allocation.</p>
+  </li>
+</ul>
+<h3 style="text-autospace: none">Security</h3>
+<ul>
+  <li>
+<p style="text-autospace: none">
+PHP provides developers and 
+administrators with a flexible and efficient set of security safeguards. These 
+safeguards can be divided into two frames of reference: system level and 
+application level.</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+<b>System-Level Security 
+Safeguards:<br>
+</b>PHP furnishes a number of 
+security mechanisms that administrators can manipulate, providing for the maximum 
+amount of freedom and security when PHP is properly configured. PHP can be run 
+in what is known as safe mode, 
+which can limit users' attempts to exploit the PHP 
+implementation in many important ways. Limits can also be placed on maximum 
+execution time and memory usage, which if not controlled can have adverse affects on 
+server performance. Much as with a cgi-bin folder, administrators can also 
+place restrictions on the locations in which users can view and execute PHP scripts and 
+use PHP scripts to view guarded server information, such as the passwd file.</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+<b>Application-Level Security 
+Safeguards&nbsp; <br>
+</b>Several trusted data 
+encryption options are supported in PHP's predefined function set. PHP is also compatible 
+with many third-party applications, allowing for easy-integration with 
+secure ecommerce technologies. Another advantage is that the PHP source code is not 
+viewable through the browser because the script is completely parsed before it 
+is sent back to the requesting user. This benefit of PHP's server-side architecture 
+prevents the loss of creative scripts to users at least knowledgeable enough to 
+execute a 'View Source'.</p>
+  </li>
+</ul>
+<h3 style="text-autospace: none">
+Flexibility</h3>
+<ul>
+  <li>
+<p style="text-autospace: none">
+Because PHP is an embedded 
+language, it is extremely flexible towards meeting the needs of the developer. 
+Although PHP is generally touted as being used in conjunction solely with 
+HTML, it can also be integrated alongside languages like JavaScript, WML, XML, and 
+many others. Additionally, as with most other mainstream languages, 
+wisely planned PHP applications can be easily expanded as needed.</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+Browser dependency is not 
+an issue because PHP scripts are compiled entirely on the server side before 
+being sent to the user Since PHP contains no 
+server-specific code, users are not limited to a specific and perhaps unfamiliar Web 
+server. Apache, Microsoft IIs, Netscape Enterprise Server, Stronghold, and Zeus are 
+all fair game for PHP's server integration. Because of the various platforms that 
+these servers operate on, PHP is largely platform independent, available for 
+such platforms as UNIX, Solaris, FreeBSD, and Windows 95/98/NT.</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+Finally, PHP offers access 
+to external components, such as Enterprise Java Beans and Win32 COM objects. 
+These newly added features put PHP in the big league, truly enabling developers to 
+scale PHP projects upward and outward as need be.</p>
+  </li>
+</ul>
+<h3 style="text-autospace: none">Free</h3>
+<ul>
+  <li>
+<p style="text-autospace: none">
+The open source development 
+strategy has gained considerable notoriety in the software industry. The 
+prospect of releasing source code to the masses has resulted in undeniably positive 
+outcomes for many projects, perhaps most notably Linux, although the success of the 
+Apache project has certainly been a major contributor in proving the validity of the 
+open source ideal. The same holds true for the developmental history of 
+PHP, as users worldwide have been a huge factor in the advancement of the PHP 
+project.</p>
+  </li>
+  <li>
+<p style="text-autospace: none">
+PHP's embracing of this 
+open source strategy result in great performance gains for users, and the code is 
+available free of charge. Additionally, an extremely receptive user community numbering in 
+the thousands acts as &quot;customer support,&quot; providing answers to even the most 
+arcane questions in popular online discussion groups. </p>
+  </li>
+</ul>
+<hr>
+<h1><span>PHP Syntax</span></h1>
+<ul>
+  <li>
+<p class="intro"><span>You cannot view the PHP 
+source code by selecting &quot;View source&quot; in the browser - you will only see the 
+output from the PHP file, which is plain HTML. This is because the scripts are 
+executed on the server before the result is sent back to the browser.</span></p>
+  </li>
+</ul>
+<h2><span>Basic PHP Syntax</span></h2>
+<ul>
+  <li><span>A PHP file normally contains HTML tags, 
+just like an HTML file, and some PHP scripting code.</span></li>
+  <li><span>Below, we have an example of a simple PHP 
+script which sends the text &quot;Hello World&quot; to the browser:</span></li>
+</ul>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php echo &quot;Hello World&lt;br&gt;&quot;; ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<ul>
+  <li><span>A PHP scripting block always starts with
+<b>&lt;?php</b> and ends with <b>?&gt;</b>. A PHP scripting block can be placed 
+anywhere in the document.</span></li>
+  <li><span>Each code line in PHP must end with a 
+semicolon. The semicolon is a separator and is used to distinguish one set of 
+instructions from another.</span><ul>
+  <li>The text to be outputted follows the  statement<code class="pre"><strong><br>&lt;?php</strong> echo
+"Hello World&lt;br&gt;"; <strong>?&gt;<br>&lt;?php</strong> print
+"Hello World&lt;br&gt;"; <strong>?&gt;</strong></code></li></ul>
+</li><li>PHP also offers a shothand way of
+outputting information,
+using the &lt;?= and ?&gt; delimiters.&nbsp;<code class="pre"><br>
+&lt;?="Hello World"?&gt;</code></li></ul>
+<hr>
+<h2><span>Example PHP Page</span></h2>
+<ul><li>PHP Web pages generally begin and end with standard
+html.
+This sets up the html page that the script will write to.&nbsp; </li>
+<li>These pages include code, which is enclosed by <code>&lt;?php</code>
+and <code>?&gt;</code>, to include PHP code in the
+page. </li>
+<li>Below is an example of a simple PHP Web Page that displays
+a Message and today's Date. </li>
+<li>It will
+generate the following
+code: </li>
+</ul><p align="center"><a href="../php_examples/test1.php">test1.php</a>
+&nbsp;&nbsp;
+<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/test1.php">View
+Online</a></p>
+<div><var>&lt;html&gt;<br>
+&lt;head&gt;</var><cite><br>
+&nbsp; </cite><var>&lt;title&gt;</var>PHP Test<cite>&lt;</cite><var>/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;H2&gt;</var>The current time is:<var>&lt;/H2&gt;<br>
+&lt;P&gt;</var><cite><br>
+&lt;?php<br>
+</cite>&nbsp; &nbsp; <var>echo</var>
+date("m-d-20y h:i:s a");<cite><br>
+?&gt;<br>
+  </cite><var>&lt;/P&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</var></div>
+<ul><li>In the above code <code>date()</code>
+returns today's date (Just like in&nbsp; JavaScript except you need
+to specify a format using the key letters m=month, d=date, y=2 digit
+year, h=hour, i=minutes, s=seconds, a=am/pm)</li><li>We will learn more about 
+  PHP dates later.</li>
+</ul><hr><h2><span>Running Your Script</span></h2>
+<ul><li><p align="left">Once you have created
+the PHP you can
+run it directly from within a PHP editor/interpreter by clicking the
+"Run &amp; Preview" button/tab and the program will&nbsp;run
+the code &amp;&nbsp;display the result in the preview window.</p>
+</li><ul><li>Links to shareware PHP interpreters can
+be found in the
+syllabus.</li>
+</ul><li>Alternately you can copy the .php file to ouray
+and browse
+it:</li>
+</ul><p align="center"><img style="width: 594px; height: 221px;" alt="what test1.php looks like in the browser" src="../images2/test1.gif"><br></p>
+<hr>
+<h2><span>Variables</span></h2>
+<ul><li>PHP supports the basic data types of strings,
+integers, double precision floating point numbers, etc, but is a <em>weakly</em>
+typed language. This means that variables are not tied to a specific
+data type, and may take any of the data types.&nbsp;</li>
+<li>Variables
+are not declared in PHP, but must be prefixed with a <code>$</code>
+sign. For example:</li><ul><li>$myVar = 67.35;</li><li>$data
+= "a very very very very long string....";</li></ul><li>PHP
+variables are case sensitive so <code>$data</code> and <code>$Data</code>
+and <code>$DATA</code> would represent three different
+variables.</li>
+</ul>
+<hr>
+<h2><span>Operators</span></h2>
+<ul>
+  <li>
+Operators are used to 
+operate on values.</span><p>
+  </li>
+  <li>This section lists the different operators 
+used in PHP.</span></li>
+</ul>
+<center><table border="1" cellspacing="0" cellpadding="4">
+<caption>Arithmetic Operators</caption>
+  <tr>
+    <th>Operator</th>
+    <th>Description</th>
+    <th>Example</th>
+    <th>Result</th>
+  </tr>
+  <tr>
+    <td> +</td>
+    <td> Addition</td>
+    <td>x=2<br>
+    x+2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>-</td>
+    <td>Subtraction</td>
+    <td>x=2<br>5-x</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>*</td>
+    <td>Multiplication</td>
+    <td>x=4<br>x*5</td>
+    <td>20</td>
+  </tr>
+  <tr>
+    <td>/</td>
+    <td>Division</td>
+    <td>15/5<br>5/2</td>
+    <td>3<br>2.5</td>
+  </tr>
+  <tr>
+    <td>%</td>
+    <td>Modulus (division remainder)</td>
+    <td>5%2<br>10%8<br>10%2</td>
+    <td>1<br>2<br>0</td>
+  </tr>
+  <tr>
+    <td>++</td>
+    <td>Increment</td>
+    <td>x=5<br>x++</td>
+    <td>x=6</td>
+  </tr>
+  <tr>
+    <td>--</td>
+    <td>Decrement</td>
+    <td>x=5<br>x--</td>
+    <td>x=4</td>
+  </tr>
+ </table>
+ <table border="1" cellspacing="0" cellpadding="4">
+<caption><br>Assignment Operators</caption>
+    <th>Operator</th>
+    <th>Example</th>
+    <th>Is The Same As</th>
+  </tr>
+  <tr>
+    <td>=</td>
+    <td>x=y</td>
+    <td>x=y</td>
+  </tr>
+  <tr>
+    <td>+=</td>
+    <td>x+=y</td>
+    <td>x=x+y</td>
+  </tr>
+  <tr>
+    <td>-=</td>
+    <td>x-=y</td>
+    <td>x=x-y</td>
+  </tr>
+  <tr>
+    <td>*=</td>
+    <td>x*=y</td>
+    <td>x=x*y</td>
+  </tr>
+  <tr>
+    <td>/=</td>
+    <td>x/=y</td>
+    <td>x=x/y</td>
+  </tr>
+  <tr>
+    <td>%=</td>
+    <td>x%=y</td>
+    <td>x=x%y</td>
+  </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="4">
+<caption><br>Comparison Operators</span></caption>
+    <th>Operator</td>
+    <th><p>Description</th>
+    <th><p>Example</th>
+  </tr>
+  <tr>
+    <td>==</td>
+    <td>is equal to</td>
+    <td>5==8 returns false</td>
+  </tr>
+  <tr>
+    <td>!=</td>
+    <td>is not equal</td>
+    <td>5!=8 returns true</td>
+  </tr>
+  <tr>
+    <td>&gt;</td>
+    <td>is greater than</td>
+    <td>5&gt;8 returns false</td>
+  </tr>
+  <tr>
+    <td>&lt;</td>
+    <td>is less than</td>
+    <td>5&lt;8 returns true</td>
+  </tr>
+  <tr>
+    <td>&gt;=</td>
+    <td>is greater than or 
+    equal to</td>
+    <td>5&gt;=8 returns false</td>
+  </tr>
+  <tr>
+    <td>&lt;=</td>
+    <td>is less than or 
+    equal to</td>
+    <td>5&lt;=8 returns true</td>
+  </tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="4">
+<caption><br>Logical Operators</caption>
+ <tr>
+    <th>Operator</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>&amp;&amp;</td>
+    <td>and</td>
+    <td>x=6<br>
+    y=3
+    <p></p>
+    <p>(x &lt; 10 &amp;&amp; y &gt; 1) returns true</td>
+  </tr>
+  <tr>
+    <td>||</td>
+    <td>or</td>
+    <td>x=6<br>
+    y=3
+    <p></p>
+    <p>(x==5 || y==5) returns false</td>
+  </tr>
+  <tr>
+    <td>!</td>
+    <td>not</td>
+    <td>x=6<br>
+    y=3
+    <p></p>
+    <p>!(x==y) returns true</td>
+  </tr>
+</table>
+</center>
+<ul><li>The following example
+uses a variable
+called <code>myVar</code>.&nbsp;</li><ul><li>The
+variable is assigned a string literal and then an
+integer value.&nbsp;</li><li>The output is displayed
+using the dot operator to
+concatenate a <code>&lt;br&gt;</code> to each line
+printed. </li></ul>
+</ul><p align="center"><a href="../php_examples/test2.php">test2.php</a>&nbsp;&nbsp;&nbsp;
+<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/test2.php">View
+Online</a></p>
+<div><cite>&lt;html&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&lt;title&gt;</cite>Using
+Variables<cite>&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;p&gt;<br>
+&nbsp;&nbsp;&lt;?php<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<dfn>//
+Use several data types with one variable</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;</cite>$myVar
+= "Hello world";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print
+$myVar . "&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$myVar
+= 6;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print
+$myVar . "&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$myVar
++= 2000;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print
+$myVar . "&lt;br&gt;";<cite><br>
+&nbsp;&nbsp;?&gt;<br>
+&lt;/p&gt;<br>
+&lt;/body&gt;<br>&lt;/html&gt;</cite>
+</div><center>
+<p><br>
+<img border="0" src="../images2/test2.gif" width="729" height="300"></p>
+</center><ul><li>Note:
+When a PHP variable springs into existence it will have
+a "null" or "zero" value unless it has been defined in the environment.</li>
+</ul><hr><h2><span>Constants</span></h2>
+<ul><li>Constants are values that never change.</li><li>The
+define() function is used to create constants.</li>
+</ul><p align="center"><a href="../php_examples/constant.php">constant.php</a>&nbsp;&nbsp;&nbsp;
+<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a rel="tag" href="http://carbon.cudenver.edu/~dgregg/php_examples/constant.php">View
+Online</a></p><div>&lt;?php<br>&nbsp;
+define("NAME"
+, "Dawn");<br>&nbsp; define("EMAIL"
+, "dawn.gregg@cudnever.edu");<br><br>&nbsp; echo(NAME .
+"'s&nbsp;Email is " . EMAIL&nbsp;);<br>?&gt;<br></div>
+<p align="center">
+<br><img border="0" src="../images2/constants.gif" width="618" height="156"></p>
+<ul> <li>You'll notice
+that unlike variables, constant
+names do not begin with the $ sign.&nbsp;</li><li>By
+convention programmers define
+all constants by naming them in UPPERCASE.</li></ul>
+<hr>
+<h2><span>Comments in PHP</span></h2>
+<ul><li><span>In PHP, we use <code>//</code> to make a single-line 
+comment or <code>/*</code> and <code>*/</code> to make a large comment block.</span></li></ul>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php<br>
+    //This is a comment<br>
+    /*&nbsp;
+    This is<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    a comment<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    block<br>
+    */<br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<hr>
+<h1><span>PHP Conditional Statements</span></h1>
+<ul>
+  <li>
+<p class="intro">Conditional statements in 
+PHP are used to perform different actions based on different conditions.</p>
+  </li>
+  <li>Very often when you write code, you want to perform different actions for different decisions. You can use conditional statements in your code to do this.</li>
+  <li>In PHP we have two conditional statements:<ul>
+    <li><em>if (...else) 
+  statement</em> - use this statement 
+  if you want to execute a set of code when a condition is true (and another if 
+  the condition is not true) </li>
+    <li><em>switch statement</em> 
+  - use this statement if you want to select one of many sets of lines to 
+  execute </li>
+  </ul>
+  </li>
+</ul>
+<hr><h2><span>The If Statement</span></h2>
+<ul>
+  <li>If you want to execute some code if a 
+condition is true and another code if a condition is false, use the if....else 
+statement.</li>
+</ul>
+<h3>Syntax</h3>
+<div
+  <tr>
+    <td style="padding: .75pt">
+    if (<i>condition</i>)<br>
+    <i><span>code to be executed if condition is true;</span></i></pre>
+    else<br>
+    <i><span>code to be executed if condition is false;</span></i></pre>
+    </div>
+<h3>Example</h3>
+<ul>
+  <li>The following example will output &quot;Have a 
+nice weekend!&quot; if the current day is Friday, otherwise it will output &quot;Have a 
+nice day!&quot;:</li>
+</ul>
+<div
+  <tr>
+    <td style="padding: .75pt">
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php<br>
+    &nbsp;
+    $d=date(&quot;D&quot;);<br>
+    &nbsp;
+    if ($d==&quot;Fri&quot;)<br>
+    &nbsp;&nbsp;&nbsp;
+    echo &quot;Have a nice weekend!&quot;; <br>
+    &nbsp;
+    else<br>
+    &nbsp;&nbsp;&nbsp;
+    echo &quot;Have a nice day!&quot;; <br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<ul><li>If more than one line should be executed 
+when a condition is true, the lines should be enclosed within curly braces:</li></ul><div
+  <tr>
+    <td style="padding: .75pt">
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    <cite>&lt;?php</cite><br>
+    &nbsp;
+    $x=10;<br>
+    &nbsp;
+    if ($x==10)<br>
+    &nbsp;
+    {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    echo &quot;Hello&lt;br /&gt;&quot;; <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    echo &quot;Good morning&lt;br /&gt;&quot;;<br>
+    &nbsp;
+    }<br>
+    <cite>?&gt;</cite><br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<hr>
+<h2><span>The Switch Statement</span></h2>
+<ul>
+  <li><span>If you want to select one of many blocks 
+of code to be executed, use the Switch statement.</span></li>
+</ul>
+<h3><span>Syntax</span></h3>
+<div>
+    switch (<i>expression</i>)<br>
+    {<br>
+    case <i>label1:</i><br>
+    &nbsp; <i>code to be executed if expression = label1;</i><br>
+    &nbsp; break;&nbsp; <br>
+    case <i>label2:</i><br>
+    &nbsp; <i>code to be executed if expression = label2;</i><br>
+    &nbsp; break;<br>
+    default:<br>
+    &nbsp; <i>code to be executed</i><br>
+    <i><span>&nbsp; if expression is different </span></i></pre>
+    <i><span>&nbsp;&nbsp;from both label1 and label2;</span></i></pre>
+    }<br>
+    </div>
+<h3><span>Example</span></h3>
+<ul><li>This is how it works: First we have a 
+single expression (most often a variable), that is evaluated once. The value of 
+the expression is then compared with the values for each case in the structure. 
+If there is a match, the block of code associated with that case is executed. 
+Use <b>break</b> to prevent the code from running into the next case 
+automatically. The default statement is used if none of the cases are true.</li></ul>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php<br>
+    switch ($x)<br>
+    {<br>
+    case 1:<br>
+    &nbsp; echo &quot;Number 1&quot;;<br>
+    &nbsp; break;<br>
+    case 2:<br>
+    &nbsp; echo &quot;Number 2&quot;;<br>
+    &nbsp; break;<br>
+    case 3:<br>
+    &nbsp; echo &quot;Number 3&quot;;<br>
+    &nbsp; break;<br>
+    default:<br>
+    &nbsp; echo &quot;No number between 1 and 3&quot;;<br>
+    }<br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+
+<h1><span>Looping</span></h1>
+
+<ul><li>Very often when you write code, you want 
+the same block of code to run a number of times. You can use looping statements 
+in your code to perform this.</li><li>In PHP we have the following looping 
+statements:<ul><li><b>while </b>- loops through a block of code if and as 
+  long as a specified condition is true</li><li><b>do...while</b> 
+  - loops through a block of code once, and then repeats the loop as long as a 
+  special condition is true</li><li><b>for</b> - loops through a block of code a specified 
+  number of times</li><li><b>foreach</b> - loops through a block of code for 
+  each element in an array</li></ul></li></ul><hr><h2><span>The while Statement</span></h2>
+<ul><li><span>The while statement will execute a block 
+of code <b>if and as long as</b> a condition is true.</span></li></ul><h3><span>Syntax</span></h3>
+<div>
+    while (<i>condition</i>)<br>
+    <i><span>code to be executed</span></i><span>;<br>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+    </div>
+<h3><span>Example</span></h3>
+<ul><li><span>The following example demonstrates a loop 
+that will continue to run as long as the variable i is less than, or equal to 5. i will increase by 1 each time the loop runs:</span></li></ul>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php <br>
+    &nbsp;
+    $i=1;<br>
+    &nbsp;
+    while($i&lt;=5)<br>
+    &nbsp;
+    {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    echo &quot;The number is &quot; . $i . &quot;&lt;br /&gt;&quot;;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    $i++;<br>
+    &nbsp;
+    }<br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<hr><h2><span>The do...while Statement</span></h2>
+</span><ul><li>The do...while statement will execute a 
+block of code at least once - it then will repeat the loop as long as a condition is true.</li></ul><span><h3>Syntax</h3>
+<div>
+    do<br>
+    {<br>
+    <i>&nbsp;&nbsp; code to be executed;</i><br>
+    }
+    while (<i>condition</i>);<br>
+    </div>
+<h3><span>Example</span></h3>
+</span><ul><li>The following example will increment the 
+value of i at least once, and it will continue incrementing the variable i while 
+it has a value of less than 5:</li></ul><span><div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php <br>
+    &nbsp;
+    $i=0;<br>
+    &nbsp;
+    do<br>
+    &nbsp;
+    {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    $i++;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    echo &quot;The number is &quot; . $i . &quot;&lt;br /&gt;&quot;;<br>
+    &nbsp;
+    }
+    while ($i&lt;5);<br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+
+<hr>
+<h2><span>The for Statement</span></h2>
+</span><ul><li>The for statement is used when you know 
+how many times you want to execute a statement or a list of statements.</li></ul><span><h3>Syntax</h3>
+<div>
+    for (<i>initialization</i>; <i>condition</i>; <i>increment</i>)<br>
+    {<br>
+    &nbsp;&nbsp;&nbsp; <i>code to be executed;</i><br>
+    }<br>
+    </div>
+</span><ul><li><b>Note: </b>The for statement has three parameters. The first parameter is for initializing 
+variables, the second parameter holds the condition, and the third parameter 
+contains any increments required to implement the loop. If more than one 
+variable is included in either the initialization or the increment section, then 
+they should be separated by commas. The condition must evaluate to true or 
+false.</li></ul><span><h3>Example</h3>
+</span><ul><li>The following example prints the text 
+&quot;Hello World!&quot; five times:</li></ul><span><div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php<br>
+    &nbsp;
+    for ($i=1; $i&lt;=5; $i++)<br>
+    &nbsp;
+    {<br>
+    &nbsp;&nbsp;&nbsp;
+    echo &quot;Hello World!&lt;br /&gt;&quot;;<br>
+    &nbsp;
+    }<br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<hr>
+<h2><span>The foreach Statement</span></h2>
+</span><ul><li>Loops over the array given by the 
+parameter. On each loop, the value of the current element is assigned to $value 
+and the array pointer is advanced by one - so on the next loop, you'll be 
+looking at the next element. </li></ul><span><h3>Syntax</h3>
+<div>
+    foreach (<i>array as value</i>)<br>
+    {<br>
+    &nbsp;&nbsp;&nbsp; <i>code to be executed;</i><br>
+    }<br>
+    </div>
+<h3><span>Example</span></h3>
+<ul><li>The following example demonstrates a loop 
+that will print the values of the given array:</li></ul>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    &lt;?php<br>
+    &nbsp;
+    $arr=array(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;);<br>
+    &nbsp;
+    foreach ($arr as $value)<br>
+    &nbsp;
+    {<br>
+    &nbsp;&nbsp;&nbsp;
+    echo &quot;Value: &quot; . $value . &quot;&lt;br /&gt;&quot;;<br>
+    &nbsp;
+    }<br>
+    ?&gt;<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    </div>
+<hr style="width: 100%; height: 2px;">
+
+          <h2>
+
+          <span>What is an array?</span></h2>
+<ul>
+  <li>An array consists of elements, each element has a value and a key and you 
+  could think of an array as a whole load of variable/value pairs. </li>
+  <li>You create an array by assigning values to each of the array elements:</li>
+</ul>
+<p align="center"><a href="../php_examples/array.php">array.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/array.php">View
+Online</a></p>
+          </span><div>&lt;?php<br>&nbsp; &nbsp; &nbsp; &nbsp; $names[0] = &quot;Kevin&quot;;<br>&nbsp; &nbsp; &nbsp; &nbsp; $names[1] = &quot;Chris&quot;;<br>&nbsp; &nbsp; &nbsp; &nbsp; $names[2] = &quot;Colette&quot;;<br>&nbsp; &nbsp; &nbsp; &nbsp; $names[3] = &quot;Chinh&quot;;<br><br>&nbsp; &nbsp; &nbsp; &nbsp; echo $names . &quot;&lt;br&gt;&quot;;<br>&nbsp; &nbsp; &nbsp; &nbsp; echo $names[0] . &quot; &quot; .$names[1] .<br>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; &quot; . $names[2] . &quot; &quot; . $names[3] ;<br>&nbsp; &nbsp; &nbsp; ?&gt;</div>
+          </div><span><ul>
+            <li>The array is called $names and has four elements 0, 1, 2, and 3 
+          each with the respective values as shown. If the array name is printed 
+            without an index the word &quot;Array&quot; is displayed.</li>
+            <li>The same result can also be 
+          achieved with this... </li>
+</ul>
+<blockquote>
+          <pre><code>$names[] = &quot;Kevin&quot;;
+$names[] = &quot;Chris&quot;;
+$names[] = &quot;Colette&quot;;
+$names[] = &quot;Chinh&quot;;</code></pre>
+          </blockquote>
+<ul>
+  <li>and also with this.... </li>
+</ul>
+<blockquote>
+          <pre><code>$names = array(&quot;Kevin&quot;, &quot;Chris&quot;, &quot;Colette&quot;, &quot;Chinh&quot;); </code></pre>
+          </blockquote>
+<p align="center">
+<img border="0" src="../images2/array.gif" width="500" height="170"></p>
+<ul>
+  <li>When an array is initialized and no key is defined when a value is 
+  assigned, PHP automatically takes the first available numeric value and uses 
+  that as the key. </li>
+  <li>Keys when they are defined do not have to be numeric.... </li>
+</ul>
+<blockquote>
+          <pre><code>$names[&quot;a&quot;] = &quot;Adam&quot;;
+$names[&quot;b&quot;] = &quot;Vu&quot;;
+$names[&quot;c&quot;] = &quot;Todd&quot;;
+$names[&quot;d&quot;] = &quot;Inna&quot;;</code></pre>
+          <p>Other syntax for the same thing... </p>
+          <pre><code>$names=array(&quot;a&quot;=&gt;&quot;Adam&quot;,&quot;b&quot;=&gt;&quot;Vu&quot;,&quot;c&quot;=&gt;&quot;Todd&quot;,&quot;d&quot;=&gt;&quot;Inna&quot;);</code></pre>
+          </blockquote>
+<ul>
+  <li>Since the array above does not have sequential integer indices (like in 
+  C#, Java and JavaScript) you cannot use a standard <code>for</code> loop to 
+  traverse it.&nbsp; Instead use <code>foreach</code>:</li>
+</ul>
+<p align="center"><a href="../php_examples/array2.php">array2.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/array2.php">View
+Online</a></p>
+<div>&lt;?php
+&nbsp; &nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp; $names = array(&quot;a&quot;=&gt;&quot;Adam&quot;,&quot;b&quot;=&gt;&quot;Vu&quot;,&quot;c&quot;=&gt;&quot;Todd&quot;,&quot;d&quot;=&gt;&quot;Inna&quot;);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&nbsp; &nbsp; &nbsp;<cite><br>&nbsp;&nbsp;&nbsp; foreach</cite>($names as $key =&gt; $value) <br>&nbsp;&nbsp;&nbsp; {
+<br>&nbsp; &nbsp; &nbsp; &nbsp;echo &quot;$key : $value&lt;br&gt;&quot;; <dfn>&nbsp;// notice variable embedded</dfn>&nbsp; <br>&nbsp;&nbsp;&nbsp;&nbsp; }    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                       <dfn>&nbsp;&nbsp;&nbsp;&nbsp; // directly between &quot;&quot;</dfn>
+&nbsp; &nbsp; &nbsp; <br>?&gt;</div>
+<p align="center">
+<img border="0" src="../images2/array2.gif" width="500" height="206"><hr><h2> Built-in data</h2> 
+<ul>
+<li>PHP has several special constants built into it which are at the programmers disposal these are:<br> <br> <strong>PHP_VERSION</strong> - the current version of the PHP parser currently running<br> <strong>PHP_OS</strong> - the operating system of the server that the PHP parser is running on <br>
+<strong>__FILE__</strong> - the name of the script that is being parsed<br> <strong>__LINE__</strong> - the present line number of the script being parsed</li> <li>This script shows how these can be used to give information to the client browser but they could equally be used within a program to call different versions of code based on the PHP version. </li>
+</ul> <p align="center"><a href="../php_examples/predef.php">predef.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/predef.php">View Online</a></p> <div>&lt;?php<br>&nbsp; echo(&quot;PHP version = &quot; . PHP_VERSION . &quot;&lt;BR&gt;&quot;);<br>&nbsp; echo(&quot;Server operating system = &quot; . PHP_OS . &quot;&lt;BR&gt;&quot;);<br>&nbsp; echo(&quot;Current file name= &quot; . __FILE__ . &quot;&lt;BR&gt;&quot;);<br>&nbsp; echo(&quot;Current line number= &quot; . __LINE__ . &quot;&lt;BR&gt;&quot;);<br>?&gt;<br></div>
+<p align="center">
+<img border="0" src="../images2/predef.gif" width="700" height="226"><br> &nbsp;</p>
+<hr><h1>PHP &amp; Functions</h1>
+<ul>
+  <li>As with any decent language, PHP allows you to write your own functions.&nbsp; 
+  As a matter of fact PHP functions work exactly like JavaScript functions so I 
+  won't spend too much time explaining them.</li>
+  <li>Let's look at a simple one.</li>
+</ul>
+
+  <div>&lt;?php<br>
+&nbsp; function boring() <br>
+    &nbsp;
+    {
+	echo 'This function prints a string';
+}<br>
+    ?&gt;</div>
+
+<ul>
+  <li>As with JavaScript we declare a function by 
+typing &quot;function&quot;, followed by a space, and then the name of the 
+function followed by parentheses.</li>
+  <li>To call this function we would just call it's name.</li>
+</ul>
+
+  <div>&lt;?php<br>
+&nbsp; boring();<br>
+    ?&gt;</div>
+
+<ul>
+  <li>Which would print out &quot;This function prints a string&quot;. </li>
+</ul>
+<hr>
+<h2><span>Parameters/Arguments</span></h2>
+<ul>
+  <li>Whether you call them parameters or arguments, they're the same thing. A 
+parameter is a value that you can pass to a function and use inside the 
+function. For example:</li>
+</ul>
+
+  <div>&lt;?php<br>
+&nbsp; function sum1($a, $b) <br>
+&nbsp; { $sum = $a + $b; <br>
+&nbsp;&nbsp;&nbsp; echo $sum; <br>
+&nbsp; } <br>
+    <br>
+&nbsp; sum1(5, 4); <dfn>// Would print out 9. </dfn><br>
+    ?&gt;</div>
+
+<ul>
+  <li>In the above example, if you then tried to work with the variable <code>$sum</code> outside of the function you'd get an error. The variable <code>$sum</code> does not exist 
+outside of the function. We can fix this as follows:</li>
+</ul>
+<p align="center"><a href="../php_examples/functions.php">functions.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/functions.php">View
+Online</a></p>
+
+  <div>&lt;?php<br>
+&nbsp; function sum2($a, $b) <br>
+&nbsp; { global $sum; <dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // makes $sum a global 
+    variable</dfn><br>
+&nbsp;&nbsp;&nbsp; $sum = $a + $b; <br>
+&nbsp;&nbsp;&nbsp; return $sum; <br>
+&nbsp; }<br>
+    ?&gt;<br>
+    &lt;p&gt;&lt;b&gt;Output:&lt;/b&gt;&lt;/p&gt;<br>
+    &lt;?php<br>
+&nbsp; $sumx = sum2(3, 4); <dfn>&nbsp;// Assigns the value of $sum&nbsp; 
+    returned <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    // from sum1 to a new global variable $sumx</dfn> <br>
+    <br>
+&nbsp; echo &quot;Sum: $sum&lt;br&gt;&quot;;&nbsp;&nbsp; <dfn>// Would print &quot;Sum: 7&quot;.</dfn><br>
+&nbsp; echo &quot;Sumx: $sumx&lt;br&gt;&quot;; <dfn>// Would print &quot;Sumx: 7&quot;.</dfn><br>
+    ?&gt;</div>
+
+<ul>
+  <li>You can make a global variable in PHP either by declaring the variable 
+  outside a function (<code>$sumx</code>) or by using the keyword global when we 
+  declare a variable (<code>$sum</code>). </li>
+  <li>Notice the variable <code>$sum</code> and <code>$sumx</code> still print 
+  out their values (7) even when printed inside of &quot;&quot;!</li>
+</ul>
+
+<p align="center">
+<img border="0" src="../images2/functions.gif" width="550" height="270"></p>
+
+<h1>Handling Form Data</h1>
+<ul><li>PHP Pages handle HTML form parsing
+automatically. An array of form variables are passed to the script and are instantly 
+  at your disposal. </li>
+<li>The form data are accessed via global arrays called&nbsp; <code>$_GET</code> (for form data sent via GET) and <code>$_POST</code> (for form data sent via POST). The
+ value is a <code>String</code> corresponding to
+the value of the first occurrence of that parameter name. </li>
+<li>An empty <code>String</code> is returned if
+the parameter exists but has no value, and <code>null</code> is returned if there was no such parameter. </li>
+<li>The code below is for a Simple PHP that displays an HTML
+form the first time it is called and then displays to contents of the
+form the second time it is called. </li>
+</ul>
+<p align="center"><a href="../php_examples/form1.php">form1.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/form1.php">View
+Online</a></p>
+<div><cite>&lt;HTML&gt;<br>
+&lt;HEAD&gt;<br>
+&lt;TITLE&gt;</cite><br>
+  PHP Simple Form Processing<br>
+<cite>&lt;/TITLE&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;H1&gt;</cite>PHP Parameter Tester<cite>&lt;/H1&gt;<br>
+&lt;?php</cite><dfn><br>
+  </dfn>&nbsp;&nbsp;&nbsp;&nbsp; $data = $_GET[searchText];<br>
+  <dfn>&nbsp;&nbsp;&nbsp;&nbsp; //
+If this was called from itself searchText will exist<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// if this is the
+first time it is called $data will == &quot;&quot;</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; if ($data==&quot;&quot;)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// Ask the user for search text via a GET form</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  echo "&lt;form method='get' action='form1.php'&gt;";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  echo "&lt;input type=text name='searchText'&gt;";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  echo "&lt;input type=submit
+name='Submit'&gt;&lt;br&gt;";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  echo "&lt;/form&gt;";<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; else <dfn>// searchText exists</dfn><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; { <dfn>//
+Output the text box's text</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  echo &quot;You searched for:
+&lt;b&gt;$data&lt;/b&gt;!";<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+<cite>?&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;</cite></div><br>
+<center><img border="0" src="../images2/form1a.gif" width="400" height="197"> <img border="0" src="../images2/form1b.gif" width="450" height="175"></center>
+<ul>
+  <li>Note: When testing this code locally I get error &quot;Notices&quot; even when the 
+  script retrieves the parameter correctly, this is because on a Unix machine 
+  you do not always need &quot;&quot; around the form variable names but in windows you do (I will fix this in my next example):</li>
+</ul>
+<p align="center">
+<img border="0" src="../images2/form1_error.gif" width="550" height="354"></p>
+<hr><script language="JavaScript">writeFooter(3);</script><h1 align="left">PHP&nbsp;&amp; Forms &amp;
+Other Files</h1>
+<center><h2><span>Provide Feedback</span></h2>
+</center><form action="http://carbon.cudenver.edu/~dgregg/form2.php" method="post" name="frmRating">
+<input name="txtH" value="ISMG 4800 Rating Form" type="hidden">
+<center><table class="largeT" width="80%"><tbody>
+ <tr><td>Your Name: </td>
+    <td><input name="txtName" size="30" type="text"></td></tr>
+ <tr><td>Email Address: </td>
+     <td><input name="txtEmail" size="30" type="text"></td></tr>
+ <tr><td colspan="2">Rate ISMG 4800 at CU Denver so far: </td></tr>
+ <tr><td align="right"><input name="optRate" value="A" checked="checked" type="radio"> </td>
+     <td>Excellent!</td></tr>
+ <tr><td align="right"><input name="optRate" value="C" type="radio"> </td>
+     <td>Okay, I guess... </td></tr>
+ <tr><td align="right"><input name="optRate" value="F" type="radio"> </td>
+     <td>Keep your day job! </td></tr>
+<tr><td>Describe yourself </td>
+<td><select name="lstDesc"><option value="overachiever">Overachiever</option><option selected="selected" value="ok student">OK
+Student</option><option value="lazy slug">Lazy
+Slug</option></select> </td></tr><tr><td colspan="2">Suggestions
+for improving the
+class? </td>
+</tr><tr><td align="right"> Shorter Lecture <input name="chk1" on="" value="short lectures" type="checkbox"> </td>
+<td>&nbsp; More Tutorials <input name="chk2" value="tutorials" type="checkbox"> </td>
+</tr><tr><td align="right">Easy Assignments <input name="chk3" value="easy assignments" type="checkbox"> </td><td>&nbsp;&nbsp;&nbsp; Longer Break <input name="chk4" value="long breaks" type="checkbox"> </td></tr><tr><td>Comments: </td>
+<td> </td></tr><tr><td colspan="2"><textarea name="comment" rows="5" cols="60"></textarea></td></tr><tr><td align="right"><input value="Submit" type="submit"></td><td><input value="Reset" type="reset"></td></tr></tbody></table></center></form><hr><h2><span>Processing
+the Form Data</span></h2>
+<ul><li>The HTML form (above) is submitted to a Java Server
+Page
+that process the form data. </li>
+<li>This PHP project is a mix of php and other pages:&nbsp; <ul><li>A HTML form that sends data to my form2.php php
+page (<code>demo.html</code>)</li>
+<li>An image (<code>buffs.gif</code>) to
+display on&nbsp; php page</li>
+<li>An external CSS that governs the display of both the
+the HTML &amp; php page (<code>demo.css</code>).</li>
+</ul></li></ul><p align="center"><a href="../php_examples/form2.php">form2.php</a> &nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/demo.html">View
+Online</a></p>
+<div><cite>&lt;HTML&gt;<br>
+&lt;HEAD&gt;<br>
+&lt;TITLE&gt;</cite>Processing Form Data Part 2<cite>&lt;/TITLE&gt;<br>
+&lt;link </cite><var>rel=</var><samp>"stylesheet"</samp><cite> </cite><var>type=</var><samp>"text/css"</samp><cite> </cite><var>href=</var><samp>"demo.css"</samp><cite>&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;H1&gt;</cite>Form Data Processed<cite>&lt;/H1&gt;<br>
+&lt;P&gt;&lt;img </cite><var>src=</var><samp>"buffs.gif"</samp><cite>&gt;</cite>You
+input the following data:<cite>&lt;/p&gt;<br>
+&lt;?php</cite><br>
+&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; <dfn>// get the form parameters&nbsp; <br>
+  </dfn>&nbsp;&nbsp;&nbsp; $name&nbsp;&nbsp;&nbsp; = $_POST[&quot;txtName&quot;];<br>
+&nbsp;&nbsp;&nbsp; $email&nbsp;&nbsp; = $_POST[&quot;txtEmail&quot;];<br>
+&nbsp;&nbsp;&nbsp; $rating&nbsp; = $_POST[&quot;optRate&quot;];<br>
+&nbsp;&nbsp;&nbsp; $desc&nbsp;&nbsp;&nbsp; = $_POST[&quot;lstDesc&quot;];<br>
+&nbsp;&nbsp;&nbsp; $sug&nbsp;= array($_POST[&quot;chk1&quot;], $_POST[&quot;chk2&quot;], $_POST[&quot;chk3&quot;], 
+  $_POST[&quot;chk4&quot;]);<br>
+&nbsp;&nbsp;&nbsp; $comment = $_POST[&quot;comment&quot;];<br>
+&nbsp;&nbsp;&nbsp; echo &quot;--&gt;&quot;;&nbsp; <dfn>// end hiding</dfn><br>
+<br>&nbsp;&nbsp;&nbsp; <dfn>// if called with
+a form</dfn><br>
+&nbsp;&nbsp;&nbsp; if ($name!=null)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;h2&gt;You input the following
+data:&lt;/h2&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;ul&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;li&gt;&lt;span&gt;Name:&lt;/span&gt; $name&lt;/li&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;li&gt;&lt;span&gt;Email:&lt;/span&gt; $email&lt;/li&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;li&gt;&lt;span&gt;Rating:&lt;/span&gt;
+  $rating&lt;/li&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;li&gt;&lt;span&gt;Student
+Description:&lt;/span&gt; $desc&lt;/li&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;li&gt;&lt;span&gt;Suggestions:&lt;/span&gt;&lt;/li&gt;&lt;ul&gt;");<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach ($sug as $x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if($x != &quot;&quot;) print ("&lt;li&gt;$x&lt;/li&gt;");<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;/ul&gt;&lt;li&gt;&lt;span&gt;Comments:&lt;/span&gt;$comment&lt;/li&gt;&lt;/ul&gt;");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  print ("&lt;p&gt;Error in the form
+data&lt;/p&gt;");<br>&nbsp; }<br>
+<cite>?&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;</cite></div>
+<p>The resulting HTML pages would look like the one below:</p>
+<p align="center">
+<img border="0" src="../images2/form2.gif" width="500" height="497"></p><hr>
+<script language="JavaScript">writeFooter(4);</script><h1>Writing
+Form Data to A File</h1>
+<ul><li>Retrieving form data with PHP is useful, but
+chances are
+you will want to save the form data so it can be used - either to place
+an order, to add to a mailing list or to make process improvements.</li>
+<li>Assuming we have 3 variables retrieved from a form: <code>name</code> and <code>email</code> and <code>comments</code>. We can write them to a text file using the following code:</li>
+</ul><blockquote> <code><dfn>&nbsp;//
+write data to a
+file<br>
+&nbsp;</code></dfn><code>&lt;?php<br>
+<dfn>&nbsp;&nbsp;// Open a file for
+append, since I want to add this data to<br>
+&nbsp;&nbsp;// an existing data file. Must give full path to file:</dfn><br>
+  &nbsp;
+  $myfile = fopen (&quot;<span style="font-size: 0.85em;">/student6/dgregg/public_html/data.txt</span>&quot;, &quot;a&quot;);<br>
+&nbsp; $fp = fwrite($myfile,&quot;$name,$email,$comment<br>
+  &quot;);<br>
+?&gt;</code></p>
+</blockquote>
+<ul>
+  <li>To make this work you need to: </li>
+</ul>
+<blockquote>
+  <ol>
+    <li>Give a full path <code>"/student6/dgregg/public_html/data.txt" </code>to the text file. </li>
+    <li>Change the permissions on the text file to allow it to be written to.&nbsp; 
+    To do this I: <ol>
+      <li>copied an empty text file named "data.txt" to my public_html folder on ouray using ftp,</li>
+      <li><code>telnet ouray.cudenver.edu</code> (from Start -&gt; Run on your desktop)</li>
+      <li><code>cd public_html </code>&nbsp;
+(this is the UNIX command to change directories)</li>
+      <li><code>chmod 666 data.txt</code>&nbsp;
+(this is the UNIX command to give read &amp; write permission to
+everyone for <code>data.txt</code>)</li>
+      <li><code>pwd </code>&nbsp;&nbsp;&nbsp;
+(this is the UNIX command to print the current directory - you can use
+this to figure out what the file location for <code>data.txt</code> is)</li>
+    </ol>
+    </li>
+    <li>To make each person's entry print on a separate line I included a 
+    carriage return in the &quot; &quot; for the string I wrote out using fwrite.</li>
+  </ol>
+</blockquote>
+<p align="center"><a href="../php_examples/formFile.php">formFile.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/formDemo.html">Online
+Demo</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a href="http://carbon.cudenver.edu/~dgregg/ismg4800/php_examples/data.txt">View
+File</a></p>
+<div><cite>&lt;HTML&gt;<br>
+&lt;HEAD&gt;<br>
+&lt;META </cite><var>HTTP-EQUIV=</var><samp>"Content-Type"</samp> <var>CONTENT=</var><samp>"text/html; charset=windows-1252"</samp><cite>&gt;<br>
+&lt;TITLE&gt;</cite>Form Output to File<cite>&lt;/TITLE&gt;<br>
+&lt;link </cite><var>rel=</var><samp>"stylesheet"</samp><cite> </cite><var>type=</var><samp>"text/css"</samp><cite> </cite><var>href=</var><samp>"demo.css"</samp><cite>&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+&lt;H1&gt;</cite>Thank You<cite>&lt;/H1&gt;<br>
+&lt;UL&gt;<br>
+&lt;?php<br>
+</cite> <dfn>&nbsp; </dfn><dfn>// If this
+was called from formDemo.html name &amp; email will exist<br>
+&nbsp; // if this is called accidentally name &amp; email will
+be null<br>
+</dfn>&nbsp; $name = $_GET[&quot;name&quot;];<br>
+&nbsp; $email = $_GET[&quot;email&quot;];<br>
+&nbsp; $comments = $_GET[&quot;comments&quot;];<br>
+  <br>
+&nbsp; print (&quot;&lt;li&gt;Name: &quot; . $name . &quot;&lt;/li&gt;&quot;);<br>
+&nbsp; print (&quot;&lt;li&gt;Email: &quot; . $email . &quot;&lt;/li&gt;&quot;);<br>
+&nbsp; print (&quot;&lt;li&gt;Comments: &quot; . $comments . &quot;&lt;/li&gt;&quot;);<dfn><br>
+  <br>
+&nbsp; // replace commas in comments so comma delimited file not messed up<br>
+</dfn>&nbsp; $c2 = str_replace(&quot;,&quot;, &quot; &quot;, $comments);<br>
+  <dfn><br>
+&nbsp; // Open a file for append (&quot;a&quot;), since I want to add this data<br>
+&nbsp; // to an existing data file. Must give full path to file:<br>
+&nbsp; </dfn>$myfile = fopen (&quot;<code>/student6/dgregg/public_html/data.txt</code>&quot;, 
+  &quot;a&quot;);<br>
+  <dfn>&nbsp; // write name, email &amp; cooments to a file separated by commas<br>
+</dfn>&nbsp; fwrite($myfile,&quot;$name,$email,$c2<br>
+  &quot;);<dfn><br>
+</dfn>
+<span> <cite>?&gt;<br>
+&lt;/UL&gt;<br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;</cite></span></div>
+<center>
+<div style="background-color:transparent; position:relative; border:none; height:610px; width:100%; top: 0px; left: -1px; z-index:1; visibility:visible;	overflow:hidden;">
+<img border="0" src="../images2/formFileAll.gif" width="900" height="600"></div></center>
+<ul><li>Notice
+there is no comma in the comments in the
+file...</li>
+</ul>
+<h1>Other Materials</h1>
+<ul>
+  <li>&quot;Chapter 4. Coding Standards for PHP&quot; 
+  found at <a href="http://pear.php.net/manual/en/standards.php">http://pear.php.net/manual/en/standards.php</a> </li>
+  <li>&quot;Online PHP Manual&quot; found at <a href="http://us2.php.net/manual/en/index.php">http://us2.php.net/manual/en/index.php</a> </li>
+</ul>
+<hr><script language="JavaScript">writeFooter(5);</script>
+</body></html>

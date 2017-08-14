@@ -1,0 +1,993 @@
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+  <TITLE>ISMG 4800: HTML Introduction</TITLE>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer>' +
+          '<I>Updated January 13, 2004<br>Dawn G. Gregg</I> '+
+          '<i><br><br>Portions of this lecture were obtained from:<br>' +
+          'Business Models on the Web</i>by Rappa at http://ecommerce.ncsu.edu/business_models.html<br>' +
+          '<i>Principles of Web Design</i> by Sklar, Cambridge, MA:Course Technologies, 2000<br>' +
+          '<i>e-Business &amp; e-Commerce: How to Program</i> by Deitel, Deitel and Nieto, Upper Saddle River, NJ: Prentice Hall, 2001</p>';
+  </script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+
+<H1><a NAME="1"></a>HTML: Introduction</H1>
+
+<UL>
+<LI>HTML documents are plain-text (also known as ASCII) files that can be created using any text editor.
+</li>
+<LI>HTML documents are often created using WYSIWYG editors (e.g., Microsoft FrontPage).&nbsp;
+  <ul>
+    <li>However, it is often
+      necessary to hand code HTML features that the editors don't support or
+      support incorrectly!!!</li>
+  </ul>
+</li>
+<LI><a name="2"></a>HTML documents all have the<code> .html</code> or <code>.htm
+  </code>extension (<code>document.html</code>).&nbsp;&nbsp;
+ </LI>
+<LI>HTML document names should be a single word (no spaces)&nbsp;
+ </LI>
+<li>The default file on most systems is called &quot;<code>index.html</code>&quot;.&nbsp; This file is
+  shown when no file is specified for a given directory.
+  <ul>
+    <li>eg. &quot;<a href="http://www.microsoft.com">http://www.microsoft.com</a>&quot;
+      automatically loads &quot;<a href="http://www.microsoft.com/index.html">http://www.microsoft.com/index.html</a>&quot;.</li>
+    <li><em>Good Practice</em>: Put an &quot;<code>index.html</code>&quot; file in each
+      directory!</li>
+  </ul>
+</li>
+</UL>
+
+<HR>
+<H1><a name="3"></a>HTML Tags</H1>
+
+<UL>
+<LI>Elements are the fundamental components of text documents.
+  <ul>
+    <li>eg. sections, tables, paragraphs, and lists.</li>
+  </ul>
+ </LI>
+
+ <LI>To denote the various elements in an HTML document, you use <EM>tags</EM> of the
+  form:<br>
+ <code>&lt;ELEMENT ATTRIBUTE=value>...&lt;/ELEMENT&gt;</code>
+ <ul>
+    <li>The <code><span style="text-transform: uppercase"> Element</span></code> tells what the tag is in a general way, and the
+      <code><span style="text-transform: uppercase">Attribute</span></code>
+        describes the tag more specifically.&nbsp;</li>
+    <li>Tags are usually paired (e.g., <code> &lt;H1&gt;</code> and <code> &lt;/H1&gt;</code>) to start and end the tag instruction.</li>
+  </ul></ul>
+
+<HR>
+<H1><a name="4"></a>The Minimal HTML Document</H1>
+
+<UL>
+<LI>Every HTML document should contain certain standard HTML tags. Each document consists of
+  <code> head</code> and <code> body</code> text.
+  <ul>
+    <li>The <code> head</code> contains the title, and other information not actually displayed by the browser.</li>
+<LI>The <code>title</code> is displayed in the title bar of the browser window.&nbsp; 
+It is what is displayed on someone's hotlist or bookmark list &amp;
+  is used to identify your page for search engines, so choose something descriptive, unique, and relatively short. </LI>
+    <li>The <code> body</code> contains the actual text that is made up of paragraphs, lists, and other elements.</li>
+  </ul>
+ </LI>
+
+</UL>
+
+<UL>
+
+<LI>A <a href="Test.html">simple HTML document</a> is shown below: </LI></UL>
+
+<div>
+<a name="5"></a>&lt;html&gt;<br>
+&lt;head><br>
+&nbsp;&nbsp;
+&lt;title>This is a test html page&lt;/title><br>
+&lt;/head><br>
+&lt;body><br>
+&nbsp;&nbsp;
+&lt;p>This is a test html page.&lt;/p><br>
+&nbsp;&nbsp;
+&lt;p>It has 3 paragraphs.&lt;/p><br>
+&nbsp;&nbsp;
+&lt;p>This is the last one.&lt;/p><br>
+&lt;/body><br>
+&lt;/html> </div>
+
+<UL>
+<LI>The required elements are the <code> &lt;html&gt;</code>, <code> &lt;head&gt;</code>,
+  <code> &lt;title&gt;</code>, and <code> &lt;body&gt;</code> tags (and their corresponding end tags).
+ </LI>
+
+</UL>
+
+<HR>
+<script language="JavaScript">writeFooter(0);</script>
+
+<H1><a name="7"></a>Markup Tags</H1>
+
+<h2><span>Headings</span></h2>
+
+<UL>
+<LI>HTML has six levels of headings, numbered 1 through 6, with 1 being the
+  largest.&nbsp; </LI>
+<LI>The 6 headings are shown below:</LI></UL>
+
+<CENTER><TABLE BORDER CELLSPACING=1>
+<TR><TD VALIGN="MIDDLE">
+<a name="8"></a>&lt;H1&gt;</TD>
+<TD VALIGN="MIDDLE">
+<font size="6">Heading 1</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+&lt;H2&gt;</TD>
+<TD VALIGN="MIDDLE">
+<font size="5">Heading 2</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+&lt;H3&gt;</TD>
+<TD VALIGN="MIDDLE">
+<font size="4">Heading 3</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+&lt;H4&gt;</TD>
+<TD VALIGN="MIDDLE">
+<font size="3">Heading 4</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+&lt;H5&gt;</TD>
+<TD VALIGN="MIDDLE">
+<font size="2">Heading 5</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+&lt;H6&gt;</TD>
+<TD VALIGN="MIDDLE">
+<font size="1">Heading 6</font></TD>
+</TR>
+</TABLE>
+</CENTER>
+
+<UL>
+<LI><em>Good Practice</em>: Use sequential levels of headings in your document. For example,
+  if you start with 
+    a level-one heading (<code>&lt;H1&gt;</code>), next use a level-two 
+    (<code>&lt;H2&gt;</code>) heading. </LI></UL>
+
+<hr>
+
+<h2><span><a name="9"></a>Paragraphs</span></h2>
+
+<UL>
+<LI>Unlike documents in most word processors, carriage returns in HTML files aren't significant.
+  <ul>
+    <li>Any amount of whitespace (spaces, linefeeds, etc.) are compressed into a single space when your HTML document is displayed in a
+      browser.</li>
+  </ul>
+ </LI>
+
+<LI>For example the following 2 HTML paragraphs would all display the same way: </LI></UL>
+
+<center>
+<TABLE CELLSPACING=0 BORDER=1 CELLPADDING=7>
+<TR><TD VALIGN="TOP">
+<p><code>&lt;P&gt;</code>A very short paragraph! <code>&lt;/P&gt;</code></TD>
+<TD VALIGN="TOP">
+<p>A very short paragraph!</TD>
+</TR>
+<TR><TD VALIGN="TOP">
+<p><code>&lt;P&gt;</code>A very 
+<br>short paragraph! <code>&lt;/P&gt;</code></TD>
+<TD VALIGN="TOP">
+<p>A very 
+short paragraph!</TD>
+</TR>
+</TABLE>
+</center>
+
+
+<UL>
+<LI><a name="10"></a>In the source file there is a line break between the sentences. 
+    A Web browser ignores this line break and starts a new paragraph only when it encounters 
+    another <code>&lt;P&gt;</code> tag.<UL>
+<LI>NOTE: The <code>&lt;/P&gt;</code> closing tag may be omitted. However, it's generally
+a good idea to include it. </LI></UL>
+
+<LI>Important: You must indicate paragraphs with <code>&lt;P&gt;</code> elements. 
+   A browser ignores any indentations or blank lines in the source text. Without 
+   <code>&lt;P&gt;</code> elements, the document becomes one large paragraph.&nbsp;</LI>
+</UL>
+
+<hr>
+<script language="JavaScript">writeFooter(1);</script>
+
+<H1><a name="17"></a>HTML: Lists</H1>
+
+<h2><span>Unordered &amp; Ordered Lists </span></h2>
+
+<UL><LI>To make an unnumbered, bulleted list,<ul>
+    <li>start with an opening list <code> &lt;UL&gt; </code> (for unnumbered list) tag.</li>
+    <li>enter the <code> &lt;LI&gt;</code> (list item) tag followed by the individual item;&nbsp;</li>
+    <li> A closing <code> &lt;/LI&gt;</code> tag is needed in XHTML, in HTML it 
+    is only needed when non bulleted text is to be inserted in the bulleted list.</li>
+    <li>end the entire list with a closing list <code> &lt;/UL&gt;</code> tag.</li>
+    <li><code>&lt;LI&gt;</code> items can contain multiple paragraphs.&nbsp;</li>
+</ul>
+</ul>
+
+<UL>
+<LI>A numbered list (also called an ordered list) is identical to an unnumbered list, except it uses
+  <code> &lt;OL&gt;</code> instead of <code> &lt;UL&gt;</code>.&nbsp;
+
+<UL>
+<li>The items are tagged using the same <code> &lt;LI&gt;</code> tag. </li>
+</UL>
+
+</LI>
+
+
+<li><a name="18"></a>Nested Lists: Lists can be nested. You can also have a number of paragraphs, each containing a nested list, in a single list
+  item:&nbsp;</li>
+</ul>
+
+<div>
+&lt;UL>&lt;LI&gt;Northern states:&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;OL><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LI&gt; Vermont&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LI&gt; New Hampshire&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LI&gt; Maine&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/OL><br>
+&nbsp;&nbsp;&nbsp; &lt;LI&gt;Western states:&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;OL><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LI&gt;Arizona&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LI&gt;Colorado&lt;/LI&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/OL><br>
+&lt;/UL>
+</div>
+<h3>
+<a name="19"></a>
+The nested list is displayed as:</h3>
+<ul>
+  <li>Northern states:<ol>
+      <li>Vermont</li>
+      <li>New Hampshire</li>
+      <li>Maine</li>
+    </ol>
+  <li>Western states:<ol>
+      <li>Arizona</li>
+      <li>Colorado</li>
+    </ol>
+</ul>
+
+<hr>
+
+<h2><span><a NAME="20"></a>Definition Lists</span></h2>
+
+<UL>
+<LI>A definition list (coded as <code> &lt;DL&gt;</code>) usually consists of alternating a definition term (coded as
+  <code> &lt;DT&gt;</code>) and a definition description (coded as <code> &lt;DD&gt;</code>). Web browsers generally format the definition on a new line and indent it. </LI></UL>
+
+<H3>The following is an example of a definition list: </H3>
+
+<div>
+<a name="21"></a>
+&lt;DL&gt;<br>&nbsp; &lt;DT&gt;HTML<br>&nbsp;&nbsp;&nbsp; &lt;DD&gt;Hypertext Mark-up Language&lt;/DD&gt;<br>&nbsp; &lt;DT&gt;HTML<br>&nbsp;&nbsp;&nbsp; &lt;DD&gt;Hypertext Transfer Protocol&lt;/DD&gt;<br>&lt;/DL&gt;
+</div>
+
+<H3>The output looks like: </H3>
+<blockquote>
+<DL>
+<DT> HTML
+<DD> Hypertext Mark-up Language
+<DT> HTTP
+<DD> Hypertext Transfer Protocol
+</DL>
+
+</blockquote>
+
+<hr>
+
+<H1><a name="22"></a>Character Formatting</h1>
+<ul>
+  <li>HTML has two types of styles for individual words or sentences: <em> logical</em> and
+    <em>physical</em>.
+    <ul>
+      <li>Logical styles tag text according to its meaning,&nbsp;</li>
+      <li>Physical styles indicate the specific appearance of a section.</li>
+    </ul>
+  </li>
+  <li>Common Logical Styles:<DL>
+  <dt><code>&lt;EM> </code>
+    <DD>for emphasis. Typically displayed in italics.<i>(Consultants cannot reset your
+        password unless you call the help line.)</i></dd>
+  <dt><code>&lt;STRONG> </code>
+     <dd>for strong emphasis. Typically displayed in bold.<strong> (NOTE: Always check your links.)</strong></dd>
+  </dl>
+<li><a name="23"></a>Common Physical Styles:<dl>
+  <dt><code>&lt;B> </code>
+    <dd>bold text (<b>This is bold</b>)</dd>
+  <dt><code>&lt;I> </code>
+    <dd>italic text (<i>This is italics</i>)</dd>
+  <dt><code>&lt;TT> </code>
+    <dd>typewriter text, e.g. fixed-width font. (<tt>This is typewriter text</tt>)</dd>
+  </dl>
+</li>
+</ul>
+
+<hr>
+
+
+
+<h2><span><a name="25"></a>Escape Sequences (a.k.a. Character Entities)</span></h2>
+
+<ul>
+  <li>The &lt;, &gt; and &amp; characters are special characters in HTML,&nbsp;
+    so to have them appear in an HTML document, you must enter an escape sequence:&nbsp; </LI>
+</ul>
+<blockquote>
+<DL>
+<DT>
+<code>&amp;lt; </code>
+<DD>the escape sequence for &lt;&nbsp;</dd>
+<DT><code>&amp;gt;&nbsp; </code>
+<DD>the escape sequence for >&nbsp;</dd>
+<DT><code>&amp;amp; </code>
+<DD>the escape sequence for &amp;&nbsp;</dd>
+<dt><code>&amp;nbsp; </code>
+<dd>to force an additional space to appear in the HTML document</dd>
+</DL>
+</blockquote>
+<p> NOTE: Unlike the rest of HTML, the escape sequences are case sensitive. You cannot, for
+instance, use &amp;LT; instead of &amp;lt;.&nbsp;
+
+
+<hr>
+
+<h1>
+
+Miscellaneous Formatting</h1>
+
+<h2><span><a name="26"></a>Forced Line Breaks</span></h2>
+<ul>
+  <li>The <code>&lt;BR&gt;</code> or <code>&lt;BR/></code> tag forces a line break with no extra (white) space between lines.
+  <ul>
+      <li> Using <code>&lt;P></code> for short lines of text results in unwanted additional white space. </li>
+  </ul>
+</li></ul>
+<div>
+&lt;p&gt;University of Colorado at Denver&lt;BR><br>
+1250 14th Street&lt;BR/><br>
+Denver, CO 80217&lt;/p&gt;</div>
+
+<h3>results in:</h3>
+<p>
+University of Colorado at Denver<br/>
+1250 14th Street<br>
+Denver, CO 80217
+
+
+<hr>
+
+
+<h2><span><a name="27"></a>Extended Quotations</span></h2>
+<ul>
+  <li>Use the <code> &lt;BLOCKQUOTE&gt;</code> tag to include lengthy quotations in a separate block on the
+    screen.&nbsp;</li>
+</ul>
+
+    <div>
+    &lt;BLOCKQUOTE&gt;<br>
+    &lt;P&gt;To read between the lines was easier than to follow the text.&lt;/P><br>
+    &lt;P&gt;--Henry James &lt;/P><br>
+    &lt;/BLOCKQUOTE&gt;
+    </div>
+    
+<h3> results in:&nbsp;</h3>
+<blockquote>
+<p>To read between the lines was easier than to follow the text.
+<p>--Henry James
+
+</blockquote>
+
+<hr>
+
+<h2><span><a name="27"></a>Horizontal Rules</span></h2>
+<ul>
+  <li> The <code>&lt;HR></code> or <code>&lt;HR/></code> tag produces a horizontal line the width of the browser window.&nbsp;</li>
+  <li> You can vary a rule's size (thickness) and width (the percentage of the window covered by
+    the rule).&nbsp;
+  </li>
+</ul>
+
+
+<blockquote>
+  <p>
+<code>&lt;HR SIZE=4 WIDTH="50%"></code>
+  <h3>displays as:&nbsp;</h3>
+</blockquote>
+<hr style="width:50%; color: #C0C0C0; background-color: #C0C0C0; height: 4px;">
+
+<hr>
+<h1><a name="28"></a>In Class Assignment</h1>
+<ul>
+  <li>To get some practice using HTML Tags we are going to create a Simple HTML
+    homepage. It should have:<ul>
+      <li>Opening and closing <code>&lt;html&gt;</code>,
+        <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> tags for an HTML
+        document.</li>
+      <li>A <code>&lt;title&gt;</code> in the <code>&lt;head&gt;</code> of
+        the document</li>
+      <li>Your Name as a&nbsp; heading in the body of the document (<code>&lt;h1&gt;</code>,
+        <code>&lt;h2&gt;</code> etc)</li>
+      <li>Write a paragraph describing, yourself, some interest you have, why
+        you are taking this class - (or anything else).</li>
+    </ul>
+  </li>
+</ul>
+<script language="JavaScript">writeFooter(2);</script>
+
+<h1><a name="11"></a>Linking</h1>
+<ul>
+  <li>The chief power of HTML comes from its ability to link text and/or an image to another
+    document or section of a document.&nbsp;</li>
+  <li>HTML's link tag is <code> &lt;A&gt;</code>, which stands for anchor:&nbsp;</li>
+</ul>
+<blockquote>
+  <p><code>&lt;A HREF=&quot;Test.html&quot;&gt;Test link&lt;/A></code>
+</blockquote>
+<ul>
+  <li>This makes <a href="Test.html">Test link</a> a hypertext link to <code>Test.html</code>, which is
+    a file in the same directory as
+    this document.&nbsp;</li>
+</ul>
+<hr>
+<h2><span><a name="12"></a>Relative Pathnames&nbsp;</span></h2>
+<ul>
+  <li>You can link to documents in other directories by specifying the <em> relative path</em> from the
+    current document to the linked document.&nbsp;</li>
+  <li> For example, a link to a file &quot;<a href="demo/test2.html">test2.html</a>&quot; located in the subdirectory
+    &quot;junk&quot; would be:&nbsp;</li>
+</ul>
+
+<blockquote>
+  <p>
+    <code>&lt;A HREF=&quot;demo/test2.html&quot;&gt;</code>test2.html<code>&lt;/A&gt;</code>
+</blockquote>
+  
+<ul>
+  <li>To specify a file in the parent directory you use a &quot;..&quot; in the
+    pathname (<code>../some_file.html</code>).&nbsp;</li>
+  <li><a name="13"></a><em>Good Practice</em>:&nbsp; You should design your Web site using
+    relative path links so that no matter where you move your Web pages (e.g.
+    from your home computer to a Web server) the links will still
+    work!!!!!!!!!!!</li>
+</ul>
+<hr>
+<h2><span>Absolute Pathnames</span></h2>
+<ul>
+  <li>You can also use the absolute pathname (the
+complete URL) of the file (e.g. to link to the
+  <a href="http://www.cudenver.edu/">CU Denver's Main Page</a>).</li>
+</ul>
+  <blockquote>
+  <p><code>
+    &lt;A HREF=&quot;http://www.cudenver.edu&quot;&gt;<br>
+    </code>
+CU Denver's Main Page <code>&lt;/A></code>
+</blockquote>
+<ul>
+  <li><em>Only</em> use Absolute pathnames when you are linking to a document outside you "personal" Web space.</li>
+</ul>
+<hr>
+<h2><span><a name="14"></a>File Links</span></h2>
+<ul>
+  <li>Occasionally when defining a link using an HTML editor (like FrontPage)
+    the computer will create a File link instead of an HTTP link.&nbsp; A <a href="file:///C:/Data/myfile.html">file
+    link</a> points to a specific location on your personal computer:</li>
+</ul>
+  <blockquote>
+  <p><code>
+    &lt;A HREF=&quot;file:///C:/Data/myfile.html&quot;&gt;</code> file link<code>&lt;/A&gt;</code>
+</blockquote>
+<ul>
+  <li>You <em>NEVER</em> want to have a file link in an HTML file you put on the
+    Web because a person browsing your Web page will not have&nbsp; the file on
+    their hard drive creating a &quot;broken link&quot;.</li>
+</ul>
+<hr>
+<h2><span><a name="15"></a>Mailto Links</span></h2>
+<ul>
+  <li>You can also use a link to send email. It uses <code>mailto:</code> placed before the
+    email address:<p><code>&lt;A HREF=&quot;mailto:dawn.gregg@cudenver.edu&quot;&gt;<br>
+  Please email me!&lt;/A><br>
+  </code><br>
+  <a href="mailto:dawn.gregg@cudenver.edu">Please email me!</a>
+</ul>
+
+<hr>
+
+<h2><span>
+
+<a name="16"></a>
+ Links to Specific Sections</span></h2>
+<ul>
+  <li>Named anchors (called targets or bookmarks) allow linking to a particular section in a document
+    rather than to the top.&nbsp;</li>
+  <li>Include the <code> &lt;A NAME=&quot;name&quot;&gt;</code> tag at the place in your document where you want the link to jump to</li>
+</ul>
+
+<blockquote>
+<a name="jump"><code></code></a><code>&lt;A NAME=&quot;jump&quot;&gt;&lt;/a&gt;</code>Jump
+Here<br>
+<br>
+
+<code>&lt;A HREF=&quot;#jump&quot;&gt;</code><a href="#jump">Link to above text</a><code>&lt;/a></code><br>
+
+<code><br>
+&lt;A HREF=&quot;../../ismg4800.html#descript&quot;&gt;</code><a href="../../ismg4800.html#descript">Syllabus</a><code>&lt;/a></code><br>
+
+</blockquote>
+
+<hr>
+<script language="JavaScript">writeFooter(3);</script>
+
+<h1>Web Site Design Principles</h1>
+<ul>
+  <li>
+Design for the Medium, remember the destination is a computer not the printed
+page.&nbsp; Research indicates that users read hypertext very differently than
+printed information.&nbsp;</li>
+  <li>
+Design for the whole site not just individual pages.&nbsp; Your choices of
+colors, fonts, graphics and page layout should communicate a visual theme that
+orients users to your site's content.</li>
+  <li>
+Design for the User and only include content on your site that is of direct
+benefit for your intended audience.&nbsp; Give away something valuable: information, software,
+advice or humor. Create an interface that will be
+familiar and easy to use.</li>
+</ul>
+<hr>
+<h1><a name="9"></a>Plan the Overall Site</h1>
+<h2><span><a name="11"></a>Plan for a successful implementation&nbsp;</span></h2>
+<ul>
+   <li>Creating portable file naming conventions.&nbsp;</li>
+   <li> Build a relative file structure
+       that can be transferred to your Web server without a hitch.</li>
+</ul>
+
+<p align="center">
+<img border="0" src="../images/folders.gif" width="469" height="306">
+<ul>
+  <li>When linking to documents in your own Web site you should always specify the <em> relative path</em> from the
+    current document to the linked document:&nbsp;<ul>
+  <li> In the example above a link found in the site map &quot;<code>map.html</code>&quot; to a file &quot;prod1.html&quot; located in the subdirectory
+    &quot;<code>section1</code>&quot; would be:&nbsp;</li>
+</ul>
+<blockquote>
+    <code>&lt;A HREF=&quot;<var>section1/prod1.html</var>&quot;&gt;</code>Product 
+    Information <code>&lt;/A></code>
+</blockquote>
+<ul>
+  <li>To link to the site map from the <code>prod1.html</code> page you would 
+  use:
+    <code>&lt;A HREF=&quot;<em><var>../map.html</var></em>&quot;&gt;<cite>Site Map</cite>&lt;/A></code>
+  </li>
+</ul>
+  </li>
+
+  <li>If you forget and use absolute paths specific to your development machine:<p>
+    <code>&lt;A HREF=&quot;<var>File:///C:/My Webs/section1/prod1.html</var>&quot;&gt;</code>Product 
+    Information <code>&lt;/A></code>
+
+  <p>
+    OR
+
+  <p>
+    <code>&lt;A HREF=&quot;<var>http://localhost/section1/prod1.html</var>&quot;&gt;</code>Product 
+    Information<code>&lt;/A></code>
+
+  <p>
+    Your links <em>will not work</em> when you transfer your files up to the Web 
+    server!!!!
+  </li>
+</ul>
+<hr>
+<h2><span><a name="12"></a>Select a basic information structure for your site&nbsp;</span></h2>
+<ul>
+  <li>Manually
+    diagram your site based on &quot;Standardized&quot; site plans then
+    customize to develop the best structure for your site.</li>
+  <li><em><a name="13"></a>Linear Information Structure</em>: Lets you guide your user along a path.&nbsp;
+    Good for books or sequential presentations:</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/linear.gif" width="306" height="248">
+<ul>
+  <li><em><a name="14"></a>Tutorial Structure</em>: Similar to linear structure except there are several
+    predefined paths the user can travel.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/tutorial.gif" width="440" height="296">
+<ul>
+  <li> <em><a name="15"></a>Web Structure</em>: A content structure used by
+    smaller sites which provides links to every page on the site.&nbsp; This
+    type of structure requires clear navigation information. </li>
+</ul>
+<p align="center"><img border="0" src="../images/web.gif" width="306" height="335">
+<ul>
+  <li><em><a name="16"></a>Hierarchical Structure</em>: One of the most common.
+    It lends itself to large content collections because the Section pages
+    break-up and organize the content at different levels.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/hierarchical.gif" width="411" height="373">
+<ul>
+  <li><em><a name="9"></a>Cluster Structure</em>: Similar to hierarchical except
+    each section is an island of information organized in a Web structure.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/cluster.gif" width="517" height="373">
+<ul>
+  <li><em><a name="17"></a>Catalog Structure</em>: Accommodates electronic
+    shopping.&nbsp; Users browse or search for items and add them to their
+    shopping cart, they can review the items in their cart then checkout.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/shopping.gif" width="469" height="306">
+<hr>
+
+<h1><a name="18"></a>Planning Site Navigation</h1>
+<ul>
+  <li>Work from the users point of view.&nbsp; Think about where the user wants
+    to go within your Web site and make it easy for them to get there.</li>
+  <li>Add plenty of links to make your Web site quickly accessible. Link to
+    internal bookmarks/targets as well as to whole pages.</li>
+  <li>Provide plenty of location cues to let users know where they are within
+    your site:
+    <ul>
+      <li><a name="19"></a>Yahoo has a complicated directory structure.&nbsp; They use text based
+        links to let you know
+        where you are and how you got there:</li>
+    </ul>
+  </li>
+</ul>
+<p align="center">
+<img border="0" src="../images/nav_yahoo.com.gif" width="410" height="158">
+<ul><ul>
+  <li><a name="20"></a>Amazon.com&nbsp;clearly indicates that you are browsing <i>Books</i> in
+    the subject for <i>Computers and the Internet</i>.&nbsp; They also give
+    clear links back to other parts of the Books site and the whole site.</li>
+</ul></ul>
+<p align="center">
+<img border="0" src="../images/nav_amazon.com.gif" width="475" height="216">
+<ul>
+  <li><a name="21"></a>Use consistent text based navigation bars to link users
+    to other pages on your site.&nbsp; Use other text based links to help users
+    move through a long page of information or through a Table of Contents.</li>
+  <li>If you use graphical navigation links:&nbsp;
+    <ul>
+      <li>Reuse the same images to reduce download
+    time.&nbsp;&nbsp;</li>
+      <li>Use the ALT attribute to provide alternative navigation
+    options for users.&nbsp;</li>
+      <li>Have a consistent text only link/navigation bar at the bottom of every
+        page.</li>
+    </ul>
+  </li>
+</ul>
+<p align="center"><a href="../index.html">Home</a>|<a href="../outline.html">Notes</a>|<a href="../../ismg4800.html">Syllabus</a>|<a href="../glossary.html">Glossary</a>|<a href="../links.html">Links</a>
+<ul>
+  <li>Keep a flat hierarchy: Do no make users navigate through to many layers to
+    find the information they want.</li>
+  <li><a name="22"></a>Consider providing a site map that graphically shows Users the lay-out of
+    your entire site:</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/smap_levis.gif" width="702" height="397">
+<hr>
+<script language="JavaScript">writeFooter(4);</script>
+
+<h1><a name="23"></a>Design for the Medium&nbsp;</h1>
+<h2><span>Craft the look and feel</span></h2>
+<ul>
+  <li>Make your site consistent and easy to use.</li>
+  <li>Better sites&nbsp; support the way <em>users</em> want to approach the
+    problems.&nbsp; (<a href="http://www.useit.com/alertbox/20000806.html">Research
+    shows</a> users will leave sites that have unique designs or terminology).&nbsp;</li>
+  <li><strong>Content design</strong> requires that the Web designer determines
+    the best approach to describing each unit of information.</li>
+  <li>Use a standardized <strong>Information architecture</strong>. An example
+    that has already happened is the <em>&quot;About the company&quot;</em> area
+    of most corporate Web sites.&nbsp;</li>
+</ul>
+<hr>
+<h2><span><a name="24"></a>Make your Design Portable</span></h2>
+<ul>
+  <li>To be successful, you Web design must be portable and accessible across
+    different browsers, operating systems and computing platforms.</li>
+</ul>
+<hr>
+<h2><span>Design for Low Bandwidth</span></h2>
+<ul>
+  <li>Plan your pages so they are accessible at a variety of connection
+    speeds.&nbsp;&nbsp;
+    <ul>
+      <li>Break large pages into smaller units.</li>
+      <li>Use fewer graphics</li>
+      <li>Use the ALT attribute with your images so that the user has
+        information to look at while the graphics are downloading.&nbsp;&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="25"></a>Plan for clear presentation &amp; easy access to information</span></h2>
+<ul>
+  <li>Highlight <em>keywords</em> (hypertext links serve as one form of
+    highlighting; typeface variations and color are others)
+  <li>Use meaningful sub-headings (not &quot;clever&quot; ones)
+  <li>Use bulleted lists
+  <li>Only one idea per paragraph (users will usually skip over any additional
+    ideas)
+  <li>Start with the conclusion, then add details.
+  <li>Have half the word count (or less) than print writing</li>
+  <li>Limit the number of fonts and colors used on the site.</li>
+</ul>
+<hr>
+<h2><span><a name="26"></a>Use the Power of Hypertext Linking</span></h2>
+<ul>
+  <li>When writing on the Web you have the power to put
+  <a href="../glossary.html">hypertext
+    links</a> anywhere in your document to guide users through you information.</li>
+  <li>Provide links anywhere you think it will help end-users find the
+    information they want more quickly.</li>
+  <li>Provide links that will allow users to jump through a long document
+    quickly (<a href="../../ismg4800.html">see my syllabus</a>)</li>
+  <li>Rem</li>
+</ul>
+<p><a href="#1">Go to Top</a>
+<hr>
+<h1><a name="27"></a>Plan the Page Structure &amp; Content</h1>
+<ul>
+  <li>The final step is defining the unifying themes and structure that will
+    hold your pages together.&nbsp; This includes:
+    <ul>
+      <li>Choices of colors, fonts and graphics</li>
+      <li>Page Layout</li>
+      <li>How much content to include</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="28"></a>Create Smooth Transitions</span></h2>
+<ul>
+  <li>Plan to create a unified look among the sections and pages of your
+    site.&nbsp; Web sites should have:
+    <ul>
+      <li>Consistent background graphics</li>
+      <li>Consistent placement of navigation information</li>
+      <li>Consistent font usage</li>
+      <li>Logo that brands the site</li>
+    </ul>
+  </li>
+  <li>The two screen shots below show the unified look of the National Gallery
+    of Art's Web site:</li>
+</ul>
+<p align="center">
+<a name="29"></a><img border="0" src="../images/nga1.gif" width="642" height="507"><br>
+<br>
+<a name="30"></a><img border="0" src="../images/nga2.gif" width="654" height="516">
+
+<hr>
+<h2><span><a name="32"></a>Use a grid to Provide Visual Structure</span></h2>
+<ul>
+  <li>The structure of a Web page is imposed by the grid or page template you
+    choose for your Web page design.</li>
+  <li>Most web pages use tables to lay content out in logical areas.</li>
+  <li>Tables are also used to create active white space.&nbsp; White space
+    between content areas to guide readers attention to important content
+    (space between each of the cells in the table).</li>
+</ul>
+
+<center>
+<table border="2" cellspacing="10" cellpadding="2" bordercolor="#FFFFFF">
+  <tr>
+    <td colspan=4 bgcolor="#FFFF00"><p><a name="33"></a>Top Banner or Logo Space:&nbsp;&nbsp;
+      Relative Screen Importance=2</td>
+  </tr>
+  <tr>
+    <td rowspan=3 bgcolor="#00FF00"><p>Navigation <br>
+      Link<br>
+      Space
+      <p>Importance<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5
+    </td>
+    <td bgcolor="#00FFFF" colspan=2><p align="center">Main Content Area</td>
+    <td rowspan=3 bgcolor="#FF00FF"><p>Search<br>
+      Link<br>
+      Space<br>
+      <br>
+      Importance<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; 3</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FFFF"><p>Can be in a single block</td>
+    <td bgcolor="#00FFFF"><p>or in multiple grids</td>
+  </tr>
+  <tr>
+    <td colspan=2 bgcolor="#00FFFF">
+      <p align="center"><p align="center">Importance<br>
+      1</td>
+  </tr>
+  <tr>
+    <td colspan=4 bgcolor="#FF0000">
+      <p align="center">Bottom Navigation Link Space<br>
+      Importance<br>
+      4
+    </td>
+  </tr>
+</table>
+</center>
+
+<hr>
+
+<h2><span><a name="34"></a>
+Choose the Amount & Location of Content
+</span></h2>
+
+<ul>
+  <li>You can only crowd so much information onto a single Web page.&nbsp;
+    Consider the type of site and the information the user is looking for when
+    deciding what information to include on a single Web page.</li>
+  <li>Most sites try to have Web pages that are no more than 2 browser height's
+    high with the most important information &quot;above the fold&quot; (on the
+    first screen).</li>
+  <li>The AltaVista page below is an Search/Information page and attempts to
+    crowd a lot of information on a single page with little Active White Space:</li>
+</ul>
+<p align="center"><a name="35"></a>
+<img border="0" src="../images/altavista.gif" width="642" height="507">
+<ul>
+  <li><a name="36"></a>The Web site for Eddie Bauer has navigation information
+    and links on the home page with a large image in the main content area to
+    highlight their products.&nbsp; It has a much less cluttered feel.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images/eddie.gif" width="651" height="345">
+
+<hr>
+
+<h1><a name="37"></a>Proper Coding</h1>
+<ul>
+  <li>
+HTML is not case sensitive so <code>&lt;p&gt;</code> and <code>&lt;P&gt;</code>
+are interpreted the same way by the browser.&nbsp; However it makes your code
+easier to read if you choose to use either all UPPERCASE tags or all lowercase
+tags.
+  </li>
+  <li>
+Avoid Overlapping Tags
+    <ul>
+      <li><code>
+    &lt;B&gt;</code><b>This is an example of <code> &lt;I&gt;</code><i>overlapping</i></b><i><code>&lt;/B></code><br>
+    HTML tags.</i><code>&lt;/I></code></li>
+      <li><b><code>&lt;B&gt;</code>This would be a <code> &lt;I&gt;</code><i>better</i></b><code>&lt;/I></code><i><code>&lt;/B>
+        </code></i><b><code> &lt;I&gt;</code></b><i>way to code it.</i><code>&lt;/I></code></li>
+      <li>Close more more recent tags before closing a tag that comes before it.<i>&nbsp;</i></li>
+    </ul>
+  </li>
+  <li>
+<a name="25"></a>
+Embed Only Anchors and Character Tags
+    <ul>
+      <li>
+HTML protocol allows you to embed links within other HTML tags:&nbsp;<br>
+        <code>
+    &lt;H1>&lt;A HREF="../links.html&quot;&gt;Links&lt;/A>&lt;/H1></code></li>
+      <li>
+Do not embed HTML tags within an anchor:&nbsp;
+<br>
+        <code>
+    &lt;A HREF="../links.html">&lt;H1&gt;Links&lt;/H1>&lt;/A></code></li>
+      <li>
+Although most browsers currently handle this second example, the official HTML specifications do not support this
+        and your file may not work with future<br>
+browsers.&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2><span><a name="38"></a>Readability</span></h2>
+
+<ul>
+  <li>Place comments throughout your HTML File.
+    <ul>
+      <li>Comments have the starting and ending tags:</li>
+    </ul>
+  </li>
+</ul>
+  <blockquote>
+    <blockquote>
+    <p><code>&lt!--</code> The comment is here&nbsp; <code>--&gt</code></p>
+    </blockquote>
+  </blockquote>
+<ul>
+  <li>Put headings on separate lines,&nbsp;</li>
+  <li>Use a blank line or two where it helps identify the start of a new section, and</li>
+  <li>Separate paragraphs with blank lines (in addition to the <code>&lt;P&gt;</code> tags).&nbsp;</li>
+  <li><a name="27"></a><a href="demo/formatted.html">For Example</a>:</li>
+</ul>
+
+<div>&lt;head><br>
+  &nbsp; &lt;title>This is a formatted html page&lt;/title><br>
+  &lt;/head><br>
+  <br>
+  &lt;body&gt;<br>
+  &nbsp; <dfn>   &lt;!-- Course Description --></dfn><br>
+  &nbsp;   &lt;h1>ISMG 4800 - Web Authoring&lt;/h1><br>
+  <br>
+  &nbsp;     &lt;p>This class is designed to give students&nbsp;<br>
+  &nbsp; familiarity with current Web technologies and&nbsp;<br>
+  &nbsp; the     ability to use them!&lt;/p><br>
+  <br>
+  &nbsp;     &lt;p>By the end of the class students should be&nbsp;<br>
+  &nbsp; able     to design complex web sites that have&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp; database connectivity     and use cookies.&lt;/p><br>
+  <br>
+  &nbsp; <dfn>  &lt;!-- Page Footer --></dfn><br>
+  &nbsp;  &lt;hr><br>
+  &nbsp;  &lt;p>Updated 12/6/01 by Dawn Gregg&lt;/p><br>
+  <br>
+  &lt;/body><br>
+  &lt;/html></div>
+
+<hr>
+<h1><a name="39"></a>Final Steps&nbsp;</h1>
+<h2><span>
+Validate Your Code</span></h2>
+<ul>
+  <li>
+When you put a document on a Web server, be sure to check the formatting and links
+    (including named anchors).&nbsp;
+<ul>
+  <li>Check from a different computer than you created the file on to catch file
+    link errors.</li>
+</ul>
+  </li>
+  <li>You can run your coded files through one of several on-line HTML/XHTML validation services that
+    will tell you if your code conforms to accepted HTML.&nbsp;
+    <ul>
+      <li>The service lets you select the level of conformance you want for your files (i.e., strict, level 2,
+        level 3).&nbsp;</li>
+      <li>One such validation service is available at:<br>
+      <a href="http://validator.w3.org/file-upload.html">
+      http://validator.w3.org/file-upload.html</a> </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="40"></a>Browsers Differ</span></h2>
+<ul>
+  <li>
+Web browsers display HTML elements differently. Remember that not all codes used in
+    HTML files are interpreted by all browsers. Any code a browser does not understand is
+    usually ignored.&nbsp;</li>
+  <li>You could spend a lot of time making your file "look perfect" using your current browser. If
+    you check that file using another browser, it will likely display (a little or a lot) differently.</li>
+</ul>
+
+<hr>
+
+<script language="JavaScript">writeFooter(5);</script>
+
+ </BODY>
+</HTML>

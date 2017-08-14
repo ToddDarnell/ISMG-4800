@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Flash</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript" src="../scripts/browserAPI.js"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><i>Updated January 11, 2006<br>Dawn G. Gregg<br><br>Some of the content in this lecture was obtained from the Flash lessons at http://www.macromedia.com</i></p>';
+  </script>
+</head>
+<body onload="if(IEDOM)blend(image1); else blend();">
+<script language="JavaScript">writeHeader();</script>
+
+    <h1>Dynamic HTML (IE Only)</h1>
+
+<h2><span>Dynamic HTML: Filters and Transitions (IE Only)</span></h2>
+
+<ul>
+  <li>
+
+        Applying filters to text and images causes changes that are persistent.
+        You can convert colored images to gray in response to user actions. You
+        can make letters <i>glow</i> for emphasis. You can create <i>drop
+        shadows</i> to give text a three-dimensional appearance.</li>
+  <li>
+
+        Transitions are temporary phenomena: applying a transition allows you to
+        transfer from one page to another with a pleasant visual effect such as
+        a random dissolve.&nbsp;</li>
+  <li>
+
+        Filters and transitions do not add content to your pages-rather, they
+        present existing content in an engaging manner to help hold the user's
+        attention.&nbsp;</li>
+  <li>
+
+        <a name="12"></a>
+
+        For Example <a href="demo/flip.html">text can be flipped</a>:</li>
+</ul>
+
+  <center>
+
+<table><tr><td>
+<TABLE bordercolor="#0000FF" bgcolor="#FFFF99" border="3">
+   <TR>
+       <!-- Filters are applied in style declarations -->
+       <TD STYLE = "filter: fliph"><b><font size="6">Text</font></b></TD>
+       <TD><b><font size="6">Text</font></b></TD>    
+   </TR>
+   <TR>       
+
+<!-- More than one filter can be applied at once -->
+       <TD STYLE = "filter: flipv fliph"><b><font size="6">Text</font></b></TD>
+       <TD STYLE = "filter: flipv"><b><font size="6">Text</font></b></TD>
+   </TR>
+</TABLE>
+</td><td>
+<TABLE bordercolor="#0000FF" height=102 border="3" cellpadding="0" cellspacing="0">
+   <TR>
+       <!-- Filters are applied in style declarations -->
+       <TD height="51"><code>&lt;TD STYLE = <br>
+&nbsp; "filter: fliph"></code></TD>
+       <TD height="51"><code>&lt;TD></code></TD>    
+   </TR>
+   <TR>       
+
+<!-- More than one filter can be applied at once -->
+       <TD height="50"><code>&lt;TD STYLE = <br>
+&nbsp; "filter: flipv fliph"></code></TD>
+       <TD height="50"><code>&lt;TD STYLE = <br>
+&nbsp; "filter: flipv"></code></TD>
+   </TR>
+</TABLE>
+</td></tr></table>
+  </center>
+
+    <p>&nbsp;</p>
+
+<ul>
+  <li><a href="demo/gray.html">Photos can be turned gray</a> using the STYLE attribute of &lt;IMG&gt;:</li>
+</ul>
+<center>
+<TABLE>
+
+ <TR>
+ <TD><IMG SRC = "../images/cu_sample.jpg" width=180 height=180></TD>
+ <TD><IMG SRC = "../images/cu_sample.jpg" STYLE = "filter: gray" width = 180 height=180></TD>
+ <TD><IMG SRC = "../images/cu_sample.jpg" STYLE = "filter: xray" width = 180 height=180></TD>
+ <TD><IMG SRC = "../images/cu_sample.jpg" STYLE = "filter: invert" width = 180 height=180></TD>
+ </TR>
+
+ <TR>
+ <TD>Normal</TD>
+ <TD>STYLE="filter: gray"</TD>
+ <TD>STYLE="filter: xray"</TD>
+ <TD>STYLE="filter: invert"</TD>
+ </TR>
+ </TABLE>
+ </center>
+
+<ul>
+  <li>You can use the &quot;opacity&quot; STYLE attribute to highlight an &lt;IMG&gt;:</li>
+</ul>
+    <p align="center" style="background-color=black;">
+    <img border="0" src="../images/dhome.gif" width="150" height="40"
+         style="FILTER:alpha(opacity=50);" 
+         onmouseover="this.filters.alpha.opacity=100;"
+         onmouseout="this.filters.alpha.opacity=50;">
+    <img border="0" src="../images/dsitemap.gif" width="150" height="40"
+         style="FILTER:alpha(opacity=50);" 
+         onmouseover="this.filters.alpha.opacity=100;"
+         onmouseout="this.filters.alpha.opacity=50;">
+    </p>
+    <div>&lt;img border="0" src="images/dhome.gif" width="150" height="40"
+         <br>
+&nbsp;&nbsp;&nbsp;&nbsp; style="FILTER:alpha(opacity=50);"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; onmouseover="this.filters.alpha.opacity=100;"<br>
+&nbsp;&nbsp;&nbsp;&nbsp; onmouseout="this.filters.alpha.opacity=50;">
+</div>
+    <hr>
+
+    <h2><span><a name="13"></a>Blended Transitions (IE only)</span></h2>
+
+<ul>
+  <li>You can do <a href="demo/blend.html"> blended transitions between images</a>:</li>
+</ul>
+<!--iframe src=demo/blend2.html width=710 height=300 frameBorder=0 scrolling=no>
+</iframe-->
+<div id="contentLYR" style="background-color:transparent; position:relative; border:none; height:300px; width:98%; top: 0px; left: 1%; z-index:1; visibility:visible;	overflow:hidden;">
+
+<SCRIPT LANGUAGE = "JavaScript">
+function blend(to)
+{ 
+  if(!IEDOM) window.setInterval("swap()", 3000);
+  else {
+    to.filters( "blendTrans" ).apply();
+    to.style.visibility = "hidden";
+    to.filters( "blendTrans" ).play();
+  }
+}
+
+function reBlend ( from, to ,next)
+{
+  from.style.zIndex -= 2;
+  to.style.zIndex += 1;
+  next.style.zIndex += 1;
+  from.style.visibility = "visible";
+  blend(to);
+}
+
+if(document.images) {
+  imagex = new Array();
+  imagex[0] = new Image();
+  imagex[0].src = "demo/nature/yosemite.jpg";
+  imagex[1] = new Image();
+  imagex[1].src = "demo/nature/zion.jpg";
+  imagex[2] = new Image();
+  imagex[2].src = "demo/nature/isleroyal.jpg";
+  imagex[3] = new Image();
+  imagex[3].src = "demo/nature/rockymountain2.jpg";
+  imagex[4] = new Image();
+  imagex[4].src = "demo/nature/kenaifjord2.jpg";
+}
+var iindex=0;
+
+function swap() {
+  if(iindex < 4) iindex++;
+  else iindex=0;
+  document['imageSwap'].src = eval("imagex[" + iindex + "].src");
+}
+</SCRIPT>
+
+<pre><IMG ID = "image1" NAME="imageSwap" SRC = "demo/nature/yosemite.jpg"
+ONFILTERCHANGE = "reBlend( image1, image2, image3 )"
+STYLE = "position:relative; left: 100; top: 0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 3"><IMG ID = "image2" SRC = "demo/nature/zion.jpg"
+ONFILTERCHANGE = "reBlend( image2, image3, image4 )"
+STYLE = "position:relative; visible: false; left: -300; top: 0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 2"><IMG ID = "image3" SRC = "demo/nature/isleroyal.jpg"
+ONFILTERCHANGE = "reBlend( image3, image4, image5 )"
+STYLE = "position:relative; visible: false; left:-700; top: 0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 1"><IMG ID = "image4" SRC = "demo/nature/rockymountain2.jpg"
+ONFILTERCHANGE = "reBlend( image4, image5, image1 )"
+STYLE = "position:relative; visible: false; left:-1100; top:0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 1"><IMG ID = "image5" SRC = "demo/nature/kenaifjord2.jpg"
+ONFILTERCHANGE = "reBlend( image5, image1, image2 )"
+STYLE = "position:relative; visible: false; left:-1500; top:0; width: 400; height: 267;
+filter: blendTrans( duration = 6 ); z-index: 1">
+</pre>
+</div>
+
+<div>
+<pre>&lt;IMG ID="image1" NAME="imageSwap" SRC="demo/nature/yosemite.jpg"
+  ONFILTERCHANGE="reBlend( image1, image2, image3 )"
+  STYLE="position:relative; left:100; top:0; width:400; height:267; 
+         filter: blendTrans( duration = 6 ); z-index: 3">
+
+&lt;IMG ID="image2" SRC="demo/nature/zion.jpg"
+  ONFILTERCHANGE="reBlend( image2, image3, image4 )"
+  STYLE="position:relative; visible: false; 
+         left: -300; top: 0; width: 400; height: 267;
+         filter: blendTrans( duration = 6 ); z-index: 2">
+
+...
+
+&lt;SCRIPT LANGUAGE = "JavaScript">
+function blend(to)
+{ 
+  if(!IEDOM) window.setInterval("swap()", 3000);
+  else {
+    to.filters( "blendTrans" ).apply();
+    to.style.visibility = "hidden";
+    to.filters( "blendTrans" ).play();
+  }
+}
+
+function reBlend ( from, to ,next)
+{
+  from.style.zIndex -= 2;
+  to.style.zIndex += 1;
+  next.style.zIndex += 1;
+  from.style.visibility = "visible";
+  blend(to);
+}
+
+if(document.images) {
+  imagex = new Array();
+  imagex[0] = new Image();
+  imagex[0].src = "demo/nature/yosemite.jpg";
+  imagex[1] = new Image();
+  imagex[1].src = "demo/nature/zion.jpg";
+...
+}
+var iindex=0;
+
+function swap() {
+  if(iindex < 4) iindex++;
+  else iindex=0;
+  document['imageSwap'].src = eval("imagex[" + iindex + "].src");
+}
+&lt;/SCRIPT>
+</pre></div>
+<script language="JavaScript">writeFooter(0);</script>
+
+<hr>
+
+
+<h1><span>High-End Uses of Graphics &amp; Tutorials</span></h1>
+<ul>
+  <li>Sources of professional graphics packages:
+    <ul>
+      <li>Adobe Photoshop and Illustrator:&nbsp; <a href="http://www.adobe.com">www.adobe.com</a></li>
+      <li>LView Pro:&nbsp; <a href="http://www.lview.com">www.lview.com</a></li>
+      <li>Macromedia Fireworks and Flash: <a href="http://www.macromedia.com">www.macromedia.com</a></li>
+      <li>Paint Shop Pro:&nbsp; <a href="http://www.jasc.com">www.jasc.com</a></li>
+      <li>Ulead PhotoImpact:&nbsp; <a href="http://www.ulead.com">www.ulead.com</a></li>
+    </ul>
+  </li>
+  <li>If you are considering using a high end graphics package or just want to
+    see some great graphics you might want to check out the links below:
+    <ul>
+      <li>Flash portfolio website:&nbsp; <a href="http://www.2advanced.com">www.2advanced.com</a></li>
+      <li>
+Flash portfolio website: <a href="http://www.davidgarystudios.com">www.davidgarystudios.com</a></li>
+      <li>
+Flash tutorial site: <a href="http://www.flashplanet.com">www.flashplanet.com</a></li>
+      <li>
+Flash tutorial site: <a href="http://www.flashkit.com">www.flashkit.com</a></li>
+      <li>Graphics tutorial site: <a href="http://www.designsbymark.com">www.designsbymark.com</a></li>
+      <li>Photoshop tutorial site: <a href="http://www.planetphotoshop.com">www.planetphotoshop.com</a></li>
+      <li>Photoshop tutorial site: <a href="http://www.absolutecross.com/tutorials/photoshop.htm">www.absolutecross.com/tutorials/photoshop.htm</a></li>
+      <li>Photoshop tutorial site: <a href="http://www.crazedesigns.com//photoshop.htm">www.crazedesigns.com//photoshop.htm</a></li>
+      <li>Graphics tutorial site: <a href="http://www.graphichazard.com/tutorials.htm">www.graphichazard.com/tutorials.htm</a><br>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+
+
+<script language="JavaScript">writeFooter(1);</script>
+<!-- URL's used in the movie-->
+<!-- text used in the movie-->
+<div id="flashLYR" style="padding:0; margins:0; background-color:transparent; position:relative; border:none; height:40px; width:100%; top: 0px; left: 0px; z-index:1; visibility:visible;	overflow:hidden;">
+
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0"
+ WIDTH=1250 HEIGHT=36>
+ <PARAM NAME=movie VALUE="FlashGreen.swf"> <PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF> 
+  <EMBED src="FlashLogo.swf" quality=high bgcolor=#FFFFFF  WIDTH=1250 HEIGHT=36 TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED></OBJECT>
+</div>
+<hr>
+<ul>
+<li>Flash has become the tool of choice that Web developers use to produce 
+interactive, animated movies.</li>
+<li>Flash provides for:<ul>
+<li>drawing graphics</li>
+<li>generating animation</li>
+<li>adding sound &amp; video</li>
+<li>adding scripts which allow interactivity</li>
+</ul>
+
+</li>
+<li>Flash requires the browser to have a <i>Flash Player plug-in</i> for Flash 
+movie to run.</li>
+</ul>
+
+
+<hr>
+<h2 ><a name="2"></a><span>Using Flash</span></h2>
+<ul>
+  <li>You can download a free 30 day demonstration version of Flash from the 
+  Flash Web Site (<a href="http://www.macromedia.com/software/flash/trial/">http://www.macromedia.com/software/flash/trial/</a>).</li>
+  <li>The demonstration version of Flash has built-in tutorials found in &quot;Help &gt; 
+  Lessons&quot; on the following topics:<ul>
+    <li>Drawing</li>
+    <li>Symbols</li>
+    <li>Layers</li>
+    <li>Type (Text)</li>
+    <li>Buttons</li>
+    <li>Sound</li>
+    <li>Animation</li>
+  </ul>
+  </li>
+  <li>There are also demonstration tutorials available online at: <br>
+  <a href="http://www.macromedia.com/software/flash/productinfo/tutorials/gettingstarted/">
+  http://www.macromedia.com/software/flash/productinfo/ 
+  tutorials/gettingstarted/</a> (I found these more helpful).</li>
+</ul>
+<hr>
+<h2><span><a name="3"></a>Flash Demonstration</span></h2>
+<ul>
+  <li>Below is a Flash animation designed to demonstrate encapsulation.</li>
+</ul>
+<!-- URL's used in the movie-->
+<!-- text used in the movie-->
+<!--Flash allows you  to easily create  simple objects that can be used to  generate a Flash movie. First I created two identical blue ovals Then I added a smaller red oval I erased part of  the top oval I erased part of  the top oval Then I erased part of the bottom oval It was easy to choose  a gradient from the colors tool bar It was easy to choose  a gradient from the colors tool bar and add gradients to all my ovals Rectangle Class length width I added a rectangle Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Then I added a rectangle and text to my movie. Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width To make all this turn into a movie Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width To make all this turn into a movie You specify the start and end points for each object Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Rectangle Class length width Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface To make all this turn into a movie You specify the start and end points for each object And the start and  end sizes. Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Flash uses  tweening to  figure out the  motion of  the objects "in between"  the points you  specify. Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface You use layers to have one object appear above another object. Interface setLength(5) Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface or to have new objects come into your movie! Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface getLength()=5 Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Everything runs on a timeline which controls when things happen in the movie. Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface And that is the  how a flash movie  works... Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface Interface -->
+<p align="center"><OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0"
+ WIDTH=550 HEIGHT=400>
+ <PARAM NAME=movie VALUE="FlashDemo.swf"> <PARAM NAME=quality VALUE=high> <PARAM NAME=bgcolor VALUE=#FFFFFF> 
+  <EMBED src="FlashDemo.swf" quality=high bgcolor=#FFFFFF  WIDTH=550 HEIGHT=400 TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></EMBED></OBJECT>
+</p>
+<hr>
+<script language="JavaScript">writeFooter(2);</script>
+
+<h2><span><a name="4"></a>Drawing</span></h2>
+<ul>
+  <li>You can create original artwork for your Flash animations using the 
+  Drawing and Painting tools.</li>
+  <li>These tools are very standard, with basic stapes, lines fills etc.</li>
+  <li>The Drawing lesson provided by Flash steps you through using all the 
+  different drawing tools.</li>
+</ul>
+<hr>
+<h2><span><a name="5"></a>Symbols</span></h2>
+<ul>
+  <li>A symbol in Flash is a reusable image, animation, or button. </li>
+  <li>An instance is an occurrence of a symbol on the Stage (main work area).
+  </li>
+  <li>Symbols help you keep Flash file sizes low because they reuse as much 
+  information as possible from a single Symbol and simplify the editing of Flash 
+  movies. </li>
+  <li>Symbols are also required to create sophisticated interactivity. </li>
+  <li>In the demonstration animation all the pieces of the animation were 
+  separate symbols (top of egg, rectangle, arrows...).&nbsp; </li>
+  <li>Symbols are similar to using &quot;Group&quot; in Power Point.</li>
+</ul>
+<hr>
+<h2><span><a name="6"></a>Layers</span></h2>
+<ul>
+  <li>You can think of layers as transparent sheets of acetate stacked on top of 
+  each other. </li>
+  <li>Where there is nothing on a layer, you can see through it to the layers 
+  below. Layers help you organize the artwork in a Flash movie. </li>
+  <li>A Flash object that is on a top layer will appear above a Flash object on 
+  a lower layer.</li>
+  <li>You can draw and edit artwork on one layer without affecting artwork on 
+  another layer.</li>
+  <li>The screenshot of the Flash development environment shows all the layers I 
+  had in my Flash demonstration.<a name="7"></a></li>
+</ul>
+<blockquote>
+  <blockquote>
+    <p><img border="0" src="../images/FlashLayers.gif" width="576" height="280"></p>
+  </blockquote>
+</blockquote>
+<hr>
+<h2><span><a name="8"></a>Type</span></h2>
+<ul>
+  <li>You can add type to your movies and set its size, typeface, style, 
+  spacing, color, and alignment. </li>
+  <li>You can also manipulate type like an object or as basic shapes to create 
+  sophisticated effects. </li>
+  <li>In the type lesson provided by Macromedia, you'll learn how to:<ul>
+    <li>Add type to a movie, format it, and break it into shapes. </li>
+    <li>Create text fields you can use to add interactivity to a movie.</li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="9"></a>Buttons</span></h2>
+<ul>
+  <li>Buttons let viewers interact with Flash movies. For example, the Next 
+  button in this movie changes the Stage by advancing the playhead to the next 
+  scene.</li>
+  <li>To create a button, you create images for the Up, Over, and Down states of 
+  the button. Generally, these images are slight variations of one image. </li>
+  <li>In addition, you also specify the area that triggers the button 
+  interaction, called the Hit state. When the pointer clicks or rolls over a 
+  button, Flash displays the appropriate image.</li>
+</ul>
+<hr>
+<h2><span><a name="10"></a>Sound</span></h2>
+<ul>
+  <li>Sound can be an integral part of a Flash movie. </li>
+  <li>There are two types of sounds in Flash: </li>
+  <li>Streaming sounds:
+<ul>
+  <li>Streaming sounds play as long as the layer containing the sound continues 
+  in the Timeline. </li>
+  <li>Streaming sounds are best for long background sounds. </li>
+  <li>When a movie is downloading from an Internet source, a streaming sound can 
+  begin playing as soon as a small portion of the sound has been downloaded.</li>
+</ul>
+  </li>
+  <li><a name="11"></a>Event Sounds:<ul>
+  <li>Event sounds continue playing once it starts, no matter what happens in 
+  the movie. </li>
+  <li>An event sound is best for short sounds, because it must download 
+  completely and load into RAM before it begins playing. </li>
+  <li>Events sounds are most useful for buttons. </li>
+  <li>In many cases you want a button to move the movie to a new scene, but you 
+  don’t want the button sound to stop playing abruptly when the scene switches, 
+  as it would if you use a streaming sound. </li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="12"></a>Animation</span></h2>
+<ul>
+  <li>Tweened animation is an essential technique for creating movement and 
+  change in a movie while minimizing file size. </li>
+  <li>In my example, objects moved across the &quot;Stage&quot;, changed in size, and 
+  rotated.</li>
+  <li>You can also make objects change color and change shape. </li>
+  <li>Animation in flash uses a concept called keyframes.<ul>
+  <li>&nbsp;A keyframe is a frame where you specify changes in the 
+  animation. </li>
+  <li>In tweened animation, you create keyframes at important points in 
+  the Timeline and let Flash create the frames in between. </li>
+</ul>
+  </li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(3);</script>
+
+
+</BODY>
+</HTML>

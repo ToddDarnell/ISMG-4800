@@ -1,0 +1,598 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="description" content="CSS Properties for page layout and appearance">
+   <title>Cascading Style Sheets Properties</title>
+   <!--LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css"-->
+</head>
+<body>
+
+<center>
+<h1>Cascading Style Sheet</h1>
+<h2>Property List</h2>
+<hr>
+<blockquote>
+  <blockquote>
+    <blockquote>
+    <ul>
+      <b>
+      <li><a href="#font">Font Properties</a></li>
+      <li><a href="#text">Text Properties</a></li>
+      <li><a href="#color">Color/Background Properties</a></li>
+      <li><a href="#box">Box Properties</a></li>
+      <li><a href="#classif">Positioning Properties</a></li>
+</b> 
+    </ul>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<hr>
+<table BORDER="1" CELLPADDING=2 WIDTH="100%" class="largeT">
+<caption><a name="font"></a>Font Properties</caption>
+<tr>
+<th>Property</th>
+
+<th>What it Does</th>
+
+<th>Possible Values</th>
+</tr>
+
+<tr>
+<td>font-family</td>
+
+<td>Controls the type of font shown on the page</td>
+
+<td>browser decides (default)
+<br>font family name</td>
+</tr>
+
+<tr>
+<td>font-size</td>
+
+<td>Controls the size of the font</td>
+
+<td>medium (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>font-style</td>
+
+<td>Controls the style of the font</td>
+
+<td>normal (default)
+<br>italic
+<br>oblique</td>
+</tr>
+
+<tr>
+<td>font-size</td>
+
+<td>Controls the size of the font</td>
+
+<td>medium (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>font-variant</td>
+
+<td>Controls the variant of the font</td>
+
+<td>normal (default)
+<br>small-caps</td>
+</tr>
+
+<tr>
+<td>font-weight</td>
+
+<td>Controls the boldness of the font</td>
+
+<td>normal (default)
+<br>lighter
+<br>bold
+<br>bolder
+<br>100
+<br>200
+<br>300
+<br>400
+<br>500
+<br>600
+<br>700
+<br>800
+<br>900</td>
+</tr>
+</table></center>
+
+&nbsp;
+
+<center><table BORDER="1" CELLPADDING=2 WIDTH="100%" class="largeT">
+<caption><a name="text"></a>Text Properties</caption>
+
+<tr>
+<th>Property</th>
+
+<th>What it Does</th>
+
+<th>Possible Values</th>
+</tr>
+
+<tr>
+<td>letter-spacing</td>
+
+<td>Controls the amount of space between each letter in a section
+of text.</td>
+
+<td>normal (default)&nbsp;
+<br>number of pixels</td>
+</tr>
+
+<tr>
+<td>line-height</td>
+
+<td>Controls the amount of vertical space between lines of text</td>
+
+<td>normal (default)&nbsp;
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>text-align</td>
+
+<td>Controls the alignment for a section of text</td>
+
+<td>browser decides (default)
+<br>left
+<br>right
+<br>center</td>
+</tr>
+
+<tr>
+<td>text-decoration</td>
+
+<td>Controls what the text looks like</td>
+
+<td>none (default)
+<br>underline
+<br>overline
+<br>line-through
+<br>blink&nbsp;</td>
+</tr>
+
+<tr>
+<td>text-indent</td>
+
+<td>Controls the indentation of the first line in a section
+of text</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>text-transform</td>
+
+<td>Changes the case of a section of text</td>
+
+<td>none (default)
+<br>uppercase
+<br>lowercase
+<br>capitalize</td>
+</tr>
+
+<tr>
+<td>vertical-alignment</td>
+
+<td>Controls the vertical alignment of a section of text</td>
+
+<td>baseline (default)
+<br>sub
+<br>super
+<br>top
+<br>text-top
+<br>middle
+<br>bottom
+<br>text-bottom</td>
+</tr>
+
+<tr>
+<td>word-spacing</td>
+
+<td>Controls the amount of space between words (doesn't work
+as of yet)</td>
+
+<td>normal (default)
+<br>number of pixels</td>
+</tr>
+</table></center>
+
+<br>
+<center><table BORDER="1" CELLPADDING=2 WIDTH="100%" class="largeT">
+<caption><a name="color"></a>Color/Background Properties</caption>
+<tr>
+<th>Property</th>
+
+<th>What it Does</th>
+
+<th>Possible Values</th>
+</tr>
+
+<tr>
+<td>color</td>
+
+<td>Controls the color of the text</td>
+
+<td>browser decides (default)
+<br>color name</td>
+</tr>
+
+<tr>
+<td>background-attachment</td>
+
+<td>Controls the scrolling of the background</td>
+
+<td>scroll (default)
+<br>fixed</td>
+</tr>
+
+<tr>
+<td>background-color</td>
+
+<td>Controls the color of the background</td>
+
+<td>transparent (default)
+<br>color name</td>
+</tr>
+
+<tr>
+<td>background-image</td>
+
+<td>Allows you to set a background image</td>
+
+<td>none (default)
+<br>image url</td>
+</tr>
+
+<tr>
+<td>background-repeat</td>
+
+<td>Allows different patterns of background repetition</td>
+
+<td>repeat (default)
+<br>repeat-x
+<br>repeat-y
+<br>no-repeat</td>
+</tr>
+
+<tr>
+<td>background-position</td>
+
+<td>Controls the position of the background on the page</td>
+
+<td>0% 0% (default)
+<br>postion in pixels ie {20,20}
+<br>percentage ie {5%,7%}
+<br>top
+<br>bottom
+<br>left
+<br>right
+<br>center</td>
+</tr>
+</table></center>
+
+<br>
+<center><table BORDER="1" CELLPADDING=2 WIDTH="100%" class="largeT" >
+<caption><a name="box"></a>Box Properties</caption>
+<tr>
+<th>Property</th>
+
+<th>What it Does</th>
+
+<th>Possible Values</th>
+</tr>
+
+<tr>
+<td>width</td>
+
+<td>Controls the width of a section</td>
+
+<td>auto (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>height</td>
+
+<td>Controls the height of a section</td>
+
+<td>auto (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>border-color</td>
+
+<td>Controls the border color of a section</td>
+
+<td>default text color (default)
+<br>color name</td>
+</tr>
+
+<tr>
+<td>border-style</td>
+
+<td>Controls the style of a border</td>
+
+<td>none (default)
+<br>solid
+<br>double</td>
+</tr>
+
+<tr>
+<td>border-width</td>
+
+<td>Controls the width of a border</td>
+
+<td>undefined (default)
+<br>number of pixels
+<br>thin
+<br>medium
+<br>thick</td>
+</tr>
+
+<tr>
+<td>border-top-width</td>
+
+<td>Controls the width of a border side</td>
+
+<td>medium (default)
+<br>number of pixels
+<br>thin
+<br>thick</td>
+</tr>
+
+<tr>
+<td>border-left-width</td>
+
+<td>Controls the width of a border side</td>
+
+<td>medium (default)
+<br>number of pixels
+<br>thin
+<br>thick</td>
+</tr>
+
+<tr>
+<td>border-right-width</td>
+
+<td>Controls the width of a border side</td>
+
+<td>medium (default)
+<br>number of pixels
+<br>thin
+<br>thick</td>
+</tr>
+
+<tr>
+<td>border-bottom-width</td>
+
+<td>Controls the width of a border side</td>
+
+<td>medium (default)
+<br>number of pixels
+<br>thin
+<br>thick</td>
+</tr>
+
+<tr>
+<td>margin-top</td>
+
+<td>Controls the width of a margin from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>margin-left</td>
+
+<td>Controls the width of a margin from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>margin-right</td>
+
+<td>Controls the width of a margin from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>margin-bottom</td>
+
+<td>Controls the width of a margin from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>padding-top</td>
+
+<td>Controls the amount of padding from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>padding-left</td>
+
+<td>Controls the amount of padding from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>padding-right</td>
+
+<td>Controls the amount of padding from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>padding-bottom</td>
+
+<td>Controls the amount of padding from the specified side</td>
+
+<td>0 (default)
+<br>number of pixels
+<br>percentage</td>
+</tr>
+
+<tr>
+<td>overflow</td>
+
+<td>Determines how elements that do not fit within a box's width &amp; height are 
+displayed&nbsp;</td>
+
+<td>auto<br>
+hidden<br>
+scroll<br>
+visible</td>
+</tr>
+
+<tr>
+<td>clip</td>
+
+<td>Allows you to to clip a graphic</td>
+
+<td>rect(top, right, bottom,left)</td>
+</tr>
+
+</table></center>
+
+<br>
+<center><table BORDER="1" CELLPADDING=2 WIDTH="100%" class="largeT">
+<caption><a name="classif"></a>Positioning &amp; Classification Properties</caption>
+<tr>
+<th>Property</th>
+
+<th>What it Does</th>
+
+<th>Possible Values</th>
+</tr>
+
+<tr>
+<td>position
+<td>Allows a section to be
+    placed exactly where you want it&nbsp;
+<td>static (default)<br>
+  absolute<br>
+  relative
+</tr>
+
+<tr>
+<td>top
+<td>Controls the distance from the top of the window (absolute) or
+  relative location
+<td>0 (default)
+<br>number of pixels
+<br>percentage
+</tr>
+
+<tr>
+<td>left
+<td>Controls the distance from the left of the window (absolute) or
+  relative location
+<td>0 (default)
+<br>number of pixels
+<br>percentage
+</tr>
+
+<tr>
+<td>float</td>
+
+<td>Controls the floating of a section</td>
+
+<td>none (default)
+<br>left
+<br>right</td>
+</tr>
+
+<tr>
+<td>clear</td>
+
+<td>Defines whether a section disallows other sections on its
+sides</td>
+
+<td>none (default)
+<br>left
+<br>right</td>
+</tr>
+
+
+<tr>
+<td>white-space</td>
+
+<td>Controls the white space formatting of a section</td>
+
+<td>normal (default)
+<br>pre
+<br>nowrap</td>
+</tr>
+
+<tr>
+<td>display</td>
+
+<td>Controls the display of a section</td>
+
+<td>block (default)
+<br>inline
+<br>list-item
+<br>none</td>
+</tr>
+
+<tr>
+<td>visibility</td>
+
+<td>Controls the visibility of an element</td>
+
+<td>inherit (default)
+<br>visible
+<br>hidden</td>
+</tr>
+
+<tr>
+<td>z-index</td>
+
+<td>Controls the layering of an element</td>
+
+<td>auto (default)
+<br>number</td>
+</tr>
+</table></center>
+
+</body>
+</html>

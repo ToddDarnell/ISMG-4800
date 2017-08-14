@@ -1,0 +1,1174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>PHP Security & Email</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated April 11, 2006<BR>Dawn G. Gregg</I> <br><br>';
+  ftext += 'Portions of this lecture obtained from:<br>';
+  ftext += '<a href="http://www.ourshop.com/resources/ssl.html">OurShop.com: <i>How does ssl work?</i></a><br>';
+  ftext += '<a href="http://en.wikipedia.org/wiki/Payment_gateway">Wikipedia: Payment Gateways</a><br>';
+  ftext += '<a href="http://www.zend.com/zend/spotlight/sendmimeemailpart1.php">Zend.com: Sending MIME emails from PHP</a></p>' ;
+  </script>
+
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<hr>
+
+<h1>Security</h1>
+<ul>
+  <li>Security and trust are important in conducting business
+  <ul>
+    <li>evolved over centuries in the traditional paper world
+    <ul>
+      <li>e.g. banks require trust for people to deposit money </li>
+    </ul>
+    </li>
+    <li>in the electronic world, we face many new challenges </li>
+  </ul>
+  </li>
+  <li>The Internet is targeted towards flexibility, interoperability, 
+  connectivity rather than security </li>
+  <li>Remote, and sometimes, unknown business parties&nbsp; </li>
+  <li>Easy to commit crime due to
+  <ul>
+    <li>lack of forensic evidence </li>
+    <li>anonymity </li>
+    <li>sensitive data repositories are vulnerable targets </li>
+    <li>rare regular auditing of computer usage </li>
+    <li>non-existing regulatory policies and laws&nbsp; </li>
+  </ul>
+  </li>
+  <li>Executable contents on the client side (Java applets, activeX controls)
+  </li>
+  <li>Push technology (Content is automatically uploaded to the client 
+  computer!) </li>
+  <li>CGI scripts (Executable on the server side) </li>
+  <li>Many weak links
+  <ul>
+    <li>vulnerabilities in client software, server software, back-end databases
+    </li>
+    <li>web clients (IE version 3.0 had a security vulnerability) and servers
+    </li>
+    <li>the whole system is as secure as its weakest link </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Security Objectives</span></h2>
+<ul>
+  <li>Maintain the confidentiality and integrity of both systems and data, 
+  without limiting the availability or accessibility to the appropriate users.
+  </li>
+</ul>
+<p align="center">
+<img border="0" src="../images/sec_overview.gif" width="555" height="335"></p>
+<hr>
+<h2><span>Costs of Insecure Systems</span></h2>
+<ul>
+  <li>direct financial loss resulting from fraud </li>
+  <li>loss of business opportunity due to disruption of service </li>
+  <li>unauthorized use of resources </li>
+  <li>loss of customer confidence </li>
+  <li>costs resulting from uncertainties </li>
+  <li>false and malicious web sites posing as selling agents </li>
+  <li>theft of customer data from selling agents </li>
+  <li>loss of privacy due to the misuse of cookies </li>
+  <li>customer impersonation </li>
+</ul>
+<hr>
+<h2><span>Risks of Insecure Systems</span></h2>
+<p>There are basically three overlapping types of risk that we need to worry 
+about on systems connected to the Internet:</p>
+<ol>
+  <li><b>Bugs or misconfiguration problems in the Web server that allow 
+  unauthorized remote users to: </b>
+  <ul>
+    <li>Steal confidential documents not intended for their eyes. </li>
+    <li>Execute commands on the server host machine, allowing them to modify the 
+    system. </li>
+    <li>Gain information about the Web server's host machine that will allow 
+    them to break into the system. </li>
+    <li>Launch denial-of-service attacks, rendering the machine temporarily 
+    unusable. </li>
+  </ul>
+  </li>
+  <li><b>Browser-side risks, including: </b>
+  <ul>
+    <li>Active content that crashes the browser, damages the user's system, 
+    breaches the user's privacy, or merely creates an annoyance. </li>
+    <li>The misuse of personal information knowingly or unknowingly provided by 
+    the end-user. 
+  <ul>
+    <li>e.g. Identity theft or Session hijacking</li>
+  </ul>
+    </li>
+  </ul>
+  </li>
+  <li><b>Interception of network data sent between browser and server via 
+  eavesdropping. Eavesdroppers operate from any point on the path between 
+  browser and server:</b>
+  <ul>
+    <li>The network on the browser's side of the connection. </li>
+    <li>The network on the server's side of the connection (including 
+    intranets). </li>
+    <li>The client or server's Internet service provider (ISP). </li>
+    <li>Either ISPs' regional access provider. </li>
+  </ul>
+  </li>
+</ol>
+<hr><script language="JavaScript">writeFooter(0);</script>
+
+<h1>Security Technologies</h1>
+<ul>
+  <li>Security Protocols/Software<ul>
+  <li>Secret-key cryptography</li>
+  <li>Public key cryptography</li>
+  <li>Digital Signatures</li>
+    <li>Secure Socket Layer&nbsp; </li>
+    <li>Authentication &amp; Authorization</li>
+  </ul>
+  </li>
+  <li>Network &amp; Resource Security<ul>
+  <li>Access Control</li>
+  <li>Securing Data</li>
+  <li>Auditing &amp; Intrusion Detection </li>
+  <li>Incident response and recovery </li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Secret-key cryptography</span></h2>
+<ul>
+  <li>Secret-key cryptography is sometimes referred to as symmetric 
+  cryptography. It is the more traditional form of cryptography, in which a 
+  single key can be used to encrypt and decrypt a message. Secret-key 
+  cryptography not only deals with encryption, but it also deals with 
+  authentication. </li>
+  <li>The main problem with secret-key cryptosystems is getting the sender and 
+  receiver to agree on the secret key without anyone else finding out. This 
+  requires a method by which the two parties can communicate without fear of 
+  eavesdropping. </li>
+  <li>If they are in separate physical locations, they must trust a courier, a 
+  phone system, or some other transmission medium to prevent the disclosure of 
+  the secret key. Anyone who overhears or intercepts the key in transit can 
+  later read, modify, and forge all messages encrypted or authenticated using 
+  that key. The generation, transmission and storage of keys is called <em>key 
+  management</em>; all cryptosystems must deal with key management issues. 
+  Because all keys in a secret-key cryptosystem must remain secret, secret-key 
+  cryptography often has difficulty providing secure key management, especially 
+  in open systems with a large number of users.</li>
+  <li>The most common techniques in secret-key cryptography are <em>block 
+  ciphers</em>, <em>stream ciphers</em>, and <em>message authentication codes</em>.</li>
+  <li>The advantage of secret-key cryptography is that it is generally faster 
+  than public-key cryptography.
+  <!-- End of node body --></li>
+</ul>
+<hr>
+<h2><span>Public key cryptography</span></h2>
+<ul>
+  <li>In order to solve the key management problem ith secret-key Cryptograpyy, 
+  Whitfield Diffie and Martin Hellman introduced the concept of public-key 
+  cryptography in 1976. </li>
+  <li>Public-key cryptosystems have two primary uses, encryption and digital 
+  signatures. </li>
+  <li>In their system, each person gets a pair of keys, one called the public 
+  key and the other called the private key.
+  <ul>
+  <li>The public key is published, while the private key is kept secret. </li>
+  <li>The need for the sender and receiver to share secret information is 
+  eliminated; all communications involve only public keys, and no private key is 
+  ever transmitted or shared. </li>
+  <li>In this system, it is no longer necessary to trust the security of some 
+  means of communications. The only requirement is that public keys be 
+  associated with their users in a trusted (authenticated) manner (for instance, 
+  in a trusted directory). </li>
+  <li>Anyone can send a confidential message by just using public information, 
+  but the message can only be decrypted with a private key, which is in the sole 
+  possession of the intended recipient. </li>
+  <li>Public-key cryptography can be used not only for privacy (encryption), but 
+  also for authentication (digital signatures) and other various techniques.
+  </li>
+</ul>
+  </li>
+  <li>In a public-key cryptosystem, the private key is always linked 
+  mathematically to the public key. Therefore, it is always possible to attack a 
+  public-key system by deriving the private key from the public key. Typically, 
+  the defense against this is to make the problem of deriving the private key 
+  from the public key as difficult as possible. For instance, some public-key 
+  cryptosystems are designed such that deriving the private key from the public 
+  key requires the attacker to factor a large number, it this case it is 
+  computationally infeasible to perform the derivation.</li>
+</ul>
+  <h4>Encryption</h4>
+<ul>
+  <li>When Alice wishes to send a secret message to Bob, she looks up Bob's 
+  public key in a directory, uses it to encrypt the message and sends it off. 
+  Bob then uses his private key to decrypt the message and read it. No one 
+  listening in can decrypt the message. Anyone can send an encrypted message to 
+  Bob, but only Bob can read it (because only Bob knows Bob's private key).</li>
+</ul>
+  <h4>Digital Signatures</h4>
+<ul>
+  <li>To sign a message, Alice does a computation involving both her private key 
+  and the message itself. The output is called a digital signature and is 
+  attached to the message. To verify the signature, Bob does a computation 
+  involving the message, the purported signature, and Alice's public key. If the 
+  result is correct according to a simple, prescribed mathematical relation, the 
+  signature is verified to be genuine; otherwise, the signature is fraudulent, 
+  or the message may have been altered.</li>
+</ul>
+<hr>
+<h2><span>Secure Sockets Layer (SSL)</span></h2>
+<ul>
+  <li>The Secure Sockets Layer (SSL) protocol has become the universal standard 
+  on the Web for authenticating Web sites to Web browser users, and for 
+  encrypting communications between browser users and Web servers.&nbsp; </li>
+  <li>SSL is built into all major browsers and Web servers, simply installing a 
+  digital certificate, or Server ID, enables SSL capabilities. </li>
+  <li>SSL comes in two strengths, 40-bit and 128-bit, which refer to the length 
+  of the &quot;session key&quot; generated by every encrypted transaction.
+  <ul>
+    <li>It is illegal to export the 128-bit encryption technologies.&nbsp; 
+    Information on the legalities and politics of cryptography can be found at
+    <a href="http://www.freecrypto.org">The Free Crypto Website</a>. </li>
+  </ul>
+  </li>
+</ul>
+<ul>
+  <li>An encrypted SSL connection requires all information sent between a client 
+  and a server to be encrypted by the sending software and decrypted by the 
+  receiving software, protecting private information from interception over the 
+  Internet.&nbsp; </li>
+  <li>In addition, all data sent over an encrypted SSL connection is protected 
+  with a mechanism for detecting tampering - that is, for automatically 
+  determining whether the data has been altered in transit.</li>
+</ul>
+<hr>
+<h2><span>How SSL Works</span></h2>
+<ul>
+  <li>Internet communication typically runs through multiple program layers on a 
+  server before getting to the requested data such as a web page or CGI scripts.
+  </li>
+  <li>The outer layer is the first to be hit by the request. This is the high 
+  level protocols such as HTTP (web server), IMAP (mail server), and FTP (file 
+  transfer) (Figure 1 below).
+  <ul>
+    <li>If the request is for a non-secure connection it passes through to the 
+    TCP/IP layer and the server application or data. </li>
+    <li>If the client requested a secure connection the SSL layer initiates a 
+    handshake to begin the secure communication process. </li>
+  </ul>
+  </li>
+</ul>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%">
+  <tr>
+    <td width="33%" align="center">
+    <p align="center">
+<img border="0" src="../images2/ssl_figure_1.gif" width="248" height="150"><br>
+    Initial Request</td>
+    <td width="33%" align="center">
+<img border="0" src="../images2/ssl_figure_2.gif" width="248" height="150"><br>
+    Handshake</td>
+    <td width="34%" align="center">
+<img border="0" src="../images2/ssl_figure_3.gif" width="248" height="150"><br>
+    Secure Request after <br>
+    Handshake completed</td>
+  </tr>
+</table>
+<ul>
+  <li>Typically it is enough to know that server and client establish a secure 
+  connection but the following is a summary of what happens (Figure 2):
+  <ol>
+    <li>The customer's web browser sends the web site server it's methods of 
+    encrypting data and some random data that 
+    the encryption programs can use in the encryption routines. </li>
+    <li>The server returns it's own random data to be used for encryption as 
+    well as it's SSL 
+    certificate and its public key.</li>
+    <li>The customer's browser checks the information it received. If the secure 
+    certificate information on the web site doesn't match the domain name the 
+    browser will notify the customer that there is a problem. <b>The certificate 
+    expiration date and valid certificate authority are also automatically checked at this 
+    point. </b></li>
+    <li>The browser creates a &quot;premaster secret&quot; that will be used to 
+    encrypt the rest of the session. This is a random key that it encrypts combined with the 
+    server's public key string and sends the new encrypted 
+    secret string back to the server </li>
+    <li>The browser and the web server use the &quot;premaster secret&quot; string 
+    to create a new &quot;master secret&quot; string and use it to create session 
+    keys that their encryption programs 
+    use for the rest of the session to  encrypt and decrypt all transmissions for the rest of the session 
+    (Figure 3).
+    </li>
+  </ol>
+
+  </li>
+  <li>The SSL handshaking is slow, and if this was to occur with every HTTP 
+  request, the performance of a secure web site would be poor. To improve 
+  performance, SSL uses the concept of sessions to allow multiple requests to 
+  share the negotiated cipher suite, the shared secret key, and the 
+  certificates. An SSL session is managed by the SSL software and isn't the same 
+  as a PHP session. </li>
+</ul>
+<hr>
+<h2><span>HTTPS Example: A</span><span style="background-repeat: repeat; background-position: 0 0">uthentication 
+and Authorization</span></h2>
+<ul>
+  <li>If you are running a website on a server that is SSL enabled - all you 
+  need to do is access a web page using HTTPS instead of HTTP!</li>
+  <li>The process of encrypting and decrypting data&nbsp; slows down a web 
+  server so generally you usually only want to use HTTPS for sensitive data 
+  like:<ul>
+  <li>Password transmission</li>
+  <li>Credit card processing</li>
+  <li>Passing personal information to &amp; from the server.</li>
+</ul>
+
+  </li>
+  <li>HTTPS should be used when Authenticating a person has access to specific 
+  resources and authorizing them to access specific pieces of data.&nbsp; </li>
+  <li><b>Authentication: </b>Authentication is the process of verifying 
+  identity—that someone (or something) is who they claim to be (e.g. using pa 
+  password). </li>
+  <li><b>Authorization: </b>Once a person's identity is authenticated, 
+authorization decisions can be made. 
+<ul>
+  <li>Access is determined by checking 
+information about the principal against some access control information, such as 
+an Access Control List (ACL). </li>
+  <li>Some 
+clients may be allowed full access to all data, others may only be allowed to 
+access a subset of the data, others may have read-only access. </li>
+  <li>If access to specific data is restricted it should be passed back to the 
+  user using https.</li>
+</ul>
+
+  </li>
+  <li>It is possible to check IF someone is using HTTPS to access a secure page 
+  and if not automatically redirect them to a secure version of the page.</li>
+  <li>Is also possible to use PHP to rewrite a URL so that a link (or 
+  redirection) uses a different protocol (HTTP -&gt; HTTPS or HTTPS -&gt;HTTP).</li>
+  <li>The include file (below) can be used</li>
+</ul>
+
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/ssl/urlfunc.inc">urlfunc.inc</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+</span>
+
+
+
+<a href="../php_examples/ssl/index.php">index.php</a>
+
+
+
+<span>
+
+&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="../php_examples/ssl/password.php">password.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://ouray.cudenver.edu/~dgregg/php_examples/ssl/index.php">Online
+Demo</a> <br>
+(you can use guest, guest1 to log in)</span></p>
+
+<div><cite>&lt;?php </cite> <br>
+  &nbsp;session_start();<br>
+  <br>
+  <samp>&nbsp;// If this page is not using https - reload the current page using https<br>
+  &nbsp;// Uses the $_SERVER variables to get current filename w/o http://</samp><br>
+  <dfn>&nbsp;if (!</dfn>$HTTP_SERVER_VARS[&quot;HTTPS&quot;]<dfn>) {</dfn><br>
+  <dfn>&nbsp;
+  header(</dfn>&quot;Location: https://$_SERVER['HTTP_HOST']$_SERVER['REQUEST_URI']&quot; 
+  <dfn>);<br>
+  &nbsp;
+  exit;<br>
+  &nbsp;}</dfn><br>
+  <br>
+  <samp>&nbsp;// If the user is logged in redirect to the page they requested using 
+  http<br>
+  </samp>&nbsp;<dfn>function auth(</dfn>$filename<dfn>)<br>
+  &nbsp;{</dfn><br>
+  <dfn>&nbsp;&nbsp;
+  if(isset(</dfn>$_SESSION['auth']<dfn>) &amp;&amp; isset(</dfn>$_SESSION['auth']<dfn>)==true) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  header(</dfn>&quot;Location: &quot; . insecureURL<dfn>(</dfn>$filename<dfn>));<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  exit;<br>
+  &nbsp;&nbsp;
+  }<br>
+  &nbsp;}</dfn><br>
+  <br>
+  <samp>&nbsp;// redirect to an insecure URL from a secure page</samp><br>
+  &nbsp;<dfn>function insecureURL(</dfn>$filename)<dfn><br>
+  {</dfn><br>
+  <samp>&nbsp;
+  // get full URL of current page </samp> <br>
+  &nbsp;
+  $urlpath=$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI' ] ;<br>
+  <samp>&nbsp;
+  //get the current filename</samp><br>
+  &nbsp;
+  $file = <dfn>basename(</dfn>$urlpath<dfn>);</dfn><br>
+  <br>
+  <samp>&nbsp;
+  // if the url contains the old filename - strip it off and <br>
+  &nbsp;
+  // add the name of the new file to it (http://abc.com/old.php)<br>
+  &nbsp;
+  // otherwise add the name of the new file to the urlpath </samp> <br>
+  <dfn>&nbsp;
+  if(strpos(</dfn>$urlpath, $file<dfn>))<br>
+  &nbsp;&nbsp;&nbsp;
+  return </dfn>&quot;http://&quot; . <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  substr ( $urlpath, 0, strlen($urlpath) - strlen($file)) . $filename ;<br>
+  <dfn>&nbsp;
+  else<br>
+  &nbsp;&nbsp;&nbsp;
+  return</dfn> &quot;<a href="http://$urlpath$filename">http://$urlpath$filename</a>&quot;; <br>
+  <dfn>&nbsp;}<br>
+  </dfn><cite>?&gt;</cite></div>
+
+<p align="center">
+<img border="0" src="../images2/sslRedirect.gif" width="600" height="357"></p>
+<script language="JavaScript">writeFooter(1);</script>
+<hr>
+<h2><span>Access Control</span></h2>
+<font size="3">
+<ul>
+  <li>The first and best line of defense on the Internet is to use a
+  <a class="blu" href="http://www.webattack.com/shareware/security/swfirewall.shtml">
+  Firewall</a> - which can be either a piece of hardware or software that all of the information 
+  that your computer exchanges goes through.&nbsp;
+<ul>
+  <li>Firewalls allow rules to be specified about what information can be shared 
+  and with whom; then the Firewall ensures that these rules don't get broken.&nbsp; 
+  </li>
+  <li>Firewalls dramatically affect the accessibility of your system and usually 
+  will need to be modified in order to allow programs to work.&nbsp; </li>
+  <li>Firewalls also increase the time required to communicate with the system 
+  because they need to check everything going and coming from the system to see 
+  if it obeys the rules that have been set-up. </li>
+</ul>
+  </li>
+</font>
+</ul>
+<hr>
+<h2><span>Proactive data security</span></h2>
+<ul>
+  <li>Research shows that AT LEAST 20% of organizations with external access have been hacked 
+  in the past year.</li>
+  <li>For most organizations it is not a question of if they will be hacked but 
+  when.</li>
+  <li>If an organization is storing highly sensitive data (credit card numbers, 
+  social security numbers) it is good practice to encrypt the database data. 
+  </li>
+  <li>The PHP <code>crypt( )</code> function can be 
+used only to store passwords, personal identification numbers (PINs), and so on 
+  because these functions are one-way: once the original password is encrypted 
+  and stored, you can't get it back because there are no corresponding decode 
+  functions. 
+  </li>
+  <li>To store sensitive information the application needs to use, you need 
+  two-way functions that use a secret key to encrypt and decrypt the data. </li>
+  <li>PHP has an add on library called <em>mcrypt</em>, which supports a wide 
+  variety of cryptographic algorithms such as DES, TripleDES, Blowfish 
+  (default), 3-WAY, SAFER-SK64, SAFER-SK128, TWOFISH, TEA, RC2 and GOST.</li>
+  <li>It also supports four block cipher modes<ul>
+    <li>ECB (electronic codebook) is suitable for random data, such as 
+    encrypting other keys. </li>
+    <li>CBC (cipher block chaining) is especially suitable for encrypting files 
+    where the security is increased over ECB significantly. </li>
+    <li>CFB (cipher feedback) is the best mode for encrypting byte streams where 
+    single bytes must be encrypted. </li>
+    <li>OFB (output feedback, in 8bit) is comparable to CFB, but can be used in 
+    applications where error propagation cannot be tolerated. It's insecure 
+    (because it operates in 8bit mode) so it is not recommended to use it. </li>
+  </ul>
+  </li>
+  <li>The program below would encrypt a string and then decrypt the string and 
+  display it.&nbsp; <br>
+  <b>Note: </b>I could not test the code because, while Ouray has mcrypt 
+  installed - no cryptographic algorithms were added so the code crashes...</li>
+</ul>
+
+
+<div>
+  <code><span class="html"><span class="default">&lt;?php<br>
+&nbsp;&nbsp; $data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = $_REQUEST['data'];<br>
+&nbsp;&nbsp; $secretkey = $_REQUEST['skey'];<br>
+  <br>
+  &nbsp;&nbsp; </span><samp><span class="comment">/* Open the cipher: blowfish</span></samp></span><span class="comment"><samp> </samp></span><span class="html"><span class="comment"><samp>
+  in cbc mode */</samp><br>
+  &nbsp;&nbsp; </span><span class="default">$td </span><span class="keyword">= </span>
+  <span class="default">mcrypt_module_o</span></span><span class="default">pen('blowfish', '', 'cbc', '');<br>
+  </span><span class="keyword"><span class="html">
+  <br>
+  &nbsp;&nbsp; </span> </span><span class="comment"><samp>/* Create the Initialization Vector 
+  and determine the keysize length, */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">$iv </span><span class="keyword">= </span>
+  <span class="default">mcrypt_create_iv</span><span class="keyword">(</span><span class="default">mcrypt_enc_get_iv_size</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">),
+  </span><span class="default">MCRYPT_DEV_RANDOM</span><span class="keyword">);<br>
+  &nbsp;&nbsp; </span><span class="default">$ks </span><span class="keyword">= </span>
+  <span class="default">mcrypt_enc_get_key_size</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Create key of the 
+  correct keysize */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">$key </span><span class="keyword">= </span>
+  <span class="default">substr</span><span class="keyword">(</span><span class="default">md5</span><span class="keyword">(</span><span class="default">$secretkey</span><span class="keyword">), </span><span class="default">0</span><span class="keyword">,
+  </span><span class="default">$ks</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Intialize encryption */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">mcrypt_generic_init</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">,
+  </span><span class="default">$key</span><span class="keyword">, </span>
+  <span class="default">$iv</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Encrypt data */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">$encrypted </span><span class="keyword">=
+  </span><span class="default">mcrypt_generic</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">,
+  </span><span class="default">$data</span><span class="keyword">);<br>
+  &nbsp;<br>
+&nbsp;&nbsp; </span></span><span class="comment"><samp>/* You would add the data 
+  to the database here */</samp></span><span class="html"><span class="keyword"><br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Terminate encryption handler 
+  */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">mcrypt_generic_deinit</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Initialize encryption module 
+  for decryption */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">mcrypt_generic_init</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">,
+  </span><span class="default">$key</span><span class="keyword">, </span>
+  <span class="default">$iv</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* You would read the 
+  data to the database here */</samp></span><span class="keyword"><span class="html"><br>
+  </span> </span><span class="html"><span class="keyword">&nbsp;&nbsp; </span></span><span class="comment"><samp>/* Decrypt encrypted string */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">$decrypted </span><span class="keyword">=
+  </span><span class="default">mdecrypt_generic</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">,
+  </span><span class="default">$encrypted</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Terminate decryption handle 
+  and close module */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="default">mcrypt_generic_deinit</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">);<br>
+  &nbsp;&nbsp; </span><span class="default">mcrypt_module_close</span><span class="keyword">(</span><span class="default">$td</span><span class="keyword">);<br>
+  <br>
+  &nbsp;&nbsp; </span></span><span class="comment"><samp>/* Show string */</samp></span><span class="html"><span class="comment"><br>
+  &nbsp;&nbsp; </span><span class="keyword">echo </span><span class="default">trim</span><span class="keyword">(</span><span class="default">$decrypted</span><span class="keyword">) 
+  . </span><span class="string">&quot;\n&quot;</span><span class="keyword">;<br>
+  </span><span class="default">?&gt;</span> </span></code>
+</div>
+<hr>
+<h2><span>Auditing and Intrusion Detection</span></h2>
+<ul>
+  <li>Check both the system and Web logs regularly for suspicious activity. The 
+  program Tripwire (Unix), and Internet Security Scanner (Unix &amp; NT) are helpful 
+  for detecting this type of activity:
+  <ul>
+    <li>Tripwire <a href="ftp://coast.cs.purdue.edu/pub/COAST/Tripwire/">
+    ftp://coast.cs.purdue.edu/pub/COAST/Tripwire/</a> </li>
+    <li>Internet Security Scanner <a href="http://www.iss.net">http://www.iss.net</a>
+    </li>
+  </ul>
+  </li>
+  <li>Every company (and person) with a permanent connection to the Internet should have some 
+  mechanism for intrusion detection.</li>
+</ul>
+<hr>
+<h2><span>Incident Response and Recovery</span></h2>
+<font size="3">
+<ul>
+  <li>Once an attack has occurred you will need to determine what systems and 
+  information has been compromised, determine if any viruses have been left on 
+  your system and begin an effort to identify the source of the attack. </li>
+  <li>You can use access logs / dates to help identify what data may have been 
+  accessed.&nbsp; Frequent back-ups are helpful when attempting to recover from a 
+  loss of data. </li>
+  <li>You can use virus checking software to attempt to find any viruses left on 
+  you system.&nbsp; </font></li>
+  <li>When identifying the source of the attack the best place to start is to 
+  contact the ISP that the connection is coming from.&nbsp;
+  <ul>
+    <li>With the IP address, you can find out who the ISP is at the following 
+    URL: </li>
+  </ul>
+  <blockquote>
+    <p><a href="http://www.arin.net/whois/arinwhois.html" target="_BLANK">
+    http://www.arin.net/whois/arinwhois.html</a> </p>
+  </blockquote>
+  <ul>
+    <li>Make sure to include any pertinent information you have gathered (times, 
+    IP addresses, etc) in your initial email to the ISP.&nbsp; </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Human Firewall</span></h2>
+<ul>
+  <li>PC users are frequently pinpointed at the weakest link in the security 
+  chain. </li>
+  <li>A recent survey of developers conducted by Evans Data, a market 
+  intelligence firm, found that one in four believed that biggest barrier to 
+  computer security is users refusing to follow policies. </li>
+  <li>Nearly one in 10 developers thought security solutions were too complex 
+  for the average user. </li>
+  <li>The lack of an informed work force can be costly for a company, since 
+  technology can only go so far in protecting a network, security experts said.
+  </li>
+  <li>Education is the first line of defense however most companies do not do 
+  it:<ul>
+  <li>The <a href="http://humanfirewall.com">Human Firewall</a> Security 
+  Awareness Index Survey found that 48 percent of the companies participating in 
+  the survey had never provided formal security training for their work force.
+  </li>
+  <li>And of those companies that had provided some security training - most had 
+  only posted information about computer security on their intranet, and only 15 
+  percent had provided any security training in the previous six months. </li>
+</ul>
+
+  </li>
+</ul>
+<script language="JavaScript">writeFooter(2);</script>
+<hr>
+
+<h1>On-line Payment Mechanisms</h1>
+<ul>
+  <li>A <b>Payment Gateway</b> is an e-commerce service that authorizes payments 
+  for e-businesses and online retailers. It is the equivalent of a physical POS 
+  (Point-of-sale) terminal located in most retail outlets. Payment gateways 
+  encrypt sensitive information, such as credit card numbers, to ensure that 
+  information passes securely between the customer and the merchant.</li>
+  <li>Payment gateways encrypt information handled through SSL. This prevents 
+  opportunity for <a title="Fraud" href="http://en.wikipedia.org/wiki/Fraud">
+  fraud</a>, and adds security to the transaction process. Gateways communicate 
+  with a variety of entities, including:<ul lastCheckbox="null">
+    <li>The customer </li>
+    <li>The merchant (through their website) </li>
+    <li>Credit Card companies (by verifying information) </li>
+    <li>
+    Internet Merchant accounts that relay order information from the gateway 
+    to the merchant's bank account. </li>
+  </ul>
+  <!-- Saved in parser cache with key enwiki:pcache:idhash:3187076-0!1!0!0!!en!2 and timestamp 20060410013454 -->
+  <!-- end content -->
+  <li>There are hundreds of online payment gateway providers that allow you to 
+  process commercial 
+  transactions over the Web without compromising credit card numbers or other 
+  confidential information, two of them are:
+<ul>
+  <li>VeriSign Payment Services </li>
+  <li>Paypal</li>
+</ul>
+  </li>
+  <li>The advantage of using most payment gateways is that you are not 
+  responsible for storing your customer's credit card numbers.</li>
+</ul>
+<hr>
+<h2><span>VeriSign Payment Services</span></h2>
+  <ul>
+  <li><i>VeriSign Payment Services</i> (now owned by PayPal/eBay) uses specialized software on the merchant and customer's 
+  sides of the connections to provide for secure payments across the Internet.&nbsp;
+  </li>
+    <li>For merchants to accept VeriSign Payment Services payments they must:&nbsp;<ol>
+      <li>Get an Internet approved merchant account from an affiliated merchant 
+      bank.
+      <ul>
+        <li>An Internet merchant account is configured to allow you to accept 
+        &quot;card not present&quot; transactions which are specifically designated as 
+        originating through the Internet. </li>
+      </ul>
+      </li>
+      <li>From VeriSign's suite of solutions, select the VeriSign product that 
+      works best for your business.
+      <ul>
+        <li>Payflow Pro: Fully customizable online payment platform</li>
+        <li>Payflow Link: VeriSign-hosted online payment service</li>
+      </ul>
+      </li>
+      <li>Register with VeriSign: The online registration guides you through the 
+      process of setting up your web page to process payments.&nbsp; </li>
+    </ol>
+    </li>
+  </ul>
+<ul>
+  <li>The main advantage of VeriSign Payment Services is that it provides the merchant with a 
+  fully functional, externally managed payment processing system.&nbsp;
+  <ul>
+    <li>VeriSign stores all transaction information from your web store, and 
+    uses the latest secure SSL encryption technology to ensure data safety. </li>
+    <li>While you have access to all transaction-critical information, VeriSign 
+    protects credit card data with the highest level of security, so you never 
+    have to worry about compromising your customer's sensitive credit card data.</li>
+  </ul>
+  </li>
+  <li>Disadvantages include the risk of centralizing so much financial 
+  information on one server system (VeriSign Payment Services), and the accompanying dependence 
+  on the VeriSign Payment Services servers' performance and throughput characteristics.&nbsp;<br>
+  In addition, the fees charged for processing credit card transactions make 
+  VeriSign Payment Services impractical for small purchases, such as &quot;pay per play&quot; on-line 
+  video games. </li>
+</ul>
+<p align="center">(More information on VeriSign Payment Services is available at:
+<a href="http://www.verisign.com/products-services/payment-processing/">
+http://www.verisign.com/products-services/payment-processing/</a> ) </p>
+<hr>
+<h2><span>Paypal</span></h2>
+<ul>
+  <li>PayPal enables any individual or business with an email address to 
+  securely, easily and quickly send and receive payments online.  </li>
+  <li>PayPal caters to small businesses that do not want to set-up their own 
+  online payment mechanisms.</li>
+  <li>PayPal has a number of options that allows users to quickly set-up online 
+  payment mechanisms on their Web sites:</li>
+  <li>
+  
+<span class="ppem106"><cite>Send Money</cite> allows you to pay anyone with an 
+email address.</span></li>
+  <li><span class="ppem106"><cite>Request Money</cite> </span>just enter the recipient's email address and the amount you are 
+  requesting. The recipient gets an email and instructions on how to pay you 
+  using PayPal at <a href="http://www.paypal.com">www.paypal.com</a>.</li>
+  <li><cite>Buy Now Buttons </cite>
+  Buy Now Buttons is a low-cost way 
+  for you to accept credit card and bank account payments, and can be fully 
+  integrated with your website in a few easy steps.<ul>
+  <li>When a buyer clicks the <span class="ppem106">Buy Now</span> 
+              button, he will be taken to a secure PayPal payment page, where he 
+              can log in to an existing PayPal account or sign up for a new one, 
+              and quickly complete the purchase.</li>
+</ul>
+
+
+  </li>
+</ul>
+
+
+<center><form name="_xclick1" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="auctionstu01@carbon.cudenver.edu">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="item_name" value="Lecture Notes">
+<input type="hidden" name="amount" value="0.31">
+<input type="hidden" name="shipping" value="0.01">
+<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" width="62" height="31">
+</form> </center>
+<textarea rows="7" cols="81"><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="auctionstu01@carbon.cudenver.edu">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="item_name" value="Lecture Notes">
+<input type="hidden" name="amount" value="0.31">
+<input type="hidden" name="shipping" value="0.01">
+<input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" width="62" height="31">
+</form> </textarea><ul>
+  <li>If you dynamically generate portions of your site, you can populate your 
+  Buy Now buttons dynamically and save time by updating the variables with 
+  information from your database. To use the button above for a different item, 
+  you would only need to edit two variables: item_name, and amount. </li>
+  <li><cite>PayPal Shopping Cart</cite>: When you use PayPal's free Shopping 
+  Cart on your website, your customers can purchase multiple items with a single 
+  payment, browse your entire selection, and view a consolidated list of all 
+  their items before purchasing. The PayPal Shopping Cart is a low-cost way for 
+  you to accept credit card and bank account payments, and can be fully 
+  integrated with your website in a few easy steps.</li></ul>
+  <center><form name="_xclick0" target="paypal" action="https://www.paypal.com" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="auctionstu01@carbon.cudenver.edu">
+<input type="hidden" name="item_name" value="Lecture Notes">
+<input type="hidden" name="amount" value="0.31">
+<input type="hidden" name="shipping" value="0.01">
+<input type="image" src="http://www.paypal.com/en_US/i/btn/sc-but-01.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" width="70" height="35">
+<input type="hidden" name="add" value="1"> </form></center>
+<textarea rows="7" cols="82"><form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form name="_xclick0" target="paypal" action="https://www.paypal.com" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="auctionstu01@carbon.cudenver.edu">
+<input type="hidden" name="item_name" value="Lecture Notes">
+<input type="hidden" name="amount" value="0.31">
+<input type="hidden" name="shipping" value="0.01">
+<input type="image" src="http://www.paypal.com/en_US/i/btn/sc-but-01.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" width="70" height="35">
+<input type="hidden" name="add" value="1"> </form>
+</textarea><ul><li>When a buyer clicks the &quot;Add to Cart&quot; button, a new window will appear 
+  listing the contents of the buyer's PayPal Shopping Cart, including the item 
+  just added. To make the purchase, the buyer clicks &quot;Checkout&quot; from this 
+  window.
+  </li>
+</ul><center>
+<form name="_xclick2" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" method="post">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="auctionstu01@carbon.cudenver.edu">
+<input type="image" src="https://www.paypal.com/en_US/i/btn/view_cart.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" width="130" height="32">
+<input type="hidden" name="display" value="1">
+</form> 
+</center>
+<ul>
+  <li>PayPal charges fees based on the type of account you set-up and how much 
+  you sell.&nbsp; PayPal charges Premier and Business accounts to receive 
+  payments. Personal accounts are free, but may not receive credit card 
+  payments. <br>
+&nbsp;<table border=0 class=larget>
+        <tr bgColor="#ccddee">
+          <th>&nbsp;</td>
+          <th>&nbsp;Personal Account</td>
+          <th>&nbsp;Premier/Business Account</td>
+        </tr>
+        <tr>
+          <td>Open an Account</td>
+          <td>Free</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Send Money</td>
+          <td>Free</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Withdraw Funds</td>
+          <td>Free for US bank accounts</td>
+          <td>Free for US bank accounts</td>
+        </tr>
+        <tr>
+          <td>Add Funds</td>
+          <td>Free</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Receive Funds</td>
+          <td>Free</td>
+          <td>
+          2.2% + $0.30 USD to <br>
+          2.9% + $0.30 USD</td>
+        </tr>
+        <tr>
+          <td>Multiple Currency Transactions</td>
+          <td>Exchange rate 
+          includes a 2.5% fee*</td>
+          <td>Exchange rate 
+          includes a 2.5% fee*</td>
+        </tr>
+      </table>
+  </li>
+</ul>
+<script language="JavaScript">writeFooter(3);</script>
+<hr>
+<h1>Server Generated Email</h1>
+<ul>
+  <li>There are many applications where a web designer might want the server to 
+  automatically send an email on their behalf.<ul>
+    <li>Automated order receipt confirmation</li>
+    <li>Notification on low stock levels</li>
+    <li>Notification of errors in your applications</li>
+    <li>Monthly newsletter based on customer purchase</li>
+    <li>Shipping notification</li>
+  </ul>
+  </li>
+  <li>PHP has a built in <code>mail( )</code> function that will send mail from 
+  any PHP program.&nbsp;
+<ul>
+  <li>The first argument to the&nbsp; function is the recipient, </li>
+  <li>The second specifies 
+the message's subject and </li>
+  <li>The third one should contain the body. </li>
+  <li>There is an optional 4th argument that can contain additional headers like 
+  From, Cc and Bcc.</li>
+  <li>To send a simple sample message, we could use: <br>
+  <code>&nbsp;&nbsp;&nbsp; mail(&quot;<a href="mailto:dawn.gregg@cudenver.edu">dawn.gregg@cudenver.edu</a>&quot;, 
+  &quot;Hi&quot;, &quot;Just wanted to say hi!&quot;);</code></li>
+</ul>
+
+  </li>
+  <li>The <code>mail( )</code> function's only requirement is that you have a mail server 
+  installed (and linked) to your PHP application.<ul>
+    <li>Uniform Server has a plugin you could download to allow you to send 
+    mail: hMailServer @ <a href="http://www.hmailserver.com" target="_blank">
+    http://www.hmailserver.com</a></li>
+    <li>Ouray has mail capabilities built in.</li>
+  </ul>
+  </li>
+  <li>The program below creates an automated response to a use's request for 
+  information and sends the response to the user.&nbsp; It also sends a blind 
+  copy of the email to me so (in theory). I could respond to the email.&nbsp; 
+  The &quot;From&quot; address is a completely fake address - which is why many server 
+  generated emails say do not respond to the email. </li>
+</ul>
+
+<form ACTION="http://ouray.cudenver.edu/~dgregg/php_examples/email.php" onsubmit="return 
+
+valid(this);" METHOD="POST">
+  <center>
+  <caption><b>Online Help Form</caption> </b>
+  <table>
+    <tr>
+      <td>Email:
+      <td><input TYPE="text" NAME="to" SIZE="29">
+    </tr>
+    <tr><td colspan=2>Please provide additional information on:
+    <tr><td colspan=2>
+      <select name=subject>
+          <option value="">
+          <option value="Creating a website with html">Creating a website with html
+          <option value="Uploading a website to Ouray">Uploading a website to Ouray
+          <option value="Adding PHP code to a web page">Adding PHP code to a web page
+          <option value="Connecting to MySQL form PHP on Ouray">Connecting to MySQL from PHP on Ouray&nbsp;&nbsp;
+          <option value="Sending an email with PHP">Sending an email with PHP
+          <option value="Encrypting data with PHP and mcrypt">Encrypting data with PHP and mcrypt
+          <option value="Using AJAX on Ouray">Using AJAX on Ouray
+        </select>
+    </td></tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="submit" VALUE="Submit">
+      <td><input TYPE="Reset" VALUE="Reset">
+  </table>
+  </center>
+</form>
+<p align="center"><a href="../php_examples/email.php">email.php</a></p>
+<div><cite>&lt;?php</cite><br>
+  <samp>&nbsp; // Get email parameters from form passed to page<br>
+  </samp>&nbsp;
+$to = $_REQUEST[&quot;to&quot;];<br>
+&nbsp; $from = <var>&quot;devteam@ouray.cudenver.edu&quot;</var>;<br>
+&nbsp;
+$subject = $_REQUEST[&quot;subject&quot;];<br>
+&nbsp; <br>
+  <samp>&nbsp;// From is not a &quot;required&quot; values so need to add it to<br>
+&nbsp;// &quot;additional&quot; PHP header. Also can BCC yourself on the email <br>
+&nbsp;// The \r\n are required at the end of header lines<br>
+&nbsp;// The .= adds new headers to the existing header string<br>
+  </samp>&nbsp;$headers = <var>'From: Ouray &lt;'</var> . $from . <var>'&gt;'</var> . 
+  <var>&quot;\r\n&quot;</var>;<br>
+&nbsp;$headers .= <var>'Bcc: dgregg@ouray.cudenver.edu'</var> . <var>&quot;\r\n&quot;</var>; <br>
+  <br>
+&nbsp; $body=&nbsp; <samp>// Begin text-only response to request</samp><br>
+  <var>&quot;AUTOMATED RESPONSE:/n/nThank you for requesting additional information on: 
+  <code>$subject</code>.&nbsp; We will 
+  review your request an respond as soon as possible./n/nThank you,/nThe Development Team&quot;</var>;<br>
+  <samp><br>
+&nbsp;// Send the mail using the mail function<br>
+  </samp>&nbsp;
+if (mail($to, $subject, $body, $headers)) <br>
+&nbsp;
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+echo <var>&quot;&lt;p&gt;Message successfully sent!&lt;/p&gt;&quot;</var> ;<br>
+&nbsp;&nbsp; &nbsp;
+echo <var>&quot;&lt;p&gt;To: <code>$to</code>&lt;br&gt;From: <code>$from</code>&lt;br&gt;Subject: 
+  <code>$subject</code>&lt;br&gt;Body: <code>$body</code>&quot;</var>;<br>
+&nbsp;
+} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+echo <var>&quot;&lt;p&gt;Message delivery failed...&lt;/p&gt;&quot; </var>;<br>
+&nbsp;
+}<br>
+  <cite>?&gt; </cite> </div>
+
+<p align="center">
+<img border="0" src="../images2/email_bcc.gif" width="600" height="282"></p>
+
+<ul>
+  <li>
+  <p align="left">On Ouray web mail you can choose &quot;Show All Headers&quot; which will 
+  show this message was sent from <a href="mailto:Nobody@ouray.cudenver.edu">
+  Nobody@ouray.cudenver.edu</a> - most people NEVER see that header and are 
+  unaware of where the email really comes from.</li>
+</ul>
+<script language="JavaScript">writeFooter(4);</script>
+<hr>
+<h2><span>HTML &amp; Other Complex Email Messages</span></h2>
+
+<ul>
+  <li>You use the MIME standard (or Multipurpose Internet Mail Extensions) to 
+  send e-mails with attachments, as well as to send e-mails that are HTML 
+  formatted, that include graphics, sound, etc.</li>
+  <li>MIME formatted e-mail includes three extra headers not used with plain 
+  text email: <code>
+MIME-Version</code> (required), <code>Content-Type</code> and <code>
+Content-Transfer-Encoding</code>.</li>
+  <li>By changing the <code>content-type</code> and <code>content-transfer-encoding</code> 
+  method, we can send e-mails that contain a picture rather than text, or html.</li>
+  <li>To send a HTML mail, the Content-type header 
+      must be set<code><span class="html"><span class="comment"> <br>
+      </span><span class="default">$headers&nbsp; </span><span class="keyword">=
+      </span><span class="string">'MIME-Version: 1.0' </span>
+      <span class="keyword">. </span><span class="string">&quot;\r\n&quot;</span><span class="keyword">;<br>
+      </span><span class="default">$headers </span><span class="keyword">.=
+      </span><span class="string">'Content-type: text/html; charset=iso-8859-1'
+      </span><span class="keyword">. </span><span class="string">&quot;\r\n&quot;</span><span class="keyword">;</span></span></code></li>
+  <li>You can also include additional headers just like would be used in the 
+  text only email<code><span class="html"><span class="comment"><br>
+      </span><span class="default">$headers </span><span class="keyword">.=
+      </span><span class="string">'To: Mary &lt;mary@example.com&gt;, Kelly &lt;<a href="mailto:kelly@example.com">kelly@example.com</a>&gt;'
+      </span><span class="keyword">. </span><span class="string">&nbsp;&quot;\r\n&quot;</span><span class="keyword">;<br>
+      </span><span class="default">$headers </span><span class="keyword">.=
+      </span><span class="string">'From: Newsletter &lt;news@example.com&gt;'
+      </span><span class="keyword">. </span><span class="string">&quot;\r\n&quot;</span><span class="keyword">;<br>
+      </span><span class="default">$headers </span><span class="keyword">.=
+      </span><span class="string">'Cc: newsarchive@example.com' </span>
+      <span class="keyword">. </span><span class="string">&quot;\r\n&quot;</span><span class="keyword">;<br>
+      </span><span class="default">$headers </span><span class="keyword">.=
+      </span><span class="string">'Bcc: newscheck@example.com' </span>
+      <span class="keyword">. </span><span class="string">&quot;\r\n&quot;</span><span class="keyword">;</span></span></code></li>
+  <li>The program below is designed to be included in a second checkout page and 
+  will automatically send an order confirmation email based on database data. 
+  It:<ul>
+  <li>Uses the order id from the previous/current page to query the <code>Orders</code> 
+  table</li>
+  <li>Constructs a message using customer data</li>
+  <li>Runs a second query to get the individual products purchased from the
+  <code>OrderDetails</code> table and uses a loop to add them to the message 
+  string in a shopping cart type table.</li>
+  <li>Sends an email to the customer's email address from &quot;<a href="mailto:orders@outdoordepot.com">orders@outdoordepot.com</a>&quot;</li>
+</ul>
+  <p align="center">
+
+
+
+<span>
+
+  <a href="../php_examples/tutorial/outdoorPHP/email.php">email.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+  <a href="http://ouray.cudenver.edu/~dgregg/outdoor/index.php">Online
+Demo</a> <br>
+(To try it online you actually have to complete an outdoor depot purchase and 
+  then click the
+  &quot;Request&nbsp;Confirmation&nbsp;Email&quot; link at the bottom of the page)</span></li>
+</ul>
+
+    <div class="phpcode">
+      <cite>&lt;?php<br>
+      </cite>&nbsp;$oid = $_REQUEST[&quot;oid&quot;];<br>
+      <br>
+      <samp>&nbsp;// include the database connection file</samp><br>
+&nbsp;require(<var>&quot;includes/db.inc&quot;</var>);<br>
+      <br>
+      <samp>&nbsp;// Select the order informaiton from the database</samp><br>
+&nbsp;$qry = <var>&quot;Select * from Orders Where OrderID=&quot;</var> . $oid . 
+      <var>&quot;;&quot;</var>; <br>
+&nbsp;$rs = mysql_query($qry) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die(<var>'Query1 failed: '</var> . mysql_error() . 
+      <var>'&lt;br&gt;'</var>);<br>
+      <br>
+      <samp>&nbsp;// only one item in ResultSet use ?_fetch_array() to move to 
+      it</samp><br>
+&nbsp;$row = mysql_fetch_array($rs);<br>
+&nbsp;$ship = $row[&quot;Ship&quot;];<br>
+&nbsp;$total = $row[&quot;Total&quot;];<br>
+      <br>
+      <samp>&nbsp;// Set the the &quot;to&quot; for the email to the customer email</samp><br>
+&nbsp;$to = $row[&quot;Email&quot;];<br>
+&nbsp;$subject = <var>&quot;Outdoor Depot - Order Confirmation (OrderID: $oid)&quot;</var>;<br>
+      <br>
+      <samp>&nbsp;// To send HTML mail, the Content-type header must be set</samp><br>
+&nbsp;$headers = <var>'MIME-Version: 1.0' </var>. <var>&quot;\r\n&quot;</var>;<br>
+&nbsp;$headers .= <var>'Content-type: text/html; charset=iso-8859-1'</var> . 
+      <var>&quot;\r\n&quot;</var>;<br>
+      <samp><br>
+&nbsp;// Additional headers just want to set from<br>
+&nbsp;// as a fake outdoor depot email address</samp><br>
+&nbsp;$headers .= <var>&quot;From: orders@outdoordepot.com&quot;</var> . <var>&quot;\r\n&quot;</var>;<br>
+      <br>
+      <samp>&nbsp;// set message to include database data PLUS text and html 
+      tags<br>
+&nbsp;// carriage returns embedded between &quot;&quot; will appear in file sent</samp><br>
+&nbsp;$message = <br>
+      <var>&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Order Confirmation Outdoor Depot&lt;/title&gt;<br>
+&nbsp; &lt;style&gt;<br>
+&nbsp;&nbsp;&nbsp; h3 { color: green; text-decoration: underline overline;}<br>
+&nbsp;&nbsp;&nbsp; th { background-color: #FFFFCC; color: darkgreen; }<br>
+&nbsp; &lt;/style&gt;<br>
+&nbsp;&lt;/head&gt;&lt;body&gt;<br>
+&nbsp;&nbsp; &lt;p&gt;Dear &quot; . $row['CName'] . &quot;,<br>
+&nbsp;&nbsp; &lt;p&gt;Below are your order details. <br>
+&nbsp;&nbsp; &lt;h3&gt;CUSTOMER INFORMATION / BILLING INFORMATION&lt;/h3&gt;<br>
+&nbsp;&nbsp; &lt;p&gt;</var>&quot; . $row['CName'] . <var>&quot;&lt;br&gt;&quot;</var> . $row['Address'] . 
+      <var>&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;br&gt;&quot; </var>. $row['City'] . <var>&quot;, &quot;</var> . $row['State'] . 
+      <var>&quot; &quot;</var> . $row['PostalCode'] 
+      . <var>&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;br&gt;&quot;</var> . $row['Country'] . <var>&quot;<br>
+      <br>
+&nbsp;&nbsp; &lt;p&gt;&lt;b&gt;Paid using:&lt;/b&gt;&quot;</var> . $row['PaymentMethod'] . 
+      <var>&quot;<br>
+&nbsp;&nbsp; &lt;br&gt;&lt;b&gt;Credit Card Number:&lt;/b&gt; XXXX-XXXX-XXXX-&quot;</var> . substr($row['PaymentNumber'], 12, 4) . 
+      <var>&quot;<br>
+&nbsp;&nbsp; &lt;br&gt;&lt;b&gt;Credit Card Expiration Date:&lt;/b&gt; &quot;</var> . $row['ExpDate'] . 
+      <var>&quot;<br>
+      <br>
+&nbsp;&nbsp; &lt;h3&gt;ORDER INFORMATION&lt;/h3&gt;<br>
+&nbsp;&nbsp; &lt;p&gt;&lt;b&gt;Order number:&lt;/b&gt; <code>$oid</code><br>
+&nbsp;&nbsp; &lt;br&gt;&lt;b&gt;Order Date:&lt;/b&gt; &quot;</var> . $row['OrderDate'] . 
+      <var>&quot;&lt;/p&gt;</var><br>
+      <font color="#C0C0C0">&nbsp;&nbsp; &lt;!-- Start of order table displaying 
+      product purchased --&gt;<br>
+      </font>&nbsp;&nbsp; <var>&lt;table border=0&gt;<br>
+&nbsp;&nbsp; &lt;tr&gt;&lt;th&gt;Product&lt;/th&gt;&lt;th&gt;Size&lt;/th&gt;&lt;th&gt;Color&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Quantity&lt;/th&gt;&lt;th&gt;Total 
+      Price&lt;/th&gt;&lt;/tr&gt;&quot;</var>;<br>
+      <samp>&nbsp;// ended message string (above), will add to it later.<br>
+      <br>
+&nbsp;// query to select products purchased from the order details table<br>
+      </samp>&nbsp;$qry = <var>&quot;Select * from OrderDetails Where OrderID=&quot;</var> . $oid . 
+      <var>&quot;;&quot;</var>;<br>
+&nbsp;$rs = mysql_query($qry)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die(<var>'Query2 failed: '</var> . mysql_error() . 
+      <var>'&lt;br&gt;'</var>);<br>
+&nbsp;$stotal = 0; <br>
+      <br>
+      <samp>&nbsp;// loop to display products to a table<br>
+&nbsp;// just like the JavaScript Shopping cart<br>
+      </samp>&nbsp;while($row = mysql_fetch_array($rs))<br>
+&nbsp;{<br>
+&nbsp;&nbsp; $itotal = (float)$row['Price']*(int)$row['Quantity'];<br>
+&nbsp;&nbsp; $stotal += $itotal;<br>
+      <samp>&nbsp;&nbsp; // Continue message string with table rows<br>
+      </samp>&nbsp;&nbsp; $message .= <var>&quot;&lt;tr&gt;<br>
+&nbsp;&nbsp; &lt;td&gt;&quot;</var> . $row['Product'] . <var>&quot;&lt;/td&gt;<br>
+&nbsp;&nbsp; &lt;td align=center&gt;&quot;</var> . $row['ItemSize'] . <var>&quot;&lt;/td&gt;<br>
+&nbsp;&nbsp; &lt;td align=center&gt;&quot;</var> . $row['Color'] . <var>&quot;&lt;/td&gt;<br>
+&nbsp;&nbsp; &lt;td align=right&gt;$&quot;</var> . $row['Price'] . <var>&quot;&lt;/td&gt;<br>
+&nbsp;&nbsp; &lt;td align=center&gt;&quot;</var> . $row['Quantity'] . <var>&quot;&lt;/td&gt;<br>
+&nbsp;&nbsp; &lt;td align=right&gt;$<code>$itotal</code>&lt;/td&gt;&lt;/tr&gt;&quot;</var>; <br>
+&nbsp;}<br>
+      <br>
+&nbsp;$message .= <samp>// continue message string</samp><br>
+&nbsp; <var>&quot;&lt;tr&gt;&lt;td colspan=5 align=right&gt;Subtotal:&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td align=right&gt;$<code>$stotal</code>&lt;/td&gt;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;tr&gt;&lt;td colspan=5 align=right&gt;Shipping:&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td 
+      align=right&gt;$<code>$ship</code>&lt;/td&gt;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;tr&gt;&lt;td colspan=5 align=right&gt;Total Order:&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td 
+      align=right&gt;$<code>$total</code>&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;<br>
+&nbsp; &lt;h3&gt;SHIPPING INFORMATION&lt;/h3&gt;<br>
+&nbsp; &lt;p&gt;A shipping tracking number will be sent with your shipping 
+      confirmation e-mail.<br>
+&nbsp; &lt;p&gt;Outdoor Depot Online 
+      Sales&lt;br&gt;sales@OutdoorDepot.com&lt;br&gt;1-800-555-1212&quot;</var>;<br>
+      <samp>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      // end of message string<br>
+      <br>
+      &nbsp;// Send the email&nbsp; <br>
+      </samp>&nbsp;mail($to, $subject, $message, $headers);<br>
+      <cite>?&gt;</cite></div>
+
+<p align="center">
+<img border="0" src="../images2/email_html.gif" width="534" height="550"></p>
+<ul>
+  <li>To send an email message that includes an image or an attachment you need 
+  to send a multi-part MIME message.&nbsp; For details on how to do this see:
+  <a href="http://www.zend.com/zend/spotlight/sendmimeemailpart1.php">
+  http://www.zend.com/zend/spotlight/sendmimeemailpart1.php</a></li>
+  <li><b>Note: </b>It is worth noting that the <b class="function">mail()</b> 
+  function is not suitable for larger volumes of email in a loop. This function 
+  opens and closes an SMTP socket for each email, which is not very efficient.</li>
+  <li>For the sending of large amounts of email, see the
+  <a href="http://pear.php.net/package/Mail" target="_top">PEAR::Mail</a>, and
+  <a href="http://pear.php.net/package/Mail_Queue" target="_top">
+  PEAR::Mail_Queue</a> packages</li>
+</ul>
+
+<hr>
+<script language="JavaScript">writeFooter(5);</script>
+</BODY>
+</HTML>

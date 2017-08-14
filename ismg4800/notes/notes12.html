@@ -1,0 +1,1600 @@
+<html>
+<head>
+<title>Java Beans</title>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<i class=footer><I>Updated April 4, 2006<br>Dawn G. Gregg</i> ';
+  ftext = ftext + '<p class=footer>Portions of this lecture were obtained from: <br><a href="http://www.tutorialized.com/tutorial/Authentication-and-Security/10304">http://www.tutorialized.com/tutorial/Authentication-and-Security/10304</a><br>';
+  ftext = ftext + '<a href="http://www.zend.com/zend/tut/authentication.php">http://www.zend.com/zend/tut/authentication.php</a><br>';    
+  ftext = ftext + '<a href="http://www.oreilly.com/catalog/webdbapps/chapter/ch08.html">Web Database Applications with PHP &amp; MySQL</a></p>';
+  </script>
+</head>
+<style>
+ dfn { font-style:normal; } 
+ samp { font-style:normal; 
+        color: orange;}
+</style>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<h1>Object Oriented Programming in PHP</h1>
+
+<ul>
+  <li>An object is a software representation of something that exists in the
+  real world.
+  </li>
+  <li>Anything can be an object.&nbsp; A Television Set, An Employee, A Video, A
+  RomanNumeral, A String, A Date, A Web Page.</li>
+  <li>In PHP, programs can contain objects that work
+  together.</li>
+</ul>
+<ul>
+  <li>The fundamental goal of building modern software is to produce quality 
+  software for a minimum cost. This includes being:<ul>
+    <li><em>Robust</em>: Programs produce the right output for all anticipated 
+    inputs as well as handling unexpected inputs.</li>
+    <li><em>Adaptable</em>: Need to evolve over time as environment and 
+    expectations change.</li>
+    <li><em>Reusable</em>: Code should be designed such that it can be reused as 
+    a component of different systems</li>
+  </ul>
+  </li>
+  <li>Object Orient Programming helps achieve these goals</li>
+</ul>
+<hr>
+<h2><span>Classes &amp; Objects</span></h2>
+<ul>
+  <li>In PHP each Object is coded in a PHP class.</li>
+  <li>These classes allow programmers to invent their own object types.</li>
+  <li>Classes allow data (variables) and methods (functions/subroutines) to be 
+  defined as a part of the class.</li>
+  <li>Instances of a given class can be declared like other variables. You can 
+  create arrays of objects of a given class and you can pass class objects to 
+  functions.</li>
+  <li>Classes help achieve the goals of Object Oriented programming by 
+  facilitating:<ul>
+    <li>Encapsulation</li>
+    <li>Abstraction</li>
+    <li>Modularity</li>
+  </ul>
+  </li>
+</ul>
+
+<hr>
+<h2><span>Classes Example PHP 5.0</span></h2>
+<ul>
+  <li><span>The class below (<a href="../php_examples/search.php">Search.php</a>) 
+is a PHP 5.0 class.&nbsp; It has one private attribute &quot;keyword&quot;&nbsp; which is 
+  a single keyword to be searched for and can conduct a search for keywords on a 
+  database.</span></li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/search.php">search.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://ouray.cudenver.edu/~dgregg/outdoor/index.php">Online
+Demo</a>
+</span>
+
+
+
+</p>
+<div>
+&lt;HTML&gt;<br>
+&lt;HEAD&gt;<br>
+&lt;META HTTP-EQUIV=&quot;Content-Type&quot; CONTENT=&quot;text/html; charset=windows-1252&quot;&gt;<br>
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;od.css&quot;&gt;<br>
+&lt;TITLE&gt;Search Results&lt;/TITLE&gt;<br>
+&lt;/HEAD&gt;<br>
+&lt;BODY&gt;<br>
+<cite>&lt;?php</cite> require(&quot;test.php&quot;); ?&gt;<br>
+<cite>&lt;?php</cite> require(&quot;includes/header.html&quot;); <cite>?&gt;</cite><br>
+<cite>&lt;?php</cite> require(&quot;includes/lmenu.html&quot;); <cite>?&gt;</cite><br>
+<br>
+&lt;H2&gt;&lt;span&gt;Search Results:&lt;/span&gt;&lt;/H2&gt;<br>
+<br>
+<cite>&lt;?php</cite> <br>
+&nbsp;
+$keyword = $_POST['search'];<br>
+&nbsp;
+$k = <dfn>explode(</dfn>&quot; &quot;, $keyword<dfn>);</dfn><br>
+&nbsp;
+$s = new Search();<br>
+&nbsp;
+<dfn>for(</dfn>$i=0; $i &lt; count($k); $i++<dfn>)<br>
+&nbsp;
+{</dfn> $s-&gt;setKeyword($k[$i]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<dfn>echo</dfn> &quot;&lt;h3&gt;Search Term: &quot; . $s-&gt;getKeyword() . &quot;&lt;/h3&gt;&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<dfn>echo</dfn> $s-&gt;find();<br>
+&nbsp;
+<dfn>} </dfn> <br>
+<cite>?&gt;</cite><br>
+<cite>&lt;?php</cite> require(&quot;includes/rmenu.html&quot;); <cite>?&gt;</cite><br>
+<cite>&lt;?php</cite> require(&quot;includes/footer.html&quot;); <cite>?&gt;</cite><br>
+&lt;/BODY&gt;<br>
+&lt;/HTML&gt;<br>
+<cite>&lt;?php</cite><br>
+class Search<br>
+{ <br>
+&nbsp;&nbsp; <samp>// member declaration</samp><br>
+&nbsp;&nbsp;
+<dfn>public</dfn> $keyword = 'shoe';<br>
+&nbsp;&nbsp;
+<dfn>public</dfn> $conn = 'shoe';<br>
+<br>
+&nbsp;&nbsp;<var> </var><dfn>public function </dfn>Search<dfn>()<br>
+&nbsp;
+{ </dfn> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$keyword = 'shoe';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$conn = mysql_connect('localhost','uesrname','password')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+or die( '&lt;h2&gt;Could not connect to mysql&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+mysql_select_db('username') or die('Could not select database&lt;br&gt;');<br>
+&nbsp;<dfn>
+}</dfn><br>
+<br>
+&nbsp; <samp>// method declaration</samp><br>
+&nbsp; <dfn>public function</dfn> getKeyword<dfn>() {</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+return $this-&gt;keyword;<br>
+&nbsp;
+<dfn>}</dfn><br>
+<br>
+&nbsp; <samp>// method declaration</samp><br>
+&nbsp; <dfn>public function</dfn> setKeyword($k<dfn>) {</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$this-&gt;keyword = $k;<br>
+&nbsp;
+<dfn>}</dfn><br>
+<br>
+&nbsp;
+<dfn>public function</dfn> find<dfn>() <br>
+&nbsp;{</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$results = &quot;&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$qry = &quot;SELECT * FROM ITEM WHERE (ITEMNAME Like '%&quot; . $this-&gt;keyword . &quot;%') 
+&quot; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; . &quot;OR (ITEMDESC 
+Like '%&quot;. $this-&gt;keyword . &quot;%')&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+$rs = <dfn>mysql_query(</dfn>$qry<dfn>)</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<dfn>or die(</dfn>'Search Query failed: ' . mysql_error() . '&lt;br&gt;'<dfn>);</dfn><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <samp>// Loop through results set</samp><br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<dfn>while(</dfn>$row = <dfn>mysql_fetch_array(</dfn>$rs<dfn>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+{&nbsp;</dfn> <samp>// Display Specific Data values to screen</samp><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$results = $results . &quot;&lt;p&gt;&lt;a href='product.php?cat=&quot; . $row['CATID'] . &quot;&amp;item=&quot; 
+. $row[&quot;ITEMID&quot;] . &quot;'&gt;&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$results = $results . $row[&quot;ITEMNAME&quot;] . &quot;&lt;/a&gt;&lt;br&gt;&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$results = $results . $row[&quot;ITEMDESC&quot;] . &quot;&lt;/p&gt;\n&quot;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<dfn>}</dfn><p><dfn>&nbsp;&nbsp;&nbsp;&nbsp;
+if(</dfn>$results == &quot;&quot;<dfn>)</dfn> $results = &quot;&lt;p&gt;No results found&lt;/p&gt;&quot;;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+return $results;<br>
+&nbsp;
+<dfn>} <br>
+} </dfn> <br>
+<cite>?&gt;</cite></div>
+<p align="center">
+<img border="0" src="../images2/search.jpg" width="700" height="365"></p>
+<ul>
+  <li>There are differences between PHP 5's implementation of classes and that 
+  found in PHP 4.&nbsp; Code for a PHP 4 compliant class can be found here:</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/tutorial/search.php">search.php</a>
+</span>
+
+
+
+</p>
+<ul>
+  <li>
+ Note: the principle difference between PHP 5 and PHP 4 is that in PHP 4 
+ variables were declared as var not public and there was no public keyword in 
+ front of the class definitions.</li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(0);</script>
+<h1>User Authentication</h1>
+
+
+<ul>
+  <li>There are many database applications in which restrictions need to be 
+  applied to control user access. Some applications deal with sensitive 
+  information such as bank account details, while others provide information or 
+  services only to paying customers. </li>
+  <li>These applications need to authenticate and authorize user requests, 
+  typically by collecting a username and password, and checking these against a 
+  list of valid users.</li>
+  <li>User authentication includes the techniques used to build web database 
+  applications that authenticate, authorize, and protect the data that is 
+  transmitted over the Web. The topics  include:
+  <ul>
+    <li>How HTTP authentication works and how it can be used with Apache and PHP
+    </li>
+    <li>Writing PHP scripts to manage user authentication and authorization</li>
+    <li>Writing PHP scripts that authenticate users against a table in a 
+    database </li>
+    <li>The practical aspects of building session-based web database 
+    applications to authenticate users, including techniques that don't use HTTP 
+    authentication </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h1>HTTP Authentication</h1>
+<ul>
+  <li>The HTTP standard provides support to authenticate and authorize user 
+  access. When a browser sends an HTTP request for a resource that requires 
+  authentication, a server can challenge the request by sending a response with 
+  the status code of 401 Unauthorized. </li>
+  <li>When an unauthorized response is received, the browser presents a dialog 
+  box that collects a username and password. </li>
+  <li>After the username and password have been entered, the browser then 
+  resends the request containing an extra header field that encodes the user 
+  credentials. </li>
+  <li>This support doesn't authenticate a user or provide authorization to access a 
+resource or service. The server needs the encoded username and password to 
+establish the user's credentials and then decide if the user is authorized to 
+receive the requested resource. How the server performs the authentication 
+depends on the application. An Apache server, configured to protect resources 
+with authentication, uses a file that contains a list of usernames and encrypted 
+passwords, while other applications might use a table of users in a database. 
+  </li>
+</ul>
+<hr>
+<h2><span>Using Apache to Authenticate</span></h2>
+<ul>
+  <li>The simplest method to restrict access to an application is to use the Apache 
+authentication support. The Apache server can easily be configured to use HTTP 
+authentication to protect the resources it serves. Apache allows authentication 
+to be set up on a directory-by-directory basis by adding parameters to the
+Directory setting in the httpd.conf configuration file or by creating <code>.htaccess</code> 
+  files which are placed in an individual directory that you want to protect.  
+  </li>
+  <li>The 
+following example shows  an <code>.htaccess</code> file that protects the 
+  resources-HTML files, PHP scripts, images, and so on-stored in the
+  <a href="http://carbon.cudenver.edu/~dgregg/ismg4800/notes">/faculty/dgregg/public_html/ismg4800/notes</a> directory: 
+  </li>
+</ul>
+<div>AuthUserFile /faculty/dgregg/public_html/.htpasswd <br>
+AuthGroupFile /dev/null
+<br>
+  AuthName ISMG4800
+<br>
+  AuthType Basic
+ 
+<br>
+  require user ismg4800 dgregg
+</div>
+<ul>
+  <li>If PHP scripts and other sensitive resources are placed within a protected 
+directory, a user can access the application only by first passing the Apache 
+authentication. 
+<ul>
+  <li>The Apache server responds with a challenge to unauthorized 
+requests for any resources in the protected directory. </li>
+  <li>The <code>AuthType</code> is 
+set to Basic to indicate the method that encodes the username and 
+password collected from the browser, and </li>
+  <li>The <code>AuthName</code> is set to the 
+name of the realm. </li>
+  <li>Apache authorizes users who are listed in the require 
+setting by checking the username and password against those held in the <code>AuthUserFile 
+  (</code>the file /faculty/dgregg/public_html/.htpasswd).&nbsp;</li>
+</ul>
+  </li>
+  <li>To create the username and password file you <font face="Verdana">telnet 
+  to your Web Server (e.g. Ouray) and type: <code><br>
+  htpasswd -c </code></font><code>faculty/dgregg/public_html/.htpasswd ismg4800</code><font face="Verdana"><code><br>
+  </code>You would be asked to type in the password and the appropriate file 
+  will be created. </font></li>
+  <li><font face="Verdana">To enter a second username and password you would:<br>
+  <code>htpasswd </code></font><code>faculty/dgregg/public_html/.htpasswd 
+  ismg2050</code><font face="Verdana"><code><br>
+  </code></font><b>Notice</b> there is no -c that is because the file already 
+  exists and you want remaining usernames and passwords to be added to it.</li>
+  <li>For simple web database applications, Apache authentication provides a 
+  suitable solution. When usernames and passwords need to be checked against a 
+  database or some other source, or when HTTP authentication can't meet the 
+  needs of the application, authentication can be managed by PHP. </li>
+</ul>
+<hr>
+<h2><span>HTTP Authentication with PHP</span></h2>
+<ul>
+  <li>PHP can access the credentials collected using the HTTP mechanisms introduced 
+in the last section, and can actually manage the HTTP authentication without 
+relying on Apache's configuration. </li>
+</ul>
+<h3>Access to User Credentials from PHP</h3>
+<ul>
+  <li>PHP-based authentication mimics the challenge/response system of Web 
+server-based authentication. When you explicitly send the appropriate HTTP 
+headers from a PHP script to a Web browser, an authentication dialog box will be 
+displayed. The dialog box prompts you to enter a username and password. </li>
+  <li>PHP assigns the username and password entered to the global variables <code>$PHP_AUTH_USER</code> 
+and <code>$PHP_AUTH_PW</code>, respectively. You can use these variables to 
+validate input against a stored list of usernames/passwords, such as those found 
+in a flat file, <code>.htpasswd</code> file, or database. </li>
+</ul>
+<ul>
+  <li>The PHP <code>header()</code> 
+function enables you to output a specific HTTP header string, such as a location 
+redirection, or in our case, a &quot;401&quot; response code: &quot;Unauthorized&quot;. This type of 
+header, combined with a &quot;WWW-Authenticate&quot; header, will activate an 
+authentication dialog box.</li>
+  <li>The script below determines if the the authentication global variables are 
+  set and if they are&nbsp; displays them in the body of the response. </li>
+  <li>Otherwise the code prompts the browser to display an authentication dialog box if no value 
+  exists for either <code>$PHP_AUTH_USER</code> or <code>$PHP_AUTH_PW</code> . 
+  </li>
+</ul>
+<p class="tutorialExample"><b>Note:</b> The Server does not control the user 
+interface. The <code>header()</code> 
+function only serves to prompt the browser to interact with the user. The 
+browser actually &quot;decides&quot; (is configured) how to initiate the user input. Most 
+often this entails the display of a dialog box, but it does not have to be this 
+way. By extension, a browser will decide whether or not to prompt the user again 
+upon a failure.</p>
+<div><code><font color="#000000"><font color="#0000bb">
+<cite>&lt;?php</cite> <br>
+</font><font color="#007700">if&nbsp;((!isset(&nbsp;</font><font color="#0000bb">$PHP_AUTH_USER&nbsp;</font><font color="#007700">))&nbsp;||&nbsp;(!isset(</font><font color="#0000bb">$PHP_AUTH_PW</font><font color="#007700">)))&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'WWW-Authenticate:&nbsp;Basic&nbsp;realm=&quot;Private&quot;'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'HTTP/1.0&nbsp;401&nbsp;Unauthorized'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#dd0000">'Authorization&nbsp;Required.'</font><font color="#007700">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exit;
+<br>
+}&nbsp;else&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#dd0000">&quot;You&nbsp;entered&nbsp;</font></font><font color="#0000bb">$PHP_AUTH_USER</font><font color="#000000"><font color="#dd0000">&nbsp;for&nbsp;a&nbsp;username.&lt;BR&gt;&quot;</font><font color="#007700">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#dd0000">&quot;You&nbsp;entered&nbsp;</font></font><font color="#0000bb">$PHP_AUTH_PW</font><font color="#000000"><font color="#dd0000">&nbsp;for&nbsp;a&nbsp;password.&lt;BR&gt;&quot;</font><font color="#007700">;
+<br>
+}
+<br>
+</font><font color="#0000bb">?&gt;
+</font></font></code></div>
+<ul>
+  <li>Applications can use the encoded credentials to support features that rely on 
+identifying the user. For example, an application that charges on a per-page 
+view basis might use the <code><code>$PHP_AUTH_USER</code></code> variable when recording an 
+access to a particular page. In this way, Apache can provide the authentication, 
+and the application records the users' usage. While this approach removes the 
+need to write any PHP code to implement authentication, users and passwords need 
+to be maintained in an Apache password file. In the next section we describe how 
+to manage HTTP authentication from within a PHP script, thus relieving Apache of 
+authentication responsibilities and allowing different logic to be applied to 
+the authorization of requests. </li>
+</ul>
+<hr>
+<h1>Managing HTTP Authentication with PHP</h1>
+<ul>
+  <li>The code sequence above does not really authenticate a user, since it only 
+checks that a value exists, but not a <i>specific</i> value. In this example, we 
+  add an if...else statement in an attempt to validate the user input is found 
+  in a .htpasswd file.</li>
+  <li>This means that we need to:<ol>
+  <li>Use <a href="http://www.zend.com/manual/function.isset.php">isset()</a> to 
+  verify whether or not values already exist for <code>$PHP_AUTH_USER </code>and<code> 
+  $PHP_AUTH_PW</code>. </li>
+  <li>Prompt the browser to display an authentication dialog box if no value 
+  exists for either <code>$PHP_AUTH_USER</code> or <code>$PHP_AUTH_PW</code>.&nbsp; </li>
+    <li>Search the .htpasswd file for the username entered to do this you need 
+    to break the current line into two parts - the username and the password, 
+  using <code>explode()</code>. </li>
+  <li>If the username entered matches the current username, take the &quot;salt&quot; from the encrypted password.&nbsp; 
+  The &quot;salt&quot; is the first 2 characters in the encrypted password.&nbsp; They are 
+  the characters used by the crypt function to encrypt the password.&nbsp; Given 
+  the encrypted password for joe below:&nbsp; <br>
+  <code class="tutorialExample">joe:WvzodahMR9USk <br>
+  </code>
+              The actual plaintext password for user joe is not 
+              &quot;WvzodahMR9Usk&quot;. The plaintext password 
+              is &quot;abba001&quot;, and &quot;zodahMR9Usk&quot; is the DES-encrypted 
+              version of that string. The &quot;Wv&quot; represents the crypt() 
+              function's
+              salt argument.</li>
+  <li>Use the salt to encrypt <code>$PHP_AUTH_PW </code>using
+  <a href="http://www.zend.com/manual/function.crypt.php">crypt()</a>. </li>
+  <li>Compare the original encrypted password to the result of the new 
+  encryption. If the submitted password is correct, both encryptions should be 
+  identical. </li>
+  <li>If a match is found, set <code>$auth</code> to 'true&quot; to indicate that the 
+  user is indeed authenticated, and stop the search by using break.
+  </li>
+  </ol>
+  </li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/httpauth/index.php">httpauth/index.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/httpauth/index.php">Online
+Demo</a>
+</span>
+
+
+
+</p>
+<div><code><font color="#000000"><font color="#0000bb">
+<cite>&lt;?php</cite> <br>
+$auth&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">false</font><font color="#007700">;&nbsp;</font><font color="#ff8000">//&nbsp;Assume&nbsp;user&nbsp;is&nbsp;not&nbsp;authenticated
+<br>
+</font><font color="#007700">if&nbsp;(isset(&nbsp;</font><font color="#0000bb">$PHP_AUTH_USER&nbsp;</font><font color="#007700">)&nbsp;&amp;&amp;&nbsp;isset(</font><font color="#0000bb">$PHP_AUTH_PW</font><font color="#007700">))&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Read&nbsp;the&nbsp;entire&nbsp;file&nbsp;into&nbsp;the&nbsp;variable&nbsp;$file_contents
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$filename&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#dd0000">'/path/to/.htpasswd'</font><font color="#007700">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$fp&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">fopen</font><font color="#007700">(&nbsp;</font><font color="#0000bb">$filename</font><font color="#007700">,&nbsp;</font><font color="#dd0000">'r'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$file_contents&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">fread</font><font color="#007700">(&nbsp;</font><font color="#0000bb">$fp</font><font color="#007700">,&nbsp;</font><font color="#0000bb"><a href="http://www.zend.com/manual/function.filesize.php" target="_blank">filesize</a></font><font color="#007700">(&nbsp;</font><font color="#0000bb">$filename&nbsp;</font><font color="#007700">)&nbsp;);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb"><a href="http://www.zend.com/manual/function.fclose.php" target="_blank">fclose</a></font><font color="#007700">(&nbsp;</font><font color="#0000bb">$fp&nbsp;</font><font color="#007700">);
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Place&nbsp;the&nbsp;individual&nbsp;lines&nbsp;from&nbsp;the&nbsp;file&nbsp;contents&nbsp;into&nbsp;an&nbsp;array.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$lines&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">explode&nbsp;</font><font color="#007700">(&nbsp;</font><font color="#dd0000">&quot;\n&quot;</font><font color="#007700">,&nbsp;</font><font color="#0000bb">$file_contents&nbsp;</font><font color="#007700">);
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Split&nbsp;each&nbsp;of&nbsp;the&nbsp;lines&nbsp;into&nbsp;a&nbsp;username&nbsp;and&nbsp;a&nbsp;password&nbsp;pair
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;and&nbsp;attempt&nbsp;to&nbsp;match&nbsp;them&nbsp;to&nbsp;$PHP_AUTH_USER&nbsp;and&nbsp;$PHP_AUTH_PW. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#007700">foreach&nbsp;(&nbsp;</font><font color="#0000bb">$lines&nbsp;</font><font color="#007700">as&nbsp;</font><font color="#0000bb">$line&nbsp;</font><font color="#007700">)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list(&nbsp;</font><font color="#0000bb">$username</font><font color="#007700">,&nbsp;</font><font color="#0000bb">$password&nbsp;</font><font color="#007700">)&nbsp;=&nbsp;</font><font color="#0000bb">explode</font><font color="#007700">(&nbsp;</font><font color="#dd0000">':'</font><font color="#007700">,&nbsp;</font><font color="#0000bb">$line&nbsp;</font><font color="#007700">);
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;</font><font color="#0000bb">$username&nbsp;</font><font color="#007700">==&nbsp;</font><font color="#dd0000">&quot;$PHP_AUTH_USER&quot;&nbsp;</font><font color="#007700">)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Get&nbsp;the&nbsp;salt&nbsp;from&nbsp;$password.&nbsp;It&nbsp;is&nbsp;always&nbsp;the&nbsp;first
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;two&nbsp;characters&nbsp;of&nbsp;a&nbsp;DES-encrypted&nbsp;string. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$salt&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb"><a href="http://www.zend.com/manual/function.substr.php" target="_blank">substr</a></font><font color="#007700">(&nbsp;</font><font color="#0000bb">$password&nbsp;</font><font color="#007700">,&nbsp;</font><font color="#0000bb">0&nbsp;</font><font color="#007700">,&nbsp;</font><font color="#0000bb">2&nbsp;</font><font color="#007700">);
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Encrypt&nbsp;$PHP_AUTH_PW&nbsp;based&nbsp;on&nbsp;$salt
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$enc_pw&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb"><a href="http://www.zend.com/manual/function.crypt.php" target="_blank">crypt</a></font><font color="#007700">(&nbsp;</font><font color="#0000bb">$PHP_AUTH_PW</font><font color="#007700">,&nbsp;</font><font color="#0000bb">$salt&nbsp;</font><font color="#007700">);
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;</font><font color="#0000bb">$password&nbsp;</font><font color="#007700">==&nbsp;</font><font color="#dd0000">&quot;$enc_pw&quot;&nbsp;</font><font color="#007700">)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;A&nbsp;match&nbsp;is&nbsp;found,&nbsp;meaning&nbsp;the&nbsp;user&nbsp;is&nbsp;authenticated.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Stop&nbsp;the&nbsp;search. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">$auth&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">true</font><font color="#007700">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+<br>
+  }&nbsp; }&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;}
+<br>
+<br>
+if&nbsp;(&nbsp;!&nbsp;</font><font color="#0000bb">$auth&nbsp;</font><font color="#007700">)&nbsp;{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'WWW-Authenticate:&nbsp;Basic&nbsp;realm=&quot;Private&quot;'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'HTTP/1.0&nbsp;401&nbsp;Unauthorized'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#dd0000">'Authorization&nbsp;Required.'</font><font color="#007700">;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exit; <br>
+}&nbsp;else&nbsp;{ <br>
+&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</font><font color="#dd0000">'&lt;P&gt;You&nbsp;are&nbsp;authorized!&lt;/P&gt;'</font><font color="#007700">;
+  <br>
+&nbsp;&nbsp;&nbsp; session-start();<br>
+&nbsp;&nbsp;&nbsp; $_SESSION['auth']=true;<br>
+}<br>
+</font><font color="#0000bb">?&gt; </font></font></code></div>
+<ul>
+  <li>The first time a browser requests this page, the script sends a challenge 
+  response containing the <code><code>401 Unauthorized</code></code> header field. If the user 
+  cancels the authentication challenge, usually by clicking the cancel button in 
+  a dialog box that collects the credentials, the HTML encoded in the challenge 
+  response is displayed. </li>
+  <li>You need to check the auth variable in EVERY page that is restricted and 
+  if it is false redirect to the login page above.</li>
+</ul>
+<div><code><font color="#000000"><font color="#0000bb">
+<cite>&lt;?php</cite> <br>
+  </font><font color="#007700">&nbsp; if&nbsp;(!isset(&nbsp;</font><font color="#0000bb">$_SESION['auth']</font><font color="#007700">)&nbsp;!!&nbsp;</font><font color="#0000bb">$_SESION['auth']!=true</font><font color="#007700">)&nbsp;<br>
+&nbsp; {</font></font></code>&nbsp; header(&quot;Location: 
+
+
+
+<span>
+
+  httpauth/index.php</span>&quot;);<code><font color="#007700">&nbsp; } </font><font color="#0000bb">
+  <br>
+  ?&gt; </font></code></div>
+<ul>
+  <li>There are several HTTP status codes that are appropriate to use when denying 
+access to a user. In addition to the response code of <code><code>401 Unauthorized</code></code> 
+to control HTTP authentication. The response status code of <code><code>403 Forbidden</code></code> 
+  is appropriate if an explanation as to why access has been denied is required. The HTTP/1.1 standard 
+describes 17 <code><code>4xx</code></code> status codes that have various meanings. The infamous
+<code><code>404 Not Found</code></code> is returned by Apache if the requested resource doesn't 
+exist, and a PHP script can return this code if the exact reason for the refusal 
+needs to be hidden. The code <code><code>402 Payment Required</code></code> has been included, 
+but the HTTP standard has not provided an interpretation of how it should be 
+used. </li>
+  <li>Writing PHP scripts to manage the authentication process allows for flexible 
+authorization logic to be applied when processing a request. 
+  <ul>
+    <li>Authenticating a 
+user successfully against a list or table of known users doesn't automatically 
+authorize that user to access an application. </li>
+    <li>The number of schemes for restricting access is limited only by a 
+    developer's imagination.  </li>
+    <li>For example: A 
+    user of a subscription-based service might supply a correct username and 
+    password, but be denied access when a fee is 14 days overdue. Access might 
+    be denied on Thursday evenings when system maintenance is performed. 
+    Implementing such authorization schemes requires designing the appropriate 
+    user table or tables. </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Limits placed on IP addresses</span></h2>
+<ul>
+  <li>A PHP script can access the IP address from which a request was sent by 
+inspecting the server variable <code>$REMOTE_ADDR</code>. This remote address can 
+restrict access.  </li>
+  <li>A simple example allows access only from a specific IP address. 
+This can be used to implement administration scripts that allow access only from 
+a specific computer. A variation is to allow access to 
+users on a particular network subnet. The example below limits access to the main 
+content of the script to requests sent from clients with a range of IP addresses 
+that begin with <code>132.194. </code> </li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/ipauth/index.php">ipauth/index.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/ipauth/index.php">Online
+Demo</a>
+</span>
+
+
+
+</p>
+<div><code><font color="#0000bb">
+&lt;?php </font><font color="#007700"><br>
+&nbsp; if&nbsp;(</font></code><code><font color="#0000bb">strncmp</font></code><code><font color="#000000"><font color="#007700">(</font><font color="#dd0000">&quot;132.194&quot;</font></font></code>, <code><font color="#0000bb">$REMOTE_ADDR</font></code>, <code><font color="#0000bb">
+  7</font><font color="#007700">)</font></code> <code><font color="#007700">!=</font></code>
+  <code><font color="#0000BB">0</font><font color="#007700">)&nbsp;{</font></code><br>
+  <code><font color="#000000"><font color="#007700">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'HTTP/1.0&nbsp;403&nbsp;Forbidden'&nbsp;</font><font color="#007700">);
+<br>
+  </font></font><font color="#0000bb">?&gt; </font></code><br>
+&nbsp;&nbsp;&nbsp; &lt;html&gt;&lt;head&gt;&lt;title&gt;Information Systems Department&lt;/title&gt;&lt;/head&gt;<br>
+&nbsp;&nbsp;&nbsp;
+    &lt;body&gt;&lt;h2&gt;403 Forbidden&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &lt;p&gt;You cannot access this page from outside
+         CU Denver. <br>
+&nbsp;&nbsp;&nbsp; &lt;/body&gt;&lt;/html&gt;
+<br>
+  <code><font color="#0000bb">
+&lt;?php </font></code><br>
+&nbsp;&nbsp;&nbsp; <code><font color="#007700">exit;</font></code> <br>
+  <code><font color="#007700">}</font></code>&nbsp; <code><font color="#0000bb">?&gt; </font></code>&nbsp;<br>
+  &lt;!-- HTML tags for the forbidden page --&gt;</div>
+<ul>
+  <li>Another limit that can be applied using the IP address is to help prevent 
+session hijacking-a problem. </li>
+</ul>
+<hr>
+<h1>Authentication Using a Database</h1>
+<ul>
+  <li>In a web database application, usernames and passwords can be stored in a 
+table rather than a file. This moves the data stored about users into a database 
+and can simplify the management of an application. In this section we develop 
+techniques to store usernames and passwords securely in a table. </li>
+  <li>For Example:</li>
+</ul>
+<div>CREATE TABLE Users (
+  username varchar(15) not null,
+  password varchar(50) not null,
+  <br>
+&nbsp;&nbsp;&nbsp; PRIMARY KEY (username),
+  KEY password (password)
+);</div>
+<ul>
+  <li>This table defines two attributes: <code><code>username</code></code> and <code>
+  <code>password</code></code>. 
+<ul>
+  <li>The <code><code>username</code></code> must be unique, and in the <i>users</i> table, it is 
+defined as the primary key. </li>
+  <li>The <code><code>password</code></code> attribute needs to be indexed as you 
+  formulate queries on the password in the authentication script developed later 
+  in this section. </li>
+</ul>
+  </li>
+  <li>It's unwise to store user passwords as plain text in this table. There are 
+  many ways to retrieve passwords from a database, and even with good web site 
+  practices and policies, storing plain-text passwords is a security risk. </li>
+  <li>The <i>users</i> table containing encrypted passwords should look something like this:</li>
+</ul>
+<center>
+  <table cellSpacing="2" cellPadding="2" border="0" width="299">
+    <tr vAlign="top">
+      <th class="general" width="93">username</th>
+      <th class="general" width="88">password</th>
+    </tr>
+    <tr vAlign="top">
+      <td class="general" width="93">m0soroka</td>
+      <td class="general" width="88">m0GNvdAjJ1BDw</td>
+    </tr>
+    <tr vAlign="top">
+      <td class="general" width="93">cprather</td>
+      <td class="general" width="88">cpRQ0N4.ZOh0.</td>
+    </tr>
+    <tr vAlign="top">
+      <td class="general" width="93">tjcraig</td>
+      <td class="general" width="88">tjNLEWbP2wdY.</td>
+    </tr>
+    <tr vAlign="top">
+      <td class="general" width="93">jvan</td>
+      <td class="general" width="88">jvHXb3nOaykJM</td>
+    </tr>
+    <tr vAlign="top">
+      <td class="general" width="93">brwood</td>
+      <td class="general" width="88">brkh5W4yLAyd.</td>
+    </tr>
+  </table>
+</center>
+<ul>
+  <li>When a script needs to authenticate a username and password collected from an 
+authentication challenge, a query is executed to find a user row in the <i>users</i> 
+  table. </li>
+  <li>The script begins by testing <code>$username</code>. If it is not set, the function returns
+  <code>false</code>. 
+  </li>
+  <li>The <code>$password</code> is then encrypted using the <code>crypt( )</code> function 
+with the first two characters from the <code>$username</code> as the 
+  salt. This is then compared to the password associated with the username to 
+  see if they match.</li>
+  <li>First you need to validate that the username and password are found in the 
+  table:</li>
+  <li>The form below calls a PHP that updates an existing username with a new 
+  password.</li></ul>
+<script>
+function validpw(form)
+{
+  if(form.newpasswd.value.length > 5 && form.newpasswd.value== form.confirm.value)
+    return true;
+  alert("New passwords do not match or new password is too short");
+  return false;
+}
+</script>
+<form ACTION="http://ouray.cudenver.edu/~dgregg/php_examples/password.php" onsubmit="return validpw(this);" METHOD="POST">
+<input type="hidden" Name="txtH" value="ISMG 4800 Data">
+  <center>
+  <table>
+    <tr>
+      <td>Username:
+      <td><input TYPE="text" NAME="username" SIZE="30">
+    </tr>
+    <tr>
+      <td>Old Password:
+      <td><input TYPE="text" NAME="passwd" SIZE="30">
+    </tr>
+    </tr>
+    <tr>
+      <td>New Password:
+      <td><input TYPE="text" NAME="newpasswd" SIZE="30">
+    </tr>
+    </tr>
+    <tr>
+      <td>Confirm Password:
+      <td><input TYPE="text" NAME="confirm" SIZE="30">
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="submit" VALUE="Submit">
+      <td><input TYPE="Reset" VALUE="Reset">
+  </table>
+  </center>
+</form>
+
+<p align="center"><a href="../php_examples/password.php">password.php</a>
+
+
+
+<span>
+
+&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="../php_examples/db.inc">db.inc</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://ouray.cudenver.edu/~dgregg/php_examples/password.html">Online
+Demo</a>
+</span>
+
+
+
+</p>
+<div><code><font color="#000000"><font color="#0000bb">
+&lt;?php
+<br>
+$auth&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">false</font><font color="#007700">;&nbsp;</font><font color="#ff8000">//&nbsp;Assume&nbsp;user&nbsp;is&nbsp;not&nbsp;authenticated
+<br>
+</font><font color="#007700">if&nbsp;(isset(&nbsp;</font><font color="#0000bb">$_POST['username']&nbsp;</font><font color="#007700">)&nbsp;&amp;&amp;&nbsp;isset(</font><font color="#0000bb">$_POST['passwd']</font><font color="#007700">))&nbsp;{
+<br>
+&nbsp; </font></font></code>
+  <dfn>require (</dfn>'db.inc'<dfn>); </dfn><samp>// Contains mysql_connect &amp; mysql_select_db</samp><br>
+  <code><font color="#000000"><font color="#007700">
+<br>
+&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Formulate&nbsp;the&nbsp;query
+<br>
+&nbsp;&nbsp;</font><font color="#0000bb">$sql&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#dd0000">&quot;SELECT&nbsp;*&nbsp;FROM&nbsp;Users&nbsp;WHERE
+<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username&nbsp;=&nbsp;'&quot; . </font><font color="#0000bb">$_POST['username']</font></font><font color="#DD0000"> 
+  . &quot;'&quot;</font><font color="#000000"><font color="#007700">; <br>
+<br>
+&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;Execute&nbsp;the&nbsp;query&nbsp;and&nbsp;put&nbsp;results&nbsp;in&nbsp;$result
+<br>
+&nbsp;&nbsp;</font><font color="#0000bb">$result&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb"><a href="http://www.zend.com/manual/function.mysql-query.php" target="_blank">mysql_query</a></font><font color="#007700">(&nbsp;</font><font color="#0000bb">$sql&nbsp;</font><font color="#007700">) 
+  or&nbsp;die&nbsp;(</font><font color="#dd0000">'Unable&nbsp;to&nbsp;execute&nbsp;query.'</font><font color="#007700">);
+<br>
+<br>
+&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;see if any rows in&nbsp;$result.
+<br>
+  </font><font color="#007700">&nbsp;&nbsp;while&nbsp;(&nbsp;</font></font>$row 
+  = mysql_fetch_array($rs)<font color="#000000"><font color="#0000bb">&nbsp;</font><font color="#007700">)&nbsp;{
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff8000">//&nbsp;A&nbsp;matching&nbsp;row&nbsp;was&nbsp;found&nbsp;-&nbsp;the&nbsp;user&nbsp;exists<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Now check to see if encrypted 
+  password matches. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></font></code>
+<samp>// Use the first two characters of the username as a salt</samp><br>
+&nbsp;<code><font color="#ff8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>$salt</code>
+  = substr(<code><font color="#0000bb">$_POST['username']</font></code>, 0, 2);<br>
+  <code><font color="#ff8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></code>
+  <samp>// Create the encrypted password</samp><br>
+  <code><font color="#ff8000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></code>
+  $cryptpw = crypt(<code><font color="#000000"><font color="#0000bb">$_POST['passwd']</font></font></code>, $salt<code><font color="#007700">)</font></code>;<br>
+<code><font color="#000000"><font color="#007700">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  if( </font></font></code>$cryptpw == $row<code><font color="#000000">['password']<font color="#007700">)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#0000bb">&nbsp;&nbsp; $auth&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb">true</font><font color="#007700">;
+<br>
+&nbsp;&nbsp;}
+<br>
+&nbsp; if&nbsp;(&nbsp;!</font><font color="#0000bb">$auth&nbsp;</font><font color="#007700">)&nbsp;{
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">&nbsp; header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'WWW-Authenticate:&nbsp;Basic&nbsp;realm=&quot;Private&quot;'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#0000bb">&nbsp; header</font><font color="#007700">(&nbsp;</font><font color="#dd0000">'HTTP/1.0&nbsp;403&nbsp;Forbidden'&nbsp;</font><font color="#007700">);
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit;
+<br>
+&nbsp;
+}&nbsp;else&nbsp;{ </font></font></code>
+<br>
+&nbsp; <samp>&nbsp; // Create the encrypted password</samp><br>
+&nbsp;&nbsp;&nbsp; $cryptpw = crypt(<code><font color="#000000"><font color="#0000bb">$_POST['newpasswd']</font></font></code>, $salt);<br>
+<br>
+&nbsp; <samp>&nbsp; // Update the user row</samp><br>
+&nbsp; <code><font color="#0000bb">&nbsp; $sql</font></code>
+  
+  =&nbsp; <code><font color="#dd0000">&quot;UPDATE Users SET password = '</font><font color="#0000BB">$cryptpw</font><font color="#dd0000">' 
+  WHER</font><font color="#000000"><font color="#dd0000">E &quot; .<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&quot;username&nbsp;=&nbsp;'&quot; . </font><font color="#0000bb">$_POST['username']</font></font><font color="#DD0000"> 
+  . &quot;'&quot;</font><font color="#007700">; </font></code><br>
+<br>
+&nbsp; <samp>&nbsp; // Execute the UPDATE</samp><br>
+&nbsp; <code><font color="#000000"><font color="#0000bb">&nbsp; $rs&nbsp;</font><font color="#007700">=&nbsp;</font><font color="#0000bb"><a href="http://www.zend.com/manual/function.mysql-query.php" target="_blank">mysql_query</a></font><font color="#007700">(</font></font><font color="#0000bb">&nbsp;</font><font color="#000000"><font color="#0000bb">$sql&nbsp;</font><font color="#007700">)</font></font></code>&nbsp; or showerror(&nbsp; );<br>
+  <code><font color="#000000"><font color="#007700">&nbsp;&nbsp;&nbsp;echo&nbsp;</font></font><font color="#dd0000">&quot;Your 
+  password has been updated&quot;;</font></code><br>
+<code><font color="#007700">&nbsp; }<samp>&nbsp;// end else<br>
+  </samp>}<samp>&nbsp;// end if<br>
+  </samp>else </font></code><samp>// Redirect to the password UPDATE form</samp><code><font color="#007700"><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;</font></code>header(&quot;Location: password.html&quot;);<code><font color="#007700">&nbsp; </font>
+<br>
+?&gt;</code></div>
+<ul>
+  <li>Because <code><code>crypt( )</code></code> is one way, once a password is 
+  stored, there is no way to read back the original. This prevents desirable 
+  features such as reminding a user of his forgotten password. However, 
+  importantly, it prevents all but the most determined attempts to get access to 
+  the passwords. </li>
+</ul>
+<hr>
+<h1>MySQL encryption</h1>
+<ul>
+  <li>MySQL provides the encryption function <code>password( )</code> that can be used 
+instead of the <code>crypt( )</code> function; we introduced this function in 
+Chapter 3. The MySQL <code>password( )</code> function can be incorporated into the 
+SQL update or insert queries: </li>
+</ul>
+<div>UPDATE Users
+     SET password = password($password)
+     WHERE username = '$username';</div>
+<ul>
+  <li>Like <code>crypt( )</code>, the MySQL <code>password( )</code> function is a one-way 
+function, but it is simpler to use because it doesn't require a salt string. 
+However, when identical passwords are used, they are stored as identical 
+encrypted strings. </li>
+  <li>Another disadvantage to using the MySQL <code>password( )</code> 
+function is that the password is transmitted between the web server and the 
+MySQL DBMS in its unencrypted form. </li>
+  <li>It is usually recommend that <code>crypt( )</code> be used 
+rather than the MySQL <code>password( )</code> function when building web database 
+applications. </li>
+</ul>
+<hr>
+<h2><span>Encrypting other data in a database</span></h2>
+<ul>
+  <li>The PHP <code>crypt( )</code> and MySQL <code>password( )</code> functions can be 
+used only to store passwords, personal identification numbers (PINs), and so on. 
+  </li>
+  <li>These functions are one-way: once the original password is encrypted and 
+  stored, you can't get it back because there are no corresponding decode 
+  functions. </li>
+  <li>These functions can't be used to store sensitive information an 
+  application needs to retrieve. For example, when a customer submits an order, 
+  the customer's credit-card number needs to be decrypted and used by the 
+  application to complete the transaction. </li>
+  <li>To store sensitive information the application needs to use, you need two-way 
+functions that use a secret key to encrypt and decrypt the data. We discuss 
+  this later.</li>
+</ul>
+
+
+<hr>
+<h1>Session Management (again)</h1>
+<ul>
+  <li>PHP's session management library offers the key characteristics required 
+  of a session management library:
+  <ul>
+    <li>It stores session data on the server. Because the library uses different 
+    storage modules, you can keep the data in plain text files, shared memory, 
+    or databases. The exact location of data is not really important (as long 
+    the performance of the medium is sufficient). </li>
+    <li>It uses a cryptographically random session ID to identify a user. </li>
+    <li>It saves the session ID (and only the session ID) on the client side 
+    using cookies, GET/POST, or the script path. (The PHP library provides all 
+    of these methods; we show how to use them a little later.) </li>
+    <li>If the user disables cookies, the application can use other means of 
+    session propagation. </li>
+  </ul>
+  </li>
+  <li>When a user first enters the session-based application by making 
+a request to a page that starts a session, PHP generates a session ID and 
+creates a file that stores the session-related variables. PHP sets a cookie to 
+hold the session ID in the response the script generates. </li>
+  <li>The browser then records the cookie and includes it in subsequent 
+  requests. In the example below, the script <em>welcome.php</em> records session variables in the 
+session store, and a request to <em>next.php</em> then has access to those 
+variables because of the session ID.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images2/phpsession.gif" width="446" height="263"> </p>
+<hr>
+<h2><span>Functions for Accessing Sessions in PHP</span></h2>
+<dl>
+  <dt>
+  Boolean session_start( ) </dt>
+  <dd>Initializes a session by either creating a new session or using an 
+  identified one. Checks for the variable <code>$PHPSESSID</code> in the HTTP 
+  request. If a session identifier isn't included in the request, or an 
+  identified session isn't found, a new session is created. If a session ID is 
+  included in the request, and a session isn't found, a new session is created 
+  with the <code>PHPSESSID</code> encoded in the request. When an existing 
+  session is found, the session variables are read from the session store and 
+  initialized. Using PHP's default settings, a new session is created as a file 
+  in the <em>/tmp </em>directory. This function always returns <code>true</code>.
+  </dd>
+  <dt>
+  <emion" />string session_id(<em>[string id]) </em> </dt>
+  <dd>Can be used in two ways: to return the ID of an initialized session and to 
+  set the value of a session ID before a session is created. When used to return 
+  the session ID, the function must be called without arguments after a session 
+  has been initialized. When used to set the value of the session ID, the 
+  function must be called with the ID as the parameter before the session has 
+  been initialized.
+  </dd>
+  <dt>
+  <emion" />Boolean session_register(mixed <i>name</i><em> [, mixed ...])</em>
+  </dt>
+  <dd>Registers one or more variables in the session store. Each argument is the 
+  name of a variable, or an array of variable names, not the variable itself. 
+  Once a variable is registered, it becomes available to any script that 
+  identifies that session. This function calls the
+  <emion" />session_start( ) code internally if a session has not been 
+  initialized. The <em>session_unregister( )</em> function is called to remove a 
+  variable from the session. Returns <code>true</code> when the variables are 
+  successfully registered.
+  </dd>
+  <dt>
+  <emion" />Boolean session_is_registered(string <i>variable_name</i><em>)</em>
+  </dt>
+  <dd>Returns <code>true</code> if the named variable has been registered with 
+  the current session and <code>false</code> otherwise. Using this function to 
+  test if a variable is registered is a useful way to determine if a script has 
+  created a new session or initialized an existing one.
+  </dd>
+  <dt>
+  <emion" />session_unregister(string <i>variable_name</i><em>)</em> </dt>
+  <dd>Unregisters a variable with the initialized session. Like the
+  <emion" />session_register( ) function, the argument is the name of the 
+  variable, not the variable itself. Unlike the <em>session_register( )</em> 
+  function, the session needs to be initialized before calling this function. 
+  Once a variable has been removed from a session with this call, it is no 
+  longer available to other scripts that initialize the session. However, the 
+  variable is still available to the rest of the script that calls <em>
+  session_unregister( )</em>.
+  </dd>
+  <dt>
+  <emion" />session_unset( ) </dt>
+  <dd>Unsets the values of all session variables. This function doesn't 
+  unregister the actual session variables. A call to
+  <emion" />session_is_registered( ) still returns <code>true</code> for the 
+  session variables that have been unset.
+  </dd>
+  <dt>
+  <emion" />Boolean session_destroy( ) </dt>
+  <dd>Removes the session from the PHP session management. With PHP's default 
+  settings, a call to this function removes the session file from the <em>/tmp</em> 
+  directory. Returns <code>true</code> if the session is successfully destroyed 
+  and <code>false</code> otherwise.
+  </dd>
+</dl>
+<hr>
+<h2><span>Session Management Without Cookies</span></h2>
+<ul>
+  <li>A change that can be made to the default PHP session management is to encode 
+the <code>$PHPSESSID</code> value as an attribute in a <code>GET</code> or <code>
+POST</code> method request and avoid the need to set a cookie.</li>
+  <li>If users disable cookies when repeated requests are made, the session data 
+  is lost. Because a cookie isn't sent from the browser, the 
+variable <code>$PHPSESSID </code>is never set. </li>
+  <li>The other side effect is that 
+each time the page is requested, a session file is created in the <em>/tmp</em> 
+directory. Many users configure their browsers to not accept cookies, and 
+session-based applications won't work unless they are written to handle the 
+missing cookie.</li>
+  <li>The session identifier that would have been sent as a cookie can be transmitted in a <code>GET</code> or <code>POST</code> method 
+request. While the
+<emion" />session_start( ) function can use <code>$PHPSESSID</code> set by 
+either a <code>GET</code> or <code>POST</code> method request, however it is more 
+practical to use the <code>GET</code> variable. </li>
+</ul>
+<hr>
+<h3>Encoding the session ID as a GET variable</h3>
+<ul>
+  <li>Scripts that generate embedded links to pages that use session variables need 
+to include a <code>GET</code> attribute named <code>PHPSESSID</code> in the URL. 
+This can be done using the basic PHP string support and calls to
+<emion" />session_id( ). For example:</li>
+</ul>
+<pre><code>&lt;?php</code>
+<b><samp>  // Initialize the session
+</samp></b><code>  session_start(  );</code>
+<code>&nbsp;</code>
+<samp><b>  // Generate the embedded URL to link to
+  // a page that processes an order
+</b></samp><code>  $orderUrl = &quot;/order.php?PHPSESSID=&quot; . session_id(  );</code>
+<code>?&gt;</code>
+<code>&nbsp;</code>
+<code>&lt;a href=&quot;&lt;?=$orderUrl ?&gt;&quot;&gt;Create Order&lt;/a&gt;</code>
+</pre>
+<ul>
+  <li>To aid the creation of URLs that link to session-based scripts, PHP sets the 
+constant <code>SID</code> that contains the session ID in the form suitable to 
+use as a URL query string. If there is no session initialized, PHP sets the 
+value of <code>SID</code> to be a blank string. If a session is initialized, it 
+sets the <code>SID</code> to a string containing the session ID in the form:</li>
+</ul>
+<pre><code>PHPSESSID=be20081806199800da22e24081964000</code>
+</pre>
+<ul>
+  <li>By including the value of <code>SID</code> when URLs are constructed, the 
+hypertext links correctly identify the session. A link that points to a script 
+that expects a session ID can be encoded like this:</li>
+</ul>
+<pre><code>&lt;?php</code>
+<code>  // Initialize the session</code>
+<code>  session_start(  );</code>
+<code>?&gt;</code>
+<code>&nbsp;</code>
+<code>&lt;a href=&quot;/order.php?&lt;?=SID?&gt;&quot;&gt;Create Order&lt;/a&gt;</code>
+</pre>
+<ul>
+  <li>As an alternative to writing code to formulate the session ID into the URL, 
+PHP includes a URL <em>rewrite</em> feature that automatically modifies 
+reference URLs to include the session ID as a <code>GET</code> attribute. To 
+activate this feature, PHP needs to be configured with <code>- -enable-trans-id</code> 
+and then recompiled. Once URL rewrite is activated, PHP parses the HTML 
+generated by scripts and automatically alters the embedded URLs to include the
+<code>PHPSESSID</code> query string. The URL rewrite feature has the 
+disadvantage that extra processing is required to parse every generated page.</li>
+</ul>
+<hr>
+<h2><span>Garbage Collection</span></h2>
+<ul>
+  <li>While it is good practice to build applications that provide a way to end a 
+session--with a script that makes a call to
+<emion" />session_destroy( )--there is no guarantee that a user will log out by 
+requesting the appropriate PHP script. </li>
+  <li>PHP session management has a built-in 
+garbage collection mechanism that ensures unused session files are eventually 
+cleaned up. This is important for two reasons: it prevents the directory from 
+filling up with session files that can cause performance to degrade and, more 
+importantly, it reduces the risk of someone guessing session IDs and hijacking 
+an old unused session.</li>
+</ul>
+
+
+<hr>
+<h2><span>Complete Session Management/User Authentication Example</span></h2>
+<ul>
+  <li>The example code below requires a student to log in to access a vocabulary 
+  testing program.</li>
+  <li>Once in the program, the student is required to choose one or more 
+  vocabulary lists to study from and the number of words to look at at a time 
+  (fewer is easier).</li>
+  <li>The program scrambles the word &amp; definition pairs, then divides them into 
+  groups (each with the requested number of words).</li>
+  <li>The program presents the requested number of words to the user on 
+  subsequent pages until all of the words have been defined correctly.</li>
+  <li>The program uses sessions to store the arrays between page requests - so 
+  the next group of words/definitions is loaded with the nest page request.</li>
+  <li>The program uses JavaScript to check the answers.</li>
+  <li>The program uses an include file to connect to the database &amp; to check if 
+  the person is logged in.</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="http://ouray.cudenver.edu/~dgregg/php_examples/vocab/">Online
+Demo</a> <br>
+(you can use guest, guest1 to log in)</span></p>
+<p align="center">
+<img border="0" src="../images2/vocab.gif" width="650" height="391"></p>
+<ul>
+  <li>The include file is used to verify the user is logged in - if not they are 
+  redirected to a login page.&nbsp; It also contains the code to connect to the 
+  database used for this application.</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/vocab/db.inc">db.inc</a>&nbsp;
+</span>
+
+
+
+</p>
+<div><cite>&lt;?php</cite> <br>
+  &nbsp;session_start();<br>
+  &nbsp;if(!isset($_SESSION['auth']) || isset($_SESSION['auth'])==false)<br>
+  &nbsp;{<br>
+  &nbsp;&nbsp;
+  header(&quot;Location: index.html&quot;); <br>
+  &nbsp;&nbsp;
+  exit;<br>
+  &nbsp;}<br>
+  &nbsp;$conn = mysql_connect('localhost','username','password')<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  or die( '&lt;h2&gt;Could not connect to mysql&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+  <br>
+  &nbsp;mysql_select_db('database') or die('Could not select database&lt;br&gt;');<br>
+  <cite>?&gt;</cite></div>
+<ul>
+  <li>The password.php file is used to check the user has a valid username and 
+  password AND sets a session variable $_SESSION['auth'] indicating the user is 
+  authorized to view subsequent pages.</li>
+  <li>If the user is authorized the page redirects to index.php so the student 
+  can begin the exam.</li>
+  <li>If the user is not passing in the username &amp; password parameters they are 
+  redirected back to the login page.</li>
+  <li>If the login credentials are incorrect they are given a 403 error: Access 
+  Denied/Access Forbidden</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/vocab/password.php">password.php</a>&nbsp;
+</span>
+
+
+
+</p>
+<div><cite>&lt;?php</cite> <br>
+  <samp>&nbsp;// Assume user is not authenticated<br>
+  &nbsp;</samp>$auth = false;<br>
+  &nbsp;if (isset($_POST['username']) &amp;&amp; isset($_POST['passwd'])) <br>
+  &nbsp;{<br>
+  &nbsp;&nbsp;
+  $username= $_POST['username'];<br>
+  &nbsp;&nbsp;
+  $passwd = $_POST['passwd'];<br>
+  &nbsp;&nbsp;
+  session_register('auth');<br>
+  &nbsp;&nbsp;
+  $_SESSION['auth'] = true; <br>
+  &nbsp;&nbsp;
+  require ('db.inc'); <samp>// Contains mysql_connect &amp; mysql_select_db</samp><br>
+  <br>
+  <samp>&nbsp;&nbsp;
+  // Formulate the query <br>
+  &nbsp;&nbsp; </samp>$sql = &quot;SELECT * FROM Users WHERE username = '$username'&quot;; <br>
+  &nbsp;&nbsp;
+  echo $sql;<br>
+  <br>
+  <samp>&nbsp;&nbsp;
+  // Execute the query and put results in $result <br>
+  &nbsp;&nbsp; </samp>$rs = mysql_query( $sql ) or die ('Unable to execute query.'); <br>
+  <br>
+  <samp>&nbsp;&nbsp;
+  // see if any rows in $result. <br>
+  &nbsp;&nbsp; </samp>while ( $row = mysql_fetch_array($rs) ) { <br>
+  <samp>&nbsp;&nbsp;&nbsp;&nbsp;
+  // Check to see if encrypted password matches. <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  // Use the first two characters of the username as a salt</samp><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  $salt = substr($username, 0, 2);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  $cryptpw = crypt($passwd, $salt);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  echo $cryptpw . &quot; &quot; . $row['password'];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  if( $cryptpw == $row['password']) $auth = true;<br>
+  &nbsp;&nbsp;
+  } <br>
+  &nbsp;&nbsp;
+  $_SESSION['auth'] = $auth; <br>
+  <br>
+  &nbsp;&nbsp;
+  if (!$auth) { <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  header( 'WWW-Authenticate: Basic realm=&quot;Private&quot;' ); <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  header( 'HTTP/1.0 403 Forbidden' ); <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  exit;<br>
+  &nbsp;&nbsp;
+  } else { <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  header(&quot;Location: index.php&quot;); <br>
+  &nbsp;&nbsp;
+  } <samp>// end else</samp><br>
+  } <samp>// end if</samp><br>
+  else <br>
+  <samp>&nbsp;&nbsp;
+  //Redirect to the password UPDATE form</samp><br>
+  &nbsp;&nbsp;
+  header(&quot;Location: index.html&quot;); <br>
+  <cite>?&gt;</cite></div>
+<ul>
+  <li>The index.php file is just a form allowing the student to select the 
+  vocabulary list(s) to study and the number of words per page.&nbsp; It is a 
+  php file because it includes db.inc which is used to verify the student is 
+  logged in.</li>
+  <li>The test.php is called from index.php and does may things.</li>
+  <li>The first block of code retrieves the parameters and queries the database.</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/vocab/index.php">index.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">
+<a href="../php_examples/vocab/test.php">test.php</a>&nbsp;
+</span>
+
+
+
+</p>
+<div><cite>&lt;?php</cite><br>
+  require ('db.inc');<br>
+  $choices = array(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;I&quot;, &quot;J&quot;, &quot;K&quot;, &quot;L&quot;, 
+  &quot;M&quot;, &quot;N&quot;, &quot;O&quot;, &quot;P&quot;, &quot;Q&quot;, &quot;R&quot;, &quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;, &quot;AA&quot;, 
+  &quot;BB&quot;, &quot;CC&quot;, &quot;DD&quot;, &quot;EE&quot;, &quot;FF&quot;, &quot;GG&quot;, &quot;HH&quot;, &quot;II&quot;, &quot;JJ&quot;, &quot;KK&quot;, &quot;LL&quot;, &quot;MM&quot;, &quot;NN&quot;, 
+  &quot;OO&quot;, &quot;PP&quot;, &quot;QQ&quot;, &quot;RR&quot;, &quot;SS&quot;, &quot;TT&quot;, &quot;UU&quot;, &quot;VV&quot;, &quot;WW&quot;, &quot;XX&quot;, &quot;YY&quot;, &quot;ZZ&quot;);<br>
+  <br>
+  if(isset($_GET['list']))<br>
+  { <br>
+  // Make database connection<br>
+  $lists = $_GET['list'];<br>
+  $number = $_GET['number'];<br>
+  <br>
+  $list = explode( &quot;,&quot;, $lists);<br>
+  <br>
+  $qry = &quot;Select * from Words Where &quot;;<br>
+  $ii = 0;<br>
+  foreach( $list as $id)<br>
+  { if ($ii &gt; 0) $qry = $qry . &quot; or &quot;;<br>
+  $qry = $qry . &quot; ListID = $id &quot;; <br>
+  $ii++;<br>
+  }<br>
+  $qry = $qry . &quot; ;&quot;;<br>
+  <br>
+  $rs = mysql_query( $qry ) or die ('Unable to execute query.'); <br>
+  $page=0;<br>
+  <cite>?&gt;</cite><br>
+  </div>
+<ul>
+  <li>The second block of code in test.php loops through the results set to 
+  create arrays of words and definitions.</li>
+  <li>An array of $numbers representing indexes to access the array is then 
+  created and shuffled so that the words are not presented in the same order 
+  each time the user takes the test.</li>
+  <li>This array of numbers is then &quot;chunked&quot; using array_chunk() to divide the 
+  array into multiple arrays, each with the number of words to be shown on a 
+  single page.</li>
+  <li>Finally, the array of $nums (short arrays with indexes), words, 
+  definitions etc. are added as session variables.</li>
+</ul>
+<div>
+  <cite>&lt;?php</cite> <br>
+  $counter = 0; <br>
+  <br>
+  &nbsp;&nbsp;
+  while($row = mysql_fetch_array($rs)){<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  $word[$counter] = $row[&quot;Word&quot;];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  $def[$counter] = $row[&quot;Definition&quot;];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  $counter++;<br>
+  &nbsp;&nbsp;
+  }<br>
+  &nbsp;&nbsp;
+  $numbers = range(0, $counter-1);<br>
+  &nbsp;&nbsp;
+  shuffle($numbers);<br>
+  <br>
+  &nbsp;&nbsp;
+  $nums = array_chunk($numbers,$number,false);<br>
+  &nbsp;&nbsp;
+  session_register(&quot;nums&quot;, &quot;word&quot;, &quot;def&quot;, &quot;lists&quot;, &quot;atatime&quot;); <br>
+  &nbsp;&nbsp;
+  $_SESSION[&quot;nums&quot;] = $nums;<br>
+  &nbsp;&nbsp;
+  $_SESSION[&quot;word&quot;] = $word;<br>
+  &nbsp;&nbsp;
+  $_SESSION[&quot;def&quot;] = $def;<br>
+  &nbsp;&nbsp;
+  $_SESSION[&quot;lists&quot;] = $lists;<br>
+  &nbsp;&nbsp;
+  $_SESSION[&quot;atatime&quot;] = $number;<br>
+  }<samp> // end if isset </samp>
+  <cite><br>
+  ?></cite>
+  </div>
+<ul>
+  <li>The third block of code is called when the user is calling-up the second 
+  page of words to study.</li>
+  <li>It retreives the session parameters and gets the current page number to 
+  display.</li>
+</ul>
+<div>
+  <cite>&lt;?php</cite> <br>
+   else
+  {<br>
+  $nums = $_SESSION[&quot;nums&quot;];<br>
+  $word = $_SESSION[&quot;word&quot;];<br>
+  $def = $_SESSION[&quot;def&quot;];<br>
+  $page = $_GET['page'];<br>
+  $lists = $_SESSION[&quot;lists&quot;];<br>
+  <br>
+  } // end else<br>
+  <cite>?&gt;</cite><br>
+  </div>
+<ul>
+  <li>The 4th block of code checks to see if we have completed the test.&nbsp; 
+  If we have not then it displays the group of words for the current page 
+  number.</li>
+  <li>The <code>$nums</code> array contains the indexes of the words/definitions 
+  to be displayed.</li>
+  <li>This array is scrambled ad stored in a second array <code>$nnums</code> so 
+  the definitions are not displayed in the same order as the words.</li>
+</ul>
+<div>
+  <cite>&lt;?php</cite> <br>
+  if($page &lt; count($nums))<br>
+  {<br>
+  &nbsp;&nbsp;
+  $number = count($nums[$page]);<br>
+  &nbsp;&nbsp;
+  for($jj=0; $jj&lt;$number; $jj++)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $nnums[$jj] = $nums[$page][$jj];<br>
+  &nbsp;&nbsp;
+  shuffle($nnums);&nbsp; <samp>// scramble the indexes for the definitions</samp><br>
+  <br>
+  &nbsp;&nbsp;
+  $list = &quot;&quot;;<br>
+&nbsp;&nbsp; <samp>// create the option choices for each selection list<br>
+&nbsp; // the value is the index of the definition <br>
+&nbsp; // (which will match the index 
+  of the correct word).</samp><br>
+  &nbsp;&nbsp;
+  for($i=0; $i&lt;$number; $i++)&nbsp; <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  $list = $list . &quot;&lt;option value='&quot; . $nnums[$i] . &quot;'&gt;$choices[$i]&lt;/option&gt;\n&quot;;<br>
+  <cite>?&gt;</cite><br>
+  &nbsp;</div>
+<ul>
+  <li>The HTML below represents the page displayed to the users taking the test.</li>
+  <li>It presents the words, scrambled definitions and a selection box that 
+  allows to student to choose the definition they think matches the current 
+  word.</li>
+  <li>It also includes JavaScript code to keep track of the definitions the user 
+  has selected and to check the answers.</li>
+</ul>
+<div><p>&lt;HTML&gt;&lt;HEAD&gt;<br>
+  &lt;link rel=stylesheet href=&quot;styles/screen_check.css&quot;&gt;<br>
+  &lt;TITLE&gt;Lists: &lt;?php echo $lists ?&gt;&lt;/TITLE&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY&gt;<br>
+  &lt;div&gt;<br>
+  &nbsp;&nbsp;
+  &lt;H2 align=center&gt;&lt;span&gt;Studying Lists: <cite>&lt;?php</cite> echo $lists 
+  <cite><font color="#101C4C">?&gt;</font></cite>&lt;/span&gt;&lt;/H2&gt;<br>
+  &nbsp;&nbsp;
+  &lt;FORM NAME=frmTest value=&quot;&quot; &gt;<br>
+  &nbsp;&nbsp;
+  &lt;H4 ALIGN=CENTER&gt;Quiz&lt;/H4&gt; <br>
+  &nbsp;&nbsp;
+  &lt;TABLE WIDTH=&quot;80%&quot; BORDER=0 CELLSPACING=2 CELLPADDING=2 ALIGN=CENTER&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TR&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TH&gt;Choice&lt;/TH&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TH&gt;Word&lt;/TH&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TH colspan=2&gt;&amp;nbsp;&lt;/TH&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TH&gt;Definition&lt;/TH&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;/TR&gt;<br>
+  <cite>&lt;?php</cite><br>
+  &nbsp; <samp>// loop to display each word/definition for this page</samp><br>
+&nbsp;
+  for($i=0; $i&lt;$number; $i++)<br>
+  &nbsp;
+  { <br>
+  <cite>?&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TR&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;select onchange=&quot;update(this.form, this);&quot; name='<cite><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;?php</cite>&nbsp; echo $nums[$page][$i] 
+  .&quot;'&gt;\n$list&quot;
+  <cite>?&gt;</cite><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/select&gt;&lt;/TD&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TD&gt;&lt;?php echo $word[$nums[$page][$i]]; ?&gt;&lt;/TD&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TD&gt;&lt;input type=checkbox name=&quot;&lt;?php echo $choices[$i]; ?&gt;&quot;&gt;&lt;/TD&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TD&gt;&lt;?php echo $choices[$i]; ?&gt;&lt;/TD&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;TD&gt;&lt;?php echo $def[$nnums[$i]]; ?&gt;&lt;/TD&gt;&lt;/TR&gt;<br>
+  <cite>&lt;?php</cite> <br>
+  <br>
+  } <cite>?&gt;</cite><br>
+  &nbsp;&nbsp;
+  &lt;/TABLE&gt;&lt;/P&gt;<br>
+&nbsp;&nbsp; &lt;P align=center&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;INPUT TYPE=button VALUE=&quot;Chect Test&quot; NAME=&quot;CHK&quot; onclick=&quot;return 
+  check(this.form);&quot;&gt;<br>
+  &nbsp;&nbsp;
+  &lt;/P&gt;<br>
+  &nbsp;&nbsp;
+  &lt;/FORM&gt;<br>
+  &lt;/div&gt;<br>
+  &lt;script&gt;<br>
+  &nbsp;
+  var choices = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;, &quot;I&quot;, &quot;J&quot;, &quot;K&quot;, &quot;L&quot;, 
+  &quot;M&quot;, &quot;N&quot;, &quot;O&quot;, &quot;P&quot;, &quot;Q&quot;, &quot;R&quot;, &quot;S&quot;, &quot;T&quot;, &quot;U&quot;, &quot;V&quot;, &quot;W&quot;, &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;, &quot;AA&quot;, 
+  &quot;BB&quot;, &quot;CC&quot;, &quot;DD&quot;, &quot;EE&quot;, &quot;FF&quot;, &quot;GG&quot;, &quot;HH&quot;, &quot;II&quot;, &quot;JJ&quot;, &quot;KK&quot;, &quot;LL&quot;, &quot;MM&quot;, &quot;NN&quot;, 
+  &quot;OO&quot;, &quot;PP&quot;, &quot;QQ&quot;, &quot;RR&quot;, &quot;SS&quot;, &quot;TT&quot;, &quot;UU&quot;, &quot;VV&quot;, &quot;WW&quot;, &quot;XX&quot;, &quot;YY&quot;, &quot;ZZ&quot;];<br>
+  &nbsp;
+  function update(form, sel)<br>
+  &nbsp;
+  {<br>
+  &nbsp;&nbsp;&nbsp;
+  var index = sel.selectedIndex;<br>
+  &nbsp;&nbsp;&nbsp;
+  var cbox = eval(&quot;form.&quot; + choices[index]);<br>
+  &nbsp;&nbsp;&nbsp;
+  cbox.checked=true;<br>
+  &nbsp;
+  }<br>
+  <br>
+  &nbsp;
+  function check(form)<br>
+  &nbsp;
+  {<br>
+  &nbsp;&nbsp;&nbsp;
+  var j = <cite>&lt;?php</cite> echo $page;
+  <cite>?&gt;</cite>;<br>
+  &nbsp;&nbsp;&nbsp;
+  var num = <cite>&lt;?php</cite> echo $number;
+  <cite>?&gt;</cite>;<br>
+  &nbsp;&nbsp;&nbsp;
+  var missed = 0;<br>
+  &nbsp;&nbsp;&nbsp;
+  for (var i=0; i &lt; form.elements.length; i++) <br>
+  &nbsp;&nbsp;&nbsp;
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  if(!isNaN(form.elements[i].name))<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  var correct = form.elements[i].name;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  var answer = form.elements[i].options[form.elements[i].selectedIndex].value;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  if (correct != answer) missed++;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  }<br>
+  &nbsp;&nbsp;&nbsp;
+  }<br>
+  <br>
+  &nbsp;&nbsp;&nbsp;
+  if(missed &gt; 0) {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  for (var i=0; i &lt; num; i++)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  var cbox = eval(&quot;form.&quot; + choices[i]);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  cbox.checked=false;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  } <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  alert(&quot;You missed &quot; + missed + &quot;\nPlease try again&quot;);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  return false;<br>
+  &nbsp;&nbsp;&nbsp;
+  }<br>
+  &nbsp;&nbsp;&nbsp;
+  else<br>
+  &nbsp;&nbsp;&nbsp;
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  alert(&quot;Congratulations you got them all right!\nYou are ready for the next 
+  test!&quot;);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  window.location.href = 'test.php?page=' + (page+1);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  return true;<br>
+  &nbsp;&nbsp;&nbsp;
+  } <br>
+  &nbsp;&nbsp;
+  }<br>
+  &lt;/script&gt;<br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;</p>
+  </div><ul><li>This final block of code is called when the student has 
+  completed the test.&nbsp; The page variable is greater than the number of 
+  pages to display.</li><li>The page displays a message congratulating the user 
+  and a link so the user can begin taking the test again.</li><li>It also 
+  unregisters all of the session variables (except the auth variable that 
+  indicates the user is logged in) to free up space on the server.</li></ul><div>
+  <cite>&lt;?php</cite> } <br>
+  &nbsp;
+  else { <br>
+  <cite>?&gt;</cite><br>
+  &lt;HTML&gt;&lt;HEAD&gt;<br>
+  &lt;link rel=stylesheet href=&quot;styles/screen_check.css&quot;&gt;<br>
+  &lt;TITLE&gt;Lists: &lt;?php echo $lists ?&gt;&lt;/TITLE&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY&gt;<br>
+  &lt;div&gt;<br>
+  &nbsp;
+  &lt;H2 align=center&gt;&lt;span&gt;Studying Lists: 
+  <cite>&lt;?php</cite>&nbsp; echo $lists <cite>?&gt;</cite>&lt;/span&gt;&lt;/H2&gt;<br>
+  &nbsp;
+  &lt;H3 align=center&gt;Congratulations you have completed studying the words 
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;?php</cite>&nbsp; 
+  echo $_SESSION[&quot;atatime&quot;]; <cite>?&gt;</cite> at a time&lt;/H3&gt;<br>
+  &nbsp;&nbsp;
+  &lt;center&gt;&lt;table border=0 width=30%&gt;&lt;tr&gt;&lt;td&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;br&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;center&gt;&lt;img src=&quot;congrats.gif&quot;&gt;&lt;/center&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  &lt;br&gt;<br>
+  &nbsp;&nbsp;
+  &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/center&gt;<br>
+  &nbsp;&nbsp;
+  &lt;p align=center&gt;&lt;a href=index.php&gt;Click here to start again with more at a 
+  time&lt;/a&gt;&lt;/p&gt;<br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;<br>
+  <cite>&lt;?php</cite> <br>
+  &nbsp;&nbsp; <b><samp>// free up session resources</samp></b><br>
+  &nbsp;&nbsp;
+  session_unregister(&quot;nums&quot;);<br>
+  &nbsp;&nbsp;
+  session_unregister(&quot;word&quot;);<br>
+  &nbsp;&nbsp;
+  session_unregister(&quot;def&quot;);<br>
+  &nbsp;&nbsp;
+  session_unregister(&quot;lists&quot;);<br>
+  &nbsp;&nbsp;
+  session_unregister(&quot;atatime&quot;);<br>
+  } <cite>?&gt;</cite></div>
+<hr>
+<h1>Other Materials</h1>
+<ul>
+  <li>Session Fixation:
+  <a href="http://shiflett.org/articles/security-corner-feb2004">
+  http://shiflett.org/articles/security-corner-feb2004</a> </li>
+  <li>Session Handling Tutorial:
+  <a href="http://www.zend.com/zend/tut/session.php">
+  http://www.zend.com/zend/tut/session.php</a> </li>
+  <li>PHP Authentication Tutorial:
+  <a href="http://www.zend.com/zend/tut/authentication.php">
+  http://www.zend.com/zend/tut/authentication.php</a> </li>
+</ul>
+
+
+<hr>
+
+<script language="JavaScript">writeFooter(5);</script>
+
+
+</span>
+
+
+</body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Publishing and Maintaining YOur Web Site</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated April 15, 2006<BR>Dawn G. Gregg</I> ';
+  </script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<h1>Publishing &amp; Maintaining Your Web Site</h1>
+<h2><span>Choosing a Web Server</span></h2>
+<ul>
+  <li>Web servers allow you to serve content over the Internet using the Hyper
+    Text Markup Language (HTML).&nbsp;</li>
+  <li>The Web server accepts requests from browsers like Netscape and Internet
+    Explorer and then returns the appropriate HTML documents.&nbsp;</li>
+  <li>A number of server-side technologies can be used to increase the power of
+    the server beyond its ability to deliver standard HTML pages; these include
+    CGI scripts, server-side includes, SSL security, and Active Server Pages (ASPs).</li>
+  <li><a name="3"></a>The Web server you choose will depend on the amount of traffic you expect
+    your site to generate and on the &quot;extra&quot; server-side technologies
+    you need your server to support.</li>
+  <li>There are many, many Web servers to choose from:<font face="ARIAL, HELVETICA" size="-1">
+</font>
+    </li>
+</ul>
+<table border=0 width=100%>
+<tr><td>
+    <ul>
+      <li><a href="http://serverwatch.internet.com/webserver-alibaba.html">Alibaba</a>
+      <li><a href="http://serverwatch.internet.com/webserver-aolserver.html">AOLserver</a>
+      <li><a href="http://serverwatch.internet.com/webserver-apache.html">Apache</a>
+      <li><a href="http://serverwatch.internet.com/webserver-avenida.html">Avenida</a>
+      <li><a href="http://serverwatch.internet.com/webserver-gowebserver.html">Domino
+        Go Webserver</a>
+      <li><a href="http://serverwatch.internet.com/webserver-nsenterware.html">Enterprise
+        for NetWare</a>
+      <li><a href="http://serverwatch.internet.com/webserver-fcis.html">First
+        Class</a>
+      <li><a href="http://serverwatch.internet.com/webserver-goahead.html">GoAhead</a>
+      <li><a href="http://serverwatch.internet.com/webserver-iplanet.html">iPlanet
+        Web Server, Enterprise Edition</a>
+      <li><a href="http://serverwatch.internet.com/webserver-iserver.html">iServer</a>
+      <li><a href="http://serverwatch.internet.com/webserver-jigsaw.html">Jigsaw</a>
+      <li><a href="http://serverwatch.internet.com/webserver-domino.html">Lotus
+        Domino</a>
+      <li><a href="http://serverwatch.internet.com/webserver-msiis.html">Microsoft
+        IIS v4.0</a>
+      <li><a href="http://serverwatch.internet.com/webserver-msiisv5.html">Microsoft
+        IIS v5.0</a>
+      <li><a href="http://serverwatch.internet.com/webserver-mspws.html">Microsoft
+        PWS</a>
+      <li><a href="http://serverwatch.internet.com/webserver-siteserver.html">Microsoft
+        Site Server</a>
+      <li><a href="http://serverwatch.internet.com/webserver-ncsahttpd.html">NCSA
+        HTTPd</a>
+      <li><a href="http://serverwatch.internet.com/webserver-nsenter.html">Netscape
+        Enterprise</a>
+        <li><a href="http://serverwatch.internet.com/webserver-nsfastt.html">
+        Netscape FastTrack</a>
+        </ul></td><td><ul>
+      <li><a href="http://serverwatch.internet.com/webserver-omnihttpd.html">
+      OmniHTTPd Pro</a>
+      <li><a href="http://serverwatch.internet.com/webserver-rapidsite.html">RapidSite</a>
+      <li><a href="http://serverwatch.internet.com/webserver-roxen.html">Roxen
+        Challenger</a>
+      <li><a href="http://serverwatch.internet.com/webserver-roxen.html">Roxen
+        Web Server</a>
+      <li><a href="http://serverwatch.internet.com/webserver-sambar.html">Sambar
+        Server</a>
+      <li><a href="http://serverwatch.internet.com/webserver-savant.html">Savant</a>
+      <li><a href="http://serverwatch.internet.com/webserver-iserver.html">Servertec
+        Internet Server</a>
+      <li><a href="http://serverwatch.internet.com/webserver-simplewww.html">SimpleServer:WWW</a>
+      <li><a href="http://serverwatch.internet.com/webserver-stronghold.html">Stronghold</a>
+      <li><a href="http://serverwatch.internet.com/webserver-tcl.html">Tcl Web
+        Server</a>
+      <li><a href="http://serverwatch.internet.com/webserver-urllive.html">URL
+        Live!</a>
+      <li><a href="http://serverwatch.internet.com/webserver-vqserver.html">vqServer</a>
+      <li><a href="http://serverwatch.internet.com/webserver-webcommand.html">Web
+        Commander</a>
+      <li><a href="http://serverwatch.internet.com/webserver-websitep.html">WebSite
+        Pro</a>
+      <li><a href="http://serverwatch.internet.com/webserver-website.html">WebSite
+        Standard</a>
+      <li><a href="http://serverwatch.internet.com/webserver-webstar.html">WebSTAR</a>
+      <li><a href="http://serverwatch.internet.com/webserver-xitami.html">Xitami</a>
+      <li><a href="http://serverwatch.internet.com/webserver-zbserver.html">ZBServer</a>
+      <li><a href="http://serverwatch.internet.com/webserver-zeus.html">Zeus Web
+        Server</a></li>
+    </ul></td></tr></table>
+</font>
+<hr>
+<h2><span><a name="4"></a>Web Server Operating Systems</span></h2>
+<ul>
+  <li>There's so much emphasis placed on specific applications that we tend to
+    forget the engines that drive them: operating systems and platforms.&nbsp;</li>
+  <li> When
+    evaluating performance, you need to look at both the Web Server application
+    and the
+    operating system.&nbsp;
+    <ul>
+      <li> A fast Web server on a slow OS will still be slow.</li>
+    </ul>
+  </li>
+  <li><a name="5"></a>Some basic operating systems Web Servers are used with are:
+    <ul>
+      <li>Commercial Unix (Sun Solaris)</li>
+      <li>Open Source Unix (Open Linux, Open BSD)</li>
+      <li>Windows (NT and 2000)</li>
+      <li>Macintosh (Mac OS X)</li>
+      <li>Novell NetWare</li>
+    </ul>
+  </li>
+  <li>All of these operating systems got pretty good ratings from <a href="http://serverwatch.internet.com/platforms.html">Web
+    Server Compare</a></li>
+</ul>
+<hr>
+<h1><a name="6"></a>Choosing an Internet Service Provider</h1>
+<ul>
+  <li>If your company or organization is not large enough or does not want to
+    maintain their own Web server then you need to select an Internet Service
+    Provider (ISP) to host your Web site.</li>
+  <li>Even if you are maintaining your own Web Server you still will need to get
+    it connected to the Internet (so some of the ISP issues are relevant).</li>
+  <li>The following are some of the features you should look for when shopping
+    for an ISP:</li>
+</ul>
+<hr>
+<h2><span><a name="7"></a>Easy Connection</span></h2>
+<ul>
+  <li>Choose an ISP that allows you to easily connect to their
+    service.&nbsp;&nbsp;</li>
+  <li>For smaller sites you will want to be able to connect using a local phone
+    call.&nbsp;&nbsp;
+    <ul>
+      <li>The provider should have enough Points of Presence (POPs) to make
+        dialing easy.</li>
+      <li>You should never get a busy signal when you dial your ISP - if you do
+        change ISPs.</li>
+      <li>Try to match the size of the ISP to the size of the company.&nbsp; A
+        local company does not need a national ISP.</li>
+    </ul>
+  </li>
+  <li><a name="8"></a>For larger sites you may need a faster connection to the internet or one
+    that supports more users.&nbsp; You have a few options - each depends on
+    local availablitiy:
+    <ul>
+      <li><font color="#0000FF"><b>ISDN</b></font> stands for Integrated Services Digital Network.&nbsp;
+        <ul>
+          <li>The top speed of an ISDN line is 128k/s in both directions.&nbsp;</li>
+          <li>ISDN is a dial-up service like traditional modems.&nbsp;</li>
+        </ul>
+      </li>
+      <li><font color="#0000FF"><b>Cable modems</b></font> are devices that gives internet connectivity through a
+        cable television connection.&nbsp;
+        <ul>
+          <li>A cable modem can provide connection speeds of anywhere from
+            500K/second to 20+Mb/second.&nbsp;</li>
+          <li>A cable modem provides &quot;always on&quot; service.&nbsp;&nbsp;</li>
+          <li>A single cable modem can also be shared (via a network server)
+            among multiple computers, providing simultaneous Internet access for
+            a small network.</li>
+          <li><a name="9"></a>Cable is a shared network, when too many users on one line try to
+            share the same cable, performance can suffer dramatically.&nbsp;</li>
+          <li>Cable customers are forbidden to telecommute, host web sites, use
+            video teleconferencing and many other bandwidth intensive
+            applications.&nbsp;</li>
+          <li>There are also certain security risks which can make users more
+            vulnerable to data interception, unauthorized monitoring and hacking
+            from other users along the same cable network.</li>
+        </ul>
+      </li>
+      <li><font color="#0000FF"><b><a name="10"></a>DSL</b></font>, or Digital Subscriber Line, is another option for faster internet
+        connections.&nbsp;
+        <ul>
+          <li>Commonly, the affordable DSL solutions for go up to 2-3 Mb/second
+            at the most.</li>
+          <li>DSL provides &quot;always on&quot; service.</li>
+          <li>DSL provides a dedicated line to each subscriber, making it more
+            appropriate for businesses than cable modems.</li>
+          <li>There are rarely restrictions on DSL customers using bandwidth
+            intensive applications.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="11"></a>Accessible Technical Support</span></h2>
+<ul>
+  <li>Technical support is an absolute necessity! Make sure your ISP has
+    competent, accessible customer service.</li>
+  <li>Call potential ISPs and talk with someone in customer service.&nbsp;&nbsp;
+    <ul>
+      <li>Tell them what you hope to accomplish (such as set-up a Web site, run
+        ASP etc.) and how experienced you are and see how helpful they are.</li>
+      <li>Time how long they keep you on hold when you are waiting to talk to
+        customer service.</li>
+      <li>Local ISPs may not have a large staff but they also have fewer
+        subscribers - National ISPs have so much volume they may keep you
+        waiting an unacceptable length of time.</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="12"></a>Additional E-mail Addresses</span></h2>
+<ul>
+  <li>All access accounts come with at least one email address.&nbsp; If you are
+    part of a group you may want additional addresses for your organization.</li>
+</ul>
+<hr>
+<h2><span>&nbsp;Personal vs. Commercial Accounts</span></h2>
+<ul>
+  <li>Personal ISP accounts generally are less expensive than a business
+    account.&nbsp; You have less disk space, fewer features and a more complex
+    URL.&nbsp;&nbsp;
+    <ul>
+      <li>Businesses generally will want more services than those provided with
+        personal ISP accounts when establishing a commercial Web site.</li>
+    </ul>
+  </li>
+  <li>Commercial ISP accounts usually provide extra services including:
+    <ul>
+      <li><b><font color="#0000FF">SQL Database Support</font>:</b> There are several products (e.g. ASP or
+        Cold Fusion) that allow databases to be connected to the Web.&nbsp; A
+        commercial ISP account should support/allow some type of SQL Database
+        connectivity.</li>
+      <li><b><font color="#0000FF">Secure Socket Layer (SSL) Support</font>:</b>&nbsp; SSL is an Internet
+        communications protocol that allows encrypted transmission of data
+        between the user and the server.&nbsp; SSL is necessary if you are going
+        to take orders via the Web or transmit other types of sensitive data.</li>
+      <li><b><font color="#0000FF">Shopping Cart Hosting</font></b>: Some ISPs/external companies will also
+        host your shopping cart. This includes taking secure orders, maintaining
+        credit card information in a secure database, submitting payments to
+        the&nbsp; credit card companies etc.</li>
+      <li><b><font color="#0000FF">Multimedia Capabilities</font></b>: Some ISPs will support the streaming
+        of multimedia.&nbsp; Streaming is a server based technology that
+        transmits audio or video in a continuous stream&nbsp; so it can be
+        played while it is still downloading.&nbsp;</li>
+      <li><b><font color="#0000FF">CGI Script Capabilities</font></b>: You will want your ISP to allow you to
+        use CGI scripts on you Web site.&nbsp; You will need to find out if you
+        will be allowed to create your own CGIs, whether your CGIs can be put in
+        your own Web spece or if they will need to go in the cgi-bin directory,
+        or if the ISP has generic CGIs that you can use (e.g. to mail forms).</li>
+      <li><b><font color="#0000FF">Activity Reporting</font></b>: Most Web servers can track how often users
+        visit your site, which pages are requested most often, and how your Web
+        site traffic varies from month to month.&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+
+
+<hr>
+
+
+<h1>Buying A Domain Name</h1>
+<ul>
+  <li>When establishing a commercial Web site you will usually want to get a
+    domain name for your site (mycompany.com).</li>
+  <li>If you want to&nbsp; see if a domain name is available , or to register
+    your own domain name, visit <a href="http://www.networksolutions.com">Network
+    Solutions</a>.</li>
+  <li>For an additional fee your ISP can register your domain name for
+    you.&nbsp; Registration requires a valid name and the servers primary and
+    secondary IP addresses.</li>
+  <li>Domain names need to be renewed every two to five years.</li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(0);</script>
+
+<h1>Web Site Testing</h1>
+<h2><span>Why Test?</span></h2>
+<ul>
+  <li>Whenever someone visits your Web site, they judge your company.</li>
+  <li>A site that is fast, informative and easy to use adds real value to your 
+  brand. What's more, it will generate repeat visits, new business, valuable 
+  referrals and positive PR.</li>
+  <li>But you don't know who the visitors will be. They won't always be using 
+  the most popular or most recent computer systems, browsers or plug-ins, for 
+  example. Some combinations may cause problems. Your visitors may be 
+  experienced Web surfers, or they may not. Some will connect through high-speed 
+  networks, perhaps with firewalls and content filters, and others will have 
+  slow dial up connections. 8% of your male visitors will be color blind. </li>
+  <li>Your aim should be to cater to everyone. So how can you make sure your 
+  site really works?</li>
+  <li>You can't rely on your customers to take the time to report any hidden 
+  problems with your site - they'll simply click and go.</li>
+  <li>You need a more scientific approach. </li>
+</ul>
+<hr>
+<h2><span>User Experience Testing</span></h2>
+<ul>
+  <li>People have short attention spans and the Web gives them plenty of choice.</li>
+  <li>You should test that your site can be used by your untrained customers 
+  without assistance.
+  </li>
+  <li>Ensure that functionality has appropriate depth, pages operate as expected 
+  and help is available when required.<br>
+  </li>
+  </ul>
+<h4>
+USER EXPERIENCE TESTS:</h4>
+</p>
+  <blockquote>
+<table border="1" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td>&nbsp;Use of domain name/URLs </td>
+    <td>&nbsp;Suitability of home page </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Accessibility of application </td>
+    <td>&nbsp;Legal issues </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Unexpected application behavior </td>
+    <td>&nbsp;Customer confidence </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Visual consistency </td>
+    <td>&nbsp;Payment mechanisms </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Scope of help </td>
+    <td>&nbsp;Printing of pages </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Legibility of information pages </td>
+    <td>&nbsp;Advertisements </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Accessibility of real world information </td>
+    <td>&nbsp;Optimization of graphics </td>
+  </tr>
+  <tr>
+    <td>&nbsp;Browser independence </td>
+    <td></td>
+  </tr>
+</table>
+  </blockquote>
+<h4>User Testing</h4>
+<ul>
+  <li><font color="#0000FF">Test with a variety of users</font> from your target audience to get their
+    feedback on your Web site.&nbsp; Get subjects with:
+    <ul>
+      <li>A variety of backgrounds</li>
+      <li>Different computer skill levels</li>
+      <li>Different familiarity with the material / products</li>
+      <li>Avoid friends as testers because they may not be objective</li>
+    </ul>
+  </li>
+  <li>If possible, watch users interact with your site to see where they might
+    have difficulty navigating / using your site.</li>
+  <li><font color="#0000FF">Formalize your testing</font> by creating replicable methods of testing your
+    site.&nbsp; This lets you compare results across users and assess
+    improvements as you refine the site.
+    <ul>
+      <li>Prepare a series of questions to ask users after viewing the site</li>
+      <li>Give them a specific task to complete or have them find a specific
+        piece of information then have them rate the ease or complexity of
+        completing the task.&nbsp; You can also time how long it takes them to
+        complete the task.</li>
+    </ul>
+  </li>
+  <li><font color="#0000FF">Develop a Feedback form</font> that users can fill out after testing the site (it
+    can be online too).&nbsp; Include a set of criteria and let them rate the
+    site on a progressive scale (1-5).&nbsp; Questions could include:
+    <ul>
+      <li>Did you find the information you needed?</li>
+      <li>Was it easy or difficult to access the information you needed?</li>
+      <li>Did you find the Web site visually attractive?</li>
+      <li>Did you find the content easy to read?</li>
+      <li>Did you find the Web site easy to navigate?</li>
+      <li>Did you think the information was presented correctly?</li>
+      <li>Did the information have enough depth?</li>
+      <li>What area of the Web site did you like best? Why?</li>
+      <li>What area of the Web site did you like least? Why?</li>
+      <li>Would you recommend the Web site to others?</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Content Testing</span></h2>
+<ul>
+  <li>Maintain the quality of your content - not only do links go bad, other
+    information can become obsolete or incorrect.</li>
+  <li>Periodically check you content to make sure it still makes
+    sense.&nbsp;&nbsp;
+    <ul>
+      <li>Are your prices competitive?</li>
+      <li>Are you referring to old versions or obsolete products?</li>
+      <li>Is your corporate information up to date?
+        </li>
+      <li>Are you using an old/obsolete technology to provide the information?</li>
+      <li>Are your images or color scheme dated?</li>
+    </ul>
+  </li>
+  <li>Poorly maintained content can degrade your organizations image.&nbsp;
+    Costing you visitors, customers, and investors.&nbsp;</li>
+</ul>
+<hr>
+
+<h2><span>Usability Testing</span></h2>
+  <ul>
+    <li>Usability testing is done to ensure you do not lose customers because 
+    they find your site hard to use. </li>
+    <li>Usability can be thought of as a measure of how simple it is for the visitor 
+to complete the sequence of steps necessary to accomplish any given task. The 
+smaller the number of steps and the more intuitive each step is, the more usable 
+that function of the web site is. </li>
+    <li>Usability of a Web Site is determined by user satisfaction and ease of 
+navigation. A user shouldn't have to remember the sites organization or 
+functionalities. The goal is user effectiveness and efficiency with a minimal 
+likelihood of errors while performing the tasks the site has been designed for; 
+finding information needed or completing an e-commerce transaction. </li>
+    <li>Usability is very much like quality: you perceive it mainly when it is missing. 
+    </li>
+    <li>Categorically, sites score poorly in: 
+    <ul>
+      <li>consistency of presentation and controls across the site </li>
+      <li>natural organization of information: clear structure, systematic identification, 
+clear and meaningful labels <br>
+contextual navigation, in terms of how much information is given for providing a 
+context to the user: where is s/he? where can s/he go? how can s/he go back? 
+      </li>
+      <li>efficient navigation, in terms of time and effort the user needs to move around 
+the site <br>
+adequacy of feedback in displaying the effects of some command, in answering to 
+requests <br>
+search ability, or how effectively the site content can be sought in search 
+engines </li>
+    </ul>
+    </li>
+  </ul>
+<hr>
+<h2><span>Accessibility</span></h2>
+<ul>
+  <li>Making your web pages accessible is not only a good idea, but it's good for 
+  business.</li>
+  <li><a href="http://www.adaaccessnow.org/home.htm">Access Now, Inc.</a> and 
+  Robert Gumson have
+  <a href="http://www.law.com/servlet/ContentServer?pagename=OpenMarket/Xcelerate/View&c=LawArticle&cid=1032128683422&t=LawArticleTech">
+  sued Southwest and American airlines</a> because
+  <a href="http://www.southwest.com/">Southwest's site</a> is allegedly 
+  &quot;inaccessible&quot;. This isn't the first time something like this happened, 
+  either. In 1999, the <a href="http://www.nfb.org/">National Federation of the 
+  Blind</a> filed a <a href="http://www.nfb.org/bm/bm99/bm991201.htm">lawsuit 
+  against AOL</a> because AOL's internet services were inaccessible. Over the 
+  past two years, Access Now has also sued <a href="http://www.bn.com/">Barnes &amp; 
+  Noble</a> and <a href="http://www.claires.com/index.asp">claire's</a> because 
+  their sites were inaccessible.</li>
+  <li>The first thing to do to improve Web site accessibility is to use the
+  <strong style="font-weight: 400">ALT attribute for images that convey 
+  information.</strong> While ALT attributes aren't necessary for spacer images 
+  or purely ornamental images, ALT attributes are <em>essential</em> for
+  <strong style="font-weight: 400"><em>all</em></strong> images that convey 
+  content. The text in an ALT attributes describes to users of non-graphical 
+  browsers (including screen readers) what information is displayed by the 
+  image.</li>
+  <li>For accessibility purposes, people who create forms may need to add extra 
+  markup to help screen readers translate a visually-based association of a text 
+  label (like a question or description) and its form input field into a literal 
+  association of these elements.
+  <ul>
+    <li>For example:Enclose the question or description associated with a form 
+    field in a &lt;label for=&quot;&quot;&gt; tag. Then, add an ID attribute to the input field 
+    and make both the ID and FOR equal to the same value.</li>
+  </ul>
+  <p><code>&lt;label for=&quot;firstName&quot;&gt;First Name&lt;/label&gt;<br>
+  &lt;input type=&quot;text&quot; name=&quot;fName&quot; id=&quot;firstName&quot; size=&quot;10&quot; maxlength=&quot;20&quot; 
+  value=&quot;foo&quot;&gt; </code>
+  <ul>
+    <li>If the form elements are laid out correctly on a page by using tables or 
+    CSS, adding that extra markup isn't as important. What's important is that 
+    the users know what the question or description is for a form's field 
+    immediately before they're prompted to enter a response. </li>
+  </ul>
+  </li>
+  <li>Obeying other basic Usability rules also helps improve Web site 
+  Accessibility</li>
+</ul>
+<hr>
+<h2><span>Functionality Testing</span></h2>
+<ul>
+  <li>Functionality testing services to ensure that 
+your web site or web application functions as it is designed to. </li>
+  <li>Functionality testing ensures that the primary features of your site 
+  function properly</li>
+  <li>Simple functional tests include things like link 
+verification. </li>
+  <li>More in-depth functional tests include things like validation of 
+  databases, forms, and other interactive features. </li>
+</ul>
+<h4>FUNCTIONALITY TESTS:</h4>
+  <blockquote>
+<table cellSpacing="0" cellPadding="3" border="1" style="border-collapse: collapse" bordercolor="#111111" height="174">
+  <tr vAlign="top" align="left">
+    <td>Link testing</td>
+    <td>Site navigation system</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Downloadable content</td>
+    <td>Dialogue/session errors</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Forced Error Condition Testing</td>
+    <td>Accuracy of arithmetic</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Mailing address capture</td>
+    <td>Site search engine</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Access to user data</td>
+    <td>Sale/shipment of goods</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>E-mails and contact forms</td>
+    <td>Suitability of page titles and bookmarks</td>
+  </tr>
+</table>
+  </blockquote>
+<h4>Link / Image Testing</h4>
+<ul>
+  <li>Make sure all links (including those to external cascading style sheet or JavaScript
+    files) are fully functional.&nbsp;&nbsp;</li>
+  <li>Test your links immediately after you upload and regularly thereafter
+    (monthly?)</li>
+  <li>There are some Web robots, spiders, snakes or crawlers that will search
+    you Web site to make sure all your links are valid (they do not check to see
+    if the content has changed).&nbsp;&nbsp;</li>
+</ul>
+  <hr>
+<h2><span>Compatibility Testing</span></h2>
+<ul>
+  <li>With all of the different browsers and operating systems on the market today, it 
+is crucial to verify that your web site or web application functions properly 
+across a wide range of platforms. </li>
+  <li>By testing your web application on different 
+browsers and operating systems, you can ensure that certain coding such as Java 
+Applets, Active X Controls, JavaScript, CSS, and HTML function properly across 
+multiple configurations.</li>
+</ul>
+<ul>
+  <li>Test in as many different environments as possible, including:</li>
+  <li><b><font color="#0000FF">Multiple browsers and versions</font></b>:&nbsp; 
+  Don't just test the current version of Internet Explorer and Navigator, test 
+  older versions too.</li>
+  <li><b><font color="#0000FF">Multiple Operating Systems</font></b>: Test on 
+  PCs, Macintosh, and Unix Systems.</li>
+  <li><b><font color="#0000FF">Connection Speeds</font></b>: Test for a variety 
+  of connection speeds. Got to a friends house, library or Internet cafe and 
+  test from there.&nbsp; According to <a href="http://www.wirednews.com">Wired 
+  news</a>, 33% of Web users will leave a Web site if it takes longer than 8 
+  seconds to load.</li>
+  <li><b><font color="#0000FF">Display Types</font></b>: Test using different 
+  screen sizes, screen resolutions and color depths to make sure your 
+  site/colors display well at each setting.</li>
+  <li><b><font color="#0000FF">Plugins</font></b>: You need to test any Plugins 
+  used in all environments.&nbsp; Including:<ul>
+    <li>Checking the use of various browser plug-ins </li>
+    <li>Checking the absence of various browser plug-ins </li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>Performance Testing</span></h2>
+<ul>
+  <li>FACT: 46% of 
+users have been driven to alternative sites because their preferred site was 
+unavailable.</li>
+  <li>The results of tests conducted by a leading provider of Web performance 
+solutions showed that 98% of Web sites have a critical problem with scalability.</li>
+  <li>Sites  tested for performance are able to cope with on average only 15% of 
+  their expected capacity.</li>
+  <li>Performance testing determines:<ul>
+  <li>How many simultaneous users the web site can support </li>
+  <li>How many simultaneous transactions the web site can support </li>
+  <li>Page load times under various traffic conditions </li>
+  <li>Where bottlenecks are occurring </li>
+</ul>
+  </li>
+</ul>
+<h4>PERFORMANCE TESTS:</h4>
+<blockquote>
+<table cellSpacing="0" cellPadding="3" border="1" style="border-collapse: collapse" bordercolor="#111111">
+  <tr vAlign="top" align="left">
+    <td>Page download times</td>
+    <td>Ramp test</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Transaction performance</td>
+    <td>24 x 7 monitoring &amp; alerts</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Spike test</td>
+    <td></td>
+  </tr>
+</table></blockquote>
+<hr>
+<h2><span>Security Testing</span></h2>
+<ul>
+  <li>There has been more press coverage of security than any other 
+Internet-related topic.</li>
+  <li>It continues to be the number one priority for Web users. Security breaches 
+are reported widely and cause measurable damage to Web businesses.</li>
+  <li>Web systems should be tested to determine if they are secure.</li>
+  <li>Web applications should be examined to determine if there are defects that enable personal details or payment details to become unsafe, as 
+well as issues such as virus protection and overcoming problems inherent in the 
+use of shared computers.</li>
+</ul>
+<h4>SYSTEM SECURITY TESTS:</h4>
+<blockquote>
+<table cellSpacing="0" cellPadding="3" border="1" style="border-collapse: collapse" bordercolor="#111111">
+  <tr vAlign="top" align="left">
+    <td>Firewall</td>
+    <td>The &quot;DMZ&quot;</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Web, Email, FTP servers</td>
+    <td>DNS, proxy server</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Routers</td>
+    <td>&nbsp;</td>
+  </tr>
+</table></blockquote>
+<h4>APPLICATION SECURITY TESTS:</h4>
+<blockquote>
+  <table cellSpacing="0" cellPadding="3" border="1" style="border-collapse: collapse" bordercolor="#111111">
+  <tr vAlign="top" align="left">
+    <td>Password handling</td>
+    <td>Payment details, display/encryption</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Impact of browser configuration</td>
+    <td>Vulnerabilities in bookmarks</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Script execution</td>
+    <td>Active components</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Accessibility of Web server directories</td>
+    <td>Vulnerabilities of shared computers</td>
+  </tr>
+  <tr vAlign="top" align="left">
+    <td>Response to content filtering</td>
+    <td>&nbsp;</td>
+  </tr>
+</table></blockquote>
+<hr>
+<h2><span>Wireless Testing</span></h2>
+<ul>
+  <li>As wireless devices become more common in the marketplace, the need to ensure 
+the functionality of applications across several wireless devices is essential 
+for market penetration. </li>
+  <li>Web sites should be tested on several 
+wireless devices including cell phones, Palm OS-based products and Pocket PCs. 
+  </li>
+  <li>Functionality, compatibility, and stress and load testing needs to be done 
+  for 
+wireless applications.</li>
+</ul>
+
+<hr><script language="JavaScript">writeFooter(1);</script>
+
+<h1><span>Web Site Testing Tools</span></h1>
+  <h2><span>Optimizing Your Web Pages</span></h2>
+  <ul>
+    <li>If your web pages are optimized, they'll be easier to maintain and, most 
+    importantly, they'll load faster. Remember, nobody ever complained that a 
+    site loaded too quickly.</li>
+  </ul>
+  <p>Graphics should be optimized to save bandwidth and reduce download time.</p>
+  <ul>
+    <li>Just because Jesus miraculously turned water into wine doesn't mean he 
+    can miraculously turn your 1280- x 1024-pixel image whose file size is 1.8Mb 
+    into an image whose file size is only 74Kb just because you changed the 
+    WIDTH= and HEIGHT= attributes to WIDTH=&quot;420&quot; and HEIGHT=&quot;336&quot;. </li>
+    <li>
+  <a href="http://www.fookes.com/ezthumbs/?webpagesthatsuck">Easy Thumbnails</a> 
+    Can be used to reduce the size of the picture to the size specified in the 
+    IMG tag's attributes. You can reduced the 1.8Mb picture down to 74Kb just by 
+    making a &quot;thumbnail.&quot;</li>
+    <li> <a href="http://www.irfanview.com/">
+    IrfanView</a> IrfanView is an extremely valuable graphics tool. It allows 
+    you to size the imiga nad save it as a &quot;small&quot; file - further reducing your 
+    image size.</li>
+    <li><a href="http://www.fixingyourwebsite.com/drhtml.html">Dr. HTML</a> 
+    offers a free (five-page per day) analysis of your web page. Once you find 
+    the mistakes, it's up to you to fix them.</li>
+    <li><a href="http://www.websiteoptimization.com/services/analyze/">Web Page 
+    Analyzer</a> allows you to enter a URL to calculate page size, composition, 
+    and download time. The script calculates the size of individual elements and 
+    finds the total for each type of web page component. Based on these page 
+    characteristics the script then offers advice on how to improve page display 
+    time. The script incorporates best practices from HCI research into its 
+    recommendations.&quot;</li>
+    <li><a href="http://www.iconico.com/caliper/">Screen Calipers</a> According 
+    to the site: &quot;The Screen Calipers are a unique on-screen measurement tool, 
+    similar to a screen ruler. They resemble real life calipers in both form and 
+    function.&quot; They are useful when you want to see how a page looks in certain 
+    size windows.</li>
+  </ul>
+  <hr>
+  <h2><span>Testing and Validating Your Web Pages</span></h2>
+  <ul>
+    <li>If your pages aren't validly constructed, they may not display properly. 
+  Unfortunately, just because they validate doesn't mean they will look good in 
+  different web browsers. Here are tools to test the appearance and validate the 
+  code.</li>
+    <li><a href="http://www.htmlvalidator.com/lite/">CSE HTML Validator Lite</a> 
+  They bill it as &quot;...the most powerful, easy to use, and user configurable 
+  HTML, XHTML, CSS, link, spelling, and accessibility checker available for 
+  Microsoft Windows.&quot;&nbsp; It's free, but it's fairly limited. If you're a 
+  serious designer, you should at least get the standard version (at $69).</li>
+    <li><a href="http://www.browsercam.com/">BrowserCam</a> It's not free and it's 
+  only cheap if you use it for one month to check out your site (if it takes 
+  longer than that...).</li>
+    <li><a href="http://www.delorie.com/web/lynxview.html">LynxViewer</a> is a 
+    service that allows web authors to see what their pages will look like (sort 
+    of) when viewed with <a href="http://lynx.browser.org/">Lynx</a>, a 
+    text-mode web browser.</li>
+</ul>
+  <hr>
+  <h2><span>Making Your Web Pages Accessible</span></h2>
+  <ul>
+    <li>Making your web pages accessible is not only a good idea, but it's good for 
+  business.</li>
+    <li><a href="http://aprompt.snow.utoronto.ca/">A-Prompt</a> &quot;A-Prompt 
+  (Accessibility Prompt) is a software tool designed to improve the usability of 
+  HTML documents by evaluating Web pages for accessibility barriers and then 
+  providing developers with a fast and easy way to make the necessary repairs.&quot;</li>
+    <li><a href="http://www.cynthiasays.com/">Cynthia Says</a> &quot;Cynthia is a web 
+  content accessibility validation solution, it is designed to identify errors 
+  in design related to Section 508 standards and the WCAG guidelines. The main 
+  purpose of this portal is to educate web site developers in the development 
+  Web Based content that is accessible to all.&quot;</li>
+    <li><a href="http://www.wave.webaim.org/index.jsp">The Wave</a> Another 
+  excellent tool to check accessibility.</li>
+</ul>
+  <hr>
+
+
+<h2><span>Checklists</span></h2>
+<p>For more information on what to look for when testing a Web site see the: </p>
+<ul>
+  <li><a href="WebSiteTestingChecklist.pdf">Web Site Testing Checklist</a> 
+  prepared by the New Jersey Quality Assurance Association. </li>
+  <li><a href="Webcklst.pdf">Web Testing Checklist</a> prepared by the Chicago 
+  Quality Assurance Association</li>
+  <li>The <a href="website.pdf">WebSite Quality Challenge</a> describes the what 
+  and why of testing prepared by Software Research, Inc.</li>
+</ul>
+<hr><script language="JavaScript">writeFooter(2);</script>
+
+
+<h1>Attracting Notice to Your Web Site&nbsp;</h1>
+<ul>
+  <li>With millions of pages on the Web it can be difficult to get your Web site
+    noticed.</li>
+  <li>Know your target audience and publicize your URL as much as possible where
+    your target audience is likely to see it.&nbsp;&nbsp;&nbsp;</li>
+  <li>Include your URL as much as possible in other mediums: business cards,
+    letterheads, catalogs, mailings, advertisements&nbsp; . . .</li>
+  <li>Give users a reason to visit your Web site by giving them something they
+    can not get in other mediums (e.g. up-to-the-minute pricing or technical
+    information).</li>
+</ul>
+<hr>
+<h2><span>Search Engine Placement</span></h2>
+  <ul>
+    <li>
+  <p>If Google can't find you, then you don't exist.</p>
+    </li>
+    <li>You can lose customers before they even get to your site.</li>
+    <li>It is now widely accepted that if you are not listed in the first 3 pages of 
+results from a search engine then you will not be found by that potential 
+customer. </li>
+    <li>The majority of people will simply go to a competitor's site that does appear 
+in those results or try new search criteria assuming that they have failed to 
+find what they are looking for. </li>
+  </ul>
+<ul>
+  <li><em>Before</em> you register your Web site with a Search Engine you should
+    enhance your Web site to make sure it displays well within Search Engine
+    results.</li>
+  <li><font color="#0000FF">Use Meaningful Titles</font>: All pages on your Web site need meaningful
+    titles.&nbsp; Some search engines read only the title when indexing the Web
+    site.&nbsp; The title is also what shows up in a user's favorites or
+    bookmark list.</li>
+  <li><font color="#0000FF">Use &lt;META&gt; elements</font>:&nbsp; You can use META elements to raise on
+    your Web site listing with certain search engines.&nbsp; AltaVista, Excite,
+    Inktomi and HotBot use them but some other search engines ignore them.&nbsp;
+    <ul>
+      <li><a name="26"></a>&lt;META&gt; Elements go in the &lt;HEAD&gt; section of the document
+        and let you specify information about the document that is invisible to
+        the user.</li>
+      <li>Common &lt;META&gt; elements are Author, Description, Keywords and
+        Generator.</li>
+      <li>Sample &lt;META&gt; elements are shown below:</li>
+    </ul>
+  </li>
+</ul>
+<div>&lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &nbsp; &lt;META name=&quot;Author&quot; content=&quot;Dawn Gregg&quot;&gt;<br>
+  &nbsp; &lt;META name=&quot;Description&quot; content=&quot;Guidelines
+  for&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  publishing and maintaining your Web site&quot;&gt;<br>
+  &nbsp; &lt;META name=&quot;Keywords&quot; content=&quot;WWW, ISP, Web
+  Server,&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  Testing, Search Engines, Web Site Design&quot;&gt;<br>
+  &nbsp; &lt;META name=&quot;Generator&quot; content=&quot;Microsoft FrontPage
+  4.0&quot;&gt;<br>
+  &lt;/HEAD&gt;</div>
+
+
+<ul>
+  <li><font color="#0000FF"><a name="27"></a>Be careful with Frames</font>: Avoid using a
+    Frameset page as the top page on your Web site because frameset pages
+    contain no content for a search engine to search.
+    <ul>
+      <li>If you need to use frames on an page
+        you want indexed use &lt;META&gt; elements to describe the site, have a
+        meaningful title, add additional information in the &lt;NOFRAMES&gt;
+        part of the page:</li>
+    </ul>
+  </li>
+</ul>
+<div> &lt;/HEAD&gt;<br>
+  &lt;frameset cols="17%,83%" BORDER=0 frameborder="0"><br>
+  &lt;frame SRC="menu.html" NAME="menu" NORESIZE BORDER=0><br>
+  &lt;frame SRC="main.html" NAME="main" NORESIZE BORDER=0><br>
+  <a name="28"></a>
+  &lt;NOFRAMES&gt;<br>
+  &nbsp; &lt;BODY&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &lt;P&gt;ISMG 6240: An introduction to Web authoring<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and electronic commerce.&nbsp;
+  Course Web site<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at Univeristy of Colorado Denver&lt;/p&gt;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; &lt;a href=main.html&gt;No Frames Version of the
+  Site&lt;/a&gt;<br>
+  &nbsp; &lt;/BODY&gt;<br>
+  &lt;/FRAMESET&gt;<br>
+  &lt;/HTML&gt;&nbsp;&nbsp;<font size="4">&nbsp;</font> </div>
+
+
+<ul>
+  <li>Use ALT text with images: Always add alt text to all of the graphics on
+    your page.&nbsp; Some search engines will read the contents of the ALT
+    attribute, which is especially useful if you start your page with a graphic</li>
+</ul>
+<blockquote>
+  <p><code>&lt;img alt=&quot;CGI&quot; src=&quot;CGIlogo.gif&quot;&gt;</code>
+  </p>
+</blockquote>
+<ul>
+  <li><a name="29"></a>Once you have completed all the steps to ensure that your Web site will
+    display well with Search Engines you can register your site with each
+    popular search engine.
+    <ul>
+      <li>Most have a link on their main page that allows you to register your
+        site.</li>
+      <li>Allow some time to pass then go to each search engine and check to see
+        if your Web site has been indexed.&nbsp; Use pertinent search terms for
+        your site.</li>
+      <li>You may need to resubmit your URL if your site does not come
+        up.&nbsp;&nbsp;</li>
+    </ul>
+  </li>
+  <li>You should conduct periodic reviews of your Web site's current positions with 
+specified search engines and the keywords with which you would like, or expect, 
+to be identified, together with the positions of their main competitors for the 
+same or similar keyword/engine combinations. </li>
+</ul>
+
+
+  <h3>Search Engine Optimization</h3>
+  <ul>
+    <li><a href="http://www.marketleap.com/verify/">The Keyword Verification 
+    tool </a>&nbsp;checks to see if your site is in the top three pages of a 
+    search engine result for a certain keyword. The reason it only check the top 
+    3 pages is because most queries don’t go past the 3rd page of search 
+    results.</li>
+  </ul>
+  <ul>
+    <li><a href="http://www.marketleap.com/siteindex/">The Search Engine 
+    Saturation tool</a>&nbsp; refers to the number of pages a given search 
+    engine has in its index for your website domain. Check your Search Engine 
+    Saturation and compare your website to competitors. Check this information 
+    on a regular basis to see if your Search Engine Saturation is climbing or 
+    falling. </li>
+  </ul>
+  <ul>
+    <li><a href="http://www.marketleap.com/publinkpop/">&nbsp;The Link 
+    Popularity tool</a> helps search engine optimizers and online marketers to 
+    find out who is linking to your site, but to also run a benchmarking report 
+    to show you quickly where you stand in comparison to competitors and other 
+    major online players.</li>
+  </ul>
+<hr>
+
+<script language="JavaScript">writeFooter(3);</script>
+</BODY>
+</HTML>

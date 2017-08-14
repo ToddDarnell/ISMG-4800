@@ -1,0 +1,486 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Event List</title>
+<LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css">
+</head>
+
+<body>
+<center>
+<h2>
+Events and Supported Properties of the Event Object<br>
+(Navigator in blue, Internet Explorer in red,&nbsp; Both in black)<br>
+<br>
+</h2>
+</center>
+<table align="center" width="90%" border="1" cellspacing="1">
+  <tr align="left" vAlign="bottom">
+    <th>
+      Event
+    </th>
+    <th>
+      <font color="#00FFFF">
+      Netscape<br>
+      Available Event Properties</font>
+    </th>
+    <th>
+      <font color="#FF0000">
+      Microsoft<br>
+      Available Event Properties</font>
+    </th>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Abort</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">returnValue, srcElement, type</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">AfterUpdate</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">cancelBubble, srcElement, type</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">BeforeUnload</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, clientX, clientY, ctrlKey, returnValue,
+      shiftKey, type</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">BeforeUpdate</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">cancelBubble, clientX, clientY, offsetX, offsetY,
+      returnValue, screenX, screenY, srcElement, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Blur</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, screenX, screenY,
+      srcElement, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">Bounce</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, returnValue,
+      screenX, screenY, srcElement, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Click</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">modifiers, target, type, which<br>
+      </font><i><font color="#0033cc">for a link only:</font></i> <font color="#0033cc">layerX,
+      layerY, pageX, pageY, screenX, screenY</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, cancelBubble, clientX, clientY, ctrlKey,
+      offsetX, offsetY, returnValue, screenX, screenY, srcElement, shiftKey,
+      type, x, y</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Change</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, returnValue,
+      screenX, screenY, srcElement, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">DataAvailable</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">bookmarks, cancelBubble, dataFld, recordset,
+      srcElement, type</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">DataSetChanged</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">bookmarks, cancelBubble, dataFld, reason, recordset,
+      srcElement, type</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">DataSetComplete</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">bookmarks, cancelBubble, dataFld, reason, recordset,
+      srcElement, type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>DblClick</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, modifiers, pageX, pageY, screenX,
+      screenY, target, type, which</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, cancelBubble, clientX, clientY, ctrlKey,
+      offsetX, offsetY, returnValue, screenX, screenY, srcElement, shiftKey,
+      type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">DragDrop</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Error</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">returnValue, srcElement, type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">ErrorUpdate</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">cancelBubble, srcElement, type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">FilterChange</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">cancelBubble, srcElement, srcFilter, type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Focus</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, returnValue,
+      screenX, screenY, srcElement, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">Help</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">cancelBubble, clientX, clientY, ctrlKey, offsetX,
+      offsetY, returnValue, screenX, screenY, srcElement, shiftKey, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>KeyDown</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, modifiers, pageX, pageY, screenX,
+      screenY, target, type, which</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, cancelBubble, clientX, clientY, ctrlKey,
+      offsetX, offsetY, repeat, returnValue, screenX, screenY, srcElement,
+      shiftKey, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>KeyPress</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, modifiers, pageX, pageY, screenX,
+      screenY, target, type, which</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, cancelBubble, clientX, clientY, ctrlKey,
+      keyCode, offsetX, offsetY, returnValue, screenX, screenY, srcElement,
+      shiftKey, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>KeyUp</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, modifiers, pageX, pageY, screenX,
+      screenY, target, type, which</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, cancelBubble, clientX, clientY, ctrlKey,
+      keyCode, offsetX, offsetY, returnValue, screenX, screenY, srcElement,
+      shiftKey, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Load</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, screenX, screenY,
+      type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>MouseDown</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, modifiers, pageX, pageY, screenX,
+      screenY, target, type, which</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, button, cancelBubble, clientX, clientY,
+      ctrlKey, offsetX, offsetY, returnValue, screenX, screenY, srcElement,
+      shiftKey, type, x, y&nbsp;&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>MouseMove</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, pageX, pageY, screenX, screenY,
+      target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, cancelBubble, clientX, clientY, ctrlKey,
+      offsetX, offsetY, screenX, screenY, srcElement, shiftKey, type, x, y&nbsp;&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>MouseOut</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, pageX, pageY, screenX, screenY,
+      target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, button, cancelBubble, clientX, clientY,
+      ctrlKey, fromElement, offsetX, offsetY, screenX, screenY, srcElement,
+      shiftKey, toElement, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>MouseOver</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, pageX, pageY, screenX, screenY,
+      target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, button, cancelBubble, clientX, clientY,
+      ctrlKey, fromElement, offsetX, offsetY, returnValue, screenX, screenY,
+      srcElement, shiftKey, toElement, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>MouseUp</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, modifiers, pageX, pageY, screenX,
+      screenY, target, type, which</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, button, cancelBubble, clientX, clientY,
+      ctrlKey, offsetX, offsetY, returnValue, screenX, screenY, srcElement,
+      shiftKey, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">Move</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">screenX, screenY, target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">ReadyStateChange</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">srcElement, type</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Reset</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">returnValue, srcElement, type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p>Resize</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">layerX, layerY, target, type<br>
+      </font><i><font color="#0033cc">notes:</font></i><font color="#0033cc"><br>
+      width or x is a synonym for layerX<br>
+      height or y is a synonym for layerY</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, clientX, clientY, ctrlKey, offsetX, offsetY,
+      returnValue, screenX, screenY, srcElement, shiftKey, type, x, y</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">RowEnter</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">bookmarks, dataFld, reason, recordset, srcElement,
+      type</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">RowExit</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">bookmarks, dataFld, reason, recordset, srcElement,
+      type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">Scroll</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, screenX, screenY,
+      srcElement, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Select</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, screenX, screenY,
+      returnValue, srcElement, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">SelectStart</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">cancelBubble, clientX, clientY, offsetX, offsetY,
+      screenX, screenY, returnValue, srcElement, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">Start</font></p>
+    </td>
+    <td bgColor="#FFFFFF">&nbsp;</td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">clientX, clientY, offsetX, offsetY, screenX, screenY,
+      srcElement, type, x, y&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Submit</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">altKey, ctrlKey, returnValue, shiftKey, srcElement,
+      type&nbsp;</font></p>
+    </td>
+  </tr>
+  <tr align="left" vAlign="top">
+    <td bgColor="#FFFFFF">
+      <p>Unload</p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="#0033cc">target, type</font></p>
+    </td>
+    <td bgColor="#FFFFFF">
+      <p><font color="red">type&nbsp;</font></p>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

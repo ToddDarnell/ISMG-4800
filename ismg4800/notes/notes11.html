@@ -1,0 +1,691 @@
+<html>
+<head>
+<title>MySQL and PHP</title>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<i class=footer><I>Updated March 27, 2006<BR>Dawn G. Gregg</i> ';
+  </script>
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+
+<h1>PHP &amp; Databases</h1>
+<ul>
+  <li>For many people, the main reason for learning a scripting language like 
+  PHP is because of the interaction with databases it can offer. PHP can connect 
+  to a MYSQL database, MS Access, Oracle, PostgreSQL, MS SQL Server, and others.</li>
+  <li>Why Would I Want A Database?<ul>
+    <li><em>Banner Rotation</em>. On many sites that use banner rotation, a PHP 
+    script is called that opens a database and picks a random banner from it to 
+    show the visitor. These scripts can also count the number of times the banner has been 
+    viewed and could track clicks too.</li>
+    <li><em>Forums</em>. Hundreds of forums (message boards) on the internet are 
+    run using PHP and a database. These are much more efficient than other 
+    systems that create a page for each message and offer a wide variety of 
+    options. All the pages in the forum can be updated by changing one script.
+    </li>
+    <li><em>Websites</em>. If you have a large website and you want to change 
+    the design it can take a very long time to update and upload all the pages. 
+    With PHP and a database your whole website could be just one or two PHP 
+    scripts. These would access a database to get the information for the pages. 
+    To update the website's design you would just have to change a very few 
+    pages.</li>
+  </ul>
+  </li>
+</ul>
+<hr><h2><span>MySQL Database Management System</span></h2>
+<ul>
+  <li>The MySQL® database has become the world's most popular open source 
+  database because of its consistent fast performance, high reliability and ease 
+  of use.&nbsp; The MySQL Web site (<a href="http://www.mysql.com/" target="_top">http://www.mysql.com/</a>) 
+  provides the latest information about MySQL software. </li>
+  <li>It's used in more than 8 million installations ranging from large 
+  corporations to specialized embedded applications on every continent in the 
+  world. (Yes, even Antarctica!) </li>
+  <li>MySQL runs on more 
+  than 20 platforms including Linux, Windows, OS/X, HP-UX, AIX, Netware.</li><li><b>MySQL is a database management system. </b>
+<ul>
+  <li>A database is a structured collection of data. It may be anything from 
+      a simple shopping list to a picture gallery or the vast amounts of 
+      information in a corporate network. </li>
+  <li>To add, access, and process data stored in a computer database, you need a 
+  database management system such as MySQL Server. </li>
+
+
+</ul>
+  </li>
+  <li><b>MySQL is a relational database management system. </b>
+<ul>
+  <li>A relational database stores data in separate tables rather than 
+      putting all the data in one big storeroom. This adds speed and 
+      flexibility. </li>
+  <li>The SQL part of “<span class="quote">MySQL</span>” stands for 
+      “<span class="quote">Structured Query Language.</span>” SQL is the most 
+  common standardized language used to access databases and is defined by the 
+  ANSI/ISO SQL Standard. </li>
+
+
+</ul>
+  </li>
+  <li><b>MySQL software is Open Source. </b>
+<ul>
+  <li>Open Source means that it is possible for anyone to use and modify the 
+      software. </li>
+  <li>Anybody can download the MySQL software from the Internet and use it 
+  without paying anything. </li>
+
+
+</ul>
+  </li>
+  <li><b>The MySQL Database Server is very fast, reliable, and easy to use. </b>
+<ul>
+  <li>MySQL Server was originally developed to handle large databases much 
+  faster than existing solutions and has been successfully used in highly 
+  demanding production environments for several years. Its connectivity, speed, and security make MySQL Server highly 
+      suited for accessing databases on the Internet.</li>
+  <li>The following table lists some examples of approximate operating system 
+  file-size limits: </li>
+
+
+</ul>
+<center>
+    <table border="1">
+
+      <tr>
+        <th>Operating System</th>
+        <th>File-size Limit</th>
+      </tr>
+      <tr>
+        <td>Linux 2.2-Intel 32-bit</td>
+        <td>2GB (LFS: 4GB)</td>
+      </tr>
+      <tr>
+        <td>Linux 2.4+</td>
+        <td>(using ext3 filesystem) 4TB</td>
+      </tr>
+      <tr>
+        <td>Solaris 9/10</td>
+        <td>16TB</td>
+      </tr>
+      <tr>
+        <td>NetWare w/NSS filesystem</td>
+        <td>8TB</td>
+      </tr>
+      <tr>
+        <td>Win32 w/ FAT/FAT32</td>
+        <td>2GB/4GB</td>
+      </tr>
+      <tr>
+        <td>Win32 w/ NTFS</td>
+        <td>2TB (possibly larger)</td>
+      </tr>
+      <tr>
+        <td>MacOS X w/ HFS+</td>
+        <td>2TB</td>
+      </tr>
+    </table>
+  </center>
+  </li>
+  <li><b>MySQL Server works in client/server or embedded systems. </b>
+<ul>
+  <li>The MySQL Database Software is a client/server system that consists of 
+      a multi-threaded SQL server that supports different back-ends, several 
+  different client programs and libraries, administrative tools, and a wide 
+  range of application programming interfaces (APIs) including PHP, Java, Perl 
+  and ASP.</li>
+
+
+</ul>
+  </li>
+
+
+</ul>
+<hr>
+<h2><span>Database Connection</span></h2>
+<ul>
+
+<span>
+
+
+  <li>
+  To connect to a database using PHP, you need to create a connection that will work with your database 
+  type.
+  </li>
+  <li>
+  You can connect to MySQL, Oracle, PostgreSQL, MS SQL Server, and others.&nbsp; 
+  </li>
+  <li>
+  For example to connect to a MS Access Database you use an ODBC bridge which 
+  will allow you to connect to any database that does not have a specific driver 
+  built into PHP.<ul>
+
+<li>ODBC, however, requires you establish an ODBC 
+    connection to the database on every computer on which the application will 
+    be run.</li>
+<li>To create an ODBC connection to an MS Access 
+    database open the &quot;ODBC Data Source&quot; control panel in Setting - Control 
+    Panel - Administrative Tools (on most Windows Machines).</li>
+<li>Once you have created the ODBC Data source name (e.g. 'myDatabase') you 
+would connect to the database and run a Select query as follows:</li>
+
+
+</ul>
+
+  </li>
+  </span>
+
+
+</ul>
+
+<span>
+
+
+  <blockquote>
+    <blockquote>
+      <p><code>&nbsp; </code></span><code>$conn = odbc_connect('myDatabase','',''));<br>
+&nbsp; $qry = &quot;Select * from Item Where CATID=5;&quot;;<br>
+&nbsp; $rs = odbc_exec($conn, $qry);<br>
+&nbsp;</code></p>
+    </blockquote>
+</blockquote>
+<ul>
+
+<span>
+
+
+  <li>
+  <em>THE PROBLEM</em>: All PHP code to connect to a database, select data from 
+  the database and display it in your files depends on the type of database you 
+  are connecting to (that IS NOT the way it works in other languages) - so it is 
+  hard to switch back and forth between databases.</li></span>
+  <li><em>THE S</em><span><em>OLUTION</em>: We will be creating and using a 
+  MySQL database - both at home and on Ouray (since you cannot use MS Access on 
+  Ouray).</span></li>
+  <li>
+
+<span>
+
+
+  In the PHP Code you need to connect to MySQL on &quot;localhost&quot; using your 
+  username and password.&nbsp; If you created a username and password on &quot;The 
+  Uniform Server&quot; that is the same as the username and password you were 
+  assigned on Ouray - then you can copy your website to Ouray without having to 
+  change it (at all).</span></li>
+  <li>
+
+The connection string to connect to MySQL running on localhost is:<br>
+<code>&nbsp;$conn = mysql_connect('localhost','username','password')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or die( '&lt;h2&gt;Could not connect to MySQL&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+&nbsp;</code></li>
+  <li>
+
+Once you have successfully connected to MySQL you need to select a specific 
+database running in MySQL.&nbsp; (Unlike MS Access which is has a single 
+database stored in a file - MySQL is a database server which allows the creation 
+of multiple different databases - each of which can contain many tables).<ul>
+  <li>If you have &quot;Create Database&quot; privileges on your system you can create and 
+  manage many different databases using MySQL.</li>
+  <li>On ouray - you cannot create a new database - you only have access to one 
+  database with the same name as your ouray MySQL username.</li>
+
+
+</ul>
+
+  </li>
+  <li>
+
+The code below will try to select a MySQL database called 'username' if it does 
+not exist it will use a standard SQL query to create it:<br>
+<code>&nbsp;$username = 'username';<br>
+&nbsp;if(!mysql_select_db($username))<br>
+&nbsp;{ echo (&quot;Could not select database $username&lt;br&gt;&quot;);<br>
+&nbsp;&nbsp; $query = &quot;CREATE DATABASE $username&quot;;<br>
+&nbsp;&nbsp; $result = mysql_query($query);<br>
+&nbsp;&nbsp; mysql_select_db($username) or die(&quot;Could not select database 
+$username&lt;br&gt;&quot;); <br>
+&nbsp;}<br>
+&nbsp;echo &quot;Selected $username successfully&lt;br&gt;&quot;;</code></li>
+
+
+</ul>
+
+<script language="JavaScript">writeFooter(0);</script>
+
+
+<hr>
+<h2><span>Reading and Writing to a Database using PHP</span></h2>
+  <ul>
+    <li>PHP uses SQL statements to create tables, insert values into them, 
+    query the tables, retrieve the results of the queries, and update the 
+    tables.</li>
+    <li>You create a valid SQL query that you then execute it using the<code>
+    mysql_query(string) </code>function is what sends 
+    your SQL statement to the active MySQL database. </li>
+    <li> The following SQL Query selects one 
+    item from the Auctions table. <br>
+    <br>
+    <code>&nbsp;&nbsp; $qry = &quot;Select * from Item where ITEMID=5;&quot;;<br>
+    </code>
+
+
+    <code>&nbsp;&nbsp; $results = 
+    mysql_query($qry);<br>
+    &nbsp;</code></li>
+    <li> The following SQL statement creates the table
+    <code>Auctions</code> . The entries within the outer pair of parentheses 
+    consist of the name of a column followed by a space and the SQL type to be 
+    stored in that column. A comma separates the entry for one column 
+    (consisting of column name and SQL type) from the next one. The type
+    <code>VARCHAR</code> is created with a maximum length, so it takes a 
+    parameter indicating that maximum length.<br>
+    <br>
+    <code><font size="2">$cqry = &quot;CREATE TABLE Orders (OrderID int primary key, 
+    CNAME char(50),&quot; .<br>
+&nbsp; &quot; Address char(100), City char(50), State char(2), PostalCode char(10),&quot; 
+    .<br>
+&nbsp; &quot; Phone char(15), Email char(50), PaymentMethod char(10),&quot; .<br>
+&nbsp; &quot; PaymentNumber char(16), ExpDate char(10), OrderDate TIMESTAMP,&quot;<br>
+&nbsp; &quot; Ship decimal(10,2), Total decimal(10,2));&quot;,;</font></code><p>
+
+
+    <code>&nbsp;
+    </code>
+
+<span>
+
+
+  <code>mysql_query($cqry) or die('Query failed: ' . mysql_error() . '&lt;br&gt;');</code></span></li>
+    <li><b>Notice</b>: we do not assign the results to a variable because the 
+    create query does not return any records to be displayed.</li>
+  </ul>
+<hr>
+<h2><span>Select and Display Data</span></h2>
+<ul>
+  <li>The category 5.php page (below) is designed to 
+  display all of the &quot;Women's Clothing&quot; products available for sale at the 
+  Outdoor Depot store.</li>
+</ul>
+<p align="center">
+<img border="0" src="../php_examples/tutorial/tutorial_images/womens.gif" width="500" height="454"></p>
+<ul>
+  <li>
+<span>
+
+    To add database connectivity to the file you need to add the connection 
+  and database selection code discussed previously:<br>
+<code>$conn = mysql_connect('localhost','username','password')<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+or die( '&lt;h2&gt;Could not connect to MySQL&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+  mysql_select_db('username') or die(&quot;&lt;h2&gt;Could not select database&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;&quot;); <br>
+&nbsp;</code></span></li>
+  <li>To get data from the database you need to write a query to extract all the 
+  data items for women's clothing from the ITEM Table:<center>
+  <p>
+<code>$qry = &quot;Select * from Item Where CATID=5;&quot;<br>
+  </code>(Where 5 is the category for Women's Clothing)
+
+    </p>
+</center>
+  </li>
+  <li>
+  <span>
+
+    You need to pass the query to the <code>mysql_query()</code> function which returns a <code>ResultSet</code> containing all of the database records returned 
+  by the query.</span></li>
+</ul>
+
+<hr>
+<h2><span>Retrieving Data from the RecordSet</span></h2>
+<ul>
+<span>
+
+  <li>To retrieve all of the records in a PHP <code>ResultSet</code> you need to 
+  retrieve the array of results:<br>
+  <code>&nbsp;&nbsp; $row = mysql_fetch_array($rs)</code></li>
+  <li>Then to reference and individual field within an HTML tag, you reference the field value using the 
+  array name and the field name:<br>
+  </span>
+<code>&nbsp;&nbsp; echo $row['fieldname']</code></li>
+  <li>To display multiple records that are retrieved by&nbsp; query and stored 
+  in a <code>ResultSet</code>, you must use a while loop to loop through and 
+  display the records until the end of the array:<code><br>
+  &nbsp;&nbsp; while(</code><span><code>$row = mysql_fetch_array($rs)</code></span><code>) 
+  { //...&nbsp; }</code></li>
+  <li>The following code creates a loop that displays the ITEMTHUMB 
+  (thumbnail image) and the ITEMNAME fields from the MySQL 
+  database.&nbsp; As in the sample page, the data is displayed in a table:</li>
+</ul>
+<div>
+  <code>&lt;table border=0 cellpadding=5 cellspacing=0 &gt;<br>
+  <cite>&lt;?php <br>
+&nbsp;&nbsp; </cite></code><span><code>$conn = mysql_connect('localhost','username','password')<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+or die( '&lt;h2&gt;Could not connect to MySQL&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+  &nbsp;&nbsp;
+  mysql_select_db('username') or die(&quot;&lt;h2&gt;Could not select database&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+  <br>
+&nbsp;&nbsp; </code></span>
+<code>$qry = &quot;Select * from Item Where CATID=5;&quot;<br>
+  &nbsp;&nbsp; $rs = mysql_query($qry);</code></p>
+  <p><code><cite>&nbsp; </cite>&nbsp;<dfn>// Loop through results set</dfn><br>
+&nbsp;&nbsp; while(</code><span><code>$row = mysql_fetch_array($rs)</code></span><code>)<br>
+&nbsp;&nbsp; { <dfn>// Send Specific Data values to Browser</dfn><br>
+  <cite>?&gt;<br>
+  </cite>&lt;tr&gt;<br>
+&nbsp;&lt;td width=&quot;80&quot;&gt;<br>
+&nbsp;&lt;img src=<cite>&lt;?php </cite><samp>echo &quot;images/&quot; . $row[&quot;ITEMTHUMB&quot;];</samp><cite> 
+  ?&gt;</cite>&nbsp;
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; width=&quot;80&quot; 
+  height=&quot;80&quot;&gt;&lt;/td&gt;<br>
+  &nbsp;&lt;td&gt;<cite>&lt;?php </cite><samp>echo $row[&quot;ITEMNAME&quot;];</samp><cite> 
+  ?&gt;</cite>&lt;/td&gt;<br>
+  &lt;/tr&gt;<br>
+  <cite>&lt;?php</cite> } <dfn>// end of while loop</dfn> <cite><br>
+  </cite>&nbsp;mysql_close($conn); <br>
+&nbsp;mysql_free_result($rs);<cite><br>
+&nbsp;</cite>echo &quot;&lt;/table&gt;&quot;;<cite> ?&gt;</cite></code>
+</div>
+<ul>
+  <li><b>Notice: </b>That I have mixed HTML and PHP tags so that the PHP code is 
+  being written inside of an image tag and inside of regular HTML table tags.&nbsp; </li>
+  <li>The code also closes the&nbsp; <code>ResultSet</code> and the database 
+  connection which makes their resources available to other Web server 
+  processes.</li>
+</ul>
+
+<hr>
+<h2><span>Passing URL Parameters to a PHP</span></h2>
+<ul>
+  <li>When the user clicks on a hyperlink in the <code>category5.php</code> 
+  table we want&nbsp; the system to display a page about a specific product. </li>
+  <li>To display this Web page, you must create a hyperlink from each item name 
+  on the <code>category5.php</code> page to the <code>product.php</code> Web 
+  page which is a web page template into which data for ANY product can be 
+  displayed.&nbsp; </li>
+  <li>Since you want to display inventory information about a particular product 
+  (and information about the product category) you need to pass the item ID and 
+  the category ID as a URL parameter in the hyperlink. </li>
+  <li>A <b>URL parameter</b> is a data value that is passed to a target PHP as a 
+  part of the PHP's URL.
+<ul>
+  <li>Each URL parameter consists of a name/value pair: name=value</li>
+  <li>URL parameters are separated from the regular URL with a ?</li>
+  <li>Multiple URL parameters are separated with &amp;</li>
+  <li>A full URL with 3 parameters would be:</li>
+</ul>
+  <p><code>&nbsp;&nbsp; filename.php?name1=value1&amp;name2=value2&amp;name3=value3</code></li>
+  <li>We will modify the category5.php page so that there is a hyperlink around 
+  the item name (<code><samp>rs.getString(&quot;ITEMNAME&quot;)</samp></code>) 
+  the hyperlink will be to the following URL:<p><code>&nbsp;&nbsp; product.php?cat=5&amp;item=<cite>&lt;%=</cite><samp> rs.getString(&quot;ITEMID&quot;)</samp><cite>%&gt;</cite></code></li>
+  <li>We will modify the category5.php page so that there is a hyperlink around 
+  the item name (<code>$row['ITEMNAME']</code>) 
+  the hyperlink will be to the following URL:<code><br>
+  &nbsp;&nbsp; product.php?cat=5&amp;item=&quot; 
+  . <samp>$row['ITEMID']</samp></code></li>
+  <li>
+<span>
+
+    The code below shows how to write out the product list so that it includes 
+the hyperlink parameter: </span></li>
+
+<center>
+<p>
+<img border="0" src="../php_examples/tutorial/tutorial_images/category5_final.gif" width="692" height="277"></p>
+  </center>
+
+<ul>
+<span>
+
+  <li>If all has gone well, we are done editing <code>category5.php.</code> The 
+  final <code>category5.php</code> page should look like the one below (&amp; work like
+  <a href="http://ouray.cudenver.edu/~dgregg/outdoorPHP/category5.php?cat=5&item=1">this</a>):</li></span>
+</ul>
+<center>
+<p>
+<img border="0" src="../php_examples/tutorial/tutorial_images/category5.jpg" width="700" height="558"></p>
+  </center>
+
+<ul>
+  <li>Notice the URL includes the 2 parameters we set.</li>
+  <li>The page also uses include files for the header, left menu, right menu and 
+  footer - as discussed last week.</li>
+</ul>
+</ul>
+
+<script language="JavaScript">writeFooter(4);</script>
+
+<hr>
+<h2><span>Retrieving Input Parameters into a PHP</span></h2>
+<ul>
+  <li>PHP pages can be a mix of anything valid for any HTML page plus Java code 
+  embedded inside of <code><cite>&lt;?php ?&gt;</cite></code> tags.&nbsp; Thus you 
+  can have JavaScript code in a PHP page.&nbsp; Since the JavaScript code would 
+  not be inside <code><cite>&lt;?php ?&gt;</cite></code> tags, it will be 
+  ignored by the PHP server and passed through to the client browsing the Web 
+  page.&nbsp; It will be executed exactly like the JavaScript code embedded in a 
+  regular HTML page.</li> </li>
+  <li>To retrieve the value of a variable that is passed as a URL parameter you 
+  use the same&nbsp; $_GET array used to retrieve form 
+  data.<br>
+&nbsp;&nbsp;&nbsp; <code>$cat =$_GET[&quot;cat&quot;];<br>
+&nbsp; $item=$_GET[&quot;item&quot;];</code></li> <br>
+  $_GET is used because a URL parameter appears in the URL the page is called 
+  with and thus is EXACTLY like a page called with a form that uses the GET 
+  method.<li>Note: When you have a page that is called with URL parameters the 
+  page relies on those parameters and often will not display correctly if it is 
+  called without the parameters. To avoid error messages (and to make it easier 
+  to test and debug the page) I often will set default values for the parameters 
+  so the page will display:<br>
+  <code>$cat = $_GET[&quot;cat&quot;];<br>
+  $item = $_GET[&quot;item&quot;];<br>
+  if(!$cat) { $cat=5; $item=1;}</code></ul>
+
+<hr>
+<h2><span>More Queries</span></h2>
+<ul>
+  <li>You are not limited to running a single query on a Web page.&nbsp; For the 
+  <a href="http://ouray.cudenver.edu/~dgregg/outdoor/product.php?cat=5&item=2">product.php</a> page to work correctly it requires 3 different queries.<ul>
+  <li>The query of the category table to get the category name</li>
+  <li>A query on the item table to get the name of the product, its 
+  description, and a 
+  larger version of the product image to display.&nbsp; </li>
+  <li>A query on the inventory table so we can update the table at the bottom of 
+  the page to have the correct sizes &amp; colors for all of the products &amp; whether 
+  or not they are in stock</li>
+</ul>
+  </li>
+  <li>Notice that after I ran the second query I created a variable to hold the 
+  ITEMNAME but just called $row[&quot;ITEMIMAGE&quot;] and $row[&quot;ITEMDESC&quot;] 
+  directly in the location where the data should go.&nbsp; This is because I was 
+  only using ITEMIMAGE and&nbsp; ITEMDESC one time so it was easier just to 
+  remove the data from the $row array once.&nbsp; I used ITMENAME multiple times 
+  so it was simpler to create a variable I could reuse.</li>
+</ul>
+<center>
+<img border="0" src="../images2/product1.gif" width="672" height="768"><p>&nbsp;</p>
+</center>
+<ul>
+  <li>The final query for the product.php page is shown below.&nbsp; It 
+  retrieves multiple inventory items from the inventory table and displays them 
+  in a table at the bottom of the page.
+  </li>
+</ul>
+<center>
+<img border="0" src="../php_examples/tutorial/tutorial_images/product_inventory1.gif" width="692" height="612"><p>
+<img border="0" src="../php_examples/tutorial/tutorial_images/product_inventory.jpg" width="700" height="496"></p></center>
+<hr>
+
+<ul>
+  <li>There are 3 remaining things to be done to complete this Web page:<ul>
+    <li>Note that in the code above all of the &quot;IN STOCK&quot; values are hardcoded 
+    to &quot;Yes.&quot;&nbsp; You can use if statements to determine if the quantity on 
+    hand (QOH) is greater than 0 and dynamically determine Whether the value 
+    should be YES or NO.</li>
+    <li>The prices do not have a $ and are not fixed to 2 decimal places.</li>
+    <li>Also notice that the last option button is always selected.&nbsp; This 
+    is because the &quot;checked&quot; attribute is set for all of the radio buttons.</li>
+  </ul>
+  </li>
+  <li>The code below shows what the final code should look like.&nbsp; </li>
+</ul>
+
+<center>
+<p>
+<img border="0" src="../php_examples/tutorial/tutorial_images/product_inventory2.gif" width="690" height="609"></p>
+</center>
+
+
+<ul>
+  <li>You can view the final page online
+  <a href="http://ouray.cudenver.edu/~dgregg/outdoor/product.php?cat=5&item=2">product.php</a> </li>
+</ul>
+
+
+<hr>
+<h1>Adding and Updating Database Data</h1>
+<ul>
+  <li>Anything you can do with a query you can do with PHP and MySQL.&nbsp; The 
+  PHP below shows how you can insert Shopping Cart data into a MySQL database.</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/tutorial/checkout2.php">checkout2.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://ouray.cudenver.edu/~dgregg/outdoor">Online Demo</a>
+</span>
+
+
+
+</p>
+<div>&lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;TITLE&gt;Outdoor Depot: Check-Out Complete&lt;/TITLE&gt;<br>
+  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;od.css&quot;&gt;<br>
+  &lt;script LANGUAGE=&quot;JavaScript&quot; SRC=&quot;scripts/odcart.js&quot;&gt;&lt;/script&gt;<br>
+  &lt;script LANGUAGE=&quot;JavaScript&quot; SRC=&quot;scripts/validate.js&quot;&gt;&lt;/script&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY&gt;<br>
+  <cite>&lt;?php</cite> require(&quot;includes/header.html&quot;); <cite>?&gt;</cite><br>
+  <cite>&lt;?php</cite> require(&quot;includes/lmenu.html&quot;); <cite>?&gt;</cite><br>
+  &lt;center&gt;<br>
+  <cite>&lt;?php</cite><br>
+&nbsp; echo &quot;&lt;H1&gt;Order Complete&lt;/H1&gt;&quot;;<br>
+&nbsp; echo &quot;&lt;h2&gt;&quot; . date(&quot;l dS \\o\f F Y h:i:s A&quot;) . &quot;&lt;/h2&gt;&lt;/font&gt;&quot;;<br>
+  <br>
+&nbsp; $conn = mysql_connect('localhost','username','password')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die( '&lt;h2&gt;Could not connect to mysql&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+  <br>
+&nbsp; mysql_select_db('username') or die('&lt;h2&gt;Could not select 
+  database&lt;/h2&gt;&lt;/body&gt;&lt;/html&gt;');<br>
+  <br>
+  <dfn>&nbsp; // The following code will write the order to the orders table<br>
+&nbsp; // and the order details to the order details table.<br>
+&nbsp; // First need to find the maximum order number and create a new order 
+  number<br>
+&nbsp; // that is that number plus 1, I ordered them DESC so maximum is 1st 
+  record</dfn><br>
+&nbsp; $qry = &quot;SELECT MAX(Orders.OrderID) as max1 FROM Orders&quot;;<br>
+  <br>
+&nbsp;<dfn> // Send the SQL statement to the database to be executed</dfn><br>
+&nbsp; $rs = mysql_query($qry) or die('Query1 failed: ' . mysql_error() . '&lt;br&gt;');<br>
+  <br>
+&nbsp; <dfn>// only one item in ResultSet use ?_fetch_array() to move to it</dfn><br>
+&nbsp; $row = mysql_fetch_array($rs);<br>
+&nbsp; $oid = (int)$row[&quot;max1&quot;];<br>
+&nbsp;<dfn> // Calculate the new order id</dfn><br>
+&nbsp; $oid++;<br>
+  <br>
+&nbsp; <dfn>//Create the SQL Statement to create a new order&nbsp;</dfn><br>
+&nbsp; $qry = &quot;INSERT INTO Orders (OrderID, CName, &quot;;<br>
+&nbsp; $qry = $qry . &quot;Address, City, State, PostalCode, Country, Phone, Email,&quot;;<br>
+&nbsp; $qry = $qry . &quot;PaymentMethod, PaymentNumber, ExpDate, OrderDate, Ship, 
+  Total)&quot;;<br>
+&nbsp; $qry = $qry . &quot; Values(&quot; . $oid . &quot;,&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;CName&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;Address&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;City&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;State&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;Postcode&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;Country&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;Phone&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;Email&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;CreditCard&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;CCN&quot;] . &quot;',&quot;;<br>
+&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;CCExpMM&quot;] . &quot;/&quot; . $_REQUEST[&quot;CCExpYY&quot;] . 
+  &quot;',&quot;;<br>
+&nbsp; $qry = $qry . date('YmdHis') . &quot;,&quot;;<br>
+&nbsp; $qry = $qry . $_REQUEST[&quot;ship&quot;] . &quot;,&quot;;<br>
+&nbsp; $qry = $qry . $_REQUEST[&quot;total&quot;] . &quot;);&quot;;<br>
+  <br>
+  <dfn>&nbsp; //Send the SQL statement to the database to be executed</dfn><br>
+&nbsp; mysql_query($qry) or die('Query2 failed: ' . mysql_error() . '&lt;br&gt;');<br>
+  <br>
+  <dfn>&nbsp; // Next I need to write each item to the OrderDetails table.<br>
+&nbsp; // Since my cookie stuff is in JavaScript and I am at the server<br>
+&nbsp; // I am going to get my data from the form. I had a<br>
+&nbsp; // a hidden element &quot;numprod&quot; telling me how may products<br>
+&nbsp; // I have in my table.<br>
+  <br>
+&nbsp; // Loop through cart and add each item to the OrderDetails Table</dfn><br>
+&nbsp; for($i = 0 ; $i &lt; $_REQUEST[&quot;numprod&quot;]; $i++)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; $qry = &quot;INSERT INTO OrderDetails &quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . &quot;(OrderID, Product, ItemSize, Color, Price, 
+  Quantity)&quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . &quot; Values(&quot; . $oid . &quot;,&quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;field0$i&quot;] . &quot;',&quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;field1$i&quot;] . &quot;',&quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . &quot;'&quot; . $_REQUEST[&quot;field2$i&quot;] . &quot;',&quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . (int)$_REQUEST[&quot;field3$i&quot;] . &quot;,&quot;;<br>
+&nbsp;&nbsp;&nbsp; $qry = $qry . (float)$_REQUEST[&quot;field4$i&quot;] . &quot;);&quot;;<br>
+&nbsp;&nbsp;&nbsp; mysql_query($qry) or die(&quot;Query3 $i failed: &quot; . mysql_error() 
+  . &quot;&lt;br&gt;&quot;);<br>
+&nbsp;&nbsp;&nbsp; echo &quot;&lt;p&gt;Your Order Number: $oid &lt;br&gt;(Please save for your 
+  records)&lt;/p&gt;&quot;;<br>
+  }<br>
+  <cite>?&gt;</cite><br>
+  &lt;SCRIPT Language = &quot;JavaScript&quot;&gt;<br>
+  &lt;!--<br>
+&nbsp;&nbsp; var head = '&lt;table class=&quot;bg1&quot; style=&quot;font-size: .917em;&quot; 
+  cellpadding=2&gt;' +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  '&lt;tr class=&quot;bg2&quot;&gt;&lt;th&gt;Product&lt;/th&gt;&lt;th&gt;Size&lt;/th&gt;&lt;th&gt;Color&lt;/th&gt;' + <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  '&lt;th&gt;Price&lt;/th&gt;&lt;th&gt;Quantity&lt;/th&gt;&lt;th&gt;Total Price&lt;/th&gt;&lt;/tr&gt;';<br>
+&nbsp;&nbsp; writeCart('odCart', 2, 'cartform', '|', 5, head, 'checkout.html' );<br>
+  // End --&gt;<br>
+  &lt;/SCRIPT&gt;<br>
+  &lt;center&gt;<br>
+  &lt;p&gt;Your order will be shipped within the next 48 hours&lt;/p&gt;<br>
+  &lt;br&gt;&lt;br&gt;&lt;a href='index.php'&gt;Click here to return to our homepage!&lt;/a&gt;<br>
+  &lt;/center&gt;<br>
+  <br>
+  <cite>&lt;?php</cite><br>
+&nbsp; <dfn>// now we will close the connection to the database</dfn> <br>
+&nbsp; mysql_close($conn); <br>
+&nbsp; mysql_free_result($rs); <br>
+  <cite>?&gt;</cite><br>
+  &lt;hr&gt;<br>
+  <cite>&lt;?php</cite> require(&quot;includes/rmenu.html&quot;); <cite>?&gt;</cite><br>
+  <cite>&lt;?php</cite> require(&quot;includes/footer.html&quot;); <cite>?&gt;</cite><br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt;</div>
+<ul>
+  <li>Notice how I set the TIMESTAMP for the orders table.&nbsp; Even though
+  <code>date('YmdHis') </code>returns a string it is not enclosed in quotes when 
+  it is passed in the query. </li>
+</ul>
+<p align="center">
+<img border="0" src="../images2/checkout2.jpg" width="700" height="374"></p>
+<hr>
+<script language="JavaScript">writeFooter(5);</script>
+
+
+</body>
+</html>

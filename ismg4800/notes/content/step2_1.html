@@ -1,0 +1,30 @@
+      <span>
+    <ul>
+      <li>The next thing to check is the status code of the HTTP server response. 
+    All the possible codes are listed on the
+    <a class="external text" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html" rel="nofollow">
+    W3C site</a>. For our purposes we are only interested in <code>200 OK</code> 
+    response. </li>
+    </ul>
+    <div><pre>if (http_request.status == 200) {
+    <dfn>// perfect!</dfn>
+} else {
+    <dfn>// The response may be a 404 (Not Found)
+    // or 500 (Internal Server Error) response codes</dfn>
+}
+</pre></div>
+    <ul>
+      <li>Now after you've checked the state of the request and the HTTP status 
+    code of the response, it's up to you to do whatever you want with the data 
+    the server has sent to you. You have two options to access that data: 
+      <ul>
+        <li><code>http_request.responseText</code> – will return the server 
+      response as a string of text </li>
+        <li><code>http_request.responseXML</code> – will return the response as an
+      <code>XMLDocument</code> object you can traverse using the JavaScript DOM 
+      functions </li>
+      </ul>
+      </li>
+    </ul>
+
+    

@@ -1,0 +1,1690 @@
+<html>
+<head>
+<title>PHP Pages: Functions, Strings & Include Files</title>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<i class=footer><I>Updated March 25, 2006<BR>Dawn G. Gregg</i> ' ;
+  </script>
+
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+
+
+
+<span>
+
+
+
+<hr>
+<h1>Strings</h1>
+</span>
+
+
+
+<table>
+  <tr>
+    <td>
+    <ul>
+      <li>A String is a series of characters treated as a single unit: &quot;Jane 
+      Doe&quot;, &quot;blue&quot;, &quot;To be or not to be ...&quot; </li>
+      <li>
+
+
+
+In PHP, a character is the same as a byte, that is, there are exactly 256 
+different characters possible. </li>
+      <li>It is no problem for a string to become very large. There is no 
+      practical bound to the size of strings imposed by PHP, so there is no 
+      reason at all to worry about long strings. String values can be used 
+      literally or be assigned to variables. </li>
+    </ul>
+    </td>
+
+
+
+
+    <td valign=top>
+    <img border="0" src="../images2/string.gif" width="343" height="167"></td>
+  </tr>
+</table>
+    <ul>
+      <li>In PHP a string literal can be displayed in two primary ways:<ul>
+      <li>single quoted strings</li>
+      <li>double quoted strings</li>
+    </ul>
+      </li>
+    </ul>
+<hr>
+<h2><span>Single Quoted Strings</span></h2>
+<ul>
+  <li>Single quotes provide the easiest method for working with strings. </li>
+  <li>Using this method, strings are surrounded by single quotes (''). </li>
+  <li>If single quotes are needed as part of the display, they must be escaped 
+  with the backslash (&quot;\&quot;) character.</li>
+  <li>While single quotes provide an easy method for working with strings, 
+  single quotes do not support the use of interpolation.</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/sqstrings.php">sqstrings.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/sqstrings.php">
+Online Demo</a>
+</span>
+
+
+
+</p>
+<div><cite>&lt;?php </cite>
+<br>
+  <dfn>&nbsp;
+  //A literal string displayed in the browser window
+<br>
+  &nbsp; </dfn>echo 'PHP was developed in 1994 by Rasmus Lerdorf';
+
+<br>
+  <dfn>&nbsp;
+  //A literal string assigned to a variable
+<br>
+  &nbsp; </dfn>$string = 'Since its development, PHP has become a popular scripting language.';
+  <br>
+  &nbsp;
+  echo $string;
+<br>
+  <dfn>&nbsp;
+  //escaping single quotes
+<br>
+  &nbsp; </dfn>echo 'The array contains the values \'2,5,3,4\'.';
+
+<br>
+  <dfn>&nbsp;
+  //invalid attempt to expand a variable inside of a single quote string
+<br>
+  &nbsp; </dfn>$name = 'John Smith';
+<br>
+&nbsp; echo 'The user's name is $name';
+<br>
+  <cite>?&gt; </cite>
+</div>
+<ul>
+  <li>The first line of output is a result of an echo statement that displays 
+  the literal single quoted string in the browser window. </li>
+  <li>The second line of output is displayed after a single quoted string is 
+  assigned to a variable. The variable is then displayed using the echo 
+  statement. </li>
+  <li>The next line of output demonstrates the use of the escape character. The 
+  single quoted string contains a set of single quotes used to contain the array 
+  elements. </li>
+  <li>Finally, a parse error is generated when a variable is coded inside of a 
+  single quote.</li>
+</ul>
+<p align="center">
+<img border="0" src="../images2/sqstring.gif" width="706" height="244"></p>
+<hr>
+<h2><span>Double Quoted Strings</span></h2>
+<ul>
+  <li>PHP strings can also be displayed using double quotes (&quot;&quot;). If PHP strings 
+  are enclosed in double quotes, it is possible to take advantage of 
+  interpolation. </li>
+  <li>With double quoted strings, PHP also supports more escape characters. 
+  These characters are described in the table below.</li>
+</ul>
+<center>
+<table border=1>
+  <tr>
+    <th>Character</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>\n</td>
+    <td>line feed</td>
+  </tr>
+  <tr>
+    <td>\r</td>
+    <td>carriage return</td>
+  </tr>
+  <tr>
+    <td>\t</td>
+    <td>horizontal tab</td>
+  </tr>
+  <tr>
+    <td>\\</td>
+    <td>backslash</td>
+  </tr>
+  <tr>
+    <td>\$</td>
+    <td>dollar sign</td>
+  </tr>
+  <tr>
+    <td>\&quot;</td>
+    <td>double quote</td>
+  </tr>
+</table>
+
+
+<br>
+
+
+<a href="../php_examples/dqstrings.php">dqstrings.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/dqstrings.php">Online
+Demo</a>
+</center>
+
+<div>
+<cite>&lt;?php</cite><br>
+&nbsp;
+echo &quot;PHP is supported by many operating systems.&lt;br&gt;&quot;;<br>
+&nbsp;
+$name = &quot;John&quot;;<br>
+&nbsp;
+echo &quot;The user's name is $name.&lt;br&gt;&quot;;<br>
+&nbsp;
+$fruits = array('grapes', 'peaches', 'strawberries');<br>
+&nbsp;
+echo &quot;My favorite fruit is $fruits[0].&lt;br&gt;&quot;;<br>
+  <cite>?&gt; </cite>
+<br>
+</div>
+
+<ul>
+  <li>The first line displays a double quoted string using the echo statement. </li>
+  <li>The second line of output is produced when a string includes a variable. 
+  The variable is expanded and its contents are displayed along with the string. </li>
+  <li>Next, an array variable is expanded and displayed along with the string. </li>
+</ul>
+<p align="center">
+<img border="0" src="../images2/dqstring.gif" width="669" height="275"></p>
+<hr>
+<h2><span>String Functions</span></h2>
+<ul>
+  <li>PHP includes a number of String functions. The following lists some of the 
+  most common functions.</li>
+</ul>
+<table border="1">
+  <tr>
+    <th>
+    Function</th>
+    <th>
+    Description</th>
+  </tr>
+  <tr>
+    <td>
+    strlen&nbsp;</td>
+    <td>
+    determines the length of a string.</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;ltrim(string) ">
+    ltrim&nbsp;</td>
+    <td>
+    strips whitespace from the beginning of a string.</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;rtrim(string) ">
+    rtrim&nbsp;</td>
+    <td>
+    strips whitespace from the end of a string.</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;strpbrk(string, char) ">
+    strpos&nbsp;</td>
+    <td>
+    find position of first occurrence of a string</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;eregi(string pattern, string subject) ">
+    <a href="http://us2.php.net/manual/en/function.strrpos.php">strrpos&nbsp;</a></td>
+    <td>
+    find position of last occurrence of a char in a string</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;strtoupper(string) ">
+    strtoupper&nbsp; </td>
+    <td>
+    converts string to uppercase.</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;strtolower(string) ">
+    strtolower&nbsp;</td>
+    <td>
+    converts string to lowercase.</td>
+  </tr>
+  <tr>
+    <td x:str="&nbsp;strrev(string) ">
+    strrev </td>
+    <td>
+    reverses a string.</td>
+  </tr>
+ <tr>
+  <td><a
+  href="http://us2.php.net/manual/en/function.money-format.php">money_format&nbsp;</a></td>
+  <td width=442 style='width:331pt'>formats a number as a currency string</td>
+ </tr>
+ <tr>
+  <td><a
+  href="http://us2.php.net/manual/en/function.number-format.php">number_format&nbsp;</a></td>
+  <td>format a number with grouped thousands</td>
+ </tr>
+ <tr>
+  <td><a
+  href="http://us2.php.net/manual/en/function.str-replace.php">str_replace&nbsp;</a></td>
+  <td>replace all occurrences of the search string with the replacement
+  string</td>
+ </tr>
+ <tr>
+  <td><a
+  href="http://us2.php.net/manual/en/function.str-split.php">str_split&nbsp;</a></td>
+  <td>convert a string to an array</td>
+ </tr>
+  </tr>
+</table>
+<p>&nbsp;</p>
+  <ul>
+    <li>The following block of code demonstrates how to use PHP string functions.</li>
+  </ul>
+<p align="center">
+
+
+<a href="../php_examples/string.php">string.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/string.php">Online
+Demo</a>
+</p>
+<div><cite>&lt;?php</cite><br>
+$string = &quot;Hello World&quot;;<br>
+$another_string = &quot;Welcome to PHP&quot;;<br>
+<br>
+echo strlen($string);<br>
+echo strtoupper($another_string);<br>
+echo strrev($another_string);<br>
+echo strpos($string, &quot;W&quot;);<br>
+
+  <cite>?&gt;</cite><br>
+</div>
+<ul><li>The first line displays the length of the string &quot;Hello World&quot; - 11.  </li><li>Next, 
+the string &quot;Welcome to PHP&quot; is converted to upper case and displayed in the 
+browser window. </li><li>This string is also used with the strrev function to 
+  reverse the order of the string.</li><li>&nbsp;Finally, the string &quot;Hello 
+  World&quot; is searched until the &quot;W&quot; character is found and the position of &quot;W&quot; in 
+  the string is returned. </li></ul>
+
+<p align="center">
+<img border="0" src="../images2/strings.gif" width="390" height="292"></p>
+
+<span>
+
+
+
+<hr>
+
+
+<h1 align="left">Dates and Times</h1>
+
+
+<h2><span>The date() Function</span></h2>
+<ul>
+  <li>The date() function is used to format a 
+time() or a date.</li>
+  <li>Unlike the Date() object in JavaScript - date is just a formatted string 
+  representing the current date (and time) on the server.</li>
+</ul>
+<h3>Syntax</h3>
+<table border="1" cellspacing="0" cellpadding="0" >
+  <tr>
+    <td style="padding: .75pt">
+    string date (date_format[,int timestamp])<br>
+    </td>
+  </tr>
+</table>
+<ul>
+  <li>This function returns a string formatted 
+according to the specified format.</li>
+</ul>
+<h3>Date Formats</h3>
+
+
+
+</span>
+<ul>
+  <li>The table below shows the characters that 
+may be used in the format string:<br>
+  </li>
+  </ul>
+
+
+
+<center>
+<table border="1" cellspacing="0" cellpadding="3">
+  <tr>
+    <th>
+Character</th>
+    <th>
+Description</th>
+  </tr>
+  <tr>
+    <td>
+a</td>
+    <td>
+&quot;am&quot; or &quot;pm&quot;</td>
+  </tr>
+  <tr>
+    <td>
+A</td>
+    <td>
+&quot;AM&quot; or &quot;PM&quot;</td>
+  </tr>
+  <tr>
+    <td>
+B</td>
+    <td>
+Swatch Internet time 
+    (000-999)</td>
+  </tr>
+  <tr>
+    <td>
+d</td>
+    <td>
+Day of the month 
+    with a leading zero (01-31)</td>
+  </tr>
+  <tr>
+    <td>
+D</td>
+    <td>
+Three characters 
+    that represents the day of the week (Mon-Sun)</td>
+  </tr>
+  <tr>
+    <td>
+F</td>
+    <td>
+The full name of the 
+    month (January-December)</td>
+  </tr>
+  <tr>
+    <td>
+g</td>
+    <td>
+The hour in 12-hour 
+    format without a leading zero (1-12)</td>
+  </tr>
+  <tr>
+    <td>
+G</td>
+    <td>
+The hour in 24-hour 
+    format without a leading zero (0-23)</td>
+  </tr>
+  <tr>
+    <td>
+h</td>
+    <td>
+The hour in 12-hour 
+    format with a leading zero (01-12)</td>
+  </tr>
+  <tr>
+    <td>
+H</td>
+    <td>
+The hour in 24-hour 
+    format with a leading zero (00-23)</td>
+  </tr>
+  <tr>
+    <td>
+i</td>
+    <td>
+The minutes with a 
+    leading zero (00-59)</td>
+  </tr>
+  <tr>
+    <td>
+I</td>
+    <td>
+&quot;1&quot; if the date is 
+    in daylights savings time, otherwise &quot;0&quot;</td>
+  </tr>
+  <tr>
+    <td>
+j</td>
+    <td>
+Day of the month 
+    without a leading zero (1-31)</td>
+  </tr>
+  <tr>
+    <td>
+l</td>
+    <td>
+The full name of the 
+    day (Monday-Sunday)</td>
+  </tr>
+  <tr>
+    <td>
+L</td>
+    <td>
+&quot;1&quot; if the year is a 
+    leap year, otherwise &quot;0&quot;</td>
+  </tr>
+  <tr>
+    <td>
+m</td>
+    <td>
+The month as a 
+    number, with a leading zero (01-12)</td>
+  </tr>
+  <tr>
+    <td>
+M</td>
+    <td>
+Three letters that 
+    represents the name of the month (Jan-Dec)</td>
+  </tr>
+  <tr>
+    <td>
+n</td>
+    <td>
+The month as a 
+    number without a leading zero (1-12)</td>
+  </tr>
+  <tr>
+    <td>
+O</td>
+    <td>
+The difference to 
+    Greenwich time (GMT) in hours</td>
+  </tr>
+  <tr>
+    <td>
+r</td>
+    <td>
+An RFC 822 formatted 
+    date (e.g. &quot;Tue, 10 Apr 2005 18:34:07 +0300&quot;)</td>
+  </tr>
+  <tr>
+    <td>
+s</td>
+    <td>
+The seconds with a 
+    leading zero (00-59)</td>
+  </tr>
+  <tr>
+    <td>
+S</td>
+    <td>
+The English ordinal 
+    suffix for the day of the month (st, nd, rd or th)</td>
+  </tr>
+  <tr>
+    <td>
+t</td>
+    <td>
+The number of days 
+    in the given month (28-31)</td>
+  </tr>
+  <tr>
+    <td>
+T</td>
+    <td>
+The local time zone 
+    (e.g. &quot;GMT&quot;)</td>
+  </tr>
+  <tr>
+    <td>
+U</td>
+    <td>
+The number of 
+    seconds since the Unix Epoch (January 1 1970 00:00:00 GMT)</td>
+  </tr>
+  <tr>
+    <td>
+w</td>
+    <td>
+The day of the week 
+    as a number (0-6, 0=Sunday)</td>
+  </tr>
+  <tr>
+    <td>
+W</td>
+    <td>
+ISO-8601 week number 
+    of year, weeks starting on Monday</td>
+  </tr>
+  <tr>
+    <td>
+Y</td>
+    <td>
+The year as a 
+    4-digit number (e.g. 2003)</td>
+  </tr>
+  <tr>
+    <td>
+y</td>
+    <td>
+The year as a 
+    2-digit number (e.g. 03)</td>
+  </tr>
+  <tr>
+    <td>
+z</td>
+    <td>
+The day of the year 
+    as a number (0-366)</td>
+  </tr>
+</table>
+</center>
+<p align="center"><a href="../php_examples/date.php">date.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/date.php">Online
+Demo</a> <br>
+    </p>
+<div>
+    <cite>&lt;?php</cite><br>
+    <dfn>&nbsp;
+    //Prints something like: Monday</dfn><br>
+    &nbsp;
+    echo date(&quot;l&quot;);<br>
+    <dfn>&nbsp;
+    //Prints something like: Monday 15th of March 2006 05:51:38 AM </dfn><br>
+    &nbsp;
+    echo date(&quot;l dS \\o\f F Y h:i:s A&quot;);<br>
+    <dfn>&nbsp;
+    //Prints something like: Monday the 15th </dfn><br>
+    &nbsp;
+    echo date(&quot;l \\t\h\e jS&quot;);<br>
+    <cite>?&gt; </cite>
+</div>
+
+
+
+  <p align="center">
+  <img border="0" src="../images2/date.gif" width="662" height="284"></p>
+
+
+
+<hr>
+<h2><span>The time() Function</span></h2>
+
+<ul>
+  <li>Returns the current time measured in the number of seconds since the 
+          Unix Epoch (January 1 1970 00:00:00 GMT). </li>
+  <li>Used to create and store dates and times that can be compared and used in 
+  an PHP program.</li>
+</ul>
+
+</span>
+
+                    <div>
+                      <cite>&lt;?php</cite><br>
+                      &nbsp;
+                      $nextWeek = time() 
+                      + (7 * 24 * 60 * 60);<br>
+                      &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<dfn> // 7 days; 
+                      24 hours; 60 mins; 60secs</dfn><br>
+                      &nbsp;
+                      echo 'Now:&nbsp; &nbsp; &nbsp; '.&nbsp; date('Y-m-d')&nbsp; . &quot;&lt;br&gt;\n&quot;;<br>
+                      &nbsp;
+                      echo 'Next Week: '.&nbsp; date('Y-m-d', $nextWeek)&nbsp; . &quot;&lt;br&gt;\n&quot;;<br>
+                      <cite>?&gt; </cite>
+                    </div>
+                  
+               
+
+
+
+              <ul><li>The above example will output something similar to:</li></ul>
+
+
+<p align="center">
+<img border="0" src="../images2/time.gif" width="487" height="231"></p>
+
+
+<script language="JavaScript">writeFooter(0);</script>
+<h1><span>PHP Autoglobals</span></h1>
+<ul>
+  <li>PHP comes with a number of <span>global variable arrays called autoglobals or 
+  superglobals that are pre-created 
+  for you to use:</li>
+</ul>
+<center>
+<table border="1">
+<caption>PHP Autoglobals</caption>
+  <tr>
+    <th height="27">Object</th>
+    <th height="27">Description</th>
+  </tr>
+  <tr>
+    <td height="22"><code>$_COOKIE</code></td>
+    <td height="22">An array of values passed to the current PHP page as HTTP 
+    cookies.</td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_ENV</code></td>
+    <td height="23">An array of environment information.</td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_FILES</code></td>
+    <td height="23">An array of information about uploaded files.</td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_GET</code></td>
+    <td height="23">An array of <span>form data the client browser sends with 
+    the request for the PHP page when the form is submitted with the GET method.</span></td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_POST</code></td>
+    <td height="23"> <span>An array of form data the client browser sends with 
+    the request for the PHP page when the form is submitted with the POST 
+    method.</span></td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_REQUEST</code></td>
+    <td height="23"> <span>An array of data the client browser sends with the 
+    request for the PHP page.&nbsp;&nbsp; It includes form data sent with get or 
+    post, and cookie data.</span></td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_SERVER&nbsp;&nbsp;</code>&nbsp;&nbsp; </td>
+    <td height="23">An array of information about the Web Server hosting the PHP 
+    page.</td>
+  </tr>
+  <tr>
+    <td height="23"><code>$_SESSION</code></td>
+    <td height="23"> <span>An array of session variables for the current session that is associated with a particular user 
+    and can only be accessed by the current user.</span></td>
+  </tr>
+  <tr>
+    <td height="23"><code>$GLOBALS</code></td>
+    <td height="23">An array of references to all variables that are defined 
+    with global scope.</td>
+  </tr>
+</table>
+</center>
+
+
+</span>
+
+
+
+<ul>
+  <li>We have already used the $_GET and $_POST arrays to get a form parameter sent by a 
+  user: <code>$_GET['name'];</code></li>
+  <li>We will be learning more about the other autoglobal arrays today.</li>
+</ul>
+
+
+
+<hr>
+
+<h2><span>$_SERVER</span></h2>
+<ul>
+  <li>All servers hold information such as which 
+URL the user came from, what's the user's browser, and other information. This 
+information is stored in variables.</li>
+  <li>In PHP, the <code>$_SERVER</code> is a reserved 
+variable that contains all server information. The <code>$_SERVER</code> is a global variable 
+- which means that it's available in all scopes of a PHP script.</li>
+</ul>
+<h3><span>Example</span></h3>
+<ul>
+  <li>The following example will output which 
+URL the user came from, the user's browser, and the user's IP address:</li>
+</ul>
+<p align="center">
+
+
+
+<span>
+
+<a href="../php_examples/server.php">server.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/server.php">Online
+Demo</a>
+
+
+
+</span>
+
+
+
+</p>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    <cite>&lt;?php</cite><br>
+      &nbsp;&nbsp;
+      echo &quot;Referer: &quot; . $_SERVER[&quot;HTTP_REFERER&quot;] . &quot;&lt;br /&gt;&quot;;<br>
+      &nbsp;&nbsp;
+      echo &quot;Browser: &quot; . $_SERVER[&quot;HTTP_USER_AGENT&quot;] . &quot;&lt;br /&gt;&quot;;<br>
+    &nbsp;&nbsp;
+    echo &quot;User's IP address: &quot; . $_SERVER[&quot;REMOTE_ADDR&quot;];<br>
+    <cite>?&gt;</cite><br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+    
+    </div>
+
+
+
+<ul>
+  <li><b>Note:</b> there are IP to Location databases which can be purchased so 
+  you can look up the country of origin for any IP address and thus customize 
+  your pages to the country of origin.</li>
+</ul>
+
+
+
+<hr>
+<h2><span>$_GET and $_POST</span></h2>
+<ul>
+  <li>A very powerful feature of 
+PHP is the way it handles HTML forms!</li>
+  <li>The most important thing to notice when 
+dealing with HTML forms and PHP is that any form element in an HTML page will
+automatically be available to your PHP scripts.</li>
+  <li>Look at the following example of an HTML 
+form:</li>
+</ul>
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+&lt;form action=&quot;welcome.php&quot; method=&quot;POST&quot;&gt;<br>
+    
+&nbsp;&nbsp;
+    
+Enter your name: &lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;&lt;br 
+    /&gt;<br>
+    
+&nbsp;&nbsp;
+    
+Enter your age: &lt;input type=&quot;text&quot; name=&quot;age&quot; /&gt;<br>
+    
+&lt;input type=&quot;submit&quot; /&gt;<br>
+    
+&lt;/form&gt;<br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+<ul>
+  <li>The example HTML page above contains two 
+input fields and a submit button. When the user fills in this form and hits the 
+submit button, the &quot;welcome.php&quot; file is called.</li>
+  <li>The &quot;welcome.php&quot; file looks like this:</li>
+</ul>
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+&nbsp;&nbsp;&nbsp;
+    
+Welcome <cite>&lt;?php </cite>echo $_POST[&quot;name&quot;]; <cite>?&gt;</cite>.&lt;br /&gt;<br>
+    
+&nbsp;&nbsp;&nbsp;
+    
+You are <cite>&lt;?php </cite>echo $_POST[&quot;age&quot;]; <cite>?&gt; </cite>years old!<br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+<ul>
+  <li>A sample output of the above script may 
+be:</li>
+</ul>
+<div>
+    Welcome Jim.<br>
+You are 28 years old!<br>
+    
+    </div>
+<ul>
+  <li>Here is how it works: The <code>$_POST[&quot;name&quot;]</code> 
+and <code>$_POST[&quot;age&quot;] </code>variables are automatically set for you by PHP. The 
+  <code>$_POST</code> 
+contains all POST data. </li>
+  <li>Note: 
+If the method attribute of the form is GET, then the form information will be 
+set in <code>$_GET </code>instead of <code>$_POST.</code></li>
+</ul>
+<hr>
+
+
+<h2><span>$_REQEST</span></h2>
+<ul>
+  <li>An associative array consisting of the contents of <code>$_GET</code>,
+  <code>$_POST</code>, and <code>$_COOKIE</code>.&nbsp; </li>
+  <li>The example PHP page used to process the welcome HTML page (above) could 
+  be rewritten using the <code>$_REQUEST</code> array instead.</li>
+  <li>The <b>advantage</b> of using the<code> $_REQUEST</code>&nbsp; is that you 
+  can easily change from GET to POST forms (e.g. after debugging) and not have 
+  to change your forms.</li>
+  <li>The <b>disadvantage</b> of using the<code> $_REQUEST</code>&nbsp; is that 
+  it is possible to have two different fields with the same name (e.g a POST 
+  form element that is then written to a cookie with the same name). In these 
+  situations you might not know which version of the variable you are 
+  referencing.</li>
+  <li>The revised &quot;<a href="../php_examples/welcome.php">welcome.php</a>&quot; file looks like this:</li>
+</ul>
+
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+&nbsp;&nbsp;&nbsp;
+    
+Welcome <cite>&lt;?php </cite>echo $_REQUEST[&quot;name&quot;]; <cite>?&gt;</cite>.&lt;br /&gt;<br>
+    
+&nbsp;&nbsp;&nbsp;
+    
+You are <cite>&lt;?php </cite>echo $_REQUEST[&quot;age&quot;]; <cite>?&gt; </cite>years old!<br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+
+<hr>
+
+<script language="JavaScript">writeFooter(1);</script>
+
+
+
+<h1>Session Management</h1>
+
+
+
+<ul>
+  <li>The HTTP protocol is connectionless.&nbsp; </li>
+  <li>This means that if you have a multi-servlet Web application, like a 
+  shopping cart, HTTP provides no mechanism for the application to remember the 
+  client.</li>
+  <li>Two mechanisms programmers use to track specific users are Cookies and 
+  Sessions.</li>
+</ul>
+</span>
+<hr>
+
+<h2><span>$_Cookie</span></h2>
+<ul>
+  <span>
+  <li>A Cookie is a data file that is written on the user's computer by a
+    program within a Web page.</li>
+  <li>Cookies are often used to store information about:
+    <ul>
+      <li>Which pages a user has viewed</li>
+      <li>How many times a user has visited a Web site</li>
+      <li>What information the user has entered on past visits (e.g. login name
+        and password or customer data)</li>
+      <li>What items a user has selected to purchase (shopping cart)</li>
+    </ul>
+  </li>
+  <li>
+
+A cookie stores information in pairs of variable names and
+associated values.&nbsp; Each name/value pair is separated by a semicolon (<code>;</code>):<br>
+<code>userid=mkellog;password=hello;</code>
+  <li>
+
+Information in cookies is essentially private.&nbsp; Cookies can only be read by
+the same Web site domain name or IP address that created them.
+  <li>
+
+However, a cookie written using JavaScript by the client-browser can be read by 
+a PHP from the same domain.</span><li>The <code>setcookie()</code> function is used to create 
+cookies.</li>
+  <li><b>Note: 
+</b>The <code>setcookie()</code> function must appear BEFORE the &lt;html&gt; tag. </li>
+</ul>
+<h3>Syntax</h3>
+<div>
+    setcookie(name, value, expire, path, domain);<br>
+    </div>
+<h3>Example</h3>
+<ul>
+  <li>The following example sets a cookie named 
+&quot;uname&quot; - that expires after ten hours.</li>
+</ul>
+<span>
+<p align="center"><a href="../php_examples/welcome.php">welcome.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a rel="tag" href="http://carbon.cudenver.edu/~dgregg/php_examples/welcome.html">View
+Online</a></p>
+</span>
+<div>
+    <cite>&lt;?php </span>
+    
+    </cite>setcookie(&quot;uname&quot;, $_POST[&quot;name&quot;], time()+36000);<cite>
+    
+?&gt;</cite><br>
+    
+&lt;html&gt;<br>
+    
+&lt;body&gt;<br>
+&nbsp; &lt;p&gt;Welcome <cite>&lt;?php </cite>echo $_REQUEST[&quot;name&quot;]; <cite>?&gt;</cite>.&lt;br /&gt;<br>
+    
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; You are <cite>&lt;?php </cite>echo $_REQUEST[&quot;age&quot;]; <cite>?&gt; </cite>years old!&lt;/p&gt;<br>
+    
+    <br>
+    
+&nbsp;
+    
+&lt;p&gt;A cookie was set on this page! The cookie will be active when <br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+the client has sent the cookie back to the server.&lt;/p&gt;<br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+
+
+  <hr>
+
+<h3>How to Retrieve a Cookie Value</h3>
+<ul>
+  <li>When a cookie is set, PHP uses the cookie 
+name as a variable.</li>
+  <li>To access a cookie you just refer to the 
+cookie name as a variable.</li>
+  <li>Tip: 
+Use the isset() function to find out if a cookie has been set.</li>
+</ul>
+<h3>Example</h3>
+<ul>
+  <li>The following example tests if the uname 
+cookie has been set, and prints an appropriate message.</li>
+</ul>
+<span>
+<p align="center"><a href="../php_examples/cookie_get.php">cookie_get.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a rel="tag" href="http://carbon.cudenver.edu/~dgregg/php_examples/cookie_get.php">View
+Online</a></p>
+</span>
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+    <cite>&lt;?php</cite><br>
+    
+&nbsp;
+    
+if (isset($_COOKIE[&quot;uname&quot;])) <br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;
+    
+echo &quot;Welcome &quot; . $_COOKIE[&quot;uname&quot;] . &quot;!&lt;br /&gt;&quot;;<br>
+    
+&nbsp;
+    
+else<br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;
+    
+echo &quot;You are not logged in!&lt;br /&gt;&quot;;<br>
+    
+    <cite>?&gt;</cite><br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+
+<p align="center">
+<img border="0" src="../images2/cookie.gif" width="657" height="360"></p>
+<span>
+
+<hr>
+
+
+<h2><span>$_SESSION</span></h2>
+
+<ul>
+  <li>PHPs (and other server side programming languages) have another session management option that uses the <code>
+  $_SESSION</code> array. </li>
+  <li>Session support in PHP consists of a way to preserve certain data across 
+  subsequent accesses. This enables you to build more customized applications 
+  and increase the appeal of your web site. </li>
+  <li>This is a high-level interface that creates a unique session id for a set 
+  of user interactions.&nbsp; The session id is &quot;remembered&quot;&nbsp; using cookies if the 
+  browser supports them, but or URL-rewriting when 
+  cookies are unsupported or explicitly disabled. </li>
+  <li>The session support allows you to register arbitrary numbers of variables 
+  to be preserved across requests. </li>
+  <li>When a visitor accesses your site, PHP will check automatically (if
+  <a href="http://us2.php.net/manual/en/ref.session.php#ini.session.auto-start">
+  session.auto_start</a> is set to 1) or on your request (explicitly through
+  <a href="http://us2.php.net/manual/en/function.session-start.php">
+  <b class="function">session_start()</b></a> or implicitly through
+  <a href="http://us2.php.net/manual/en/function.session-register.php">
+  <b class="function">session_register()</b></a>) whether a specific session id 
+  has been sent with the request. If this is the case, the prior saved 
+  environment is recreated. </li>
+
+</ul>
+<div>
+<cite>&lt;?php</cite><br>
+    session_start();<br>
+    <dfn>// Use $HTTP_SESSION_VARS with PHP 4.0.6 or less</dfn><br>
+    if (!isset($_SESSION['count'])) 
+    {<br>
+    &nbsp;&nbsp; $_SESSION['count'] 
+    = 0;<br>
+    } else {<br>
+    &nbsp;&nbsp; $_SESSION['count']++;<br>
+    }<br>
+    <cite>?&gt;</cite></span><cite> </span></code>
+
+</cite>&nbsp;</div>
+
+
+
+  <hr>
+
+
+  <h2><span>A Session Management Example</span></h2>
+
+
+
+<ul>
+  <li>The form below calls a PHP that writes session parameters that then 
+  can be read by other PHP pages.</li>
+</ul>
+
+<form ACTION="http://ouray.cudenver.edu/~dgregg/php_examples/session.php" METHOD="POST" NAME="frmSession">
+<input type="hidden" Name="txtH" value="ISMG 4800 Data">
+  <center>
+  <table>
+    <tr>
+      <td>Your Name:
+      <td><input TYPE="text" NAME="name" SIZE="30">
+    </tr>
+    <tr>
+      <td>Your Email:
+      <td><input TYPE="text" NAME="email" SIZE="30">
+    </tr>
+    <tr>
+      <td ALIGN="right"><input TYPE="submit" VALUE="Submit">
+      <td><input TYPE="Reset" VALUE="Reset">
+  </table>
+  </center>
+</form>
+
+
+  <p align="center">(<a href="../php_examples/session.php">session.php</a>)</p>
+
+
+
+  <div>
+
+
+  &lt;HTML&gt;<br>
+    &lt;HEAD&gt;<br>
+    &nbsp;
+    &lt;TITLE&gt;Session Management Example&lt;/TITLE&gt;<br>
+    &lt;/HEAD&gt;<br>
+    &lt;BODY&gt;<br>
+    <cite>&lt;?php</cite><code><br>
+  </code>&nbsp; session_start();<br>
+    <code>&nbsp; </code> <dfn>// get the form parameters</dfn><code><br>
+  </code>&nbsp; $name = $_POST[&quot;name&quot;];<br>
+&nbsp; $email = $_POST[&quot;email&quot;];<br>
+&nbsp; $person = array($name, $email);<br>
+    <code><br>
+  </code>&nbsp; $_SESSION[&quot;person&quot;] = $person;<br>
+&nbsp; if(!isset($_SESSION['start']))<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $_SESSION[&quot;start&quot;] = date(&quot;m-d-20y h:i:s a&quot;);<br>
+  <cite>?&gt;</cite><br>
+    &lt;H1&gt;User Data Processed&lt;/H1&gt;<br>
+    <cite>&lt;?php</cite> <dfn>// if called with a form</dfn><br>
+&nbsp; if ($name!=null)<br>
+&nbsp; { <cite>?&gt;</cite><br>
+  &lt;h2&gt;You input the following data:&lt;/h2&gt;<br>
+  &lt;ul&gt;<br>
+  &lt;li&gt;&lt;b&gt;Name:&lt;/b&gt;<cite>&lt;?php</cite> echo $name <cite>?&gt;</cite>&lt;/li&gt;<br>
+  &lt;li&gt;&lt;b&gt;Email:&lt;/b&gt;<cite>&lt;?php</cite> echo $email <cite>?&gt;</cite>&lt;/li&gt;&lt;/ul&gt;<br>
+  &lt;br&gt;&lt;a href=&quot;session2.php&quot;&gt;Continue&lt;/a&gt;<br>
+  <cite>&lt;?php</cite> } else echo(&quot;&lt;p&gt;Error in the form data. Go to &lt;a href=session.html&gt;session.html&lt;/a&gt;&lt;/p&gt;&quot;);
+  <cite>?&gt;</cite><br>
+    &lt;/BODY&gt;<br>
+    &lt;/HTML&gt;</div>
+
+
+
+  <p align="center">
+  (<a href="../php_examples/session2.php">session2.php</a>)</p>
+  <div>
+
+
+  &lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+&nbsp; &lt;TITLE&gt;Second Session PHP Page&lt;/TITLE&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY&gt;<br>
+  &lt;H1&gt;Continuing User Session&lt;/h1&gt;<br>
+  <cite>&lt;?php</cite><br>
+&nbsp; session_start();<br>
+  <br>
+&nbsp; if (isset($_SESSION['person']))<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; $p = $_SESSION[&quot;person&quot;];<br>
+&nbsp;&nbsp;&nbsp; $now = $_SESSION[&quot;start&quot;];<br>
+&nbsp;&nbsp;&nbsp; echo(&quot;&lt;h2&gt;You are:&lt;/h2&gt;&quot;);<br>
+&nbsp;&nbsp;&nbsp; echo(&quot;&lt;ul&gt;&quot;);<br>
+&nbsp;&nbsp;&nbsp; echo(&quot;&lt;li&gt;&lt;b&gt;Name:&lt;/b&gt; &quot; . $p[0] . &quot;&lt;/li&gt;&quot;);<br>
+&nbsp;&nbsp;&nbsp; echo(&quot;&lt;li&gt;&lt;b&gt;Email:&lt;/b&gt; &quot; . $p[1] . &quot;&lt;/li&gt;&quot;);<br>
+&nbsp;&nbsp;&nbsp; echo(&quot;&lt;li&gt;&lt;b&gt;Your Session Started:&lt;/b&gt; $now&quot;);<br>
+&nbsp; }<br>
+&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; echo(&quot;&lt;p&gt;Error in the session data&lt;/p&gt;&quot;);<br>
+  <cite>?&gt;</cite><br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;</div>
+
+
+
+  <p align="center">
+  <img border="0" src="../images2/session.gif" width="696" height="568"></p>
+
+
+<hr>
+
+<script language="JavaScript">writeFooter(2);</script>
+
+<h1>PHP Built-in Functions</h1>
+
+
+<ul>
+  <li>
+<p class="intro">The real power of PHP comes 
+from its functions.</p>
+  </li>
+  <li>
+<p class="intro">In PHP - there are more than 
+700 functions available.</p>
+
+  </li>
+  <li>The phpinfo() function is used to output 
+PHP information.</li>
+  <li>This function is useful for trouble 
+shooting, providing the version of PHP, and how it is configured.</li>
+</ul>
+<table border="1" cellpadding="4">
+
+<caption>The phpinfo() function options</caption>
+  <tr>
+    <th>Name</td>
+    <th>Description</td>
+  </tr>
+  <tr>
+    <td>
+    INFO_GENERAL</td>
+    <td>The configuration 
+    line, php.ini location, build date, Web Server, System and more</td>
+  </tr>
+  <tr>
+    <td>INFO_CREDITS</td>
+    <td>PHP 4 credits</td>
+  </tr>
+  <tr>
+    <td>INFO_CONFIGURATION</td>
+    <td>Local and master 
+    values for php directives</td>
+  </tr>
+  <tr>
+    <td>INFO_MODULES</td>
+    <td>Loaded modules</td>
+  </tr>
+  <tr>
+    <td>INFO_ENVIRONMENT</td>
+    <td>Environment variable 
+    information</td>
+  </tr>
+  <tr>
+    <td>INFO_VARIABLES</td>
+    <td>All predefined 
+    variables from EGPCS (Environment, GET, POST, Cookie, Server)</td>
+  </tr>
+  <tr>
+    <td>INFO_LICENSE</td>
+    <td>PHP license 
+    information</td>
+  </tr>
+  <tr>
+    <td>INFO_ALL</td>
+    <td>Shows all of the 
+    above. This is the default value</td>
+  </tr>
+</table>
+<h3>Example</h3>
+<p align="center"><a href="../php_examples/phpinfo.php">phpinfo.php</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a rel="tag" href="http://carbon.cudenver.edu/~dgregg/php_examples/phpinfo.php">View Online</a></p>
+<div>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    <cite>&lt;?php</cite><br>
+&nbsp;&nbsp; // Show all PHP information<br>
+&nbsp;&nbsp; phpinfo();<br>
+    <cite>?&gt;</cite><br>
+    <cite>&lt;?php</cite><br>
+&nbsp;&nbsp; // Show only the general information<br>
+&nbsp;&nbsp; phpinfo(INFO_GENERAL);<br>
+    <cite>?&gt;</cite><br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;</span></div>
+
+<ul><li>You should get a page that looks something like this</li></ul>
+<p align="center">
+<br> <img border="0" src="../images2/phpinfo.jpg" width="400" height="278"></p>
+
+
+<hr>
+<h2><span>PHP Header() Function</span></h2>
+<ul>
+  <li>The header() function is used to send raw 
+HTTP headers over the HTTP protocol.</li>
+  <li><b>Note:</b> 
+This function must be called before anything is written to the page!</li>
+</ul>
+<h3>Example</h3>
+<p>The following example will redirect the 
+browser to the following URL: http://ouray.cudenver.edu/~dgregg:<br>
+<div>
+    <cite>&lt;?php</cite><br>
+    &nbsp;&nbsp;
+    <dfn>//Redirect browser</dfn><br>
+    &nbsp;&nbsp;
+    header(&quot;Location: http://ouray.cudenver.edu/~dgregg&quot;);<br>
+    <cite>?&gt;</cite><br>
+    &lt;html&gt;<br>
+    &lt;body&gt;<br>
+    ......<br>
+    &lt;/body&gt;<br>
+    &lt;/html&gt;<br>
+</div>
+<span>
+
+<hr>
+<script language="JavaScript">writeFooter(3);</script>
+<h1><span>PHP Include Files (SSI)</span></h1>
+<ul>
+  <li>Server Side Includes (SSI) 
+are used to create functions, headers, footers, or elements that will be reused 
+on multiple pages.</li>
+</ul>
+
+<h2><span>Server Side Includes</span></h2>
+<ul>
+  <li style="margin-bottom: 8">When you design a Web site you often want to provide the same navigation 
+  links and footer on each of the Web pages.&nbsp; </li>
+  <li style="margin-bottom: 8">Using standard HTML this code would be repeated on every Web page and if 
+  any of the links changed they would have to be updated on every Web page.</li>
+  <li style="margin-bottom: 8">PHP allows you to place the repeated header, menu &amp; footer code in 
+  separate files and then allowing you to include these other files in your PHP 
+  pages.</li>
+  <li>You insert the content of one file 
+into another file before the server executes it, with the require() function. 
+The require() function is used to create functions, headers, footers, or 
+elements that will be reused on multiple pages.</li>
+  <li>This can save the developer a considerable 
+amount of time. If all of the pages on your site have a similar header, you can 
+include a single file containing the header into your pages. When the header 
+needs updating, you only update the one page, which is included in all of the 
+pages that use the header.</li>
+</ul>
+<h3><span>Example</span></h3>
+<ul>
+  <li>The following example includes a header 
+that should be used on all pages:</li>
+</ul>
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+    <cite>&lt;?php</cite> require(&quot;header.htm&quot;);
+    
+    <cite>?&gt;</cite><br>
+    
+&nbsp;&nbsp;
+    
+&lt;p&gt;Some text&lt;/p&gt;<br>
+    
+&nbsp;&nbsp;
+    
+&lt;p&gt;Some text&lt;/p&gt;<br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+<ul>
+  <li>The Sample Outdoor Depot Web page/site (which you will be creating using 
+  the outdoor depot tutorial) uses 4 include files for the header, left menu, 
+  right menu and footer to allow the common elements for the web site to be 
+  easily updated and shared among all of the pages on the site.</li>
+</ul>
+<p align="center"><a href="http://ouray.cudenver.edu/~dgregg/outdoor/index.php">
+Online Demo</a></p>
+<p align="center">
+<img border="0" src="../php_examples/tutorial/tutorial_images/index.jpg" width="700" height="586"></p>
+
+
+
+<hr><script language="JavaScript">writeFooter(4);</script>
+<h1>PHP File Processing Functions</h1>
+<ul>
+  <li>
+<p class="intro">This section describes file 
+handling in PHP.<br>
+
+  </li>
+</ul>
+<hr>
+<h2><span>Opening a File</span></h2>
+
+<ul>
+  <li>The <code>fopen()</code>function is used to open files 
+in PHP.<br>
+  </li>
+  <li>The first parameter of this function 
+contains the name of the file to be opened and the second parameter specifies in 
+which mode the file should be opened in:<br>
+  </li>
+  </ul>
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+    <cite>&lt;?php</cite><br>
+    
+&nbsp;&nbsp;&nbsp; $filein=fopen(&quot;data.txt&quot;,&quot;r&quot;);<br>
+    
+    <cite>?&gt;</cite><br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+
+<ul>
+  <li>The file may be opened in one of the 
+following modes:<br>
+  </li>
+  </ul>
+<table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse" bordercolor="#111111">
+  <tr>
+    <th>File&nbsp;Modes</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>
+r</td>
+    <td>
+<b>Read only</b>. File 
+    pointer at the start of the file</td>
+  </tr>
+  <tr style="height: 13.5pt">
+    <td style="height: 13.5pt; ">
+r+</td>
+    <td style="height: 13.5pt; ">
+<b>Read/Write</b>. File 
+    pointer at the start of the file</td>
+  </tr>
+  <tr>
+    <td>
+w</td>
+    <td>
+<b>Write only</b>. 
+    Truncates the file (overwriting it). If the file doesn't exist, <code>fopen()</code> will 
+    try to create the file</td>
+  </tr>
+  <tr>
+    <td>
+w+</td>
+    <td>
+<b>Read/Write</b>. 
+    Truncates the file (overwriting it). If the file doesn't exist,  <span><code>fopen()</code></span> will 
+    try to create the file</td>
+  </tr>
+  <tr>
+    <td>
+a</td>
+    <td>
+<b>Append.</b> File pointer 
+    at the end of the file. If the file doesn't exist,  <span><code>fopen()</code></span> will try to 
+    create the file</td>
+  </tr>
+  <tr>
+    <td>
+a+</td>
+    <td>
+<b>Read/Append</b>. File 
+    pointer at the end of the file. If the file doesn't exist,  <span><code>fopen()</code></span>will try 
+    to create the file</td>
+  </tr>
+  <tr>
+    <td>
+x</td>
+    <td>
+<b>Create and open for 
+    write only</b>. File pointer at the beginning of the file. If the file already 
+    exists, the  <span><code>fopen()</code></span> call will fail and generate an error. If the file does 
+    not exist, try to create it</td>
+  </tr>
+  <tr>
+    <td>
+x+</td>
+    <td>
+<b>Create and open for 
+    read/write</b>. File pointer at the beginning of the file. If the file already 
+    exists, the  <span><code>fopen()</code></span> call will fail and generate an error. If the file does 
+    not exist, try to create it</td>
+  </tr>
+</table>
+ 
+<ul>
+  <li><b>Note: </b>If the <code>fopen()</code> function is unable to open the specified file, it returns 0 
+(false).<br>
+  </li>
+  </ul>
+<h3>Example</h3>
+<p>The following example generates a message 
+if the fopen() function is unable to open the specified file:<br>
+<div>
+    &lt;html&gt;<br>
+&lt;body&gt;<br>
+    
+    <cite>&lt;?php</cite><br>
+    
+&nbsp;&nbsp;&nbsp;
+    
+if (!($filein=fopen(&quot;data.txt&quot;,&quot;r&quot;)))<br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+exit(&quot;Unable to open file!&quot;);
+    
+    <cite>?&gt;</cite><br>
+    
+&lt;/body&gt;<br>
+    
+&lt;/html&gt;<br>
+    
+    </div>
+
+
+<hr>
+<h2><span>Closing a File</span></h2>
+<p>The <code>fclose()</code> function is used to close a 
+file. <br>
+<div>
+    fclose($filein);<br>
+    </div>
+
+<hr>
+<h2><span>Reading from a File</span></h2>
+
+<ul>
+  <li>The <code>feof() </code>function is used to determine 
+if the end of file is true.</li>
+  <li><b>Note:</b> 
+You cannot read from files opened in w, a, and x mode!<br>
+  </li>
+  </ul>
+
+<div>
+    if (feof($filein))<br>
+&nbsp;&nbsp;
+echo &quot;End of file&quot;;<br>
+    
+    </div>
+
+
+<hr>
+<h2><span>Reading a Line</span></h2>
+
+<ul>
+  <li>The <code>fgets()</code> function is used to read a 
+single line from a file.<br>
+  </li>
+  <li><b>Note: </b>After a call to this function the file pointer has moved to the next line.
+<br>
+  </li>
+  </ul>
+
+<h3>Example</h3>
+
+  <ul>
+    <li>The example below reads a file line by line, until the end of file is true:</li>
+    </ul>
+
+<p align="center"><a href="../php_examples/data.php">data.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/data.php">Online
+Demo</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp; <a href="http://carbon.cudenver.edu/~dgregg/php_examples/data.txt">View
+File</a><br>
+    </p>
+
+<div>
+        
+    <cite>&lt;?php</cite><br>
+&nbsp;
+if (!($filein=fopen(&quot;data.txt&quot;,&quot;r&quot;))) <br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;
+    
+exit(&quot;Unable to open file.&quot;);<br>
+    
+&nbsp;
+    
+while (!feof($filein)) <br>
+    
+&nbsp;
+    
+{ <br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;
+    
+$x=fgets($filein); <br>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;
+    
+echo $x . &quot;&lt;br&gt;\n&quot;;<br>
+    
+&nbsp;
+    
+}<br>
+    
+    &nbsp;
+    
+    fclose($filein);<br>
+    
+    <cite>?&gt;</cite><br>
+    
+    </div>
+
+
+<hr>
+<h2><span>Creating a PHP Hit Counter Program</span></h2>
+    <ul>
+      <li>A counter is an essential part of a site to know how many people are 
+      coming to site and is a simple commonly used program. </li>
+      <li>To create a counter program you need to be able to read from and write 
+      to a file that exists on the server.</li>
+      <li>Remember from or form file examples - to write to a file you first 
+      need to change the file permissions for the file (using <code>chmod</code> 
+      on a unix machine). </li>
+</ul>
+<p align="center"><a href="../php_examples/counter.php">counter.php</a> &nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/counter.php">Online
+Demo</a>&nbsp;&nbsp;&nbsp; <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;
+<a href="http://carbon.cudenver.edu/~dgregg/php_examples/counter.txt">View
+File</a><br>
+    </p>
+<div>&lt;HTML&gt;<br>
+  &lt;HEAD&gt;<br>
+  &lt;TITLE&gt;PHP Counter Program&lt;/TITLE&gt;<br>
+  &lt;/HEAD&gt;<br>
+  &lt;BODY&gt;<br>
+  &lt;H1&gt;PHP Counter&lt;/h1&gt;<br>
+  <cite>&lt;?php</cite><br>
+  &nbsp;
+  if (!($filein=fopen(&quot;counter.txt&quot;,&quot;r+&quot;))) <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  exit(&quot;Unable to open file.&quot;);<br>
+  &nbsp;
+  $count=(int)fgets($filein);<br>
+  &nbsp;
+  $start=fgets($filein);<br>
+  &nbsp;
+  echo &quot;&lt;p&gt;&lt;i&gt;You are the &quot; . $count++ &quot;;<br>
+&nbsp; echo &quot; visitor to this site since $start&lt;/i&gt;&lt;/p&gt;\n&quot;;<br>
+  <br>
+  &nbsp;<dfn>
+  // move back to the beginning of the file<br>
+  &nbsp;
+  // same as rewind($filein);</dfn><br>
+  &nbsp;
+  fseek($filein, 0);<br>
+  &nbsp;
+  fwrite($filein,&quot;$count<br>
+  $start&quot;);<br>
+  &nbsp;
+  fclose($filein);<br>
+  <cite>?&gt;</cite><br>
+  &lt;/BODY&gt;<br>
+  &lt;/HTML&gt;</div>
+
+
+
+<ul>
+  <li><b>Note:</b> Frequently you want to track the number of unique visitors to 
+  your site.&nbsp; You can uses sessions to see if this is a new visitor to the 
+  site and if it is increment the counter.&nbsp; You do not need to display the 
+  hit count to the screen.</li>
+</ul>
+
+
+
+</span>
+
+<hr>
+
+<h1>Other Materials</h1>
+<ul>
+  <li>&quot;<span id="intelliTxt">PHP Pocket Reference</span>&quot; 
+  found at <a href="http://www.oreilly.com/catalog/phppr/chapter/php_pkt.html">
+  http://www.oreilly.com/catalog/phppr/chapter/php_pkt.html</a> </li>
+  <li>&quot;Online PHP Manual&quot; found at
+  <a href="http://us2.php.net/manual/en/index.php">
+  http://us2.php.net/manual/en/index.php</a> </li>
+</ul>
+<hr><script language="JavaScript">writeFooter(5);</script>
+</body></html>

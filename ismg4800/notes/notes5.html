@@ -1,0 +1,1761 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dawn Gregg">
+   <meta name="Classification" content="WWW Programming">
+   <meta name="Description" content="Introduction to JavaScript">
+   <meta name="KeyWords" content="JavaScript, Variables, Operators, Internet, WWW">
+   <title>JavaScript: Functions</title>
+  <script language="JavaScript" src="../scripts/stringDate.js"></script> 
+<script Language="JavaScript">
+<!-- hide
+var timeStr, dateStr;
+
+function clock() {
+  now= new Date();
+
+  // time 
+  hrs= now.getHours();
+  mins= now.getMinutes();
+  secs= now.getSeconds();
+  timeStr= "" + hrs;
+  timeStr+=((mins < 10) ? ":0" : ":") + mins;
+  timeStr+=((secs < 10) ? ":0" : ":") + secs;
+  // Write time to the time textbox
+  document.clock.time.value = timeStr;
+
+  // date
+  date= now.getDate();
+  month= now.getMonth()+1;
+  year= now.getYear();
+  dateStr= "" + month;
+  dateStr+=((date < 10) ? "/0" : "/") + date;
+  dateStr+= "/" + year;
+
+  // Write date to the date textbox
+  document.clock.date.value = dateStr;
+      
+   // function calls itself every 1 sec. 
+  Timer= setTimeout("clock()",1000);  
+}  // end clock()           
+
+    function confirmLink(file)
+    {
+         var answer = confirm('Are You Sure?');
+         if(answer)
+            top.location = file;
+         return answer;
+    }
+
+    function gettxt2(form)
+    {
+       alert(form.txt2.value);
+       return false;
+       //alert("form.elements[0].value: " + form.elements[0].value)
+    }
+
+    function getelements3(form)
+    {
+       //alert(form.txt2.value)
+       alert(form.elements[3].value);
+    }
+
+    function checkInput(element) 
+    {
+       alert(element.value);
+    }
+   
+    function calc(someform) 
+    {
+       var num = eval(someform.addtext.value);
+       alert("addition: " + (num+num));
+    }
+    
+    function checkSelection(sel)
+    {
+        var message = "The " + sel.name + " list has " + sel.length + " options\n";
+        message += "The list has option " + sel.selectedIndex + " selected first\n";
+        message += "The first selected option is " + sel.options[sel.selectedIndex].text +"\n";
+        message += "The first selected option's value is " + sel.options[sel.selectedIndex].value  +"\n\n";
+        
+        if(sel.multiple)
+        {
+           for(var i=0; i < sel.length; i++)
+           {
+             if(sel.options[i].selected)
+             {
+               message += "List options[" +i+ "].text is " + sel.options[i].text +"\n";
+               message += "List options[" +i+ "].value is " + sel.options[i].value +"\n";
+             }
+           }
+        }
+        alert(message);
+    }
+    
+function overFunc(a)
+{
+  event.srcElement.style.color = "red";
+  event.srcElement.style.background = "ffCCCC";
+}
+
+function outFunc(a)
+{
+  event.srcElement.style.color = "#3333FF";
+  event.srcElement.style.background = "#ccccff";
+}
+
+      function Minterest(interest)
+      {
+         return (interest/100)/12;
+      }
+
+      function Payment(yri, amt, dur)
+      {
+         var r = Minterest(yri);
+         return (r*amt*Math.pow((1+r),dur)/(Math.pow((1+r),dur)-1));
+      }
+
+      function TotalInterest (yri, amt, dur)
+      {
+         var payment = Payment(yri, amt, dur);
+         return dur*payment-amt ;
+      }   
+ 
+      function F2(num)
+      {
+          return Math.round(num*100)/100;
+      }     
+
+      function Loan()
+      { 
+         window.status = "Calculating Loan Payment";
+         var yri = parseFloat(document.loanForm.interest.value);
+         var dur = parseInt(document.loanForm.duration.value);
+         var amt = parseInt(document.loanForm.amount.value);
+   
+         document.loanForm.payment.value = F2(Payment(yri, amt, dur));
+         document.loanForm.total.value = F2(TotalInterest(yri, amt, dur)); 
+   
+         window.status = "Loan Calculation Complete";
+      }
+
+      function quote()
+      {
+         var quotes = new Array();
+         quotes[0] = 'Form Ever Follows Function';
+         quotes[1] = 'E pluribus unum';
+         quotes[2] = 'When you call me that smile.';
+         quotes[3] = 'Good as it is to inherit a library, it is better to collect one';
+         quotes[4] = 'The test of greatness is the page of history';
+         quotes[5] = 'Let\'s look at the record';
+         quotes[6] = 'WYSIWYG';
+         quotes[7] = 'High thoughts must have high language';
+         var value = Math.floor(Math.random() * quotes.length);
+         window.status = quotes[value];
+      }
+      // -- End Hiding Here -->
+   </script>
+ 
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated January 15, 2004<BR>Dawn G. Gregg</I> ';
+   </script>
+</head>
+<body onload="window.status='test2';return true; clock(); window.status='test2';return true;">
+<script language="JavaScript">writeHeader();</script>
+<h1>JavaScript Objects</h1>
+<ul>
+<li>
+JavaScript is &quot;Object based&quot;:&nbsp; JavaScript has predefined objects and 
+also uses 
+standard browser objects.</li>
+</ul>
+
+<center><table BORDER="1" class="largeT" width=80%>
+<caption>Browser Objects</caption>
+<tr>
+<th>Objects</th>
+
+<th>Properties</th>
+
+<th>Methods</th>
+
+<th>Events</th>
+</tr>
+
+<tr>
+<td>document</td>
+
+<td>bgcolor, fgcolor, linkcolor, title, lastModified</td>
+
+<td><code>write(), writeln()</code></td>
+
+<td rowspan=2>onload, onunload, onabort, onerror, onmove, onresize, onscroll</td>
+</tr>
+
+<tr>
+<td>window</td>
+
+<td>frames, length, name, status, location, parent</td>
+
+<td><code>alert(),confirm(),prompt()</code></td>
+
+</tr>
+
+<tr>
+<td>history</td>
+
+<td>length</td>
+
+<td><code>back(), forward(), go()</code></td>
+
+<td>none</td>
+</tr>
+
+<tr>
+<td>location</td>
+
+<td>href, protocol</td>
+
+<td><code>reload()</code></td>
+
+<td>none</td>
+</tr>
+
+<tr>
+<td>link </td>
+
+<td>hostname, href, pathname, port, protocol,<br>
+target</td>
+
+<td>none</td>
+
+<td>onClick, onMouseOut, onMouseOver</td>
+</tr>
+
+<tr>
+<td>form / form elements</td>
+
+<td>action, length, method, name</td>
+
+<td><code>reset(), submit()</code></td>
+
+<td>onfocus, onblur, onchange, onselect, onclick,&nbsp; onsubmit, onreset</td>
+</tr>
+
+</table>
+
+
+<br>
+
+
+<p><a href="object_summary.html">More Browser &amp; JavaScript Objects</a></center>
+
+<p>
+<hr>
+<h2><span><a name="3"></a>Browser Objects and Document Object Model</span></h2>
+<ul>
+  <li>Access to browser objects, and their properties, methods and events is controlled (specified based on) the
+  <a href="http://www.w3.org/DOM/">Document Object Model</a> (DOM).</li>
+  <li>The <em>DOM</em> maps the Web page for developers.
+<ul>
+  <li>It details the characteristic properties of each element of a 
+  Web page, allowing developers to manipulate HTML components and, in 
+  turn, manipulate the page.</li>
+</ul>
+  </li>
+  <li>Though the DOM for Internet Explorer and Netscape are similar - they also 
+  differ in many significant ways! Thus, some functions you write will work 
+  differently (or not at all) in different browsers and browser versions.</li>
+</ul>
+  <hr>
+<h2><span><a name="3"></a>DOM Objects, Properties, Methods, Events</span></h2>
+  <ul>
+    <li><em>Objects</em>: Container which reflects a particular element of a 
+    HTML page; 
+    <ul>
+    <li>Objects &quot;contain&quot; the various characteristics which apply to that element 
+    (known as <i>properties</i> and <i>methods</i>); </li>
+    <li>Access to an object's <em>properties</em> and <em>methods</em> is
+by a &quot;<code>.</code>&quot; operator.&nbsp;</li>
+</ul>
+    </li>
+    <li><em>Properties</em>: Characteristics of an object; 
+  <ul>
+    <li>The <code>document</code> 
+    object possesses a <code>bgColor</code> property which reflects the background 
+    color of the page. </li>
+      <li>The <code>document</code> <em> property</em> <code>bgColor</code> can be accessed with<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>document.bgColor = #FFFFFF;</code></li>
+      <li>Using a programming language (e.g. JavaScript) you may read or modify 
+      the color of the current page. </li>
+    <li>Some objects contain very many properties, some contain very few. Some 
+    properties are <i>read-only</i> while others can be modified, possibly resulting in 
+    immediate on-screen results.</li>
+</ul>
+    </li>
+    <li><em>Methods</em>: A method is a function associated with the object. Sometimes the method also returns 
+    a result value. 
+  <ul>
+    <li>Methods are triggered by the programming language being 
+    used, such as JavaScript. </li>
+    <li>Method calls have ()
+    after them which may or may not contain arguments.&nbsp; </li>
+    <li>For example: The <code>window</code> object possesses a 
+    <em>method</em> named <code>alert()</code>. When supplied with string data, the <code>alert()</code> 
+    method causes a window to pop up on the screen containing the data as its 
+    message; e.g. <code><i>window.alert(&quot;Invalid entry!&quot;)</i></code>.</li>
+</ul>
+    </li>
+  <li>&nbsp;<em>Events</em>: An event is used to <i>trap</i> actions related to its owning 
+    object; typically, these actions are caused by the user. 
+    <ul>
+    <li>For example, when 
+    the user clicks on a submit button, this is a <code>click</code> event which 
+    occurs at the <code>submit</code> object. By virtue of submitting a form, a <code>
+    submit</code> event is also generated, following the <code>click</code> event. 
+    </li>
+    <li>Events can be intercepted and trigger specified program code to execute.</li>
+    </li>
+</ul>
+</ul>
+<hr>
+
+<a name="6"></a><h2><span>DOM Collections</span></h2>
+
+<ul>
+  <li>Collections are basically arrays of related objects on a page.&nbsp;</li>
+  <li>There are several special collections in the DOM.&nbsp;
+    <ul>
+      <li>all, children, elements (on a form), forms (on the document), rows (in
+        a table), cells (in a row), images, anchors etc.&nbsp;&nbsp;</li>
+    </ul>
+  </li>
+  <li>The collections treat a Web page like a tree of nested HTML tags - with 
+  the array index for a given element determined by where it is found in the 
+  collection.</li>
+
+  <li>The image below shows the ALL collection tree for a simple HTML page:</li>
+
+</ul>
+
+<p align="center">
+<img border="0" src="../images/dom_tree.gif" width="360" height="180"></p>
+<hr>
+
+<h1><a NAME="8"></a>Manipulating Objects in JavaScript</h1>
+<h2><span>Status bar messages
+</span></h2>
+<ul>
+<li>
+Using JavaScript, you can display messages in the status
+bar of your browser below.</li>
+
+
+<li>
+This is accomplished by setting a string value for the <code>window.status</code> property.</li>
+
+
+<li>
+For example you can display a message when the page first
+loads:
+<script language="JavaScript">
+<!--
+      window.status="Welcome to ISMG 4800 & JavaScript"
+// -->
+</script>
+</li>
+</ul>
+
+<div>
+&lt;script language="JavaScript">
+<br>&nbsp;&nbsp; window.status&nbsp;=
+"Welcome to ISMG 4800 &amp; JavaScript&quot;
+<br>&lt;/script>
+</div>
+
+<ul>
+<li>
+<a NAME="9"></a>Status bar messages can also be initiated
+only when the user moves the mouse over a link:</li>
+</ul>
+
+<blockquote>
+  <p><a href="http://www.yahoo.com" onMouseover="window.status='Click for Yahoo!';return true" onMouseout="window.status=''">Yahoo</a></blockquote>
+
+<div>
+&lt;a href="http://www.yahoo.com"&nbsp;
+<br>&nbsp; <dfn>onMouseover</dfn>=&quot;window.status=<cite>'</cite>Click for
+Yahoo!<cite>'</cite>;
+<br>&nbsp; return true" <dfn>onMouseout</dfn>=&quot;window.status=<cite>''</cite>&quot;&gt;
+<br>Yahoo&lt;/a>
+</div>
+
+<ul>
+<li>
+The mouse's "position" is captured using the <dfn>onMouseover</dfn>
+and <dfn>onMouseout</dfn> event handlers of JavaScript.</li>
+
+
+<li>
+<dfn>Event handlers</dfn> (JavaScript code) are added directly inside certain HTML
+ tags&nbsp; allowing code to react to an event.</li>
+
+
+<li>
+Common event handlers include:<ul>
+<li><code>onclick </code>(responds to a mouse click on a button, image or link)</li>
+<li><code>onload</code> (used in the body tag &amp; responds as the form is loaded)</li>
+<li><code>onsubmit</code> (used in the form tag and responds when a form is 
+submitted)</li>
+<li><code>onblur</code>&nbsp;&nbsp; (used in any form tag and responds when you leave 
+the form element)</li>
+
+</ul>
+</li>
+<li>When working with JavaScript you need to be careful with nested quotes 
+&quot;''&quot;&quot;!<ul>
+<li><b><cite><tt>&lt;a href=</tt></cite><tt>&quot;#&quot; <cite>onclick=</cite>&quot;window.status='You 
+clicked here';&quot;<cite>&gt;</cite>&nbsp;</tt></b> works</li>
+<li><b><tt><cite>&lt;a href=</cite>&quot;#&quot; <cite>onclick=</cite>&quot;window.status=&quot;<cite>You clicked here</cite>&quot;;&quot;<cite>&gt;</cite> </tt></b>&nbsp;does not work 
+because the <code>onclick </code>only applies to <tt><b>&quot;window.status=&quot; </b> </tt>
+and the <tt><b><cite>You clicked here</cite> </b> </tt>is just random text 
+floating in the Web page tag.</li>
+
+</ul>
+</li>
+
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(0);</script>
+
+
+<h1>
+<a NAME="1"></a>JavaScript: Functions</h1>
+
+<h2><span><a name="2"></a>Functions and Methods</span></h2>
+
+<ul>
+<li>
+User defined modules in JavaScript are called functions (as opposed to methods 
+which are used for Objects in Java and in the DOM).</li>
+
+<li>
+A function is any stand-alone piece of code that can accept arguments and
+can return a value.</li>
+
+</ul>
+
+<hr>
+<h2><span><a name="3"></a>Function Definition</span></h2>
+
+<ul>
+<li>
+Function definitions are distinct; i.e., one cannot define a function within
+another function.</li>
+</ul>
+<center><div>
+function function-name(argumentlist)
+<br>{
+<br>&nbsp;&nbsp; <dfn>// body of the function</dfn>
+<br>}
+</div></center>
+<br>
+<center><div>
+function sample1(a,b)
+<br>{
+<br>&nbsp; return a+b;
+<br>}
+</div></center>
+<hr>
+<h2><span>
+<a name="4"></a>
+Invoking Functions &amp; Methods</span></h2>
+
+<ul>
+<li>
+All functions are invoked from other functions, from scripts, or from JavaScript 
+commands embedded directly in a given HTML tag.</li>
+
+<li>
+Calling Function/Script : The location from which another function is invoked.</li>
+
+<li>
+Called Function : The function that is invoked.</li>
+
+<li>
+Function Call : The event of calling a function.</li>
+</ul>
+<a name="5"></a>
+<a onclick="return confirmLink('demo/loan.html');" >For Example:</a>
+<br>&nbsp;
+<center><div>
+&lt;html>&lt;head>
+<br>&lt;SCRIPT LANGUAGE=JavaScript>
+<br>&nbsp;  function <dfn>confirmLink(file)</dfn><img SRC="../images/arrow.gif" height=22 width=40>
+<em> &nbsp;start of function</em>
+<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; var answer = confirm('Are You Sure?');<br>
+&nbsp;&nbsp;&nbsp; if(answer)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top.location = file;<br>
+&nbsp;&nbsp;&nbsp; return answer;
+<br>&nbsp;  }<img SRC="../images/arrow.gif" height=22 width=40>
+<em>&nbsp;end of function</em>
+<br>&lt;/SCRIPT>
+<br>&lt;/head>&lt;body>
+<br>&lt;A  onClick=&quot;<dfn>return confirmLink('demo/loan.html')</dfn>" ><img SRC="../images/arrow.gif" height=22 width=40>
+<em>&nbsp;function call</em>
+<br>&nbsp; For Example:&lt;/A>
+<br>&lt;/body>&lt;/html>
+</div>
+</center>
+
+<p>
+
+
+<ul>
+
+
+  <li>The Click event also occurs when the user clicks on a hyperlink. (or any
+
+
+    &lt;A&gt;&lt;/A&gt; element).<br>
+
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<code>&lt;a  onClick=&quot;return confirmLink('demo/loan.html')&quot;&gt;</code>
+
+
+<ul>
+
+
+  <li>When the user clicks the
+  <a onClick="confirmLink('Some Function has been called');return false;" href="http://www.cudenver.edu/">hyperlink</a> the event handler will be triggered and
+
+
+    <code>confirmLink()</code>
+
+
+is executed.&nbsp;</li>
+
+
+  <li> The <i> <em> hyperlink has not actually been followed</em></i> yet.&nbsp;</li>
+
+
+  <li> If the user answers &quot;Cancel&quot;&nbsp; the function completes the &quot;<code>return false&quot;</code> executes. This causes the browser
+
+
+    to <em>abort</em>
+
+
+handling of this tag -- meaning, the link is not followed.&nbsp;</li>
+
+
+</ul></ul>
+
+
+<hr WIDTH="100%">
+<h2><span>
+<a name="6"></a>
+Communication Between Functions</span></h2>
+
+<ul>
+<li>
+Through Arguments</li>
+
+<ul>
+<li>
+A calling script may pass values to the called function so
+that these values can be used by the called function. You do not specify the 
+data type of the arguments because all arguments are of type <code>var</code>.</li>
+
+</ul>
+
+<li>
+By a Value returned by a function</li>
+
+<ul>
+<li>
+A <code>return</code> statement with an optional expression is a mechanism
+for returning a value from a function. Unlike Java - functions do not specify 
+that they return anything in the function header 
+
+<ul>
+<li><code>var function x()</code> - is not a valid function header.&nbsp; </li>
+<li>It should be: <code>function x()</code> - even if it returns a value.</li>
+
+</ul>
+
+</li>
+
+</ul>
+
+<li>
+<a name="7"></a>
+Via External variables</li>
+
+<ul>
+<li>
+External variables are declared outside of JavaScript functions and are globally accessible 
+anywhere on the page. They are an alternative
+to arguments and returned values for communicating between functions.</li>
+</ul>
+<li>Example <a href="demo/stringDate.html">Function w/ return</a>,
+Call from a Script:</li>
+</ul>
+
+<script>
+   document.write("<center>"+ stringDate()+"</center>");
+  </script>
+
+
+<center>
+<div>
+<a name="8"></a>
+&lt;html>&lt;head>
+<br>&lt;SCRIPT LANGUAGE=JavaScript>
+<br>&nbsp; function <dfn>stringDate()</dfn><img SRC="../images/arrow.gif" height=22 width=40>
+<em>function to get date</em>
+<br>&nbsp; {
+<br>&nbsp;&nbsp; var t = new Date(), mon;
+<br>&nbsp;&nbsp; var day=t.getDate(), yr=t.getFullYear();
+<br>&nbsp;&nbsp; switch(t.getMonth())
+<br>&nbsp;&nbsp; {  case 0:  mon = 'January';   break;  
+<br>&nbsp;&nbsp;&nbsp;&nbsp; case 1: mon = 'February';   break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case 11: mon = 'December'; 
+<br>&nbsp;&nbsp; } 
+<br>&nbsp;&nbsp; return mon + ' ' + day + ', ' + yr;<img SRC="../images/arrow.gif" height=22 width=40>
+<em>return</em>
+<br>&nbsp; }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<em>formatted date</em>
+<br>&lt;/SCRIPT>&lt;/head><br>
+&lt;body>
+<br>&lt;script><img SRC="../images/arrow.gif" height=22 width=40>
+
+<em>&nbsp;calling script (write needs to be here)</em>
+<br>&nbsp; document.write(&quot;&lt;h1&gt;&quot;+<dfn>stringDate()</dfn>+&lt;/h1>");
+<br>&lt;/script>&lt;/body>&lt;/html>
+</div>
+</center>
+
+<hr>
+<script language="JavaScript">writeFooter(1);</script>
+
+<h1><span><a name="22"></a>Referencing Form Fields in JavaScript Programs</span></h1>
+<h2><span>Text Fields</span></h2>
+    <form name="TestForm" onsubmit="calc(this)">
+<ul>
+  <li>The data in form elements is generally found in the value property for the 
+  given form element:&nbsp; <code>text_field.value</code> is used to get the 
+  text entered in:<br>
+&nbsp;<code>&lt;input type=text name=text_field&gt;</code><li>You can capture data from form elements for use in JavaScript programs in
+    several ways.<ul>
+  <li>Using the <code>form_name.textbox_name.value</code>,<code> </code>where 
+  the<code> name=form_name </code>in the form tag and <code>name=textbox_name </code>
+  in the input tag.</li>
+  <li>You can pass the form object to a JavaScript function and reference <code>
+  textbox_name</code> located on the form using the argument name 
+  assigned in the function <code>argument_name.textbox_name.value</code></li>
+  <li>You can pass the form object to a JavaScript function and reference any 
+  form element on the form using <code>
+  argument_name.element[index].value</code> -  <ul>
+  <li>Java treats a form as an array of <code>elements</code>,</li>
+  <li>The index of a specific form 
+  element is based on where it is found on the form.&nbsp; </li>
+  <li>The first element on the form will have an index of 0.</li>
+  </ul>
+  </li>
+  <li>You can pass an individual form element to the function and referring to 
+  the form element using the argument name given in the argument list.</li>
+  </li></ul>
+  <li>To use values from a textbox for addition calculations you must convert
+    the text to a number using <code>eval</code>, 
+  because in addition 5+5 is interpreted as 55 not 10.
+    <code><br>
+    function calc(someform)&nbsp;&nbsp;&nbsp; <input name="addtext" type=text size=14 name="11" >
+                                              <input type="submit" value="Add"><br>
+    {</code>&nbsp;&nbsp;<code><br>
+    &nbsp; var num = eval(someform.addtext.value);<br>
+    &nbsp; alert(&quot;addition: &quot; + (num+num));<br>
+    }</code>
+  </li>
+  <li><a name="26"></a>JavaScript Note: Since JavaScript is case sensitive the names you use in
+    your code <em>MUST</em> exactly match the names in the <code>NAME</code>
+    attribute in the element tag!<code>&nbsp;</code>
+  </li>
+  </ul>
+  </form>
+  <hr>
+  <h2><span>Referencing Text Fields Examples</span></h2>
+  <form name="frmTest" onsubmit="return gettxt2(this)">
+  <ul>
+  <li><b>By Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+   <input type="text" name=txt1 onblur="alert(frmTest.txt1.value);" size="15"><code><br>
+  alert(frmTest.txt1.value)&nbsp;&nbsp;&nbsp;&nbsp; </code>  
+   &nbsp;<br>
+
+        will display the text in the text box named <code> txt1</code> found on the form
+        named <code>frmTest<br>
+&nbsp;</code></li>
+  <li><b>By Passing the Form to the Function:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+  </b>
+    <code> <input type=text size=14 name=txt2>&nbsp;<input type="submit" value="Submit"></code><b><br>
+    </b>&nbsp;
+    <code>&lt;form onsubmit=&quot;gettxt2(this)&quot;&gt;&nbsp;&nbsp;&nbsp; <br>&nbsp;function gettxt2(form)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+    &nbsp;{<br>
+    &nbsp;&nbsp;&nbsp; alert(form.txt2.value)<br>
+    &nbsp;}<br>
+    </code>
+        will display the text in the text box named <code> txt2</code> found on
+    any form that calls the function named <code>gettxt2 </code>and passes
+    itself to the form<code> (this)&nbsp;<br>
+&nbsp;</code></li>
+  <li><b>Using the </b><code>elements</code><b> Array:</b><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type=text size=14 onblur="getelements3(this.form)" name="12" ></code><b><br>
+    </b>&nbsp;
+    <code>&lt;input type=text onblur=&quot;getelements3(this.form)&quot;&gt;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+    &nbsp;function getelements3(form)&nbsp;<br>
+    &nbsp;{ &nbsp; alert(form.elements[3].value)&nbsp;}<br>
+    <br>
+    </code>
+        will display the value of the fourth element on any form that calls the
+    function
+        named <code>getelements3 </code>and passes its form<code>
+    (this.form)</code> to the method.&nbsp; <br>
+&nbsp;</li>
+  <li><b>Passing individual form elements:</b><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text size=14 onblur="checkInput(this)" name="1" ></code><b><br>
+    </b>
+    <code>&lt;INPUT TYPE=&quot;text&quot; onBlur=&quot;checkInput(this)&quot;&gt;<br>
+    &nbsp;function checkInput(element)&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    &nbsp;{<br>
+    &nbsp; &nbsp; alert(element.value)<br>
+    &nbsp;}</code>
+  </li>
+  </form>
+  </li>
+</ul>
+<hr>
+<h2><span>Selection Lists</span></h2>
+<ul>
+  <li>JavaScript</li> treats selection lists as an array of option values.</li>
+  <ul>
+  <li>Each <code>&lt;option&gt;</code> in the <code>&lt;selection&gt;</code> has a <code>
+  text</code> property and a <code>value</code> property and a <code>selected</code> 
+  property.</li>
+  <li>You can find the first item that is selected using <code>selectedIndex</code></li>
+
+  <li>The function below will find the name and values for the selected 
+      items in this selection:<br>
+      <code>&lt;select name=sel1 size=1 multiple onblur=checkSelection(this);&gt;<br>
+      </code>
+
+    <select name=sel1 size=1 multiple onblur=checkSelection(this);>
+          <option value=R>Red
+          <option value=G selected>Green
+          <option value=B>Blue
+          <option value=Y>Yellow
+          <option value=w>White
+          <option value=B>Black
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="demo/checkSelection.html">checkSelection.html</a></li>
+</ul></ul>
+<div>
+<pre>function checkSelection(sel)
+{
+   var message = "The &quot; + sel.name + &quot; list has " + 
+                          sel.length + " options\n";
+   message += "The list has option " + sel.selectedIndex + 
+              " selected first\n";
+   message += "The first selected option is " + 
+               sel.options[sel.selectedIndex].text +"\n";
+   message += "The first selected option's value is " + 
+               sel.options[sel.selectedIndex].value  +"\n\n";
+        
+<dfn>   // If there are multiple selection items allowed you need
+   // to loop through the options array to get all of the 
+   // selected values
+</dfn>   if(sel.multiple)
+   {
+      for(var i=0; i < sel.length; i++)
+      {
+        if(sel.options[i].selected)
+        {
+           message += "List options[" +i+ "].text is " + 
+                       sel.options[i].text +"\n";
+           message += "List options[" +i+ "].value is " + 
+                       sel.options[i].value +"\n";
+        }
+      }
+   }
+   alert(message);
+}
+</pre></div>
+<hr>
+
+<h2><span>Radio Buttons</span></h2>
+<ul>
+  <li>JavaScript</li> treats all radio buttons with the same name as an array of 
+  elements with the same name as that of radio buttons.</li>
+  <li>The each radio button in the array has a <code>checked</code> 
+  property.</li>
+  <li>The entire radio button array has a <code>value</code>, corresponding to 
+  the value of the checked radio button.</li>
+</ul>
+<hr>
+<h2><span>Check Boxes</span></h2>
+<ul>
+  <li>The each check box has a <code>name</code> property, a <code>value</code> 
+  property and a <code>checked</code> 
+  property.</li>
+  <li>The value property remains the same even when the check box is not checked 
+  - so to see the &quot;value&quot; for a check box a function should :<br>
+  <code>if(cbox.checked) return cbox.value;<br>
+  else return &quot;&quot;;</code></li>
+</ul>
+</a><hr>
+<script language="JavaScript">writeFooter(2);</script>
+
+<h1>JavaScript: Events</h1>
+
+<ul>
+  <li>The JavaScript <em>Event Model </em>exists so that scripts can respond to
+    user actions and change the Web-page accordingly.&nbsp;&nbsp;
+  </li>
+  <li>Events occur when something happens within the browser window, either when
+    the web page loads or when the user performs some action either with the
+    mouse or the keyboard.</li>
+</ul>
+<hr>
+<h2><span><a name="3"></a>The Way Events Work</span></h2>
+<ul>
+  <li>We capture events and trigger code using an <em>event handler</em>.&nbsp;
+    <ul>
+      <li> An event
+handler is typically written as an attribute within the HTML
+tag for the element you are interested in watching.&nbsp;</li>
+      <li> For instance, the following
+HTML tag defined an event handler for the Click event for a form field
+button named &quot;clickme&quot;.</li>
+    </ul>
+  </li>
+</ul>
+<code>
+<blockquote>
+  <blockquote>
+<pre>&lt;input type=&quot;button&quot; value=&quot;Click Me&quot; 
+       onClick=&quot;alert('message');&quot;&gt;</pre>
+  </blockquote>
+</blockquote>
+</code>
+<center>
+<p><input type="button" 
+ value="Click Me" 
+ onClick="alert('message');"></p>
+</center> 
+<ul>
+  <li><a name="4"></a>Event handler attributes prepend the letters &quot;on&quot; to the event
+name; thus an event handler for a <em>Click</em> event is written as <em>onClick</em>.&nbsp;</li>
+</ul>
+
+
+<hr>
+
+
+<h2><span><a name="5"></a>Events that Don't Call Functions</span></h2>
+
+
+<ul>
+
+
+  <li> You needn't only call functions in the event handler -- any set of valid JavaScript
+
+
+statements will work. To alter the status message you can:&nbsp;<br>
+
+
+    <code>&lt;input type=&quot;button&quot; name=&quot;clickme&quot;<br>
+
+
+    value=&quot;Click Here to See Results&quot;<br>
+
+
+    onClick=&quot;window.status='Thanks';return true;&quot;&gt;</code></li></ul>
+
+
+<center>
+<p><input type="button" name="clickme" 
+
+
+ value="Click Here to See Results" 
+
+
+ onClick="window.status='Thanks';return true;"> </p>
+</center>
+
+
+<ul>
+
+
+  <li>We use single quotation marks (<code>'</code>) within the event handler because
+
+
+the entire event handler code is contained within a set of double quotation
+
+
+    marks(<code>&quot;</code>).</li>
+
+
+  <li>When specifying a
+
+
+new message for the status bar, returning a value of <code> true</code> keeps that message on
+
+
+the status bar after the event handler has completed.&nbsp;</li>
+
+
+</ul>
+
+
+<hr>
+<h2><span>LOAD Event</span></h2>
+
+<ul>
+  <li>The <em>LOAD</em> event fires whenever an element finishes loading
+    successfully and is often used in the <code>&lt;BODY&gt;</code> tag to
+    initiate scripts as soon as the page has been loaded into the window.</li>
+  <li>For example: the clock below was started when this page first loaded using
+    the following <code>&lt;BODY&gt;</code> tag:&nbsp;
+
+<br>
+
+    <code>&lt;BODY VLINK=&quot;blue&quot; alink=&quot;red&quot; onload=clock()&gt;<br>
+    </code>
+<FORM name=clock>
+<table border="0" width="15%">
+  <tr>
+    <td width="7%">Time:</td>
+    <td width="8%"><INPUT name=time size=10></td>
+  </tr>
+  <tr>
+    <td width="7%">Date:</td>
+    <td width="8%"><INPUT name=date size=10></td>
+  </tr>
+</table> 
+</FORM>
+
+  </li>
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (see
+<a onmouseover="color=&quot;red&quot;;" href="demo/clock.html">clock.html</a>
+for clock code)</p>
+
+<hr>
+<h2><span>onMouseOver and onMouseOut</span></h2>
+<ul>
+  <li>The onMouseOver and onMouseOut events are used to generate dynamic events
+when a user's mouse passes over a link, an image or other HTML element.</li>
+  <li>We have seen status bar messages can be initiated when the user moves the 
+  mouse over a link.
+    </li>
+    </ul>
+<ul>
+  <li>You can also &quot;highlight&quot; the link when the moue passes over it.&nbsp; 
+  This allows you to choose which links to highlight on your page - instead of 
+  highlighting them all with stylesheets:
+</li></ul>
+<blockquite>
+</blockquite>
+<p align="center"><a onmouseover="overFunc(this);" onmouseout="outFunc(this);" href="../index.html">
+           Link with color change onmouseover & onmouseout</a></p>
+    <div>
+      function overFunc(a)<br>
+ {<br>
+      &nbsp; event.srcElement.style.color = "red";<br>
+      &nbsp; event.srcElement.style.background = "ffCCCC";<br>
+ }<br>
+      <br>
+ function outFunc(a)<br>
+ {<br>
+      &nbsp; event.srcElement.style.color = "#3333FF";<br>
+      &nbsp; event.srcElement.style.background = "#ccccff";<br>
+ }<br>
+      &lt;a href=&quot;../News&quot;&nbsp;<br>
+      &nbsp; <dfn>onMouseover</dfn>=&quot;overFunc()&quot;&nbsp;<br>
+      &nbsp;
+      <font color="#009900">onMouseout</font>=&quot;outFunc()&quot;&gt;Link with
+      ...&lt;/a&gt;
+    </div>
+<hr>
+<h2><span>ONFOCUS and ONBLUR</span></h2>
+<ul>
+  <li>The <code>onFocus</code> and <code>onBlur</code> events are most often
+    used when dealing with forms.&nbsp;</li>
+  <li> The <code>onFocus </code>event fires when a control gets focus. The <code>onBlur</code>
+    event fires when the element looses focus.</li>
+  <li>Can be used to display &quot;Help&quot; text on the status bar:&nbsp;<br>
+    <br>
+  Name:&nbsp;<input type="text" 
+                 onFocus="window.status='Enter First and Last Names'; return true;" 
+                 onBlur="window.status=''; return true;" size="20">
+
+    <br>
+    &nbsp;
+
+  <code><br>
+  &lt;input type="text"&nbsp;onFocus=&quot;window.status= 'Enter First &amp; Last Names'; return true;"&nbsp;<br>
+  onBlur=&quot;window.status=''; return true;"></code>
+  </li>
+  <li><a name="16"></a>Can be used to make a read only text field (one that can&nbsp; display results but does not allow user input).
+<br>
+    <br>
+    Output: <input type="text" onFocus="this.blur()" size="20"><br>
+    <code><br>
+    &lt;input type=&quot;text&quot; onFocus=&quot;this.blur()&quot;&gt;</code></li>
+</ul>
+<hr>
+<h2><span>ONSUBMIT and ONRESET</span></h2>
+<ul>
+  <li>Two more events that are useful when dealing with forms are <code> onSubmit</code> and
+    <code>onReset</code>.&nbsp; These events fire when the form is submitted or reset
+    respectively.</li>
+  <li>One use for <code> onSubmit</code> is to allow error checking on the form prior
+    to it being submitted.&nbsp; If there are errors on the form the submit
+    action can be cancelled.</li>
+  <li><code>onSubmit</code> can also be used to redirect the browser to a
+    confirmation page when the form is submitted successfully.&nbsp;</li>
+</ul>
+
+<Script language="JavaScript">
+<!--  
+function valid(myform)
+{
+  var fielda = myform.name;
+  var fieldb = myform.email;
+  if(fielda.value == "")
+  {
+     alert("You must indicate your name!");
+     return false;
+  }
+  else if(fieldb.value.indexOf("@") == -1)
+  {
+     alert("Invalid email address!");
+     return false;
+  }
+  else
+  {
+    window.location = 'thankyou.html';
+    return true;  // form submitted
+  }
+} // end function
+// -->
+</script>
+
+<hr>
+<script language="JavaScript">writeFooter(3);</script>
+
+<h2><span>JavaScript for Form Validation </span></h2>
+
+<ul>
+    <li>Suppose you have a Web site that solicits applicants for their resume and
+    you want to check that applicants are over 18 and validate that all inputs
+    are complete before sending it&nbsp; (See <a href="demo/valid.html">
+    valid.html</a>):
+   
+    </li>
+  </ul>
+   
+<blockquote>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var val = "";
+function valid(form) 
+{
+  if (form.age.checked) 
+  {  
+     if (form.job.value == "" || form.resume.value == "")
+     {
+           alert("You must enter a job and a reusme."); 
+           return false;
+     } 
+     else
+     {
+           window.location = 'thankyou.html';  
+           return true;
+     }
+  } 
+  else 
+  {
+      alert("Try again when you are 18."); 
+      return false;
+  }
+}
+// -->
+  </SCRIPT>
+<FORM METHOD="POST"
+      ACTION="mailto:you@yourdomain.com"
+      ENCTYPE="text/plain"
+      onSubmit="return valid(this)">
+<a name="27"></a>
+Over 18?:<INPUT TYPE="checkbox" NAME="age" value="18"> <br>
+Desired Job:<BR><INPUT TYPE="text" NAME="job" SIZE="40"><BR>
+Resume:<BR><TEXTAREA NAME="resume" COLS="40" ROWS="5"></TEXTAREA><BR>
+<INPUT TYPE="submit" VALUE="Send Resume">
+</FORM>
+</blockquote>
+<ul>
+  <li>Here is the code that validates the form above. It is called from the 
+  onsubmit event for the form tag:<br>
+  <CODE><FONT COLOR="#000066">&lt;FORM METHOD=<FONT COLOR="#0000cc">&quot;POST&quot;</FONT>&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACTION=<FONT COLOR="#0000cc">&quot;mailto:you@yourdomain.com&quot;<br>
+</FONT>
+</FONT>
+   <font color="#0000cc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+
+<FONT COLOR="#000066"> ENCTYPE=<FONT COLOR="#0000cc">&quot;text/plain&quot;</FONT>
+&nbsp;<br>
+   </FONT>
+  </CODE>   
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <CODE>
+
+<FONT COLOR="#000066"> &nbsp;&nbsp; onSubmit=<FONT COLOR="#0000cc">&quot;return valid(this);&quot;</FONT>&gt;</FONT>
+   &nbsp;</CODE></li>
+  <li>Notice that the <code>onsubmit</code> function call is <CODE>
+
+  <FONT COLOR="#0000cc">&quot;return valid(this);&quot;<br>
+  </FONT></CODE>The onsubmit event has the power to override the default action 
+  for the form.&nbsp; 
+  <ul>
+  <li>If <code>valid</code> returns <cite>true</cite>, then the <code>onsubmit</code> 
+  event will return <cite>true</cite> and the form will be submitted.</li>
+    <li>If <code>valid</code> returns <cite>false</cite>, then the <code>
+    onsubmit </code>event will return <cite>false</cite> and the form submission 
+    will be cancelled.</li>
+    <li>If the word <code>return</code> is <em>omitted</em> from the <code>
+    onsubmit </code>statement then the form will always be submitted regardless 
+    of what <code>valid</code> returns.</li>
+</ul>
+  </li>
+</ul>
+<DIV>&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;/HEAD&gt;&nbsp;<br>
+&lt;BODY&gt;
+  &nbsp; <br>
+&lt;SCRIPT&gt; LANGUAGE=&quot;JavaScript&quot;&gt;
+  &nbsp; <br>
+  <dfn>&lt;!--</dfn>
+  &nbsp; <br>
+  <a name="28"></a>function valid(form)&nbsp; <br>
+  {<br>
+  &nbsp; if     (form.age.checked)&nbsp;<dfn>//<img border="0" src="../images/arrow.gif" width="40" height="19">Checkbox
+  is checked</dfn><br>
+   &nbsp; {<br>
+  &nbsp;&nbsp;&nbsp; if (form.job.value == "" ||<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; form.resume.value == "")<br>
+  &nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alert(&quot;You must
+  complete the form!&quot;);&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;<br>
+  &nbsp;&nbsp;&nbsp; }<br>
+  &nbsp;&nbsp;&nbsp; else <dfn>//<img border="0" src="../images/arrow.gif" width="40" height="19">All
+  fields are completed</dfn><br>
+   &nbsp;&nbsp;&nbsp; {&nbsp; <CODE><B> <FONT COLOR="#000077">&nbsp;&nbsp;<dfn>// redirect 
+  browser to thank you page</dfn><br>
+  </FONT></B> 
+</CODE>   
+  &nbsp;&nbsp;&nbsp; <CODE>&nbsp;&nbsp; window.location = 'thankyou.html';&nbsp; </CODE>&nbsp; <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return true;<br>
+  &nbsp;&nbsp;&nbsp; } <br>
+    &nbsp; } &nbsp; <br>
+   &nbsp; <a name="29"></a>else &nbsp; <br>
+   &nbsp; {<br>
+   &nbsp;&nbsp;&nbsp; alert(&quot;Try again when you are 18.&quot;);&nbsp; <br>
+        &nbsp;&nbsp;&nbsp; return false;&nbsp; <br>
+      &nbsp; }
+      &nbsp; <br>
+} <dfn>// --&gt; </dfn>&nbsp; <br>
+&lt;/SCRIPT&gt;
+
+   &nbsp;<br>
+&lt;FORM METHOD=<cite>&quot;POST&quot;</cite>&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ACTION=<cite>&quot;mailto:you@yourdomain.com&quot;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ENCTYPE=<cite>&quot;text/plain&quot;</cite>
+&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; onSubmit=<cite>&quot;return valid(this);&quot;</cite>&gt;
+   &nbsp;<br>
+Your age:&lt;BR&gt;<br>
+   &lt;INPUT TYPE=<cite>&quot;checkbox&quot;</cite> NAME=<cite>&quot;age&quot;</cite>&gt;&lt;BR&gt;<br>
+   Desired Job:&lt;BR&gt;<br>
+   &lt;INPUT TYPE=<cite>&quot;text&quot;</cite> NAME=<cite>&quot;job&quot;</cite> SIZE=<cite>&quot;40&quot;</cite>&gt;&lt;BR&gt;
+Resume:&lt;BR&gt;<br>
+   &lt;TEXTAREA NAME=<cite>&quot;resume&quot;</cite>  COLS=<cite>&quot;40&quot;</cite> ROWS=<cite>&quot;5&quot;</cite>&gt;<br>
+   &lt;/TEXTAREA&gt;&lt;BR&gt;&nbsp;<br>
+&lt;INPUT TYPE=<cite>&quot;submit&quot;</cite> VALUE=<cite>&quot;Send Resume&quot;</cite>&gt;&nbsp;<br>
+&lt;/FORM&gt;&nbsp;<br>
+&lt;/BODY&gt;&nbsp;<br>
+&lt;/HTML&gt;</DIV>
+
+<hr>
+<h1><a name="30"></a>In-Class</h1>
+<ul>
+  <li>Let's make a feedback form for our web site with form validation.</li>
+  <li>The form can either ask for feedback related to Web sited design and
+    navigation or related to the products and services provided by your company.</li>
+  <li>The form should be laid out logically.&nbsp;&nbsp;</li>
+  <li>It should have at least 4 different types of controls.</li>
+  <li>The form should be emailed using <code> mailto:</code></li>
+  <li>The form should have validation on at least 2 controls.</li>
+</ul>
+
+<hr>
+<script language="JavaScript">writeFooter(4);</script>
+
+<h1><a NAME="1"></a>More Functions</h1>
+<ul>
+<li>
+Input to and output from JavaScript functions can be accomplished using
+HTML Forms (<a href="demo/loan.html">loan.html</a>)<form name = "loanForm"></li>
+</ul>
+
+<center><table BORDER >
+<tr>
+<td><b><font size=+1>Enter Loan Amount:</font></b></td>
+
+<td><input name="amount" type="text" size="20"></td>
+</tr>
+
+<tr>
+<td><b><font size=+1>Enter Interest Rate:</font></b></td>
+
+<td><input name="interest" type="text" size="20"></td>
+</tr>
+
+<tr>
+<td><b><font size=+1>Enter Duration:</font></b></td>
+
+<td><input name="duration" type="text" size="20"></td>
+</tr>
+
+<tr>
+<td><b><font size=+1>Calculated Payment:</font></b></td>
+
+<td><input name="payment" type="text" size="20"></td>
+</tr>
+
+<tr>
+<td><b><font size=+1>Calculate Total Interest:</font></b></td>
+
+<td><input name="total" type="text" size="20"></td>
+</tr>
+
+<tr>
+<td ALIGN=CENTER COLSPAN="2"><input onclick="Loan()" type="button" value="Calculate"></td>
+</tr>
+</table>
+</center>
+</form>
+
+<p>
+
+<br>
+</p>
+<div>
+<a NAME="2"></a>&lt;head>
+<br>&lt;script language="JavaScript"><img border="0" src="../images/arrow.gif" width="40" height="23"><em>main script
+</em>
+<br>function Minterest(interest)&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"><em>monthly interest</em>
+<br>{
+<br>&nbsp; return (interest/100)/12;
+<br>}
+<br>function Pay(yri, amt, dur)&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="23"><em>monthly payment</em>
+<br>{
+<br>&nbsp; var r = Minterest(yri);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"><em>function call</em>
+<br>&nbsp; var num = (r*amt*Math.pow((1+r),dur);
+<br>&nbsp; var den = (Math.pow((1+r),dur)-1));
+<br>&nbsp; return num/den;
+<br>}
+<br><a NAME="3"></a>function TInt (yri, amt, dur) <img border="0" src="../images/arrow.gif" width="40" height="23"><em>total interest
+</em>
+<br>{
+<br>&nbsp; var payment = Payment(yri, amt, dur);
+<br>&nbsp; return dur*payment-amt;
+<br>}
+<br>function F2(num)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"><em>format to 2 decimal places
+</em>
+<br>{<br>&nbsp;&nbsp; return Math.round(num*100)/100;
+<br>}
+<br><a NAME="4"></a>function Loan()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="23"><em>main loan function
+</em>
+<br>{
+<br>&nbsp; window.status = "Calculating Loan";
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>// get data from form</em>
+<br>&nbsp; var i = parseFloat(document.LF.i.value);<img border="0" src="../images/arrow.gif" width="40" height="23">
+<br>&nbsp; var d = parseInt(document.LF.d.value);&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23">
+<br>&nbsp; var a = parseInt(document.LF.a.value);&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23">
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>// put answers in form</em>
+<br>&nbsp; document.LF.pay.value = F2(Pay(i,a,d));&nbsp;<img border="0" src="../images/arrow.gif" width="40" height="23">
+<br>&nbsp; document.LF.tot.value = F2(TInt(i,a,d));<img border="0" src="../images/arrow.gif" width="40" height="23">
+<br>&nbsp; window.status = "Calculation Complete";
+<br>}
+<br>&lt;/script>&lt;/head>
+</div>
+
+<p>
+
+<br>
+</p>
+<div>
+<a NAME="5"></a>&lt;form
+name = "LF">&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>define input/output form</em>
+<br>&lt;table BORDER ="1">&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>define form table
+</em>
+<br>&lt;tr>
+<br>&lt;td>Enter Loan Amount:&lt;/td>
+<br>&lt;td>&lt;input name="a" type="text">&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>input field
+</em>
+<br>&lt;/tr>
+<br>&lt;tr>
+<br>&lt;td>Enter Interest Rate:&lt;/td>
+<br>&lt;td>&lt;input name="i" type="text">&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>input field
+</em>
+<br>&lt;/tr>
+<br>&lt;tr>
+<br>&lt;td>Enter Duration:&lt;/td>
+<br>&lt;td>&lt;input name="d" type="text">&lt;/td><img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>input field</em>
+<br>&lt;/tr>
+<br><a NAME="6"></a>&lt;tr>
+<br>&lt;td>Calculated Payment:&lt;/td>
+<br>&lt;td>&lt;input name="pay" type="text">&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>output field</em>
+<br>&lt;/td>&lt;/tr>
+<br>&lt;tr>
+<br>&lt;td>Calculate Total Interest:&lt;/td>
+<br>&lt;td>&lt;input name="tot" type="text">&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>output field</em>
+<br>&lt;/td>&lt;/tr>
+<br>&lt;tr>
+<br>&lt;td ALIGN=CENTER COLSPAN="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"> &nbsp;<em>add &amp; center button</em> <br>
+&lt;input onclick="Loan()" type="button" value="Calculate">
+<br>&lt;/td>&lt;/tr>
+<br>&lt;/table>
+<br>&lt;/form>
+</div>
+
+<hr WIDTH="100%">
+<h1><a name="7"></a>Variables: Duration and Scope <font size=+1>(revisited)</font></h1>
+
+<ul>
+<li>
+Duration: the time during which a chunk of memory is allocated
+for that variable.</li>
+<li>
+Scope: the part of the program where a variable can be evaluated
+or assigned.</li>
+<li>
+Global variables are declared outside of a function, have
+scope from when they are declared until the document is unloaded and are
+available to an entire script</li>
+<li>
+Local variables declared within in an individual function,
+have scope from when they are declared to when the function exits and are
+only available in the function in which they are defined</li>
+</ul>
+
+<hr WIDTH="100%">
+
+<h1><a name="8"></a>Function Overloading</h1>
+<ul>
+<li>
+Overloaded functions are typically different functions with the same name
+but different argument lists.</li>
+<li>
+In many programming languages (Java, C++ ...) overloaded functions are
+used to perform similar operations on different data types or on different
+numbers of arguments.</li>
+<li>
+This makes programs easier to read and understand.</li>
+<ul>
+<li>
+eg. you can use a function Maximum to find the maximum value of either
+integers or floats or for 2, 3, 4 etc. numbers.</li>
+</ul>
+<li>
+In JavaScript a single function can be written to work with different data
+types and different numbers of arguments!</li>
+</ul>
+
+<hr WIDTH="100%">
+<h2><span><a name="9"></a>Function Overloading Example</span></h2>
+<ul>
+<li>
+For example, a &quot;confirmLink&quot; function that confirms whether a person wants to visit 
+a given link can be written to take no arguments (the link is hardcoded), one argument 
+(a link to go to), or 2 arguments (the link to go to and a message to display).</li>
+
+<li>
+In JavaScript if all 3 functions were written separately, included in the same file and given the same name
+- only the last one would be executed.</li>
+
+<li>
+A JavaScript a single function can be designed to take 0, 1, 2 etc. arguments.</li>
+</ul>
+
+<hr WIDTH="100%">
+<a NAME="10"></a><h2><span><a href="demo/checkLink_overload.html">checkLink Example revisited</a></span></h2>
+
+<center>
+<div>
+&lt;html>&lt;head>
+<br>&lt;script LANGUAGE=JavaScript>
+<br>&nbsp;&nbsp;function confirmLink(link, message) <br>
+&nbsp; {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (!message)<img border="0" src="../images/arrow.gif" width="40" height="22"><em>no
+message passed </em>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+message = 'Are you sure?';
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+answer = window.confirm(message);
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (answer) {
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if(!link)&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="22"><em>no
+link passed </em>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp; history.back();
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+else&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+top.location.href = link;&nbsp;&nbsp; } <br>
+&nbsp; }
+<br>&lt;/script>&lt;/head>
+<br>&lt;body <br>
+&nbsp;&nbsp; onload="confirmLink('http://www.disney.com', 
+'Under 18?')">
+<br>&nbsp;&nbsp; &lt;a href="#" onClick="confirmLink()">
+<br>&nbsp;&nbsp;&nbsp;&nbsp; Back to Notes<br>
+&nbsp;&nbsp; &lt;/a>
+<br>&lt;/body><br>
+&lt;/html>
+</div>
+</center>
+<hr WIDTH="100%">
+<h1><a name="11"></a>Global Functions</h1>
+
+<ul>
+<li>
+JavaScript has several global
+functions which can be used anywhere a piece of script code is used:</li>
+</ul>
+
+<CENTER><table BORDER="1" WIDTH="100%" class="largeT" >
+<thead>
+<tr>
+<th>Function</th>
+
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><tt>escape</tt></td>
+
+<td>converts non-ASCII char to hex</td>
+</tr>
+
+<tr>
+<td><tt>eval</tt></td>
+
+<td>executes a string of JavaScript code</td>
+</tr>
+
+<tr>
+<td><tt>isFinite&nbsp;</tt></td>
+
+<td>true if argument is a non-infinite number</td>
+</tr>
+
+<tr>
+<td><tt>isNaN&nbsp;</tt></td>
+
+<td>true if argument is nonnumeric</td>
+</tr>
+
+<tr>
+<td><tt>parseFloat&nbsp;</tt></td>
+
+<td>converts numeric string to an float</td>
+</tr>
+
+<tr>
+<td><tt>parseInt&nbsp;</tt></td>
+
+<td>converts numeric string to a int</td>
+</tr>
+
+<tr>
+<td><tt>unescape</tt></td>
+
+<td>reverses escape</td>
+</tr>
+</tbody>
+</table></center>
+
+<hr WIDTH="100%">
+<script language="JavaScript">writeFooter(5);</script>
+
+<h1>
+Arrays and Functions</h1>
+<h2><span>Call-by-value</span></h2>
+<ul>
+<li>
+In JavaScript when an individual
+argument is passed to a function it is passed using "Call-by-value"
+
+
+<li>
+Call-by-value is a function call
+made by passing values of the expressions in the parentheses.
+
+
+<li>
+In call-by-value, the called function
+receives these values and copies them to the automatic variables in its
+argument list.
+
+
+<li>
+Advantage: The called function cannot change the values
+of the corresponding variables in the calling function.
+
+
+<li>
+<a NAME="19"></a>Disadvantage: If a large object is being
+passed, making a copy can take extra memory space and execution time.
+
+</ul>
+
+<center>
+<p><img border="0" src="../images/cbval.gif" width="575" height="315"></p>
+</center>
+
+<hr>
+
+<h2><span><a NAME="20"></a>Call-by-reference</span></h2>
+<ul>
+<li>
+Arrays (and other Objects) in JavaScript use "Call-by-reference" when they are passed to a function.
+
+
+<li>
+Call-by-Reference does not make copies of original data
+
+
+<li>
+Call-by-Reference allow functions to access and manipulate common data resources quickly...
+
+
+<li>
+Call-by-value: transmits a copy of a value
+
+
+<li>
+Call-by-reference: transmits an address</li>
+</ul>
+
+<center>
+<p><a NAME="21"></a>
+<br><img border="0" src="../images/cbref.gif" width="552" height="345"></p>
+</center>
+
+<hr>
+
+<h2><span>
+<a NAME="22"></a>Passing
+Arrays to Functions</span></h2>
+<ul>
+<li>
+To pass an array element as an argument to a function,
+specify the individual element (passed call-by-value).</li>
+
+<code>     &nbsp;&nbsp;     someFunction(response[4]);</code>
+
+<li>
+To pass an entire array as an argument to a function,
+specify the name of the array without any brackets (passed call-by-reference)</li>
+
+<code>&nbsp;&nbsp; someFunction(response);</code>
+<li>
+To receive an array, the function parameter list must
+specify that a argument will be received and then that argument must be
+used as an array within the function</li>
+
+<code>&nbsp;&nbsp; function someFunction(r)</code>
+<br><code>&nbsp;&nbsp; { document.write(r.length);}</code>
+</ul>
+
+<hr WIDTH="100%">
+
+<h2><span><a NAME="23"></a>Using
+Arrays with Functions</span></h2>
+<ul>
+<li>
+Here is an averaging function (<a href="demo/average.html">average.html</a>) .</li>
+</ul>
+
+<div>&lt;script language="JavaScript">
+<br>var a = [0,99,94,85,87,78,34,90,23,78];&nbsp;<br>
+  var total = 0;
+<br><br>
+  average(a, total);<img border="0" src="../images/arrow.gif" width="40" height="22"><em>passing
+the array<br>
+  </em>
+  <br>
+  document.write('&lt;h3&gt;average of
+a[1] through a[');&nbsp;
+<br>document.writeln(a.length-1&nbsp; + '] is ' + a[0]);<br>
+  document.writeln(' not ' + total + '&lt;/h3&gt;');<br>
+  <br>
+  <a NAME="24"></a>function average(grade, total)
+<br>{
+<br>&nbsp; for (var i=0; i &lt; grade.length; i++)<br>
+  &nbsp; {&nbsp;&nbsp;
+grade[0] += grade[i];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; total += grade[i];<br>
+  &nbsp; }
+<br>&nbsp; grade[0]/=(grade.length-1);<img border="0" src="../images/arrow.gif" width="40" height="22"><em>result
+in grades[0]</em>
+<br>&nbsp; total = total/(grade/(length-1))<br>
+  }
+<br>&lt;/script></div>
+<br>
+<center>
+<table BORDER class="smallT">
+<tr>
+<td><script language="JavaScript">
+<!-- Hide script 
+  var a = [0,99,94,85,87,78,34,90,23,78]; 
+  var total = 0;
+  average(a, total);  // passing the array
+  
+  document.write('<h3>average of a[1] through a['); 
+  document.writeln(a.length - 1 + '] is ' + a[0]);
+  document.writeln(' not ' + total + '</h3>');
+
+function average(grades, total)
+{
+
+  for (var i=0; i < grades.length; i++)
+  {
+         grades[0] += grades[i];
+         total += grades[i];
+  }
+  grades[0]/=(grades.length-1);
+  total = total/(grades.length - 1); 
+}
+// -- End Hiding Here -->
+</script>
+</td>
+</tr>
+</table></center>
+
+<hr WIDTH="100%">
+<h1><a NAME="25"></a>Array
+Properties &amp; Methods</h1>
+<ul>
+<li>
+Arrays in JavaScript are Objects
+and have properties and methods associated with them.
+
+
+<li>
+Every array has the property length
+which stores the length of the array.
+
+
+<li>
+Arrays have 3 methods which can be used to manipulate
+the items in the array:</li>
+
+<ul>
+<li>
+join (turns
+the array into a string with delimeters separating the array elements),</li>
+
+<li>
+sort (sorts
+the array using a user defined method), &amp;</li>
+
+<li>
+reverse (reverses
+the order of array elements)</li>
+</ul>
+</ul>
+<hr WIDTH="100%">
+<h2><span>
+<a NAME="26"></a>Array method demonstration
+(<a href="demo/colorSort.html">colorSort.html</a>)&nbsp; </span></h2>
+<div>
+&lt;script language="JavaScript">
+<br>&nbsp; var col = ['red',
+'green', 'blue', 'yellow',&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'magenta',
+'cyan', 'black', 'white'];&nbsp;<br>
+&nbsp; document.writeln('&lt;h3&gt;Original Array:&lt;/h3&gt;');
+<br>&nbsp; document.writeln('&lt;table border&gt;&lt;tr>&lt;td>'&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++ col.join('&lt;td>')
++ '&lt;/tr>&lt;/table>');
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // used &lt;td> as the separator in join
+<br>&nbsp; col.reverse();<img border="0" src="../images/arrow.gif" width="40" height="22">
+<em>reverse method</em><br>
+&nbsp; document.writeln('&lt;h3>Reversed
+Array:&lt;/h3>');
+<br>&nbsp; document.writeln('&lt;table border=1&gt;&lt;tr>&lt;td>'&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++ col.join('&lt;td>') + '&lt;/tr>&lt;/table>');<br>
+<a NAME="27"></a>&nbsp; col.sort();<img border="0" src="../images/arrow.gif" width="40" height="22">
+<em>sort can take function defining how to sort</em><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp; document.writeln('&lt;h3&gt;Sorted Array:&lt;/h3&gt;');
+<br>&nbsp; document.writeln('&lt;table border=1&gt;&lt;tr>&lt;td>'&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++ col.join('&lt;td>') + '&lt;/tr>&lt;/table>');
+<br>&lt;/script></div>
+
+<p><script language="JavaScript">
+<!-- Hide script 
+  var col = ['red', 'green', 'blue', 'yellow', 'tan', 
+             'magenta', 'cyan', 'black', 'white']; 
+  
+  document.writeln('<h3>Original Array:</h3>');
+  document.writeln('<table border="1"><tr><td>' 
+          + col.join('<td>') + '</tr></table>') ;
+  
+  col.reverse();
+
+  document.writeln('<h3>Reversed Array:</h3>');
+  document.writeln('<table border="1"><tr><td>' 
+          + col.join('<td>') + '</tr></table>') ;
+
+  col.sort();
+
+  document.writeln('<h3>Sorted Array:</h3>');
+  document.writeln('<table border="1"><tr><td>' 
+          + col.join('<td>') + '</tr></table>') ;
+          
+// -- End Hiding Here -->
+</script>
+<br>
+<hr>
+<script language="JavaScript">writeFooter(6);</script>
+</body>
+</html>

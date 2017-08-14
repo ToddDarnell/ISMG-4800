@@ -1,0 +1,24 @@
+      <ul>
+      <li>In order to make an HTTP request to the server using JavaScript, you 
+      need an instance of a class that provides you this functionality.
+    <ul>
+      <li>&nbsp;<code>XMLHTTP</code> was originally introduced for Internet 
+      Explorer </li>
+      <li>Then Mozilla, Safari etc. then 
+    implemented the <code>XMLHttpRequest</code> class. </li>
+    </ul>
+      </li>
+      <li>To create a cross-browser instance (object) of the 
+    required class, you: </li>
+    </ul>
+    <div class=divx><pre> if (window.XMLHttpRequest) { <dfn>// Mozilla, Safari,...</dfn>
+     http_request = new XMLHttpRequest();
+     if (http_request.overrideMimeType) {
+         http_request.overrideMimeType('text/xml'); <dfn>// To fix error </dfn>
+     }                                              // in some browsers
+ } else if (window.ActiveXObject) { <dfn>// IE</dfn>
+     try {  http_request = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+     } catch (e) {
+         try { http_request = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+         } catch (ex) {}
+     } }</pre></div>

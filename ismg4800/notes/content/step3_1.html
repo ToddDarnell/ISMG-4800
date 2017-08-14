@@ -1,0 +1,18 @@
+      <span>
+    <div><pre>function updateLayer() {
+  if (http_request.readyState == 4 &amp;&amp; http_request.status == 200) {
+    el = document.getElementById('contentLYR');
+    el.innerHTML = http_request.responseText;
+  } else 
+    alert('There was a problem with the request.');
+}</pre><pre>&lt;html&gt;&lt;head&gt;&lt;style&gt;
+#contentLYR { position : absolute;
+              height : 465px; width : auto;
+              top : 25px; left : 5px;
+              z-index : 2; }
+&lt;/style&gt;&lt;/head&gt;
+&lt;body onload=&quot;loadPage('test.html')&quot;&gt;
+  &lt;div id=&quot;titleLYR&quot;&gt;&lt;H1&gt;AJAX Introduction&lt;/H1&gt;&lt;/div&gt;
+  &lt;div id=&quot;contentLYR&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</pre></div>
+    

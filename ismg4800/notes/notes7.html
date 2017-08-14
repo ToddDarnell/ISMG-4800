@@ -1,0 +1,1188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>JavaScript Objects</TITLE>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<style>
+  .hearts   {background-image: url('../images/background/hearts.gif');}
+  .money    {background-image: url('../images/background/money_bkg.jpg');}
+  .lavalamp {background-image: url('../images/background/lava_lamp.gif');}
+</style>
+<script language="JavaScript" src="../scripts/browserAPI.js"></script>
+<script language="JavaScript" src="../scripts/menu.js"></script>
+
+<script language=javascript>
+var item_width = 500;
+var margin=40;
+var speed = 10;
+var count = 0;
+var direction = 1;
+var traverselenght = screen.width - 250;
+
+function startMove(id) 
+{  var page_width=screen.width;
+   // find screen size 
+   if(IEDOM) page_width=document.body.clientWidth;
+   else if(W3CDOM) {
+      page_width=innerWidth;
+   }
+   // set up initial traverse distances 
+   traverselenght = page_width - item_width/2-margin;
+   window.setInterval( "moveObject('" +id+ "')", 100 ); 
+}
+
+function moveObject(id) 
+{ 
+   count += speed;
+   if ( ( count % (traverselenght) ) < 
+         Math.abs(speed) && count % (traverselenght) >= 0 ) 
+   {
+     speed *= -1;
+     direction = !direction;
+     var col = ( speed < 0 ) ? "red" : "blue"
+     var object=getObject(id);
+     if(NS4DOM) object.color = col;
+     else if(IEDOM || W3CDOM) object.style.color = col;
+   }
+   shiftIt(id, speed, 0);
+}
+
+function changeText() 
+{
+  obj = getObject('pText'); 
+  alert( obj.innerHTML );
+  obj.innerHTML = "Thanks for coming.";
+}
+
+var ch = ""
+  var el = "<ul>"
+  function child( object, e1 )
+  { 
+    var i = 0;
+    for ( i = 0; i < object.children.length; i++ ) 
+    { // loop thru children - get all elements in form
+       ch = ch + "children[" + i + "]: " + 
+       object.children[i].tagName + "<br>"; 
+    }
+
+    getObject(e1).innerHTML = ch; 
+    return false;
+ }
+ 
+function changeBackground() 
+ {
+   var inputImg = prompt(
+     "Enter an image name for the " + 
+     "background of this page:", "../images/bg/hearts.gif" );
+   document.body.background = inputImg;  
+ }
+    
+ function changeBackgroundCSS() 
+ {
+   var inputClass = prompt(
+    "Enter an image class for the " + 
+    "background of this page (hearts, money, lavalamp):","hearts");
+   document.body.className = inputClass; 
+ }
+</script>
+
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen_green.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated January 12, 2006<BR>Dawn G. Gregg</I> <br><br>Portions of this lecture were obtained from:<br><i><a href="http://developer.mozilla.org/en/docs/AJAX:Getting_Started">http://developer.mozilla.org/en/docs/AJAX:Getting_Started</a></i>';
+  </script>
+</head>
+<body onload="startMove('tMove');">
+    <div id = "tMove" style = "position: absolute; left: 35; top:0; 
+                               font-family: serif; font-size:24pt; 
+                               font-weight: bold; color: blue; width:200; height: 50;
+                               background-color:transparent; border:medium none; ">
+          Welcome!</div>
+<br>
+<script language="JavaScript">writeHeader();</script><br><br>
+<h1><a name="1"></a>Dynamic HTML Object Model</h1>
+<ul>
+  <li>
+The Dynamic HTML object model provides a way to control every HTML element in a Web
+page, including its attributes and CSS properties.&nbsp;
+<ul>
+  <li>
+Can create, move, and modify tags, attributes, images, objects, and text when and as needed.&nbsp;
+  </li>
+</ul>
+  </li>
+  <li>
+It is language independent allowing Web Developers can access and manipulate elements of a Web
+page using:
+<ul>
+  <li>JavaScript, VisualBasic, Java, C++, CGI, Perl ...</li>
+</ul>
+  </li>
+<li>The Dynamic Object Model is based on a W3C (WWW Consortium) specification.
+  <ul>
+    <li>
+     Both Netscape and Microsoft support the Dynamic HTML Object Model and event generation.</li>
+    <li>Both browsers support load-time
+        modifications, such as specifying fonts and other formatting
+        information.</li>
+    <li>Only Microsoft supports runtime
+        modifications that let DHTML perform multimedia effects, change the
+        fonts on-the-fly, and move images.<a name="2"></a></li>
+  </ul>
+
+</li>
+</ul>
+
+<center><img border="0" src="../images/dom.gif" width="684" height="367"></center>
+
+<hr>
+<h1><a name="20"></a>Browser Detection</h1>
+<ul>
+  <li>In order to run most Dynamic HTML scripts it is usually necessary to 
+  determine what browser and version is being used because code needs to be 
+  written differently depending on the browser being used.</li>
+  <li>Different browsers and different browsers implement the DOM differently.</li>
+</ul>
+
+<hr>
+<h2><span>navigator Object</span></h2>
+<ul>
+  <li>The <code>navigator</code> object contains information about the Web
+    browser that is viewing the page.
+    <ul>
+      <li>This includes the operating&nbsp; browser name (appname), the 
+      userAgent and version number!</li>
+    </ul>
+  </li>
+  <li>In the example below the <code> navigator</code> object is used to set a 
+  variable that can be used later to define the browser used. 
+<ul>
+  <li>If you run the code you will see the version number usually corresponds to 
+  the version of &quot;mozilla&quot; found in <code>navigator.userAgent</code> not the 
+  version of the browser software.&nbsp; </li>
+  <li>You need to dissect the user agent string to find the actual browser 
+  version run.</li>
+</ul>
+
+  </li>
+</ul>
+
+<SCRIPT LANGUAGE = "JavaScript">
+var browser = "none";
+function browserDetect() 
+{
+  application    = navigator.appName;
+  agent          = navigator.userAgent.toLowerCase();
+  majorVersion   = parseInt(navigator.appVersion);
+  minorVersion   = parseFloat(navigator.appVersion);  
+ 
+  if ((agent.indexOf('mozilla') != -1) && ((agent.indexOf('spoofer') == -1) &&
+      (agent.indexOf('compatible') == -1))) 
+  {   
+      if (majorVersion == 4) browser = "ns4";
+      else if (majorVersion >= 5) browser = "ns6";
+  }
+  
+  if (agent.indexOf("msie") != -1)
+  { 
+     if (majorVersion < 4) browser="ie3";
+     else if (majorVersion == 4) 
+     { if (agent.indexOf("msie 6.0")!=-1) browser="ie6"
+       else if (agent.indexOf("msie 5.0") == -1) browser="ie4";
+       else if (agent.indexOf("msie 5.0") != -1) browser="ie5";
+       else if (agent.indexOf("msie 5.5") != -1) browser="ie55";
+     }
+  }
+  
+  alert("Application:   " + application + "\n" +
+        "Agent:         " + agent + "\n" +
+        "Major Version: " + majorVersion + "\n" +
+        "Minor Version: " + minorVersion + "\n" +
+        "Browser:       " + browser);
+}
+
+          </SCRIPT> 
+<form><p align=center>
+<input type="button" value="Detect Browser" name="B1" onclick="browserDetect()">
+</p></form>
+<div><pre>&lt;SCRIPT LANGUAGE = "JavaScript">
+var browser = "none";
+function browserDetect() 
+{
+  application    = navigator.appName;
+  agent          = navigator.userAgent.toLowerCase();
+  majorVersion   = parseInt(navigator.appVersion);
+  minorVersion   = parseFloat(navigator.appVersion);  
+ 
+  if ((agent.indexOf('mozilla') &gt; -1) && 
+     ((agent.indexOf('spoofer') &lt; 0)
+      &amp;&amp; (agent.indexOf('compatible') &lt; 0))) 
+  {   
+      if (majorVersion == 4) browser = "ns4";
+      else if (majorVersion >= 5) browser = "ns6";
+  }
+  
+  if (agent.indexOf("msie") != -1)
+  { 
+    if (majorVersion < 4) browser="ie3";
+    else if (majorVersion == 4) 
+    { if (agent.indexOf("msie 6.0")!=-1) browser="ie6"
+      else if (agent.indexOf("msie 5.0")&lt; 0) browser="ie4";
+      else if (agent.indexOf("msie 5.0")&gt;-1) browser="ie5";
+      else if (agent.indexOf("msie 5.5")&gt;-1) browser="ie55";
+    }
+  }
+}
+&lt;/SCRIPT></pre></div>
+
+
+
+<hr>
+<h2><span>DOM Detection</span></h2>
+<ul>
+  <li>An alternative to detecting the browser using the navigator object, is to 
+  detect which DOM is being used.&nbsp; There are 3 principle different DOM in 
+  use:<ul>
+    <li>Internet Explorer DOM </li>
+    <li>Netscape 4 DOM</li>
+    <li>W3C Dom (used in Netscape 6)</li>
+  </ul>
+  </li>
+  <li>To detect what DOM is being used you can create boolean variables based on 
+  whether a certain &quot;non-standard&quot; DOM feature is found:</li>
+</ul>
+<form><p align=center>
+<input type="button" value="Detect DOM" name="B1" 
+onclick='alert("NS4DOM: " +NS4DOM + "\nIEDOM: " + IEDOM + "\nW3CDOM: " + W3CDOM);'>
+</p></form>
+<div>
+    var NS4DOM = document.layers ?true : false;
+    <br>
+    var IEDOM&nbsp;  = document.all    ?true : false;
+    <br>
+    var W3CDOM = ((document.getElementById)&&(!IEDOM))?true:false;
+</div>
+<hr>
+
+<script language="JavaScript">writeFooter(0);</script><br><br>
+
+
+<h1>
+<a name="3"></a>Element Interfaces</h1>
+<ul>
+  <li>Every pair of tags on a Web page bound a &quot;element&quot; that can be
+    referenced via the Dynamic HTML Object Model.</li>
+  <li>Every element is an object with:
+    <ul>
+      <li>Attributes, style, content and events</li>
+    </ul>
+  </li>
+  <li>Some elements offer extra members:
+    <ul>
+      <li><code>&lt;FORM&gt;</code> exposes an elements collection (everything
+        on the form), submit and reset methods</li>
+      <li><code>&lt;TABLE&gt;</code> exposes a collection of rows.&nbsp; Each
+        row exposes a collection of cells.</li>
+      <li><code>&lt;INPUT&gt;</code>, <code>&lt;TEXTAREA&gt;</code>, <code>&lt;SELECT&gt;</code>
+        etc. extra control over the attributes and contents.</li>
+    </ul>
+  </li>
+</ul>
+
+<ul>
+  <li>In order to &quot;do something&quot; with an object found on a HTML Web
+    page, you first need to be able to reference it (i.e. tell the script which
+    element you are talking about).</li>
+</ul>
+<hr>
+<h2><span>By ID</span></h2>
+
+<ul>
+  <li>The simplest way to reference an element is by its ID attribute.&nbsp; The 
+  3 different DOMs support referencing Objects by ID differently:<ul>
+  <li>NS4DOM: document.id</li>
+  <li>IEDOM: id</li>
+  <li>W3CDOM: document.getElementByID(id)</li>
+</ul>
+  <li>This script calls a method &quot;getObject()&quot; to retrieve a given page element 
+  by ID and then&nbsp; dynamically changed the contents of <code>&lt;div&gt;</code> &quot;pText&quot; from
+    &quot;Welcome to our Web page to!&quot; to &quot;Thanks for coming.&quot;
+    using the <code>innerHTML</code> property of the paragraph (<code>innerHTML</code>
+    refers to the text contained in that element).</li>
+</ul>
+<blockquote>
+  <p>&nbsp;<code>&lt;div ID = &quot;pText&quot;&gt;Welcome to our Web page!&lt;/div&gt;
+    </code></li> 
+    </p>
+    <div class=blank ID = "pText">Welcome to our Web page!</div></center>
+<form>
+<input type="button" value="Change Text" name="B" onclick="changeText()"></form>
+
+</blockquote>
+
+<div>
+<a name="5"></a> &lt;SCRIPT LANGUAGE = "JavaScript"><br>
+    function getObject(id)<br>
+{ var obj;<br>
+&nbsp; if(NS4DOM) obj = eval(&quot;document.&quot; + id);<br>
+&nbsp; else if(IEDOM) obj = eval(id);<br>
+&nbsp; else if(W3CDOM) obj = document.getElementById(id);<br>
+&nbsp; return obj;<br>
+}<br>
+<br>
+function changeText() <br>
+{<br>
+&nbsp; obj = getObject('pText'); <br>
+&nbsp; alert( obj.innerHTML );<br>
+&nbsp; obj.innerHTML = &quot;Thanks for coming.&quot;;<br>
+}<br>
+&lt;/SCRIPT>
+</div>
+
+<ul>
+  <li>The getObject(id) method is slightly different then the one in your book 
+  because That one did not seem to work with Netscape 6.</li>
+  <li>The advantage of the ID attribute is it allows you to reference elements
+    directly not relative to other elements (e.g. form.email)</li>
+</ul>
+
+<hr>
+
+<h2><span>By Type</span></h2>
+<ul>
+  <li>You can create a collection of objects based on their tag name. To refer 
+  to the first paragraph on this page:<ul>
+    <li>NS4DOM: document.tags(&quot;p&quot;)[0] </li>
+    <li>IEDOM: document.all.tags(&quot;p&quot;)[0]</li>
+    <li>W3CDOM: document.getElementsByTagName(&quot;p&quot;)[0]</li>
+  </ul>
+  </li>
+</ul>
+
+<hr>
+<h2><span>By Familial Nodes</span></h2>
+<ul>
+  <li>You can create collections of items that utilizes the <code>parent</code>/<code>child</code>/<code>sibling</code> 
+  relationships inherent in the &lt;HTML&gt; nested tree tag structure.</li>
+</ul>
+
+<ul>
+  <li>The <code>children</code> collection of any element contains only those
+    elements that are direct child elements of that element. For example, an <code>HTML</code>
+    element has only two children: the <code>HEAD</code> element and the <code>BODY</code>
+    element.</li>
+  <li>&nbsp;<a href="demo/child.html">For Example</a> the following program 
+  displays the children of the form and the elements on the form in 2 paragraphs 
+  on the page:</li>
+</ul>
+
+<center>
+<form method="POST">
+<p>Name: <input type="text" name="Name" size="20">&nbsp;&nbsp;&nbsp;
+   Email: <input type="text" name="Email" size="20"></p>
+<input type="button" value="Click Me" name="B1x" onclick="return child(this.form, 'div1'); ">
+</form>
+</center>
+<div class=blank id=div1>&nbsp;</div>
+<div>
+
+<a name="9"></a>&lt;SCRIPT LANGUAGE = &quot;JavaScript&quot;&gt;<br>
+&nbsp; var ch = &quot;&quot;<br>
+&nbsp; var el = &quot;&lt;ul&gt;&quot;<br>
+&nbsp; function child( object, e1 )<br>
+&nbsp; { <br>
+&nbsp;&nbsp;&nbsp; var i = 0;<br>
+&nbsp;&nbsp;&nbsp; for ( i = 0; i &lt; object.children.length; i++ ) <br>
+&nbsp;&nbsp;&nbsp; { <dfn>// loop thru children - get all elements in form</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ch = ch + &quot;children[&quot; + i + &quot;]: &quot; + <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; object.children[i].tagName + &quot;&lt;br&gt;&quot;; <br>
+&nbsp;&nbsp;&nbsp; }<br>
+<br>
+&nbsp;&nbsp;&nbsp; getObject(e1).innerHTML = ch; <br>
+&nbsp;&nbsp;&nbsp; return false;<br>
+&nbsp;}<br>
+&lt;/SCRIPT&gt;<hr>
+<p>
+<a name="10"></a>&lt;form method=&quot;POST&quot;&gt;<br>
+&nbsp;&nbsp; &lt;p&gt;Name: &lt;input type=&quot;text&quot; name=&quot;Name&quot; size=&quot;20&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; Email: &lt;input type=&quot;text&quot; name=&quot;Email&quot; size=&quot;20&quot;&gt;&lt;/p&gt;<br>
+&nbsp; &lt;input type=&quot;button&quot; value=&quot;Click&quot; name=&quot;BX&quot;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; onclick=&quot;return child(this, 
+'div1');&quot;&gt;<br>
+&lt;/form&gt;<br>
+&lt;div id=div1&gt;&lt;/div&gt;</div>
+
+<ul>
+  <li><a name="11"></a>Function child displays all children of the form passed it<br>
+  (<code>P, P INPUT and INPUT</code>). It does not display the 2 textbox input 
+  elements because they are not children of the form they are children of the 
+  paragraphs &lt;p&gt;</li>
+  <li>The script then displays all the elements associated with the form (<code>INPUT, 
+  INPUT, INPUT and INPUT</code>) </li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(1);</script><br><br>
+
+
+<h1><a name="12"></a>DHTML &amp; CSS</h1>
+<ul>
+  <li>Web page styles can be used to control the appearance, position, &amp; 
+  visibility for objects placed in an HTML page.&nbsp; These styles can then be 
+  manipulated with JavaScript to create Dynamic HTML effects.</li>
+</ul>
+
+<hr>
+
+<h2><span>Dynamic Styles</span></h2>
+<ul>
+  <li>Dynamic styles allow you to dynamically set different style attributes for 
+  the document.</li>
+  <li>For example, you can change the background color of a page (or element on 
+  a page) or you can change the style sheet/attribute applied to a page or 
+  content within the page.</li>
+  <li><a href="demo/changeBack.html">For Example</a>: the function 
+  <code>changeBackground</code> prompts the user to enter an image name and then sets the 
+  background to that image.&nbsp; <br>
+  (Note: the first function doesn't work if the original 
+  image was set using CSS).</li>
+</ul>
+<blockquote>
+<form><p>
+<input type="button" value="Change Background Image" name="B3" onclick="changeBackground()">&nbsp; &nbsp;&nbsp; &nbsp;
+<input type="button" value="Change Background Image - CSS" name="B4" onclick="changeBackgroundCSS()">
+</p></form>
+
+</blockquote>
+
+<div><pre>&lt;style>
+<font size="1">.hearts   {background-image: url(&quot;../images/bg/hearts.gif&quot;);}
+.money    {background-image: url(&quot;../images/bg/money.jpg&quot;);}
+.lavalamp {background-image: url(&quot;../images/bg/lavalamp.gif&quot;);}</font>
+&lt;/style>
+&lt;script type = &quot;text/javascript&quot;&gt;
+ &lt;!--     
+ function changeBackground() 
+ {
+   var inputImg = prompt(
+     "Enter an image name for the " + 
+     "background of this page:", "../images/bg/hearts.gif" );
+   document.body.background = inputImg;  
+ }
+    
+ function changeBackgroundCSS() 
+ {
+  var inputClass = prompt(
+   "Enter an image class for the background " + 
+   "of this page (hearts, money, lavalamp):","hearts");
+   document.body.className = inputClass; 
+ } // -->
+&lt;/script&gt;</pre></div>
+
+<hr>
+
+<h2><span>CSS used with Dynamic Positioning</span></h2>
+
+<a name="17"></a> 
+<ul>
+  <li>Cascading Style Sheets is also used in Dynamic HTML to control the 
+  position, layer an visibility of objects.</li>
+  <li>Box properties allow the properties of HTML box elements to be set.&nbsp;
+    These elements include <code>&lt;DIV&gt;</code>, <code>&lt;TABLE&gt;</code>,
+    <code>&lt;IMG&gt;</code> etc.<ul>
+  <li>The primary Box Properties are <code>width</code> and <code>height</code>
+    which allow you to set the dimensions of the box element in either pixels or
+    as a percent of the available space.
+    </li>
+      <li><code>overflow</code>: When an element does not fit in the defined width or height
+        overflow determines whether the
+     remaining part of the element should be <code>auto,hidden</code>, <code>scroll</code>
+        or <code>visible</code>.&nbsp;</li>
+</ul>
+  </li>
+</ul>
+<p align="center">
+<ul>
+  <li>Cascading Style Sheets also allow more control over the position of elements on
+    an HTML page using the <code> position </code> property.&nbsp;<ul>
+  <li>The default position property is &quot;<code>static</code>&quot;, which places
+    an element wherever you wrote the code.&nbsp;</li>
+  <li>&quot;<code>absolute</code>&quot;&nbsp; or &quot;<code>relative</code>&quot;
+    positioning allows a section to be
+    placed exactly where you want it using the number of pixels or percent from the
+    <code> top</code> &amp; <code>left</code> of the window or relative
+    to the current location.&nbsp;</li>
+  <li>&quot;<code>z-index</code>&quot; allows elements to overlap with higher
+    z-index elements on top of lower ones.</li>
+  <li>Position properties work with both images and <code>&lt;div&gt;</code> elements 
+  in Internet Explorer.&nbsp; However, they only work with <code>&lt;div&gt;</code> 
+  elements in Netscape.</li>
+</ul>
+  </li>
+</ul>
+<blockquote>
+<p>
+<code><a name="21"></a>&lt;DIV style=&quot;position:relative; top:0;left:250;
+width:200; height:100;z-index=1;overflow:hidden&quot;&gt;</code>This DIV text will be in the positioned DIV box which will
+still have all the old properties defined in the page stylesheet!<code>&lt;/DIV&gt;<br>
+&lt;IMG src=&quot;buffs.gif&quot; width=75 height=75 style=&quot;position:relative;top:-25;left=350;z-index=2&quot;&gt;&nbsp;</code> </p>
+</blockquote>
+<div style="position:relative;top:0;left:250;width:200;height:80;z-index: 1;font-family: Arial,sans-serif; font-weight:normal;
+overflow:hidden; border:none;">this div text will be in the positioned div box which will still have all the old properties defined in the page stylesheet</div> 
+<p> <img src="../images/buffs.gif" width=106 height=78 style="position:relative;top:-25;left=350;z-index=2"></p>
+<ul>
+  <li><a name="22"></a>Cascading Style
+    Sheets also can position elements on the page without removing them from the normal
+    flow of the text.&nbsp;&nbsp;</li>
+  <li>Floating allows elements to be placed to the left or right of a document and
+nearby text will wrap around the floated element:</li>
+</ul>
+<blockquote>
+<p>
+<code>&lt;DIV style=&quot;float: right; width:100; height:200; overflow: scroll&quot;&gt;</code>This DIV text will be in the
+  floated DIV box which will also have a scroll bar so you can see any overflow
+  text!!<code>&lt;/DIV&gt; &lt;IMG src= &quot;buffs.gif&quot; width=75 height=75 
+  style=&quot;float:left;&quot;&gt; &lt;P&gt;</code>This is just some other paragraph that should wrap
+  around the floated paragraph and image<code>&lt;/p&gt;</code> </p>
+</blockquote>
+
+<DIV style="float: right; width:100; height:200; overflow: scroll; border:none;font-family: Arial,sans-serif; font-weight:normal;">This DIV text will be in the
+floated DIV box which will also have a scroll bar so you can see any overflow text!!
+</DIV>
+<p>
+<IMG src="../images/buffs.gif" width=106 height=78 style="float:left">
+</p>
+<p>This is just some other paragraph that should wrap
+  around the floated paragraph and image</p>
+
+<hr>
+<script language="JavaScript">writeFooter(2);</script><br><br>
+
+
+
+<h1><a name="16"></a>Dynamic Positioning</h1>
+<ul>
+  <li>You can also use JavaScript to dynamically position elements on a Web 
+  page. However, all 3 DOMs handle the dynamic positioning of objects 
+  differently.</li>
+  <li>The shiftIt() method below contains code to shift an object in X &amp; Y - 
+   <ul>
+  <li>It is the same code as found in the <a href="../scripts/browserAPI.js">
+  BrowserAPI.js</a> discussed in your book.&nbsp; </li>
+</ul>
+        
+  </li>
+</ul>
+        
+    <div><br>
+      function shiftIt(id, dx, dy)<br>
+      {<br>
+&nbsp; var object=getObject(id);<br>
+&nbsp; if(NS4DOM) object.moveBy(dx,dy);<br>
+&nbsp; else if(IEDOM)<br>
+&nbsp; { object.style.left =object.style.pixelLeft+dx;<br>
+&nbsp;&nbsp;&nbsp; object.style.top =object.style.pixelTop+dy;<br>
+&nbsp; }<br>
+&nbsp; else if(W3CDOM)<br>
+&nbsp; { object.style.left=parseInt(object.style.left)+dx;<br>
+&nbsp;&nbsp;&nbsp; object.style.top=parseInt(object.style.top)+dy;<br>
+&nbsp; }<br>
+      }</div>
+    
+        
+    <hr>
+    
+        
+    <h2><span>Example</span></h2>
+<ul>
+  <li><a href="demo/changePosition.html">For example</a>: The functions below 
+  are used to update the position of a &lt;div&gt; element  with id=tMove (the 
+  Welcome! at the top of the page).<ul>
+  <li>Function <code>startMove('tmove');</code> is called in the onload event of 
+  the <code>&lt;body&gt;</code> tag.&nbsp; It calls function <code>setInterval</code> 
+  which takes a function name and how often to run that function (100 ms). </li>
+  <li>Function <code>moveText</code> takes a HTML element and moves it across 
+  the window. The distance it travels across the screen is based on the <code>
+  page_width</code> (calculated differently for different browsers) minus a certain number of pixels.</li>
+  <li><a name="17"></a>Once count reaches a multiple of the <code>traverselength</code>, the text 
+  reverses directions and changes color.</li>
+  <li><code>moveText </code>calls <code>shiftIt</code> to actually move the
+  <code>&lt;div&gt;</code> element</li>
+</ul>
+        
+  </li>
+</ul>
+        
+<div>var item_width = 500;<br>
+  var margin = 35;<br>
+  var speed = 10;<br>
+  var count = 0;<br>
+  var direction = 1;<br>
+  <br>
+  <dfn>// find screen size </dfn><br>
+  var page_width=screen.width;<br>
+  if(IEDOM) page_width=document.body.clientWidth;<br>
+  else if(W3CDOM) page_width=innerWidth;<br>
+  traverselenght = page_width - item_width/2-margin;<br>
+  <br>
+  function startMove(id) <br>
+  {&nbsp; window.setInterval( &quot;moveObject('&quot; +id+ &quot;')&quot;, 100 );
+  }<br>
+  <br>
+  function moveObject(id) <br>
+  { <br>
+&nbsp;&nbsp; count += speed;<br>
+&nbsp;&nbsp; if ( ( count % (traverselenght) ) &lt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Math.abs(speed) &amp;&amp; count % (traverselenght) 
+  &gt;= 0 ) <br>
+&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; speed *= -1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; direction = !direction;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; var col = ( speed &lt; 0 ) ? &quot;red&quot; : &quot;blue&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; var object=getObject(id);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; if(NS4DOM) object.color = col;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; else if(IEDOM || W3CDOM) object.style.color = col;<br>
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; shiftIt(id, speed, 0);<br>
+  }</div>
+<hr>
+
+<h2><span>Using Dynamic Positioning to Create a Slide Menu</span></h2>
+    <div style="position:absolute;left:5;top:9300;background-color:white;border:none;border-color:white;font-family:  
+            Arial,sans-serif; text-decoration:none;font-size:12pt; font-weight:normal; width:150; height:25"
+            onMouseover="pull('menu');" onMouseout="draw('menu');"><img border="0" src="../images/orangeball.gif" width="15" height="15">See Menu</div></b>
+<div id="menu" style="position:absolute;overflow:hidden;white-space:nowrap;
+                      left:-150;top:9300; width=150;font-size:12pt; 
+                      font-family: Arial,sans-serif; font-weight:normal;z-index=5;border:none;"
+                      onMouseover="pull('menu');" onMouseout="draw('menu');">
+  <a style="text-decoration:none;" href="../scripts/browserAPI.js">browserAPI.js&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+  <a style="text-decoration:none;" href="../scripts/menu.js">menu.js&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+  <a style="text-decoration:none;" href="demo/child.html">child.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+  <a style="text-decoration:none;" href="demo/clock.html">clock.html&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a><br>
+  <a style="text-decoration:none;" href="demo/blend.html">blend.html&nbsp;</a><br>
+</div>
+
+<ul>
+  <li><a href="demo/menu.html">For example</a>: The functions below 
+  are used to update the position of a &lt;div&gt; element  with id=menu.&nbsp; 
+
+<ul>
+  <li>The menu will slide out when the mouse passes over the &quot;See Menu&quot; &lt;div&gt; 
+  element and over the menu itself.</li>
+  <li>The menu will slide back when the mouse goes off of either of these 
+  elements.<p><code>&lt;div style=&quot;position:absolute;left:5;top:9500;&quot;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; onMouseover=&quot;pull('menu');&quot; onMouseout=&quot;draw('menu');&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp; </code>See Menu<code>&lt;/div&gt;<br>
+  &lt;div id=&quot;menu&quot; style=&quot;position:absolute;overflow:hidden;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  white-space:nowrap;left:-150;top:9500; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  width=150;z-index=5&quot;<br>
+&nbsp;&nbsp;&nbsp; onMouseover=&quot;pull('menu');&quot; onMouseout=&quot;draw('menu');&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;a href=&quot;browserAPI.js&quot;&gt;browserAPI.js&lt;/a&gt;&lt;br&gt;<br>
+  </code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (more links ...)<br>
+  <code>&lt;/div&gt;</code></li>
+  <li>Function <code>pull('menu');</code> is called in the  <code>onMouseover</code> event of 
+  both the menu name and the menu's <code>&lt;div&gt;</code> tags.&nbsp; It calls function <code>setInterval</code> 
+  which calls <code>pullengine</code>&nbsp; every 10 ms. </li>
+  <li>Function <code>draw('menu');</code> is called in the  <code>onMouseout</code> event of 
+  both the menu name and the menu's <code>&lt;div&gt;</code> tags.&nbsp; It calls function <code>setInterval</code> 
+  which calls <code>drawengine</code> every 1 ms. </li>
+  <li><code>pullengine</code> and<code> drawengine</code> move the menu 5pixels 
+  every time they are called until the menu reaches a pre-specified boundary. </li>
+  <li><code>pullengine</code> and<code> drawengine</code> both call <code>shiftIt</code> to actually move the
+  <code>&lt;div&gt;</code> element menu</li>
+</ul>
+        
+  </li>
+</ul>
+  <div>var menuwidth=150;<br>
+    var rightboundary=menuwidth*.9;<br>
+    var leftboundary=-1.1*menuwidth<br>
+    var themenu;<br>
+    var menuname;<br>
+    <br>
+    <dfn>// set the menu allows you to work with multiple menu names</dfn><br>
+    function setthemenu(id) <br>
+    { menuname=id;<br>
+&nbsp; return getObject(id);<br>
+    }<br>
+    <br>
+    <dfn>// begin to pull menu out by calling drawengine every 10ms</dfn><br>
+    function pull(id){<br>
+&nbsp; <dfn>// if &quot;pulling out&quot; a new menu immediately hide old one</dfn><br>
+&nbsp; if(menuname != id) placeObject(leftboundary, yCoord(id)) ;<br>
+&nbsp; if(id != null) setthemenu(id);<br>
+&nbsp; if (window.drawit)<br>
+&nbsp;&nbsp;&nbsp; clearInterval(drawit)<br>
+&nbsp; pullit=setInterval(&quot;pullengine('&quot; + id + &quot;')&quot;,10)<br>
+    }<br>
+    <br>
+    <dfn>// begin to draw menu back by calling drawengine every 1ms</dfn><br>
+    function draw(id){<br>
+&nbsp; if(id != null) setthemenu(id);<br>
+&nbsp; clearInterval(pullit)<br>
+&nbsp; drawit=setInterval(&quot;drawengine('&quot; + id + &quot;')&quot;,1)<br>
+    }<br>
+    <br>
+    <dfn>// pull menu out 5 pixels at a time</dfn><br>
+    function pullengine(id){<br>
+&nbsp; if (xCoord(id)&lt;rightboundary)<br>
+&nbsp;&nbsp;&nbsp; shiftIt(menuname,5,0);<br>
+    }<br>
+    <br>
+    <dfn>// draw menu back 5 pixels at a time</dfn><br>
+    function drawengine(id){<br>
+&nbsp; if (xCoord(id)&gt;leftboundary)<br>
+&nbsp;&nbsp;&nbsp; shiftIt(menuname,-5,0);<br>
+    }</div>      
+    <hr>
+
+<h2><span>Using Dynamic Positioning to Create Animation</span></h2>
+
+    
+
+<ul>
+  <li><a href="demo/path.html">For example</a>: The functions below 
+  are used to update the position of a set of &lt;div&gt; elements to create an 
+  animation effect.&nbsp; 
+
+<ul>
+  <li>The moveObject method takes a &lt;div&gt; element id, names of arrays of x &amp; y 
+  movements, the number of steps to divide each movement sequence into, the 
+  speed to make the movements at, the current step we are at in the movement 
+  sequence, and the array index the the movement sequence is designed from.</li>
+</ul>
+        
+  </li>
+</ul>
+    
+    <div><pre><dfn>//Arrays of paths [starting posiition, dx1, dx2,...]
+</dfn>var logox = [700, -695];
+var logoy = [5, 0];
+<dfn>//...</dfn>
+var m6x = [500, -200, 10];
+var m6y = [-50, 390, 35];
+
+function moveObject(id, dxn, dyn, steps, speed, step, index)
+{  
+  dxarray = eval(dxn);
+  dyarray = eval(dyn);
+  if(step==steps) { index++; step=0;}
+  
+  if(index < dxarray.length)
+  {dx = dxarray[index]/steps;
+   dy = dyarray[index]/steps;
+   dxarray[0]+=dx; dyarray[0]+=dy;
+     
+   <dfn>// using placeIt because shift it wound up in wrong place
+</dfn>   placeIt(id, dxarray[0], dyarray[0]);
+   step++;
+  
+   setTimeout("moveObject('"+id+"','"+dxn+"', '"+dyn+"',
+        "+steps+","+speed+","+step+","+index+")",speed);
+ }
+}
+
+&lt;BODY onload="moveObject('Logo', 'logox', 'logoy', 30,1,0,1);
+        moveObject('titleTxt', 'titlex', 'titley', 60,1,0,1);
+        ...
+        moveObject('M6DIV', 'm6x', 'm6y', 40, 1, 0, 1);
+        ">
+&lt;DIV ID="Logo"
+STYLE = "position:absolute; left: 700; top: 5; ">
+&lt;img border="1" src="../../images/buffs.gif" width="106" 
+     height="78" onclick="alert(message);">
+&lt;/DIV></pre></div>
+
+    <hr>      
+<h1><a name="18"></a>Cross Frame Scripting</h1>
+<ul>
+  <li>  It is also possible to read and write information from another frame 
+  that is open in the current browser window.</li>
+  <li>  <a href="demo/crossframe.html">For example</a>, you can use frames 
+  instead of cookies to create a shopping cart!
+<ul>
+  <li>When you add a new item to the cart you get the <code>&lt;div&gt;</code> element 
+  containing the current cart using:<br>
+  <font SIZE="2"><code>top.window.frames[0].t1</code> or <code>
+  top.window.frames[0].document.getElementById('t1')</code></font></li>
+  <li>You then get the HTML code inside the <code>&lt;div&gt;</code> element using
+  <code>obj.innerHTML,</code></li>
+  <li>I was then required to remove the starting and ending table tags every time I 
+  read the existing shopping cart (using <code>substring</code>).</li>
+  <li>I added the new item to the cart &amp; wrote it back out adding the opening &amp; 
+  closing table tags.</li>
+</ul>
+  </li>
+</ul>
+<div><a name="19"></a>&lt;script type = &quot;text/javascript&quot;&gt;<br>
+  &lt;!--<br>
+  <dfn>// get an object from another frame<br>
+  </dfn><font SIZE="2">function getObjectFrame(id, num)<br>
+  { var obj;<br>
+&nbsp; if(IEDOM) obj = eval(&quot;top.window.frames[&quot;+num+&quot;].&quot; + id);<br>
+&nbsp; else if(W3CDOM) obj = top.window.frames[num].document.getElementById(id);<br>
+&nbsp; return obj;<br>
+  }<p>function writeProd(prod)<br>
+  { <br>
+&nbsp;&nbsp; var obj=getObjectFrame('t1',0)<br>
+  <dfn>&nbsp;&nbsp; // get contents of current cart<br>
+  </dfn>&nbsp;&nbsp; var text = obj.innerHTML ;<br>
+  <dfn>&nbsp;&nbsp; // remove table &amp; &lt;/table&gt; tags<br>
+  </dfn>&nbsp;&nbsp; text = text.substring(18, text.length - 8);<br>
+  <dfn>&nbsp;&nbsp; // write old contents plus new contents to other frame<br>
+  </dfn>&nbsp;&nbsp; obj.innerHTML = '&lt;table border=&quot;1&quot;&gt;'+text+prod+'&lt;/table&gt;';<br>
+  }<br>
+  </font>// --&gt;<br>
+  &lt;/script&gt;<br>
+  </p>
+<hr>
+  &lt;input type=&quot;button&quot; value=&quot;Buy It!&quot; <br>
+  &nbsp;onclick=&quot;writeProd('&lt;tr&gt;&lt;td&gt;Zilly Zizz&lt;/td&gt;' +
+  <br>
+&nbsp;&lt;td&gt;A Silly 
+  Toy&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;35.00&lt;/td&gt;&lt;/tr&gt;');&quot;&gt;<br>
+</div>
+<hr>
+<script language="JavaScript">writeFooter(3);</script><br><br>
+
+
+<h1>
+<a NAME="1"></a>JavaScript: Image Effects</h1>
+
+<ul>
+  <li>The onMouseOver and onMouseOut events are used to generate dynamic events
+when a user's mouse passes over a link, an image or other HTML element.</li>
+    </ul>
+<ul>
+  <li><a name="13"></a>You can use images as your links and &quot;swap&quot; images to get a
+    dynamic effect when your mouse passes over the link:</li>
+</ul>
+
+<SCRIPT LANGUAGE = "Javascript">
+imageB1off = new Image();
+imageB1off.src = "../images/click1.gif";
+imageB1on = new Image();
+imageB1on.src = "../images/click2.gif";
+
+function on(name) {
+document[name].src = eval(name + "on.src");
+}
+function off(name) {
+document[name].src = eval(name + "off.src");
+}
+          </SCRIPT>
+ 
+<center>
+<p>
+<A HREF="demo/loan.html" onmouseover="on('imageB1');" 
+ onmouseout="off('imageB1')"><IMG SRC="../images/click1.gif" WIDTH=110 HEIGHT=30 BORDER=0 NAME="imageB1"></A>
+</p>
+</center>
+<div>
+&lt;SCRIPT LANGUAGE = &quot;Javascript&quot;&gt;<br>
+image1 = new Image();&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<dfn>&nbsp;&nbsp; // Creating the image</dfn><br>
+image1.src = &quot;click1.gif&quot;;&nbsp;<dfn>&nbsp; // &amp; loading the files</dfn><br>
+image1on = new Image();&nbsp;&nbsp;&nbsp;<dfn>&nbsp;&nbsp; // preloads the images</dfn><br>
+image1on.src = &quot;click2.gif&quot;; <dfn>// reducing delays</dfn><br>
+<br>
+<a name="14"></a>
+function on(name) {&nbsp;&nbsp;&nbsp; <dfn>&nbsp;&nbsp;&nbsp; //replace original image</dfn><br>
+&nbsp;
+document[name].src = eval(name + "on.src");<br>
+}<br>
+function off(name) {&nbsp;&nbsp; <dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //restore original image</dfn><br>
+&nbsp;
+document[name].src = eval(name + &quot;.src&quot;);<br>
+}<br>
+&lt;/SCRIPT><br>
+&lt;center><br>
+&lt;A HREF=&quot;demo/loan.html&quot; onmouseover=&quot;on('image1');&quot;<br>
+&nbsp;&nbsp; onmouseout=&quot;off('image1')&quot;&gt;<br>
+&nbsp; &lt;IMG SRC="click1.gif"&nbsp;WIDTH=110 HEIGHT=30<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BORDER=0 NAME="image1"><br>
+&lt;/A>&lt;/center>
+</div>
+    <hr>
+
+<h2><span>More Image Swapping</span></h2>
+
+    <ul>
+      <li>Frequently, E-Commerce Web sites will swap an image based on a 
+      selection made by the use. </li>
+      <li>This allows them to change a color or style without reloading a page.</li>
+      <li>The &quot;<a href="demo/jerseys.html">Basketball Jersey</a>&quot; form below 
+      changes the image based on a selection made by the user.</li>
+      <li>The form also has several pieces of data that would need to be passed 
+      to a shopping cart cookie.</li>
+    </ul>
+<SCRIPT LANGUAGE = "Javascript">
+  jersey0 = new Image();            // Creating the image
+  jersey0.src = "demo/jerseys/den.jpg";  // & loading the files
+  jerseyAH = new Image();           // Creating the image
+  jerseyAH.src = "demo/jerseys/atl.jpg"; // & loading the files
+  jerseyBC = new Image();           // preloads the images
+  jerseyBC.src = "demo/jerseys/bos.jpg"; // reducing delays
+  jerseyCH = new Image();   
+  jerseyCH.src = "demo/jerseys/cha.jpg"; 
+  jerseyCB = new Image();   
+  jerseyCB.src = "demo/jerseys/chi.jpg"; 
+  jerseyCC = new Image();   
+  jerseyCC.src = "demo/jerseys/cle.jpg"; 
+  jerseyDM = new Image();   
+  jerseyDM.src = "demo/jerseys/dal.jpg"; 
+  jerseyDN = new Image();   
+  jerseyDN.src = "demo/jerseys/den.jpg"; 
+  jerseyDD = new Image();   
+  jerseyDD.src = "demo/jerseys/det.jpg"; 
+  jerseyGW = new Image();   
+  jerseyGW.src = "demo/jerseys/gol.jpg"; 
+  jerseyHR = new Image();   
+  jerseyHR.src = "demo/jerseys/hou.jpg"; 
+  jerseyIP = new Image();   
+  jerseyIP.src = "demo/jerseys/ind.jpg"; 
+  jerseyLC = new Image();   
+  jerseyLC.src = "demo/jerseys/lac.jpg"; 
+  jerseyLL = new Image();   
+  jerseyLL.src = "demo/jerseys/los.jpg"; 
+  jerseyMH = new Image();   
+  jerseyMH.src = "demo/jerseys/mia.jpg"; 
+  jerseyMB = new Image();   
+  jerseyMB.src = "demo/jerseys/mil.jpg"; 
+  jerseyMT = new Image();   
+  jerseyMT.src = "demo/jerseys/min.jpg"; 
+  jerseyNN = new Image();   
+  jerseyNN.src = "demo/jerseys/nyj.jpg"; 
+  jerseyNK = new Image();   
+  jerseyNK.src = "demo/jerseys/nyk.jpg"; 
+  jerseyOM = new Image();   
+  jerseyOM.src = "demo/jerseys/orl.jpg"; 
+  jerseyP7 = new Image();   
+  jerseyP7.src = "demo/jerseys/phi.jpg"; 
+  jerseyPS = new Image();   
+  jerseyPS.src = "demo/jerseys/phx.jpg"; 
+  jerseyPB = new Image();   
+  jerseyPB.src = "demo/jerseys/por.jpg"; 
+  jerseySK = new Image();   
+  jerseySK.src = "demo/jerseys/sac.jpg"; 
+  jerseySA = new Image();   
+  jerseySA.src = "demo/jerseys/san.jpg"; 
+  jerseySS = new Image();   
+  jerseySS.src = "demo/jerseys/sea.jpg"; 
+  jerseyTR = new Image();   
+  jerseyTR.src = "demo/jerseys/tor.jpg"; 
+  jerseyUJ = new Image();   
+  jerseyUJ.src = "demo/jerseys/uta.jpg"; 
+  jerseyVG = new Image();   
+  jerseyVG.src = "demo/jerseys/van.jpg"; 
+  jerseyWW = new Image();   
+  jerseyWW.src = "demo/jerseys/was.jpg"; 
+
+  function swapJersey(name, sel, form) {    //replace original image
+     document[name].src = eval(name + sel.value + ".src");
+     form.org.value = sel.value;
+    // alert(form.org.value);
+  }
+  
+  function dataFromForm(form)
+  {
+     var team, name, num, size, color, quan;
+     
+     team = form.org.value;
+     name = form.name.value;
+     num = form.number.value;
+     size = form.size.value;
+     if(form.color[0].checked) color =form.color[0].value;
+     else if(form.color[1].checked) color = form.color[1].value;
+     quan = form.quantity.value;
+     alert("Team: " + team + "\nName: " + name + "\nNumber: " + num 
+           + "\nSize: " + size + "\nColor: " + color + "\nQuantity: " + quan);
+  
+  }
+    </SCRIPT>
+
+<center>
+
+<form name="basketball" onsubmit="dataFromForm(this);return false;">
+<select name="team" onclick="swapJersey('jersey', this, this.form);">
+<OPTION VALUE="0" SELECTED="SELECTED">Select a Team</OPTION>
+<OPTION VALUE="AH">Atlanta Hawks</OPTION>
+<OPTION VALUE="BC">Boston Celtics</OPTION>
+<OPTION VALUE="CH">Charlotte Hornets</OPTION>
+<OPTION VALUE="CB">Chicago Bulls</OPTION>
+<OPTION VALUE="CC">Cleveland Cavaliers</OPTION>
+<OPTION VALUE="DM">Dallas Mavericks</OPTION>
+<OPTION VALUE="DN">Denver Nuggets</OPTION>
+<OPTION VALUE="DP">Detroit Pistons</OPTION>
+<OPTION VALUE="GW">Golden State Warriors</OPTION>
+<OPTION VALUE="HR">Houston Rockets</OPTION>
+<OPTION VALUE="IP">Indiana Pacers</OPTION>
+<OPTION VALUE="LC">Los Angeles Clippers</OPTION>
+<OPTION VALUE="LL">Los Angeles Lakers</OPTION>
+<OPTION VALUE="MH">Miami Heat</OPTION>
+<OPTION VALUE="MB">Milwaukee Bucks</OPTION>
+<OPTION VALUE="MT">Minnesota Timberwolves</OPTION>
+<OPTION VALUE="NN">New Jersey Nets</OPTION>
+<OPTION VALUE="NK">New York Knicks</OPTION>
+<OPTION VALUE="OM">Orlando Magic</OPTION>
+<OPTION VALUE="P7">Philadelphia 76ers</OPTION>
+<OPTION VALUE="PS">Phoenix Suns</OPTION>
+<OPTION VALUE="PB">Portland Trail Blazers</OPTION>
+<OPTION VALUE="SK">Sacramento Kings</OPTION>
+<OPTION VALUE="SA">San Antonio Spurs</OPTION>
+<OPTION VALUE="SS">Seattle SuperSonics</OPTION>
+<OPTION VALUE="TR">Toronto Raptors</OPTION>
+<OPTION VALUE="UJ">Utah Jazz</OPTION>
+<OPTION VALUE="VG">Vancouver Grizzlies</OPTION>
+<OPTION VALUE="WW">Washington Wizards</OPTION>
+
+</SELECT><input type="hidden" name="org" value="0">
+
+  
+<table bordercolor="#808080" border="1" bordercolorlight="#0000FF">
+	
+	<tr valign="top">
+	<!-- table for product picture -->
+	<td bordercolor="#808080" valign="middle" align="center">
+       <img border="0" src="demo/jerseys/den.jpg" width="173" height="170" align="right" name="jersey"></td>
+		
+    <td valign="middle" align="left">		
+
+		<b>Personalized Information </b>
+		<br><br>Your Name: <input type="text" name="name" maxlength="11" size="23">
+		<br><br>Number:    <input type="text"  name="number" maxlength="2" size="2">
+		<BR>
+	</td>
+		
+   <td valign="middle" align="left">
+		Size: <SELECT NAME='size'>
+		         <OPTION Value='M'>M
+		         <OPTION value='L'>L
+		         <OPTION value='XL'>XL
+		     </select>
+		<br>
+		<br>
+		<INPUT TYPE="radio" NAME="color" CHECKED VALUE='Home'> Home
+		<INPUT TYPE="radio" NAME="color" VALUE='Away'> Away  &nbsp;&nbsp;&nbsp;
+		<br>
+		<br>
+			
+		Quantity: <input type="text" name ="quantity" size="2" maxlength="2" value="1">
+          
+	  </td>
+    </tr>		
+	<!-- add to shopping  -->
+    <tr>	
+    <td colspan=3 align=center>
+    <font size="5" color="#FF0000">$99.00</font>
+    </td>
+    </tr>
+    <tr>
+       <td colspan=3 align=center>
+	   <input type="submit" value="Buy It!"></td>
+    </tr>	
+	
+	</table>
+    </center>
+  </form>
+	
+</center>
+
+    
+    <div><pre>&lt;SCRIPT LANGUAGE = "Javascript">
+jersey0 = new Image();                 <dfn>// Creating the image</dfn>
+jersey0.src = "demo/jerseys/den.jpg";  <dfn>// & loading the files</dfn>
+jerseyAH = new Image();                <dfn>// Creating the image</dfn>
+jerseyAH.src = "demo/jerseys/atl.jpg"; <dfn>// & loading the files</dfn>
+jerseyBC = new Image();                <dfn>// preloads the images</dfn>
+jerseyBC.src = "demo/jerseys/bos.jpg"; <dfn>// reducing delays</dfn>
+...
+
+function swap(name, sel, form) {    <dfn>//replace original image</dfn>
+   document[name].src = eval(name + sel.value + ".src");
+   form.org.value = sel.value;
+}
+  
+function dataFromForm(form)
+{
+   var team, name, num, size, color, quan;
+   
+   team = form.org.value;
+   name = form.name.value;
+   num  = form.number.value;
+   size = form.size.value;
+   if(form.color[0].checked) color =form.color[0].value;
+   else if(form.color[1].checked) color = form.color[1].value;
+   quan = form.quantity.value;
+   alert("Team: " + team + "\nName: "+ name + 
+         "\nNumber: "+ num + "\nSize: "+ size +  
+         "\nColor: "+ color + "\nQuantity:" + quan);
+}
+  
+&lt;form name="basketball"  
+   onsubmit="dataFromForm(this);return false;">
+&lt;select name="team" onclick="swap('jersey', this, this.form);">
+   &lt;OPTION VALUE="0" SELECTED="SELECTED">Select a Team</OPTION>
+   &lt;OPTION VALUE="AH">Atlanta Hawks</OPTION>
+...</pre></div>
+
+<hr>
+<h1><a name="20"></a>Other &nbsp;Events</h1>
+<ul>
+  <li>Both fourth generation browsers introduced a new player onto the event
+handling stage: the <em> event object</em>.&nbsp;</li>
+  <li>The event object, then, contains information about the event. Which event?
+The event which has just happened!</li>
+  <li>Put another way, the event object is a snapshot of details surrounding an
+event immediately after it has happened.&nbsp;</li>
+
+  <li> You can use the event object in the
+event handler code to gain insight into details of the event such as where the
+mouse pointer was when the event took place, whether certain keyboard keys such
+as Shift and Ctrl were depressed at the time, and so on.</li>
+</ul>
+
+
+    <hr>
+
+
+    <h2><span>Event Object Netscape vs. Microsoft</span></h2>
+
+<ul>
+  <li>Microsoft and Netscape support a very different set of events and available properties for their respective event objects.&nbsp;&nbsp;</li>
+  <li>A complete list of these two different event sets can and their respective
+    properties can be found on the attached <a href="event_list.htm">event list</a>.&nbsp;</li>
+  <li>Netscape and Microsoft also support a completely different method of
+    handling their events:</li>
+  <li><a name="22"></a>Netscape Navigator supports &quot;Event Capturing&quot;, or the ability to
+intercept events before they reach their target and potentially re-route or even
+cancel them. To begin, we must enable event capturing at one or more of three
+possible &quot;levels&quot;: the window, the document, or the layer.</li>
+  <li> Microsoft Internet Explorer supports &quot;Event Bubbling.&quot; In this
+    paradigm and event is similar to an air bubble trapped inside a body of water -- it floats towards the
+    top of the object hierarchy.</li>
+
+  <li>The message:&nbsp; If you are going to use the more advanced event
+    features you will need to write completely different code for Netscape and
+    Microsoft or be operating in a single browser domain!</li>
+</ul>
+
+<script language="JavaScript">writeFooter(4);</script>
+
+    <hr>
+    <script>
+       var filename= "ajaxlecture.html?ss=" + v; 
+        //      alert(filename);
+        document.write("<IFRAME src='"+filename+"' frameBorder=0 width=100% scrolling=no class=screen height=600 allowtransparency='true' background-color='transparent'></IFRAME>");
+        //alert("<IFRAME src='"+filename+"' frameBorder=0 width=100% scrolling=no class=screen height=600></IFRAME>");
+    </script>
+    <script src="../scripts/ajax.js" type="text/javascript"></script>
+    <div id="titleLYR2" class="print" style="background-color:white; border-color:white; margin-left:0;"><H1>AJAX</H1></div>
+    <div id="contentLYR2" class="print" style="background-color:white; border-color:white; margin-left:0;text-align:left;"></div>
+    <script>loadAll();</script>
+<hr>
+<script language="JavaScript">writeFooter(5);</script><br><br>
+</BODY>
+</HTML>

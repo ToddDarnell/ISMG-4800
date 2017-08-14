@@ -1,0 +1,21 @@
+      <ul>
+      <li>The next thing is to decide what you want to do after you receive the 
+    server response to your request. At this stage you just need to tell the 
+    HTTP request object which JavaScript function will do the work of processing 
+    the response. This is done by setting the <code>onreadystatechange</code> 
+    property of the object to the name of the JavaScript function you plan to 
+    use, like this: </li>
+    </ul>
+    <blockquote>
+    <p><code>http_request.onreadystatechange = nameOfTheFunction;</code> </p>
+    </blockquote>
+    <ul>
+      <li>Note that there are no brackets after the function name and no parameters 
+    passed. Also, instead of giving a function name, you can use the JavaScript 
+    technique of defining functions on the fly and define the actions that will 
+    process the response right away, like this: </li>
+    </ul>
+    <div><pre>http_request.onreadystatechange = function(){
+    <dfn>// do the thing</dfn>
+};</pre></div>
+    

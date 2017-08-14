@@ -1,0 +1,1379 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Dawn Gregg">
+   <meta name="Classification" content="WWW Programming">
+   <meta name="Description" content="Introduction to JavaScript">
+   <meta name="KeyWords" content="JavaScript, Variables, Operators, Internet, WWW">
+   <title>JavaScript: Java Objects</title>
+<script Language="JavaScript">
+<!-- hide
+var timeStr, dateStr;
+
+function clock() {
+  now= new Date();
+
+  // time 
+  hrs= now.getHours();
+  mins= now.getMinutes();
+  secs= now.getSeconds();
+  timeStr= "" + hrs;
+  timeStr+=((mins < 10) ? ":0" : ":") + mins;
+  timeStr+=((secs < 10) ? ":0" : ":") + secs;
+  // Write time to the time textbox
+  document.clock.time.value = timeStr;
+
+  // date
+  date= now.getDate();
+  month= now.getMonth()+1;
+  year= now.getYear();
+  dateStr= "" + month;
+  dateStr+=((date < 10) ? "/0" : "/") + date;
+  dateStr+= "/" + year;
+
+  // Write date to the date textbox
+  document.clock.date.value = dateStr;
+      
+   // function calls itself every 1 sec. 
+  Timer= setTimeout("clock()",1000);  
+}  // end clock()                      
+
+// -->
+   </script>
+
+
+<script language="JavaScript" src="../scripts/cookieCartx.js"></script>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated January 15, 2004<BR>Dawn G. Gregg</I> ' +
+          '<br><br>Portions of this lecture were obtained from:<br>' +
+          '<i>Database Driven Web Sites</i> by Morrison &amp; Morrison, Cambridge, MA: CourseTechnologies, 2000.</p>';
+   </script>
+</head>
+<body onload="clock();">
+<script language="JavaScript">writeHeader();</script>
+<h1>JavaScript Objects</h1>
+<ul>
+  <li>
+In addition to browser objects
+JavaScript also has other predefined objects. For example:&nbsp;
+    </li>
+</ul>
+<center>
+<table BORDER="1" class="largeT" width=80%>
+<caption>JavaScript Objects</caption>
+<tr>
+<th>Objects</th>
+
+<th>Properties</th>
+
+<th>Methods</th>
+</tr>
+
+<tr>
+<td>Array</td>
+
+<td>length</td>
+
+<td><code>rev(), sort, join()</code></td>
+</tr>
+
+<tr>
+<td>String</td>
+
+<td>length</td>
+
+<td><code>charAt(), indexOf(), substring(), anchor(), sub(), bold() etc...</code></td>
+</tr>
+
+<tr>
+<td>Date</td>
+
+<td>(private)</td>
+
+<td><code>getHours(), setHours(), getMinutes(), setMinutes(), getMonth(),
+        setMonth() etc...</code></td>
+</tr>
+
+<tr>
+<td>Math</td>
+
+<td>PI, E etc...</td>
+
+<td><code>abs(), max(), sqrt(), random(), round(), etc...</code></td>
+</tr>
+
+</table>
+</center>
+<ul>
+  <li> There are several other 
+objects - the <a href="object_summary.html">attached list</a> refers to
+    objects that should work in both IExplorer and Netscape .</li>
+</ul>
+<hr>
+<h1><a name="4"></a>Built-in JavaScript Objects</h1>
+<h2><span>The Date-object</span></h2>
+<ul>
+  <li>The Date-object lets you work with time and date.&nbsp;Dates include year, month, day, hours, minutes and seconds
+    specified like this:<br>
+    <br>
+    <code>&nbsp;&nbsp;&nbsp;Date(year, month, day, hours, minutes,
+    seconds);</code>
+  </li>
+  <li><a name="5"></a>To create a new date object (variable) you use the new command like we did
+    with Arrays (Dates use 0 for January - not 1 as you might 
+think. 1 stands for February and so on.)<br>
+    <br>
+
+
+<code>startDay = new Date(2000,0,1,17,35,23);<br>
+  <dfn>// Date: January 1, 2000 at 17:35 &amp; 23 sec.&nbsp;</dfn></code><dfn>
+  </dfn>
+  <li> If you do not specify a 
+certain date and time when creating a new Date-object the actual date and time 
+is used.&nbsp;
+  </li>
+</ul>
+<blockquote>
+ <p><code>&nbsp;&nbsp; today= new Date();</code></p>
+</blockquote>
+<hr>
+<h2><span><a name="6"></a>Date Object Methods</span></h2>
+<ul>
+  <li>The Date-object offers methods which can be used to change the values
+    or display the values of a specific instance of the date object (e.g.
+    today).&nbsp;
+    <ul>
+      <li>getHours(), setHours(), getMinutes(), setMinutes(), getMonth(),
+        setMonth() etc.&nbsp;</li>
+    </ul>
+  </li>
+  <li>A Date-object only represents a certain 
+date and time. It is not like a clock which changes the time automatically.</li>
+  <li><a name="7"></a>Below is a script that outputs the actual date and time:</li>
+</ul>
+<blockquote>
+<P>
+<SCRIPT language=JavaScript>
+<!-- hide
+
+now= new Date();
+
+document.write("Time: " + now.getHours() + ":" + now.getMinutes() + "<br>");
+document.write("Date: " + (now.getMonth() + 1) + "/" + now.getDate() + "/" + 
+                (now.getYear()));
+
+// -->
+</SCRIPT>
+</blockquote>
+<div>
+&lt;script language=&quot;JavaScript&quot;&gt;<br>
+&lt;!-- hide<br>
+&nbsp; now= new Date();<br>
+
+&nbsp; document.write(&quot;Time: &quot; + now.getHours()+ &quot;:&quot; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + now.getMinutes() + &quot;&lt;br&gt;&quot;);<br>
+&nbsp; document.write(&quot;Date: &quot; + (now.getMonth() + 1) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + &quot;/&quot; + now.getDate()&nbsp;+ &quot;/&quot; + (now.getYear()));<br>
+
+// --&gt;<br>
+&lt;/script&gt;
+</div>
+
+<ul>
+  <li>
+
+<a name="8"></a>
+
+Here we use methods like <code> getHours()</code> in order to display the time and date 
+specified in out Date-object now. You can see that we are adding 1 to 
+the month. The method <code> getMonth()</code> returns the number 0 for January so we need to
+    add 1 to get the correct month.&nbsp;</li>
+  <li>This 
+script does not check whether the number of minutes is less than 10. This means 
+you can get a time which looks like this: 14:3 which actually means 14:03. We will see in the next script how to solve this problem.</li>
+</ul>
+<hr>
+<h2><span><a name="9"></a>Date Object - A Working Clock</span></h2>
+<ul>
+  <li>Now we will have a look at <a href="demo/clock.html">a script which displays a working clock</a>:</li>
+</ul>
+<blockquote>
+<FORM name=clock>
+<table border="0" width="15%">
+  <tr>
+    <td width="7%">Time:</td>
+    <td width="8%"><INPUT name=time size=10></td>
+  </tr>
+  <tr>
+    <td width="7%">Date:</td>
+    <td width="8%"><INPUT name=date size=10></td>
+  </tr>
+</table> 
+</FORM>
+</blockquote>
+<ul>
+  <li>Here is the code:</li>
+</ul>
+<div>&lt;html&gt;&lt;head&gt;<br>
+&lt;script Language=&quot;JavaScript&quot;&gt;<br>
+  <dfn>&lt;!-- hide</dfn><br>
+  var timeStr, dateStr;<br>
+<br>
+ <a name="10"></a>function clock() {<br>
+  &nbsp; now= new Date();<br>
+<br>
+  &nbsp; <dfn>// time</dfn> <br>
+  &nbsp; hrs= now.getHours();<br>
+  &nbsp; mins= now.getMinutes();<br>
+  &nbsp; secs= now.getSeconds();<br>
+  &nbsp; timeStr= &quot;&quot; + hrs;<br>
+  &nbsp; timeStr+=((mins &lt; 10) ? &quot;:0&quot; : &quot;:&quot;) +
+  mins;<br>
+  &nbsp; timeStr+=((secs &lt; 10) ? &quot;:0&quot; : &quot;:&quot;) +
+  secs;<br>
+  <dfn>&nbsp; // Write time to the time textbox</dfn><br>
+  &nbsp; document.clock.time.value = timeStr;<br>
+<br>
+  <a name="11"></a>&nbsp; <dfn>// date</dfn><br>
+  &nbsp; date= now.getDate();<br>
+  &nbsp;&nbsp;month= now.getMonth()+1;<br>
+  &nbsp;&nbsp;year= now.getYear();<br>
+  &nbsp;&nbsp;dateStr= &quot;&quot; + month;<br>
+  &nbsp;&nbsp;dateStr+=((date &lt; 10) ? &quot;/0&quot; : &quot;/&quot;) + date;<br>
+  &nbsp;&nbsp;dateStr+= &quot;/&quot; + year;<br>
+  <br>
+  &nbsp;<dfn>&nbsp;// Write date to the date textbox<br>
+  &nbsp;</dfn>&nbsp;document.clock.date.value = dateStr;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp; <dfn>// function calls itself every 1 sec.</dfn>
+<br>
+  &nbsp;&nbsp;Timer= setTimeout(&quot;clock()&quot;,1000);&nbsp;&nbsp;<br>
+ }&nbsp; <dfn>// end clock()</dfn>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <dfn>// --&gt;</dfn><br>
+&lt;/script&gt;<br>
+&lt;/head&gt;<br>
+  <a name="12"></a>&lt;body onLoad=&quot;clock()&quot;&gt;<br>
+  &lt;blockquote&gt;<br>
+  &lt;FORM name=clock&gt;<br>
+  &lt;table border=&quot;0&quot; width=&quot;15%&quot;&gt;<br>
+  &nbsp;&lt;tr&gt;<br>
+  &nbsp; &lt;td width=&quot;7%&quot;&gt;Time:&lt;/td&gt;<br>
+  &nbsp; &lt;td width=&quot;8%&quot;&gt;&lt;INPUT name=time size=10&gt;&lt;/td&gt;<br>
+  &nbsp;&nbsp;&lt;/tr&gt;<br>
+  &nbsp;&nbsp;&lt;tr&gt;<br>
+  &nbsp;&nbsp; &lt;td width=&quot;7%&quot;&gt;Date:&lt;/td&gt;<br>
+  &nbsp;&nbsp; &lt;td width=&quot;8%&quot;&gt;&lt;INPUT name=date size=10&gt;&lt;/td&gt;<br>
+  &nbsp;&nbsp;&lt;/tr&gt;<br>
+  &lt;/table&gt;<br>
+  &lt;/FORM&gt;&lt;/blockquote&gt;<br>
+  &lt;/body&gt;&lt;/html&gt;
+</div>
+
+<ul>
+  <li><a name="13"></a>The <code>setTimeout()</code> method calls the <code>clock()</code>
+    function every 1000 milliseconds. 
+So every second a new Date-object with the actual time is created.</li>
+  <li>The function <code> clock() </code> is called with the onLoad event-handler in the
+    <code> 
+&lt;body&gt;</code> tag.&nbsp;</li>
+  <li> In the body-part of our HTML-page we have two text-elements.&nbsp;</li>
+  <li> 
+The function <code> clock()</code> writes the time and date into these two form-elements in 
+the right format. You can see that we are using two strings <code> timeStr</code> and
+    <code> dateStr</code> for this purpose.&nbsp;</li>
+  <li><a name="14"></a>There is a 
+problem with minutes less than 10 - this script solves this problem through this 
+line of code:</li>
+</ul>
+<blockquote>
+  <PRE><code>timeStr+= ((minutes &lt; 10) ? &quot;:0&quot; : &quot;:&quot;) + minutes;</code></PRE>
+</blockquote>
+<ul>
+  <li>Here the number of minutes are added to the string timeStr. If the 
+minutes are less than 10 we have to add a 0. This line of code might look a 
+little bit strange to you. You could also write it like this which might look 
+more familar:</li>
+</ul>
+<blockquote>
+  <PRE><code>if (minutes &lt; 10) timeStr+= &quot;:0&quot; + minutes
+  else timeStr+= &quot;:&quot; + minutes;</code>
+ </PRE>
+</blockquote>
+<ul>
+  <li>Here are 2 other JavaScript clock programs:&nbsp;
+  <a href="../../samples/BigClock.html">Big Clock </a>&nbsp;and
+  <a href="../../samples/DynamicClock.html">Dynamic Clock</a></li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(0);</script>
+
+<h1><a name="15"></a>The Math-object</h1>
+<ul>
+  <li>
+          The <code>Math</code> object's methods allow
+          the programmer to perform many common mathematical calculations.&nbsp;
+  <li>
+ As
+          shown previously, an object's <em>properties</em> &amp; <em>methods</em> are called
+ the name
+          of the object followed by a dot operator (<font face="Courier"><b><code>.</code></b></font>)
+          and the name of the method.&nbsp;
+  <li>
+ In parentheses following the method name is the argument (or a comma-separated
+ list of arguments).&nbsp;
+  <li>
+ For example, to calculate the square root of <code>900.0</code>:<br>
+ 
+ <code><br>
+ document.write('&lt;p&gt;sqrt: '+Math.sqrt(900.0)');</code>
+</ul>
+<script>document.writeln('<p>sqrt: '+ Math.sqrt( 900.0 ) )</script>
+<hr>
+<h2><span><a name="16"></a>Math-object Methods</span></h2>
+<ul>
+  <li>Some <em> methods</em>  of
+    the Math-object are:</li>
+<ul>
+<li><code>Math.cos(x)</code>: trig. cosine of x (x in radians)
+<li><code>Math.exp(x)</code>: e<sup>x</sup>
+<li><code>Math.floor(x)</code>: rounds to largest int not &gt; x
+<li><code>Math.log(x)</code>: natural logarithm of x
+<li><code>Math.max(x,y)</code>: larger of x and y
+<li><code>Math.min(x, y)</code>: smaller of x and y
+<li><code>Math.pow(x,y)</code>: x<sup>y</sup>
+<li><code>Math.round(x)</code>: rounds x to the closest integer
+<li><code>Math.sin(x)</code>: trig sine of x (x in radians)
+<li><code>Math.sqrt(x)</code>: square root of x
+<li><code>Math.random()</code>: a random number between 0 and 1. 
+    <ul>
+      <li> <code>document.write(Math.random()):</code>
+      <script>document.write(Math.random())</script>
+</ul>
+</ul>
+</ul>
+<hr>
+<h2><span><a name="17"></a>Math-object Properties</span></h2>
+<ul>
+  <li>The Math-object also has a number of <em>properties/constants</em> that
+    can be used in mathematical calculations: These are (for example):</li>
+   <ul>
+   <li><code>Math.E</code>: Euler's constant (Approx. 2.718)
+   <li><code>Math.LN2</code>: Natural logarithm of 2 (Approx. 0.693)
+   <li><code>Math.LN10</code>: Natural logarithm of 10 (Approx. 2.302)
+   <li><code>Math.LOG2E</code>: Base 2 logarithm of Euler's constant (Approx. 1.442)
+   <li><code>Math.LOG10E</code>: Base 10 logarithm of Euler's constant (Approx. 0.434)
+   <li><code>Math.PI</code>: Pi ratio of circle's circumference / diameter
+    (Approx. 3.141592653589793)
+   <li><code>Math.SQRT1_2</code>: Square root of 0.5 (Approx. 0.707)
+   <li><code>Math.SQRT2</code>: Square root of 2.0 (Approx. 1.414)
+</ul>
+</ul>
+<hr>
+<h2><span>Math-Object Examples</span></h2>
+<ul>
+  <li>The example below was included in the code for the
+  <a href="demo/loan.html">Loan Calculator</a>.&nbsp; It uses Math.round() to 
+  format a number to 2 decimal places:</li>
+</ul>
+<div>function F2(num)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="../images/arrow.gif" width="40" height="23"><em>format to 2 decimal places
+</em>
+<br>{<br>&nbsp;&nbsp; return Math.round(num*100)/100;
+<br>} </div>
+<ul>
+  <li>The example below is similar to that used in the <a href="demo/quote.html">&quot;quote&quot; 
+  program</a>.&nbsp; It selects a random element from an array by:<ul>
+  <li>Generating a random number between 0 and 1 using <code>Math.random()</code>.&nbsp;
+  </li>
+  <li>Multiplying the random number by the number of items in an array to get a 
+  random number between 0 and the length of the array.</li>
+  <li>Using <code>Math.floor()</code> to round the larger random number down to 
+  the nearest integer smaller than the number generated.</li>
+  <li>Returning the array element associated with that array index.</li>
+</ul>
+  </li>
+</ul>
+<div>function randomElement(some_array)<br>
+  {<br>
+&nbsp;&nbsp; var index=Math.floor(Math.random()*some_array.length);<br>
+&nbsp;&nbsp; return some_array[index];<br>
+  }</div>
+<hr>
+
+<h1><a name="18"></a>Strings and String-objects</h1>
+
+<ul>
+  <li>Java's string and character processing capabilities are appropriate for
+    developing text editors, word processors, page layout software, computerized
+    typesetting systems and other kinds of text-processing software.</li>
+  <li>Characters are the fundamental building blocks of JavaScript programs. Every
+program is composed of a sequence of characters that-when grouped together
+meaningfully-is interpreted by the computer as a series of instructions used to
+accomplish a task.
+  </li>
+</ul>
+
+<hr>
+<h2><span><a name="19"></a>Strings</span></h2>
+
+<ul>
+  <li>A string is a series of characters treated as a single unit.&nbsp;</li>
+  <li>A string may
+include letters, digits and various special characters, such as +, -, *, /, $
+and others.&nbsp;</li>
+  <li>A string is an object of type String . String literals or string
+constants are written as a sequence of
+characters in either double or single quotation marks:&nbsp;</li>
+</ul>
+
+<blockquote>
+  <blockquote>
+    <p><code>
+&quot;John Q. Doe&quot;&nbsp;&nbsp;
+<br>
+    '9999 Main Street'
+<br>
+    &quot;Waltham, Massachusetts&quot;
+<br>
+    '(201) 555-1212'&nbsp;</code></p>
+  </blockquote>
+</blockquote>
+
+<ul>
+  <li><a name="20"></a>A String may be assigned to a variable in a declaration. The declaration</li>
+</ul>
+<font SIZE="2">
+<blockquote>
+  <blockquote>
+    <p>
+    <code>var color = &quot;blue&quot;;<br>
+    color = String(&quot;blue&quot;);</code> </p>
+  </blockquote>
+</blockquote>
+</font>
+<ul>
+  <li>Either statement initializes variable color as a String object containing the string
+&quot;blue&quot;.
+  </li>
+  <li>Strings can be compared with the relational operators (&lt;, &lt;=, &gt; and
+&gt;=) and the equality operators (== and !=).</li>
+</ul>
+<hr>
+<h2><span><a name="21"></a>The String-object</span></h2>
+<ul>
+  <li>The String object encapsulates the attributes and behaviors of a string of
+characters.&nbsp;</li>
+  <li> The String object provides many methods (behaviors) for:&nbsp;
+    <ul>
+      <li> selecting
+characters from a string,&nbsp;</li>
+      <li> combining strings (called concatenation),&nbsp;</li>
+      <li> obtaining
+substrings of a string,&nbsp;</li>
+      <li> searching for substrings within a string,&nbsp;</li>
+      <li> tokenizing a
+string and&nbsp;</li>
+      <li> converting strings to all uppercase or lowercase letters.&nbsp;</li>
+    </ul>
+  </li>
+  <li> The String
+object also provides several methods that generate HTML tags.&nbsp;</li>
+</ul>
+<hr>
+<h2><span><a name="22"></a>String-object Methods</span></h2>
+<ul>
+  <li>Some of the principal String-object methods are summarized below:
+    <ul>
+      <li><code>charAt( index)</code> Returns the character at the specified index.
+        (&quot;&quot; if no
+character at that index)&nbsp;</li>
+      <li><code>concat( string ) </code> Concatenates its argument to the end of the string that
+invokes the method. (e.g.,<code> s3 = s1.concat(s2 )</code> is the same as <code>s3
+        = s1 + s2</code>).&nbsp;</li>
+      <li><code>indexOf( substring, index )</code> Searches for the first occurrence of substring
+starting from position index in the string that invokes the method.&nbsp;
+        <ul>
+          <li>Returns starting index of substring (-1 if substring is
+not found).&nbsp;</li>
+        </ul>
+      </li>
+      <li><code><a name="23"></a>split( string )</code> Splits the source string into an array of strings (tokens)
+where its string argument specifies the delimiter (e.g. <code>sArray =
+        s1.split(&quot; &quot;);</code>)</li>
+      <li><code>substr( start, length )</code> Returns a string containing length characters
+starting from index start in the source string. (Returns string from start index
+        to the end of the source string if no length is specified).</li>
+      <li><code>toLowerCase()</code> Returns a lowercase string. Non-letters are not changed.</li>
+      <li><code>toUpperCase()</code> Returns an uppercase string. Non-letters are not changed.</li>
+    </ul>
+  </li>
+  <li><a name="24"></a>Methods that generate HTML tags
+    <ul>
+      <li><code>anchor( name )</code> Wraps string in anchor tags (<code>&lt;A&gt;&lt;/A&gt;</code>) with name as the anchor name.</li>
+      <li><code>big()</code> Wraps string in <code>&lt;BIG&gt;&lt;/BIG&gt;</code>
+        tags.</li>
+      <li><code>bold()</code> Wraps string in <code>&lt;B&gt;&lt;/B&gt;</code>
+        tags.</li>
+      <li><code>fixed()</code> Wraps string in <code>&lt;TT&gt;&lt;/TT&gt;</code>
+        tags.</li>
+      <li><code>fontcolor( color )</code> Wraps string in <code>&lt;FONT&gt;&lt;/FONT&gt;</code>
+        tags with color as the font color.</li>
+      <li><code>fontsize( size ) </code> Wraps string in&nbsp; <code>&lt;FONT&gt;
+        &lt;/FONT&gt;</code> tags with size as the HTML font size.</li>
+      <li><code>italics()</code> Wraps string in an <code> &lt;I&gt;&lt;/I&gt;</code>
+        tags.</li>
+      <li><code>link( url )</code> Wraps string in an anchor element
+(<code>&lt;A&gt;&lt;/A&gt;</code>) with url as the hyperlink location.</li>
+      <li><code>small()</code> Wraps string in <code>&lt;SMALL&gt;&lt;/SMALL&gt;</code>
+        tags.</li>
+      <li><code>strike()</code> Wraps string in <code>&lt;STRIKE&gt;&lt;/STRIKE&gt;</code>
+        tags.</li>
+      <li><code>sub() </code> Wraps string in <code>&lt;SUB&gt;&lt;/SUB&gt;</code>
+        tags.</li>
+      <li><code>sup() </code> Wraps string in <code>&lt;SUP&gt;&lt;/SUP&gt;</code>
+        tags.</li>
+    </ul>
+  </li>
+  </ul>
+</font>
+<hr>
+<h2><span><a name="25"></a>String-object Examples</span></h2>
+<ul>
+  <li><code>length</code>: As with arrays strings have a length property that is the
+    number of characters in the string. For example,&nbsp;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; <code>var my_car = &quot;Ferrari&quot;;&nbsp;</code>
+      <br>&nbsp;&nbsp;&nbsp;&nbsp; <code>var how_long = my_car.length;<br>
+        &nbsp;</code>
+    <ul>
+      <li>In this case, the variable<code> how_long</code> will have a value of 7, since the word &quot;Ferrari&quot; has seven characters.&nbsp;</li>
+    </ul>
+  </li>
+  <li> The length property is useful if you do not know what the string is:&nbsp;
+    <ul>
+      <li>You can display an error message for strings that are longer than what you want them to
+        be: 
+<SCRIPT language="JavaScript">
+<!--
+function getName(box)
+{
+  //var yourname="";
+  //if(box==null) yourname=prompt('Enter your name, NOW!','');
+  //else 
+  var yourname=box.value;
+  if (yourname.length > 10)
+  {
+   alert('That name is just too long, give me a shorter one!');
+   box.value="";
+   //getName(); 
+  }
+  else
+  {
+    alert('Hi '+yourname+'!');
+  }
+}
+//-->
+      </SCRIPT>
+
+
+        &nbsp;</li>
+      <li>If you enter a name longer than 10 characters you get an error. Otherwise, you get a greeting!&nbsp;</li>
+    </ul>
+  </li>
+</ul>
+
+<FORM>
+<p>
+<a name="26"></a>
+Name: 
+<INPUT TYPE="text" NAME="myName" VALUE="" onBlur="getName(this);" size="20"> </p>
+</FORM>
+<div>
+  <pre>&lt;SCRIPT language=&quot;JavaScript&quot;&gt; <dfn>&lt;!--</dfn>
+function getName(box)
+{
+  var yourname = box.value;
+  if (yourname.length &gt; 10)
+  {
+     alert('That name is too long, give me a shorter one!');
+     box.value = &quot;&quot;; 
+  }
+  else
+    alert('Hi '+ yourname +'!');
+} <dfn>//--&gt;</dfn>
+&lt;/SCRIPT&gt;
+&lt;FORM&gt;
+Name: &lt;INPUT TYPE=&quot;text&quot; NAME=&quot;myName&quot; VALUE=&quot;&quot; 
+       onBlur=&quot;getName(this)&quot;&gt;
+&lt;/FORM&gt;</pre>
+</div>
+<p>
+<br>
+</p>
+<hr>
+<h2><span><a name="27"></a>Another String-object Example</span></h2>
+<ul>
+  <li> 
+<code>charAt</code>: Use the charAt method to&nbsp; find out what character is filling a designated position within a string.&nbsp;
+<ul>
+  <li> It allows you to find out what character is first, second, third, and so on.&nbsp;</li>
+  <li>Remember that the count starts at zero, not one. So the first character is actually at position zero.&nbsp;</li>
+  <li> 
+As with the length method, we assign the string to a variable, and then use the dot operator to call the
+<code> charAt</code> method.&nbsp;</li>
+  <li> 
+ The <code> charAt</code> method takes an argument, which is the position number for the character it should return.&nbsp;</li>
+  <li><a name="28"></a>For Example:&nbsp;
+    <br><code>var my_car = &quot;Ferrari&quot;;&nbsp;</code>
+    <br> <code>var the_char = my_car.charAt(0);&nbsp;</code>
+      <br> <code>alert('The 1st char is
+    '+the_char+'.');&nbsp;<br>
+    </code>
+  </li>
+  <li>
+This would give us an alert telling us that &quot;The first char is F.&quot;&nbsp;</li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="29"></a>A Final String-object Example</span></h2>
+<ul>
+  <li><code> 
+indexOf</code> Use indexOf to check for a character or even a small string within the current string, and returns the position at which your character or string begins.&nbsp;
+    <ul>
+      <li> The <code> indexOf</code> method takes an argument, which is the string we are
+        looking for within the current string.&nbsp;</li>
+      <li><code>indexOf&nbsp;</code> returns a value of -1 if the character or string you searched for is not contained within the
+        string (0 for the 1st character, 1 for the 2nd etc).&nbsp;</li>
+      <li>Finally, if the character or string you search for occurs more than once,
+        <code> indexOf</code> returns only the <i> first appearance</i> of your character or string.&nbsp;</li>
+      <li><a name="30"></a>For Example:
+       <br><code>var my_car = &quot;Ferrari&quot;;&nbsp;</code>
+       <br><code>var where_is_a = my_car.indexOf('a');&nbsp;</code>
+       <br><code>alert('a is at position ' + where_is_a);&nbsp;<br></code>
+      </li>
+      <li>Notice the quote marks around the argument of <code>a</code>. This tells the browser to look for that string, which is the type of argument you must send for
+        <code> indexOf </code> to function properly.&nbsp;
+      </li>
+    </ul>
+  </li>
+  <li>What if we search for something that is not there?&nbsp; <code>indexOf</code> will return a -1. We
+    use this -1 to tell us that what we are looking for is not there.&nbsp;</li>
+  <li> <a name="31"></a> For instance:&nbsp;</li>
+</ul>
+<div> 
+&lt;script language=&quot;JavaScript&quot;&gt;<br>
+<dfn>&lt;!-- hide</dfn><br>
+function get_url()&nbsp;<br>
+{&nbsp;<br>
+&nbsp;&nbsp;var url = prompt('Enter web page URL');&nbsp;<br>
+&nbsp;&nbsp;var is_ok = url.indexOf('http://');&nbsp;<br>
+&nbsp;&nbsp;if (is_ok == -1)&nbsp;<br>
+&nbsp;&nbsp;{&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert('Error: URL should begin with http://');&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;get_url();&nbsp;<br>
+&nbsp; }&nbsp;<br>
+&nbsp; else&nbsp;<br>
+&nbsp;&nbsp;&nbsp; alert('Thanks!');&nbsp;<br>
+}<dfn>//--&gt;</dfn><br>
+&lt;/SCRIPT&gt;
+</div>
+<ul>
+<li>
+<a name="32"></a>
+This checks to be sure the viewer entered the http:// part of the address.&nbsp;If not, it shows the error alert and gives the viewer a chance to enter the url again.
+<li>
+You can cut down on the number of forgotten http:// beginnings by using http:// as the default value for the prompt instead of nothing:<br>
+&nbsp; <code>var url=prompt('Enter web page URL','http://');</code></li>
+<li>You could even go a step further and be sure that there is at least one dot 
+(.) in the address as well. This way, the viewer would need to have a string 
+plus a dot and hopefully a com or net afterward.&nbsp;</li>
+<li><a href="demo/submitURL.html">submitURL.html</a></li>
+</ul>
+
+<div>
+&lt;script language=&quot;JavaScript&quot;&gt;<br>
+<dfn>&lt;!-- hide</dfn><br>
+<a name="33"></a> function get_url()<br>
+{<br>
+&nbsp; var url = prompt('Enter web page URL','http://');<br>
+&nbsp; var is_ok = url.indexOf('http://');<br>
+&nbsp; var dot_ok = url.indexOf('.');<br>
+<br>
+&nbsp; if ((is_ok != 0)<br>
+&nbsp; { <br>
+&nbsp;&nbsp;&nbsp; alert('Error: URL needs http://!');<br>
+&nbsp;&nbsp;&nbsp; get_url();<br>
+&nbsp; }<br>
+&nbsp; else if (dot_ok == -1)<br>
+&nbsp; {<br>
+&nbsp;&nbsp;&nbsp; alert('Error: URL needs 1 dot
+(.)!');<br>
+&nbsp;&nbsp;&nbsp; get_url();<br>
+&nbsp; }<br>
+&nbsp; else<br>
+&nbsp;&nbsp;&nbsp; alert('Thanks!');<br>
+}<dfn>//--&gt;</dfn><br>
+<a name="34"></a> &lt;/SCRIPT&gt;<br>
+&lt;FORM&gt;<br>
+Submit your URL here:&nbsp;<br>
+&lt;input type = &quot;button&quot; value = &quot;Submit URL&quot; onclick=get_url()&gt;<br>
+&lt;/FORM&gt;
+
+</div>
+
+<script language="JavaScript">
+<!-- hide
+function get_url()
+{
+   var your_url = prompt('Enter your web page URL!','http://');
+   var is_protocol_ok = your_url.indexOf('http://');
+   var is_dot_ok = your_url.indexOf('.');
+
+   if (is_protocol_ok != 0)
+   {
+      alert('Error: url needs to start with http://!');
+      get_url();
+   }
+   else if (is_dot_ok == -1)
+   {
+      alert('Error: url needs to have at least one dot (.)!');
+      get_url();
+   }
+   else
+      alert('Thanks!');
+}
+//-->
+</SCRIPT>
+
+<p>&nbsp; </p>
+<p>Submit your URL here:&nbsp;  <input type = "button" value = "Submit URL"  name = "URL" onclick=get_url()> </p>
+<hr>
+<script language="JavaScript">writeFooter(1);</script>
+
+<h1><a name="1"></a>Cookies</h1>
+<ul>
+  <li>A Cookie is a data file that is written on the user's computer by a
+    program within a Web page.</li>
+  <li>Cookies are often used to store information about:
+    <ul>
+      <li>Which pages a user has viewed</li>
+      <li>How many times a user has visited a Web site</li>
+      <li>What information the user has entered on past visits (e.g. login name
+        and password or customer data)</li>
+      <li>What items a user has selected to purchase (shopping cart)</li>
+    </ul>
+  </li>
+  <li>
+
+<a name="2"></a>A cookie stores information in pairs of variable names and
+associated values.&nbsp; Each name/value pair is separated by a semicolon (<code>;</code>):<br>
+<code>userid=mkellog;password=hello;</code>
+  <li>
+
+Information in cookies is essentially private.&nbsp; Cookies can only be read by
+the same Web site domain name or IP address that created them.
+</ul>
+<hr>
+<h1><a name="3"></a>Temporary Cookies</h1>
+<ul>
+  <li>Temporary cookies store information in the main memory of the user's
+    computer and are only valid during the browser session in which they are
+    created.</li>
+  <li>A cookie associated with an HTML document can be referenced using the
+    cookie property of the document object (<code>document.cookie</code>).</li>
+  <li>For example: to create a cookie that temporarily stores a user name found in a
+    textbox:</li>
+</ul>
+<form onsubmit="return writeName(this);">
+  <p align="center"><input type=text name="txtName" size="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="Write User Name Cookie">&nbsp;
+</form>
+
+<script language="JavaScript">
+<!--
+function writeName(form)
+{  
+   if (form.txtName.value != "")
+     document.cookie = "name=" + form.txtName.value + ";";
+   else
+     alert("You must enter a name!");
+   return false;
+}
+// --->
+</script>     
+<div>
+
+<dfn><a name="4"></a>&lt;!-- Form calls writeN, return false cancels<br>
+&nbsp;&nbsp;&nbsp;&nbsp; default action of submit button --&gt;</dfn><br>
+&lt;form onsubmit=&quot;writeN(this);return false;"><br>
+&nbsp; &lt;input type=text name=&quot;txtName&quot; size="30"><br>
+&nbsp; &lt;input type="submit" value="Write Cookie"><br>
+&lt;/form><br>
+<br>
+&lt;script language="JavaScript"><br>
+<dfn>&lt;!--</dfn><br>
+function writeN(form)<br>
+{ <dfn>// if textbox isn't empty write cookie&nbsp;</dfn><br>
+&nbsp; if (form.txtName.value != "")<br>
+&nbsp;&nbsp;&nbsp; document.cookie = "name="+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; form.txtName.value + ";";<br>
+&nbsp; else&nbsp; <dfn>// otherwise show error message</dfn><br>
+&nbsp;&nbsp;&nbsp; alert(&quot;Error: Enter a name!");<br>
+}<br>
+<dfn>// ---></dfn><br>
+&lt;/script>
+
+</div>
+<ul>
+  <li><a name="5"></a>The cookie string concatenates the name of the cookie variable (&quot;<code>name</code>&quot;),
+    the equal sign (<code>=</code>), the name entered in the textbox (<code>form.txtName.value</code>)
+    and the semicolon (<code>;</code>) that signifies the end of the name/value
+    pair.</li>
+</ul>
+<ul>
+  <li>To read this cookie and display its contents just:<br>
+    <code>alert(document.cookie);</code></li>
+<form onsubmit="showCookie();return false;">
+  <p align="center">
+  <input type="submit" value="Show Cookie">
+</form>
+<script  language="JavaScript">
+function showCookie () 
+{  
+  alert(document.cookie);
+}
+  </script>
+</ul>
+<hr>
+<h2><span><a name="6"></a>Adding a second value to the cookie</span></h2>
+<ul>
+  <li>You can store multiple values in a single cookie by appending the new
+    cookie variable name and value to the end of the cookie:<br>
+    <code>
+    document.cookie = &quot;[new_name]=[new_value];&quot;</code></li>
+</ul>
+<form onsubmit="alert(writePassword(this));return false;">
+  <p align="center"><input type=password name="txtPass" size="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="Add Password to Cookie">&nbsp;
+</form>
+
+<script language="JavaScript">
+<!--
+function writePassword(form)
+{
+   if (form.txtPass.value != "")
+     document.cookie = "password=" + form.txtPass.value + ";";
+   else
+     alert("You must enter a password!");
+   return document.cookie;
+}
+// --->
+</script>     
+<ul><li>
+<em>Programming Note</em>: If you write a new value to the cookie using an
+existing name the new value will overwrite the old value.<li>
+<em>Programming Note</em>: You can store up to 20 name/value pairs in your
+cookie.&nbsp; If you try to store more new ones will overwrite old ones.
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(2);</script>
+
+<h1><a name="7"></a>Persistent Cookies</h1>
+<ul>
+  <li>Persistent cookies store information in text files on the users
+    workstation and are available after a user exits the current browser
+    session.</li>
+  <li>Persistent cookies have an expiration date and are deleted from the system
+    after a specific time interval.</li>
+  <li>All cookies for a given Web server are stored in the same file and each
+    new cookie name/value pair is automatically added to the list of cookies
+    already created by that server.&nbsp;</li>
+</ul>
+<hr>
+<h2><span><a name="8"></a>Expiration Dates</span></h2>
+<ul>
+  <li>To add an expiration date to a cookie you just add:<br>
+    &nbsp;&nbsp;&nbsp; <code>expires=[date]<br>
+    </code>The date attribute must be written in the following date format:<br>
+    &nbsp;&nbsp;&nbsp; <code>day, dd-mm-yy hh:mm:ss UTC</code></li>
+  <li>The following function can be used to create a date string in the correct
+    format.&nbsp; It creates a Greenwich Mean Time date <code>xDays</code> days
+    from the day the cookie value is set (<code>xDays</code> is the argument).</li>
+</ul>
+<form name=fgmt>
+  <p align="center"><a name="9"></a><input type=text name="txtDays" size="16">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="button" value="Show GMT xDays from Today" onclick="alert(getUTC(parseInt(document.fgmt.txtDays.value)));">
+</form>
+<div>function getUTC(xDays)<br>
+{<br>
+&nbsp;&nbsp; var exp = new Date();&nbsp; <dfn>// get current date</dfn>&nbsp;<br>
+  <dfn>&nbsp;&nbsp; // get current time and add xDays*24hrs/day<br>
+  &nbsp;&nbsp; // *60min/hr*60sec/min*1000mSec/sec</dfn><br>
+&nbsp;&nbsp; exp.setTime(exp.getTime() +&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  (xDays*24*60*60*1000));<br>
+&nbsp;&nbsp; return exp.toUTCString();<br>
+}</div>
+<hr>
+<h2><span><a name="10"></a>Creating a Persistent Cookie</span></h2>
+<ul>
+  <li>To create a persistent cookie that stores a user name and password you:</li>
+</ul>
+<form name=xxx>
+  <p align="left">User Name: <input type=text name="txtName" size="30"><br>
+  Password:&nbsp;&nbsp; <input type=password name="txtPass" size="30"><br>
+  <input type="button" onclick="alert(writeLogin(this.form, 7));" value="Write Login Cookie">&nbsp;
+</form>
+
+<script language="JavaScript">
+<!--
+function writeLogin(form,exp)
+{ // if textboxes aren't empty 
+  // write name, password & expires 
+  if (form.txtName.value != "" &&
+      form.txtPass.value != "")
+  {
+    document.cookie = "name=" + form.txtName.value + ";" +
+      "expires=" + getUTC(exp) + ";";
+    document.cookie = "password="+ form.txtPass.value + ";" +
+      "expires=" + getUTC(exp) + ";";
+  }
+  else  // otherwise show error message
+    alert("Error: Enter name & password");
+  return document.cookie;
+}
+// --->
+</script>   
+<div>
+
+<dfn>&lt;!-- Form calls writeLogin --&gt;</dfn><br>
+&lt;script language="JavaScript"><br>
+<dfn>&lt;!--</dfn><br>
+<a name="11"></a>
+function writeLogin(form, exp)<br>
+{ <dfn>// if textboxes aren't empty&nbsp;<br>
+</dfn>
+&nbsp; if (form.txtName.value != &quot;&quot; &amp;&amp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; form.txtPass.value != &quot;&quot;)<br>
+&nbsp; {<dfn>&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; // write name &amp; expires&nbsp;</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp; document.cookie =&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "name=" + form.txtName.value + ";" +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "expires=" + getUTC(exp) + ";";<br>
+ <dfn>
+&nbsp;&nbsp;&nbsp;&nbsp; // write password &amp; expires&nbsp;</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp; document.cookie =&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "password="+ form.txtPass.value + ";" +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "expires=" + getUTC(exp) + ";";<br>
+&nbsp; }<br>
+&nbsp; else&nbsp; <dfn>// otherwise show error message</dfn><br>
+&nbsp;&nbsp;&nbsp; alert(&quot;Error: Enter name &amp; password&quot;);<br>
+}<br>
+<dfn>// ---></dfn><br>
+&lt;/script>
+
+</div>
+<hr>
+<h2><span><a name="12"></a>Reading Values of Individual Cookie Variables</span></h2>
+<ul>
+  <li>So far we have retrieved the entire contents cookie (all variable names
+    and corresponding values).&nbsp; In normal use each name/value pair is
+    usually retrieved and processed individually.</li>
+  <li>The function <code>getCookieValue(name)</code> (below) is designed to
+    return the value associated with a given cookie name:</li>
+</ul>
+
+  
+<form>
+  <p align="center">
+  <input type="button" value="Show name" onclick="alert(getCookieValue('name'));">
+  <input type="button" value="Show password" onclick="alert(getCookieValue('password'));">
+</form>
+
+<div><a name="13"></a>function getCookieValue (name)&nbsp;<br>
+  {&nbsp;<br>
+  &nbsp;var arg = name + "=";<br>
+  &nbsp;var startName = document.cookie.indexOf(arg);<br>
+  &nbsp;var start = startName + arg.length;<br>
+  &nbsp;if (start != -1) <dfn>// if cookie name exists</dfn><br>
+  &nbsp;{<br>
+  &nbsp; var end =&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.cookie.indexOf (";", start);<br>
+  &nbsp; if (end == -1)<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end = document.cookie.length;<br>
+  &nbsp; <dfn>// the value from within the cookie</dfn><br>
+  &nbsp; return document.cookie.substring(start,end);<br>
+  &nbsp;}&nbsp;<br>
+  &nbsp;else<br>
+  &nbsp; return null;<br>
+  }<br>
+  &nbsp;<br>
+  <a name="14"></a>&lt;form><br>
+  &lt;input type="button" value="Show name"&nbsp;<br>
+  &nbsp;onclick=&quot;alert(getCookieValue('name'));&quot;&gt;<br>
+  &lt;input type="button" value="Show password"&nbsp;<br>
+  &nbsp;onclick=&quot;alert(getCookieValue('password'));&quot;&gt;<br>
+  &lt;/form></div>
+<ul>
+  <li>In the above code the value is the <code>substring</code> in the&nbsp;
+    cookie between <code>start</code> (the index where the value for the given
+    cookie name begins) and <code>end</code> (where the given value ends).
+    <ul>
+      <li><code>start</code>: get the <code>indexOf </code>where the name
+        begins, then&nbsp; add the <code>length</code> of the <code>name</code>
+        &amp; the equal sign (<code>=</code>) to that index value.</li>
+      <li><code>end</code>: find the <code>indexOf </code>the first semicolon (<code>;</code>)
+        following <code>start</code>.</li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="15"></a>Deleting Cookies</span></h2>
+<ul>
+  <li>Occasionally you want users to be able to remove a cookie themselves (to
+    clear their shopping cart for example).</li>
+  <li>To delete a cookie you need to reset its expiration date to some time
+    before NOW and then the system will delete it automatically:</li>
+</ul>
+<form>
+  <p align="center"><a name="16"></a><input type="button" value="Delete" onclick=  
+ "deleteCookie('name');alert(document.cookie);"></form>
+<div>function deleteCookie (name)&nbsp;<br>
+  {&nbsp;<br>
+  &nbsp;&nbsp; var exp = getUTC(-1);&nbsp;<br>
+  &nbsp;&nbsp; var cval = getCookieValue (name);&nbsp;<br>
+  &nbsp;&nbsp; document.cookie = name + "=" + cval +&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "; expires=" + exp + ";";<br>
+  }<br>
+  <br>
+  &lt;input type=&quot;button&quot; value=&quot;Delete&quot; onclick=&nbsp;&nbsp;<br>
+  &nbsp;&quot;deleteCookie('name');alert(document.cookie);&quot;&gt;</div>
+<hr>
+<script language="JavaScript">writeFooter(3);</script>
+
+<h1>Cookie Parameters</h1>
+<ul>
+  <li>As we have just seen, a cookie contains more than simply a name and a 
+  value. In fact, a cookie has 6 parameters that can be passed to it: 
+  <ul>
+    <li>The name of the cookie, </li>
+    <li>The value of the cookie, </li>
+    <li>The expiration date of the cookie, </li>
+    <li>The path the cookie is valid for, </li>
+    <li>The domain the cookie is valid for, </li>
+    <li>The need for a secure connection to exist to use the cookie. </li>
+  </ul>
+  </li>
+  <li>Two of these are mandatory (its <code>name</code> and its <code>value</code>). The other four can be 
+  set manually or automatically. Each parameter is separated by a semicolon when 
+  set explicitly. Here is a detailed description of each. </li>
+  <li><code>Name, Value</code>:&nbsp; The name of a cookie and its value are set simply by 
+  pairing them together: <code>password=abcdefg</code></li>
+  <li><code>Expires</code>: The expires parameter lets you determine the lifetime of the 
+  cookie. <br>
+  <code>expires=Mon, 01-Jan-2001 00:00:00 UTC</code> <br>
+  If Expires is not set explicitly, then it defaults to end-of-session. The 
+  length of a session can vary depending on browsers and servers, but generally 
+  a session is the length of time that the browser is open for (even if the user 
+  is no longer at that site). </li>
+  <li><code>Path:</code>
+  The path parameter is potentially the most useful of the 4 optional cookie 
+  settings. It sets the URL path the cookie is valid within. Pages outside of 
+  that path cannot read or use the cookie.
+  If Path is not set explicitly, then it defaults to the URL path of the 
+  document creating the cookie. <br>
+  <br>
+  For example, if you have products in 3 different sub directories and the 
+  shopping cart file in a fourth directory.&nbsp; The cart will not be able to 
+  read any of the cookies set on the product pages unless path is set to<br>
+  <code>path=..;<br>
+&nbsp;</code></li>
+  <li><code>Domain:</code>
+  The domain parameter takes the flexibility of the path parameter one step 
+  further. If a site uses multiple servers within a domain the it is important 
+  to make the cookie accessible to pages on any of these servers. <br>
+  ... <code>domain=www.myserver.com</code> ...<br>
+  If Domain is not set explicitly, then it defaults to the full domain of the 
+  document creating the cookie. </li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(4);</script>
+
+<h1><a name="17"></a>Cookies and Shopping Carts</h1>
+<ul>
+  <li>One common use for cookies is to store information related&nbsp;to items a
+    visitor plans to purchase on a given site.</li>
+  <li>These cookies are usually temporary cookies though sometimes they are persistent
+    cookies with a very short expiration date (~1 hour).</li>
+  <li>When defining cookies for shopping carts, you need to determine what to
+    put into your cookie.
+    <ul>
+      <li><i>Sample Cookie</i>: <code>cookie_name=pname|descript|quantity|price;</code></li>
+    </ul>
+  </li>
+</ul>
+<hr>
+<h2><span><a name="18"></a>Set Shopping Cart Cookie</span></h2>
+<ul>
+  <li> The cookie name is <code>ShopCart</code> and the value is
+    the product data.</li>
+  <li><code>appendCookie </code>checks if something is already in the cart, a
+    delimiter (<code>|</code>) is added
+    after the current cookie value and the new product data is appended to it.</li>
+  <li><code>setCookie</code> creates a persistent cookie if days&nbsp; is &gt; 0
+    otherwise it creates a temporary cookie.<br>
+    (this cookie expires in 3 hours
+    (.125 of a day).&nbsp;</li>
+</ul>
+
+  <center>
+  <table border="0" cellspacing="1" width="75%">
+    <tr>
+      <td align="right"><p><font color="#0000FF">Zilly Zizz<br>
+        <a name="19"></a>
+        A Silly Toy<br>
+        $35.00</font><br>
+        <input type="button" value="Buy It!" 
+  onclick="appendCookie('ShopCart','Zilly Zizz|A Silly Toy|1|35.00',.125,'|');">
+
+        </p></td>
+      <td><img border="0" src="../images/balloons.gif" width="125" height="165"></td>
+      <td align="right"><p><font color="#FF00FF">Filly Fizz<br>
+        A Fizzy Froth<br>
+        $12.99</font><br>
+        <input type="button" value="Buy It!" 
+  onclick="appendCookie('ShopCart','Filly Fizz|A Fizzy Froth|1|12.99',.125,'|');">
+
+        </p></td>
+      <td><img border="0" src="../images/fizz.gif" width="138" height="138"></td>
+    </tr>
+  </table>
+  </center>
+
+<div>function appendCookie (name, value, days, delim)<br>
+  { <dfn>  // get contents already in cookie</dfn><br>
+  &nbsp; var current = getCookieValue(name);<br>
+  <br>
+  &nbsp; <dfn>// if something already in cookie&nbsp;<br>
+  &nbsp; // add new value to the end it</dfn><br>
+  &nbsp; if(current != null)<br>
+  &nbsp;&nbsp;&nbsp; value = current + delim + value;<br>
+  <br>
+  &nbsp; <dfn>// Set or Reset the cookie</dfn><br>
+  &nbsp; setCookie(name, value, days);<br>
+  }<br>
+  <br>
+  <a name="20"></a>
+  function setCookie (name, value, days)<br>
+  {&nbsp;<br>
+  <dfn>&nbsp; // Create a persistent cookie<br>
+  </dfn>&nbsp; if (days &gt; 0)<br>
+  &nbsp; &nbsp; document.cookie = name + "=" + value + &nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"; 
+  expires=" + getUTC(days) + ";" ;<br>
+  <dfn>&nbsp; // Create a temporary cookie<br>
+  </dfn>&nbsp; else&nbsp;&nbsp;<br>
+  &nbsp; &nbsp; document.cookie = name +"="+ value + &quot;;&quot;; &nbsp;<br>
+  }<br>
+  <br>
+  &lt;input type=&quot;button&quot; value=&quot;Buy It!&quot;&nbsp;<br>
+  &nbsp;onclick=&quot;appendCookie(<dfn>'</dfn>ShopCart<dfn>'</dfn>,<br>
+  &nbsp;<dfn>'</dfn>Zilly Zizz|A Silly Toy|1|35.00<dfn>'</dfn>,.125,<dfn>'</dfn>|<dfn>'</dfn>);&quot;&gt;
+</div>
+<hr>
+<h2><span><a name="21"></a>Get Shopping Cart Cookie</span></h2>
+<ul>
+  <li>The functions that read the shopping cart cookie must separate the
+    individual pieces of data and place them in the proper location in the cart.</li>
+  <li>This is accomplished by splitting the string into and array of strings
+    using the <code>split()</code> method for strings.</li>
+</ul>
+<div>function getCartData(n, delim)<br>
+  {<br>
+  &nbsp; var prods = getCookieValue(n); <dfn> // cookie data</dfn>&nbsp;&nbsp;<br>
+  &nbsp; var nProd = 0;&nbsp;&nbsp; <dfn>// # of products</dfn><br>
+  &nbsp; var nVal = 4;&nbsp;&nbsp;&nbsp; <dfn>// # of values per product</dfn><br>
+  <br>
+  &nbsp; <a name="22"></a>pnameA =       new Array();&nbsp;&nbsp;&nbsp; <dfn>// arrays that store</dfn><br>
+  &nbsp; descriptA =    new Array(); <dfn>// product data</dfn><br>
+  &nbsp; quantityA =    new Array();<br>
+  &nbsp; priceA =       new Array();<br>
+  <br>
+  &nbsp; <dfn>// if products have been selected</dfn><br>
+  &nbsp; if ( prods != null)<br>
+  &nbsp; {<br>
+  &nbsp;&nbsp;&nbsp; prods = prods.split(delim);<br>
+  &nbsp;&nbsp;&nbsp; nProd = prods.length/nVal;&nbsp;<br>
+  <br>
+  <dfn>&nbsp;&nbsp;&nbsp; // write data to data arrays<br>
+  </dfn>&nbsp;&nbsp;&nbsp; <a name="23"></a>for (var i=0, j=0; j &lt; nProd; i+=nVal, j++)<br>
+  &nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pnameA[j] = prods[i];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; descriptA[j] = prods[i+1];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quantityA[j] = parseInt(prods[i+2]);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; priceA[j] = parseFloat(prods[i+3]);<br>
+  &nbsp;&nbsp;&nbsp; }<br>
+  &nbsp; }<dfn>&nbsp;&nbsp;&nbsp; // After arrays complete display the cart<br>
+  </dfn><br>
+  &nbsp; writeCart(nProd, pnameA, descriptA,<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quantityA,
+  priceA);<br>
+  }</div>
+<ul>
+  <li><a name="24"></a>This function calls writeCart( ) to write the contents of the arrays to
+    display the cart.</li>
+  <li>One example of a cart display function is shown below.&nbsp;&nbsp;
+    <ul>
+      <li>It displays all the data in a table with the quantity in a textbox (so
+        it could be updated).&nbsp;&nbsp;</li>
+      <li>It has an update button (discussed later)</li>
+      <li>It does not display an extended price (price*quantity) for each
+        product nor does it display a total for all the products.</li>
+      <li>It has no buttons to empty (clear) the cart or to Check-out!</li>
+      <li>It has no headings saying what is in each column.</li>
+    </ul>
+  </li>
+</ul>
+<div><a name="25"></a>function writeCart(nProd, pnameA, descriptA,&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quantityA, priceA, name, delim)<br>
+  {<br>
+  &nbsp;<dfn>// Check if any products selected<br>
+  &nbsp;</dfn>if (nProd &lt; 1)<br>
+  &nbsp;&nbsp; document.writeln(&quot;Your Cart is Empty&quot;);<br>
+  <br>
+  &nbsp;else<br>
+  &nbsp;{ <dfn> // put products in a table</dfn><br>
+  &nbsp;&nbsp; document.writeln(&quot;&lt;center>&lt;table border=1>");<br>
+  <br>
+  <dfn>&nbsp;&nbsp; // loop to write each product on a row<br>
+  &nbsp;&nbsp; // each data item in a separate cell<br>
+  </dfn>&nbsp;&nbsp; <a name="26"></a>for ( var j=0; j &lt; nProd;  j++)<br>
+  &nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; document.writeln(&quot;&lt;tr>&lt;td>" + pnameA[j]) ;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; document.writeln(&quot;&lt;td>" + descriptA[j]) ;<br>
+  <br>
+  <dfn>&nbsp;&nbsp;&nbsp;&nbsp; // write quantity to textbox<br>
+  </dfn>&nbsp;<dfn>&nbsp;&nbsp;&nbsp; // this allows user to change it&nbsp;<br>
+  &nbsp;</dfn>&nbsp;&nbsp;&nbsp; document.writeln(&quot;&lt;td>&lt;input name=q");<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + j + " value=" +
+  quantityA[j] &quot;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +
+  &quot;size=6&gt;&quot;) ;<br>
+  <br>
+  <dfn>&nbsp;&nbsp;&nbsp;&nbsp; // format price to have 2 decimal places&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; // and add a $ sign<br>
+  </dfn>&nbsp;&nbsp;&nbsp;&nbsp; document.writeln(&quot;&lt;td>$" +&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; formatFixed(priceA[j]) + "&lt;/tr>") ;<br>
+  &nbsp;&nbsp; }<br>
+  &nbsp;&nbsp; document.writeln(&quot;&lt;/table>");<br>
+  <br>
+  <dfn>&nbsp;&nbsp;<a name="27"></a> // Button to call an update cookie function<br>
+  &nbsp;&nbsp; // &quot;updateCartCookie(form,name,delim,days)&quot;&nbsp;<br>
+  </dfn>&nbsp;&nbsp; document.writeln('&lt;input type=&quot;button&quot; value=&quot;Update Cart&quot; 
+  ' +<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  'onclick=&quot;updateCartCookie(this.form,\'' + <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  name + '\',\'' + delim + <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  '\',.125);<font size="2">location.reload(true)</font>;&quot;&gt;');<br>
+  &nbsp;&nbsp; document.writeln('&lt;/center&gt;');<br>
+  }<br>
+  }</div>
+<ul>
+  <li>The &quot;Update Cart&quot; button is very difficult because it has quotes nested 
+  inside of quotes.&nbsp; What I do is create the button in html like I want it 
+  then copy it into the document.writeln() method and use \' to allow the single 
+  quotes to be written out into the html document...<br>
+<a name="28"></a>
+  </li>
+</ul>
+<form name="myCart">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Begin
+  if(document.cookie.indexOf("ShopCart") > -1)
+   getCartData('ShopCart', '|');
+  else
+  {
+    document.writeln('<center><table border="1"><tr><td>Sample Product </td>');
+    document.writeln('<td>Added On Load</td><td><input size="6" value="9" name="q0"> </td><td>$72.99</td></tr></table>');
+    document.writeln('<p><input onclick="location.reload();" type="button" value="Update Cart"></p></center>');
+  }
+ // End -->
+</SCRIPT>
+</form>
+<hr>
+
+<h2><span><a name="29"></a>Update Cart</span></h2>
+<ul>
+  <li>One more function that is useful is one that would allow you to change the
+    quantities in the cart and update the cookie.</li>
+  <li>The update button on the cart calls a function that rewrites the '<code>ShopCart</code>'
+    cookie using values found in the quantity textboxes.</li>
+</ul>
+
+<div><a name="30"></a>function updateCartCookie(form, name, del, exp)<br>
+  {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// product data
+  from old cookie</dfn><br>
+  &nbsp; var prods = getCookieValue(name);&nbsp;<br>
+  &nbsp; var nVal = 4;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// # values/product</dfn><br>
+  &nbsp; var cookieString= "";<dfn>// Holds cookie value</dfn><br>
+  &nbsp; var nProd = 0;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>//
+  # products in cart</dfn><br>
+  <br>
+  &nbsp; <dfn>// if products have been selected</dfn><br>
+  &nbsp; if ( prods != null)<br>
+  &nbsp; {<br>
+  &nbsp; prods = prods.split(del);<br>
+  &nbsp; nProd = prods.length/nval;<br>
+  <br>
+  &nbsp; <dfn>// Create cookie string</dfn><br>
+  &nbsp; <a name="32"></a>for (var i=0, j=0; j &lt; nProd; i+=nVal, j++)<br>
+  &nbsp; {&nbsp;<br>
+  <dfn>&nbsp;&nbsp;&nbsp; // Get quantity from textbox<br>
+  </dfn>&nbsp;&nbsp;&nbsp; var quant = form.elements[j].value;<br>
+  <br>
+  <dfn>&nbsp;&nbsp;&nbsp; // if quantity is a number &gt; 0<br>
+  </dfn>&nbsp;&nbsp;&nbsp; if (quant != 0 &amp;&amp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; eval(quant) != Number.NaN)<br>
+  &nbsp;&nbsp;&nbsp; {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cookieString != "")<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cookieString = cookieString + del;<br>
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cookieString = cookieString + prods[i]<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + del + prods[i+1] +
+  del<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + quant + del + prods[i+3];<br>
+  &nbsp;&nbsp;&nbsp;&nbsp; }<br>
+  &nbsp; }<br>
+  &nbsp; <a name="33"></a>if(cookieString != "")<br>
+  &nbsp; { <dfn> // Overwrite old cookie w/ new values</dfn><br>
+  &nbsp;&nbsp;&nbsp; setCookie(name,cookieString,exp);<br>
+  &nbsp; }<br>
+  &nbsp; else <dfn>// Nothing left in cart so delete cookie</dfn><br>
+  &nbsp;&nbsp;&nbsp; deleteCookie(name);&nbsp;<br>
+  &nbsp; }<br>
+&nbsp; <font size="2">location.reload(true)</font>; <dfn>&nbsp;// reload the current page so updates can 
+  be seen</dfn><br>
+  }</div>
+
+<hr>
+<h2><span><a name="34"></a>Shopping Cart Cookie Code</span></h2>
+<ul>
+  <li>The Shopping cart cookie code discussed in today's lecture can be found in
+    the JavaScript file:<br>
+    &quot;<a href="../scripts/cookieCartx.js">cookieCartx.js</a>&quot;</li>
+  <li>This code will work when cookies are set from one or more pages and read
+    from another (the pages should be located in the same directory):<br>
+    <a href="demo/cookie_set.html">cookie_set.html</a><br>
+    <a href="demo/cookie_get.html">cookie_get.html</a></li>
+</ul>
+<hr>
+<script language="JavaScript">writeFooter(5);</script>
+
+</body>
+</html>

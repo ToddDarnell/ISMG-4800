@@ -1,0 +1,2101 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>XML Introduction</title>
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/screen.css" media="screen">
+  <LINK rel = "stylesheet" type = "text/css" href = "../styles/print.css" media="print">
+  
+ 
+  <script LANGUAGE=JavaScript src="../scripts/notes.js" type="text/javascript"></script>
+  <script language="JavaScript">
+  ftext = '<p class=footer><I>Updated April 12, 2006<BR>Dawn G. Gregg</I> <br><br>';
+  ftext += 'Portions of this lecture obtained from:<br>';
+  ftext += 'W3C XML Tutorials: <a href="http://www.w3schools.com/">http://www.w3schools.com/</a><br>';
+  ftext += '<a href="http://www-128.ibm.com/developerworks/xml/library/os-xmldomphp/?ca=dgr-lnxw16XML-PHP">IBM developerWorks: Reading and writing the XML DOM with PHP</a>';
+  </script>
+
+</head>
+<body>
+<script language="JavaScript">writeHeader();</script>
+<!--h1>This Week's Objectives</h1>
+<ul>
+  <li>Understand XML </li>
+  <li>XML Example </li>
+  <li>DTDs and Schemas </li>
+  <li>Name Spaces </li>
+  <li>Writing XML with PHP</li>
+  <li>Parsing XML with PHP</li>
+</ul-->
+
+<h1>eXtensible Markup Language (XML)</h1>
+<ul>
+  <li>XML is becoming the language for business-to-business data
+communication.&nbsp;</li>
+  <li> XML is an extremely portable data format, able to leap across both multiple
+platforms and applications.&nbsp;</li>
+  <li> XML also provides technologies for the web, becoming the de facto format for web applications.</li>
+  <li>XML is not a replacement for HTML. </li>
+  <li>XML and HTML were designed with different goals:<ul>
+  <li>XML was designed to describe data and to focus on what data is.</li>
+  <li>HTML was designed to display data and to focus on how data looks.</li>
+</ul>
+  </li>
+</ul>
+<hr>
+<h2><span>The main difference between XML and HTML</span></h2>
+<ul>
+  <li>
+  <p>XML was designed to carry data.</p>
+  </li>
+  <li>XML is not a replacement for HTML.</li>
+  <li>XML and HTML were designed with different goals:<ul>
+  <li>XML was designed to describe data and to focus on what data is.</li>
+  <li>HTML was designed to display data and to focus on how data looks.</li>
+</ul>
+
+  </li>
+  <li>HTML is about displaying information, while XML is about describing 
+  information.</li>
+  <li>
+<p>XML tags are not predefined. You must &quot;invent&quot; your own tags.</p>
+  </li>
+</ul>
+
+<hr>
+<h2><span>XML does not DO anything</span></h2>
+<ul>
+  <li><b>XML was not designed to DO anything.&nbsp; </b>XML 
+was created to structure, store and to send information.</li>
+  <li>The following example is a note stored as XML:</li>
+</ul>
+<div>
+<cite>&lt;</cite><var>note</var><cite>&gt;</cite>
+<br>
+<cite>&lt;</cite><var>to</var><cite>&gt;</cite>Dawn<cite>&lt;/</cite><var>to</var><cite>&gt;</cite>
+<br>
+<cite>&lt;</cite><var>from</var><cite>&gt;</cite>Jahan<cite>&lt;/</cite><var>from</var><cite>&gt;</cite>
+<br>
+<cite>&lt;</cite><var>heading</var><cite>&gt;</cite>Reminder<cite>&lt;/</cite><var>heading</var><cite>&gt;</cite>
+<br>
+<cite>&lt;</cite><var>body</var><cite>&gt;</cite>Don't forget the meeting Friday!<cite>&lt;/</cite><var>body</var><cite>&gt;</cite>
+<br>
+<cite>&lt;/</cite><var>note</var><cite>&gt;</cite>
+    </div>
+<ul>
+  <li>The note has a header and a message body. It also has sender and receiver 
+information. But still, this XML document does not DO anything. It is just pure 
+information wrapped in XML tags. Someone must write a piece of software to send, 
+receive or display it.</li>
+</ul>
+
+<hr>
+<h2><span>How can XML be used?</span></h2>
+<ul>
+  <li>XML can keep data separated from your HTML</li>
+<ul>
+  <li>HTML pages are used to display data. Data is often stored inside HTML pages. 
+With XML this data can now be stored in a separate XML file. This way you can 
+concentrate on using HTML for formatting and display, and be sure that changes 
+in the underlying data will not force changes to any of your HTML code.</li>
+</ul>
+
+  <li>XML can also store data inside HTML documents<ul>
+  <li>XML data can also be stored inside HTML pages as &quot;Data Islands&quot;. You can 
+still concentrate on using HTML for formatting and displaying the data.&nbsp;</li>
+</ul>
+
+  </li>
+  <li>XML can be used to exchange data<ul>
+  <li>In the real world, computer systems and databases contain data in 
+incompatible formats. One of the most time consuming challenges for developers 
+has been to exchange data between such systems over the Internet. Converting the 
+data to XML can greatly reduce this complexity and create data that can be read 
+by different types of applications.</li>
+</ul>
+
+  </li>
+  <li>XML and B2B<ul>
+  <li>Expect to see a lot about XML and B2B (Business To Business) in the near 
+  future.</li>
+  <li>XML is going to be the main language for exchanging financial information 
+  between businesses over the Internet. A lot of interesting B2B applications 
+  are under development.</li>
+</ul>
+
+  </li>
+  <li>XML can be used to store data<ul>
+  <li>XML can also be used to store data in files or in databases. Applications can 
+be written to store and retrieve information from the store, and generic 
+applications can be used to display the data.</li>
+</ul>
+
+  </li>
+  <li>XML can make your Data more Useful<ul>
+  <li>Since XML is independent of hardware, software and application, you can 
+  make your data available to other than only standard HTML browsers.</li>
+  <li>Other clients and applications can access your XML files as data sources, 
+  like they are accessing databases. Your data can be made available to all 
+  kinds of &quot;reading machines&quot; (agents), and it is easier to make your data 
+  available for blind people, or people with other disabilities.</li>
+</ul>
+
+  </li>
+  <li>XML can be used to Create new Languages<ul>
+  <li>The Wireless Markup Language (WML), used to markup Internet applications 
+  for handheld devices like mobile phones, is written in XML. </li>
+</ul>
+
+  </li>
+</ul>
+
+<p align="center">
+<img border="0" src="../images2/xml.gif" width="640" height="345"></p>
+
+<hr>
+<h2><span>The XML System</span></h2>
+<ul>
+  <li>XML provides the rules that allow you to define
+  your own tag set rather than abiding by the rules enforced by HTML. The
+   syntax for defining XML is very similar to HTML.
+  </li>
+
+  <li>A <em>Document Type Definition</em> (DTD) or <em>XML Schema</em> the formal way to describe a 
+  valid XML document.</li>
+
+  <li>The  <em>eXtensible Style Language</em> (XSL) is the means for displaying an XML
+  document. XSL has a similar effect as Cascading
+  Style Sheets (CSS) without negative effects of a proprietary style language.
+  XSL separates the formatting from the content of XML.&nbsp;</li>
+<li>The final part is the <em>eXtensible Linking Language</em> (XLL). The
+  proposed linking language is designed to link by
+reference rather than by exact location or page name.
+XLL allows references to point to a node or locations within the node by establishing
+a series of relationships among information. XLL allows much more complex types
+of links than HTML.</li>
+</ul>
+<script language="JavaScript">writeFooter(0);</script>
+<hr>
+<h2><span>A Simple Example</span></h2>
+<ul>
+  <li>Here's an XML example document, a catalog for an outdoor equipment store (<a href="../xml_examples/od.xml">od.xml</a>):</li>
+</ul>
+<div><cite><cite>&lt;</cite>?xml version=&quot;1.0&quot;?<cite>&gt;</cite><br>
+  <cite>&lt;</cite></cite><var>catalog</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp; <cite>&lt;</cite><var>item</var> <var>id</var><cite>=&quot;</cite>1<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>catID</var><cite>&gt;</cite>5<cite>&lt;/</cite><var>catID</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>name</var><cite>&gt;</cite>Hiking Shorts<cite>&lt;/</cite><var>name</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>description</var><cite>&gt;</cite>Soft, comfortable, lightweight 
+  cotton twill ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>image</var><cite>&gt;</cite>shorts.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>shorts_thumb.jpg<cite>&lt;/</cite><var>thumbnail</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp; <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <br>
+  &nbsp;&nbsp; <cite>&lt;</cite><var>item id</var><cite>=&quot;</cite>2<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>catID</var><cite>&gt;</cite>5<cite>&lt;/</cite><var>catID</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>name</var><cite>&gt;</cite>Fleece Pullover<cite>&lt;/</cite><var>name</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>description</var><cite>&gt;</cite>A superb springtime layering 
+  choice, ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>image</var><cite>&gt;</cite>fleece.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>fleece_thumb.jpg<cite>&lt;/</cite><var>thumbnail</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp; <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <br>
+  &nbsp;&nbsp; <cite>&lt;</cite><var>item</var> <var>id</var><cite>=&quot;</cite>3<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>catID</var><cite>&gt;</cite>5<cite>&lt;/</cite><var>catID</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>name</var><cite>&gt;</cite>Airstream Canvas Shoes<cite>&lt;/</cite><var>name</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>description</var><cite>&gt;</cite>These comfortable shoes tackle ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>image</var><cite>&gt;</cite>shoes.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>shoes_thumb.jpg<cite>&lt;/</cite><var>thumbnail</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp; <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <br>
+  &nbsp;&nbsp; <cite>&lt;</cite><var>item</var> <var>id</var><cite>=&quot;</cite>4<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>catID</var><cite>&gt;</cite>5<cite>&lt;/</cite><var>catID</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>name</var><cite>&gt;</cite>All-Weather Mountain Parka<cite>&lt;/</cite><var>name</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>description</var><cite>&gt;</cite>This two-layer parka offers ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>image</var><cite>&gt;</cite>parka.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>parka_thumb.jpg<cite>&lt;/</cite><var>thumbnail</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp; <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+<cite>&lt;/</cite><var>catalog</var><cite>&gt;</cite></div>
+<ul>
+  <li>Every XML document must include the standard XML declaration which looks
+    like this:<br>
+
+    <code><cite>&lt;</cite>?XML version=&quot;1.0&quot;?<cite>&gt;</cite><br>
+    <br>
+    </code>
+This tells the reader of the XML document which version of the XML
+specification the document complies with, ensuring compatibility now and in the
+future.</li>
+<li>In this example the <em> root element</em> of the XML document is the <i>
+catalog</i>
+element.&nbsp;</li>
+<li> The <i>catalog</i> element contains one or more allowed instances of
+the <em> nested element</em> <i>item</i>. The
+  nested elements describe a single item in the outdoor depot catalog.&nbsp;</li>
+<li>The item has an <em>attribute </em><i>id</i>.&nbsp; The id is a special 
+attribute which must uniquely identify the elements which bear them (e.g. like a 
+primary key).&nbsp; No element type may have more than one ID attribute 
+specified. The id attribute can be used to locate an XML element within the XML 
+document.</li>
+  <li>Each nested element (item) contains one (and only one) allowed instance of 
+  four nested elements (fields):<ul>
+    <li>The <i>category </i>element specifies the category number for the 
+    product.</li>
+    <li>
+The <i>name</i> element contains the product name.&nbsp;&nbsp;</li>
+    <li>The <i>description</i> element contains the description of the product.</li>
+    <li>The <i>image </i>element contains the image name for the product.</li>
+    <li>The <i>thumbnail </i>element specifies the name for the small image.</li>
+  </ul>
+  </li>
+</ul>
+<hr>
+<h2><span>XML Rules</span></h2>
+<ul>
+<li>All XML documents must have a root tag
+ <ul>
+ <li>All XML documents must contain a single tag pair to define the root element. 
+ All other elements must be nested within the root element. All elements can have 
+ sub (children) elements. Sub elements must be in pairs and correctly nested  
+ within their parent element:<br>
+ <code><cite>&lt;</cite>root<cite>&gt;</cite><br>
+ &nbsp; <cite>&lt;</cite>child<cite>&gt;</cite><br>
+ &nbsp;&nbsp;&nbsp; <cite>&lt;</cite>subchild<cite>&gt;</cite>xyz<cite>&lt;/</cite>subchild<cite>&gt;</cite><br>
+ &nbsp; <cite>&lt;/</cite>child<cite>&gt;</cite><br>
+ <cite>&lt;/</cite>root<cite>&gt;</cite>
+ &nbsp;</code>
+</li>
+</li>
+</ul>
+<li>XML allows you to nest as many elements
+as you'd like within the single root tag.
+  </li>
+<li>All XML tags are case-sensitive - so <code> <cite>&lt;</cite>Name<cite>&gt;</cite></code> and <code>
+<cite>&lt;</cite>name<cite>&gt;</cite></code> are not the same tags.<br>
+  Thus, the closing tags must match the opening tags exactly to be valid.&nbsp;
+    <ul>
+      <li> <code> <cite>&lt;</cite>name<cite>&gt;</cite></code> and <code> <cite>&lt;/</cite>Name<cite>&gt;</cite></code>  are not
+        the same, and thus
+would not create an XML element.</li>
+      <li> If you are using a single tag (e.g. <code><cite>&lt;</cite>br<cite>&gt;</cite></code>) it must
+        end with a /<cite>&gt;</cite> to indicate it is both an opening and closing tag: <code><cite>&lt;</cite>br/<cite>&gt;</cite></code>.</li>
+    </ul>
+</li>
+<li>All XML elements must be properly nested<ul>
+<li>In HTML some elements can be improperly nested within each other like this:<br>
+<code><cite>&lt;</cite>b<cite>&gt;</cite><cite>&lt;</cite>i<cite>&gt;</cite>This text is bold and italic<cite>&lt;/</cite>b<cite>&gt;</cite><cite>&lt;/</cite>i<cite>&gt;</cite></code></li>
+<li>In XML all elements must be properly nested within each other like this (or 
+the page will not display)<br>
+    <code><cite>&lt;</cite>b<cite>&gt;</cite><cite>&lt;</cite>i<cite>&gt;</cite>This text is bold and italic<cite>&lt;/</cite>i<cite>&gt;</cite><cite>&lt;/</cite>b<cite>&gt;</cite></code>
+    </li>
+</li>
+</ul>
+<li>Empty tags (such as those used for image in HTML)
+      must not have a close tag. The start tag has
+      a back slash in the close angle bracket -
+      <code><cite>&lt;</cite>image src=&quot;image.gif&quot;/<cite>&gt;</cite>.</code></li>
+<li>Attribute values must always be quoted<ul>
+<li>XML elements can have attributes in name/value pairs just like in HTML. In 
+XML the attribute value must always be quoted:<p><code><cite>&lt;</cite>?xml version=&quot;1.0&quot;?<cite>&gt;</cite><br>
+<cite>&lt;</cite>note date=&quot;12/11/99<cite>&quot;&gt;</cite><br>
+&nbsp; <cite>&lt;</cite>to<cite>&gt;</cite>Henry<cite>&lt;/</cite>to<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;</cite>from<cite>&gt;</cite>Jane<cite>&lt;/</cite>from<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;</cite>subject<cite>&gt;</cite>Hi<cite>&lt;/</cite>subject<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;</cite>body<cite>&gt;</cite>Don't forget me this weekend!<cite>&lt;/</cite>body<cite>&gt;</cite><br>
+<cite>&lt;/</cite>note<cite>&gt;</cite></code></li> </li>
+</li>
+<li>Either single or double quotes can be used.</li>
+</ul>
+<li>XML comments use the same style as HTML comments, which look like this:<br>
+<br><code><cite>&lt;!</cite>-- This is an XML Comment! --<cite>&gt;</cite></code></li>
+</ul>
+<hr>
+<h2><span>XML Elements have Relationships</span></h2>
+<ul>
+  <li><b>Elements are related as parents and children.</b></li>
+  <li>To understand XML terminology, you have to know how relationships between XML 
+elements are named, and how element content is described.</li>
+  <li>Given the outdoor catalog XML file shown above - it has the following TREE 
+  structure:</li>
+</ul>
+<p align="center">
+<img border="0" src="../images2/xmltree.gif" width="698" height="328"></p>
+<ul>
+  <li><code>catalog</code> is the <b>root element</b>.  </li>
+  <li><code>item</code> is a <b>child element</b> of <code>catalog</code>.  </li>
+  <li><code>catalog</code> is the <b>parent element</b> of <code>item</code>.  </li>
+  <li><code>catID, name, description, image</code>, &amp; <code>thumbnail</code> are <b>
+  child elements</b> of <code>item</code>.  </li>
+  <li><code>item</code> is the <b>parent element</b> of <code>catID, name, 
+  description, image</code>, &amp; <code>thumbnail</code>.</li>
+  <li><code>catID, name, description, image</code>, &amp; <code>thumbnail</code> are <b>siblings</b> (or <b>sister elements</b>) 
+because they have the same parent.</li>
+</ul>
+<hr>
+<h2><span>Elements have Content</span></h2>
+<ul>
+  <li><b>Elements can have different content types.</b></li>
+  <li>An <b>XML element</b> is everything from (including) the element's start tag 
+to (including) the element's end tag.</li>
+  <li>An element can have <b>element</b> content, <b>mixed</b> content, <b>simple</b> 
+content, or <b>empty</b> content. An element can also have <b>attributes</b>.</li>
+  <li>In the example above, book has <b>element content</b>, because it contains 
+other elements. Chapter has <b>mixed content</b> because it contains both text 
+and other elements. Para has <b>simple content</b> (or <b>text content</b>) 
+because it contains only text. Prod has <b>empty content</b>, because it carries 
+no information.</li>
+  <li>In the example above only the prod element has <b>attributes</b>. The <b>
+attribute</b> named id has the <b>value</b> &quot;33-657&quot;. The <b>attribute</b> named 
+media has the <b>value</b> &quot;paper&quot;.&nbsp;</li>
+</ul>
+<hr>
+<h2><span>XML Attributes</span></h2>
+<ul>
+  <li>In HTML (and in XML) attributes provide additional information about 
+elements:<br>
+  <code><cite>&lt;</cite>img src=&quot;computer.gif<cite>&quot;&gt;</cite><br>
+  <cite>&lt;</cite>a href=&quot;demo.asp<cite>&quot;&gt;</cite></code></li>
+</ul>
+<ul>
+  <li>Attributes often provide information that is not a part of the data. In the 
+example below, the file type is irrelevant to the data, but important to the 
+software that wants to manipulate the element:<br>
+  <code><cite>&lt;</cite>file type=&quot;gif<cite>&quot;&gt;</cite>computer.gif<cite>&lt;/</cite>file<cite>&gt;</cite></code></li>
+  <li><b>Data can be stored in child elements or in attributes.</b></li>
+</ul>
+<blockquote>
+<p>There are no rules about when to use attributes, and when to use child 
+elements. However ist is generally better practice to use child elements if the information feels like data.</p>
+</blockquote>
+<ul>
+  <li>Some of the problems with using attributes are: 
+<ul>
+  <li>attributes cannot contain multiple values (child elements can) </li>
+  <li>attributes are not easily expandable (for future changes) </li>
+  <li>attributes cannot describe structures (child elements can) </li>
+  <li>attributes are more difficult to manipulate by program code </li>
+  <li>attribute values are not easy to test against a Document Type Definition (DTD) 
+  - which is used to define the legal elements of an XML document </li>
+</ul>
+  </li>
+  <li>If you use attributes as containers for data, you end up with documents 
+  that are difficult to read and maintain. Try to use <b>elements</b> to 
+  describe data. </li>
+  <li>Use attributes only to provide information that is not relevant to the 
+  data. <em>EXCEPT </em>for ID references to elements. 
+  <ul>
+    <li>Metadata (data about data) should be 
+stored as attributes, and that data itself should be stored as elements.</li>
+  </ul>
+  </li>
+</ul>
+<p>BAD:</p>
+<div>
+<cite>&lt;</cite><var>note ID</var><cite>=&quot;</cite>361A<cite>&quot;</cite>
+<var>day</var><cite>=&quot;</cite>12<cite>&quot;</cite> <var>month</var><cite>=&quot;</cite>11<cite>&quot;</cite>
+<var>year</var><cite>=&quot;</cite>2005<cite>&quot;</cite> <var>to</var><cite>=&quot;</cite>Dawn<cite>&quot;</cite>
+<var>from</var><cite>=&quot;</cite>Jahan<cite>&quot;</cite> <var>heading</var><cite>=&quot;</cite>Reminder<cite>&quot;</cite>
+<var>body</var><cite>=&quot;</cite>Don't forget the meeting Friday!<cite>&quot;&gt;</cite>
+<cite>&lt;/</cite>note<cite>&gt;</cite> </div>
+<p>GOOD:</p>
+<div><cite>&lt;</cite><var>note</var> <var>ID</var><cite>=&quot;</cite>361A<cite>&quot;&gt;</cite> <br>
+&nbsp;<cite>&lt;</cite><var>date</var><cite>&gt;</cite>
+  <br>
+&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>day</var><cite>&gt;</cite>12<cite>&lt;/</cite><var>day</var><cite>&gt;</cite>
+  <br>
+&nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>month</var><cite>&gt;</cite>11<cite>&lt;/</cite><var>month</var><cite>&gt;</cite><br>
+&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>year</var><cite>&gt;</cite>2005<cite>&lt;/</cite><var>year</var><cite>&gt;</cite><br>
+&nbsp;<cite>&lt;/</cite><var>date</var><cite>&gt;</cite>
+<br>
+&nbsp;<cite>&lt;</cite><var>to</var><cite>&gt;</cite>Dawn<cite>&lt;/</cite><var>to</var><cite>&gt;</cite>
+<br>
+&nbsp;<cite>&lt;</cite><var>from</var><cite>&gt;</cite>Jahan<cite>&lt;/</cite><var>from</var><cite>&gt;</cite>
+<br>
+&nbsp;<cite>&lt;</cite><var>heading</var><cite>&gt;</cite>Reminder<cite>&lt;/</cite><var>heading</var><cite>&gt;</cite>
+<br>
+&nbsp;<cite>&lt;</cite><var>body</var><cite>&gt;</cite>Don't forget the meeting Friday!<cite>&lt;/</cite><var>body</var><cite>&gt;</cite>
+<br>
+  <cite>&lt;/</cite><var>note</var><cite>&gt;</cite> </div>
+<hr>
+
+<h2><span>XML Advantages</span></h2>
+<ul>
+  <li>XML enables a longer lifespan for information.&nbsp; XML is simply a markup 
+  language. This allows documents to be human-readable and extremely portable.
+  </li>
+  <li>The availability of XML 
+  standards and applications has allowed XML to become the principle enabling 
+  technology for transferring structured data between applications (and 
+  companies).</li>
+  <li>XML can be used to place 
+  data on the Web such that automated data classification tools can understand 
+  the data.</li>
+</ul>
+<hr>
+<h2><span>XML Disadvantages</span></h2>
+<ul>
+  <li>XML is text based.&nbsp; This 
+  is convenient when it is necessary to share data between applications and 
+  machines.&nbsp; However, it is inefficient. (larger data format, slower to read).</li>
+  <li>XML does not solve the problem of incompatible data formats. </li>
+  <li>Older applications do not support XML and converting existing data to XML 
+  can be slow and expensive. Although this is less of a problem today.</li>
+</ul>
+
+<hr><script language="JavaScript">writeFooter(1);</script>
+<h1>XML Schemas</h1>
+
+<ul>
+  <li>To eliminate confusion when working with multiple XML documents, XML 
+documents can identify a namespace associated with the document </li>
+  <li>This set of rules is called a schema</li>
+  <li><em>Schemas</em> are used to define the structure, content, and semantics of XML 
+documents</li>
+  <li>The schema can be written in a <em>Document Type Definition (DTD)</em> document or an 
+  <em>XML 
+Schema</em> document</li>
+  <li>Parsers use the schema to determine the rules to validate the XML data. 
+  </li>
+</ul>
+<hr>
+<h2><span>Document Type Definitions</span></h2>
+<ul>
+  <li>DTDs, or Document Type Definitions define the overall
+architecture of a proper document.
+    <ul>
+      <li>A DTD is a template
+that all XML data must fit into.&nbsp;</li>
+      <li>The main reason to explicitly define the language is so that documents 
+      can be checked to conform to it.</li>
+    </ul>
+  </li>
+  <li>For Example: the DTD for the simple catalog XML example above would look like 
+  this:</li>
+</ul>
+<div>
+<cite>&lt;!DOCTYPE</cite> catalog <cite>[</cite><br>
+&nbsp; <font color="#999999">&lt;!-- the * after item indicates there can be 0 or 
+more items in the catalog --&gt;</font><br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> catalog&nbsp;(item*)<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> item&nbsp;(catID, name, description, image, thumbnail)<cite>&gt;</cite><br>
+<br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> catID (#PCDATA)<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> name (#PCDATA)<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> description (#PCDATA)<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> image (#PCDATA)<cite>&gt;</cite><br>
+&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> thumbnail (#PCDATA)<cite>&gt;</cite>
+<br>
+<br>
+&nbsp; <cite>&lt;!</cite><var>ATTLIST</var> item id ID #REQUIRED<cite>&gt;</cite><br>
+<cite>]&gt;</cite></div>
+<ul>
+  <li>All DTDs start with a DOCTYPE.</li>
+  <li>The next word must match the root tag verbatim, including case sensitivity.</li>
+  <li>Next is a square bracket telling the DTD processor that a list of directives
+is coming next or the name of an external file containing the document type 
+  definition:<br>
+    <br>
+    <code><a name="16"></a><cite>&lt;!</cite></code><cite>DOCTYPE</cite><code> root_tag [<br>
+    ...&nbsp;&nbsp;&nbsp;<font color="#000000">&nbsp;<i><font face="Times New Roman"><br>
+    directives</font></i>&nbsp;</font><br>
+    ...<br>
+    ]<cite>&gt;</cite></code></li>
+  <li>The DTD directives are used the describe the valid XML Elements and 
+  Attributes that can be used on this XML page.</li>
+</ul>
+<hr>
+
+<!--h2><span>XML Elements</span></h2>
+<ul>
+  <li>
+The elements (or <cite>&lt;</cite>tags<cite>&gt;</cite>) in XML can contain further nested
+elements (subgroups), character data, be EMPTY or be specified as ANY.
+<ul>
+  <li>Every time you declare an element, you start with <code> <cite>&lt;!</cite><var>ELEMENT</var></code>.</li>
+  <li>Then you specify the name of the element and then the content type of the
+element.</li>
+</ul>
+  </li>
+  <li>For example:<ul>
+  <li>Group: <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> myElement (dataElementA, 
+  groupElementB, dataElementC)<cite>&gt;</cite></code></li>
+  <li>Character data: <code>&nbsp;<cite>&lt;!</cite><var>ELEMENT</var> myElement (#PCDATA)<cite>&gt;</cite></code></li>
+  <li>EMPTY:&nbsp; <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> myElement EMPTY<cite>&gt;</cite></code></li>
+  <li>ANY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> 
+  myElement ANY<cite>&gt;</cite></code></li>
+  </ul>
+  </li>
+  </ul>
+<hr>
+<h3>Element Groups</h3>
+<ul>
+  <li>If the element is an element group (e.g. it contains nested elements), the element name is followed by a
+    list of the nested elements contained within the element:<code><br>
+    &nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;!</cite><var>ELEMENT</var>
+    element_name (nested_elem1, nested_elem2)<cite>&gt;</cite>
+    </code><br>
+    This&nbsp;indicates that <code>element_name</code> contains one <code>nested_elem1</code>
+    followed by one <code>nested_elem2</code>.
+    </li>
+  <li>Element groups can specify either a <em>sequence</em> of sub elements that 
+  MUST be in the document in a specific order or allow a <em>choice</em> of sub elements and/or subgroups 
+  that CAN be found. 
+For example:</li>
+  <li>To allow more than one of a given element to be used in an XML document,
+    DTDs use the asterisk, question mark and plus sign:
+    <ul>
+      <li> The asterisk to represent that there are zero or more allowed instances;</li>
+      <li> The plus sign to represent one or more allowed instances; and</li>
+      <li> The question mark to represent that the tag is entirely optional.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <code><cite>&lt;!</cite><var>ELEMENT</var>
+      myElement (dataElem1, dataElem2*)<cite>&gt;</cite>
+    </code><br>
+        Indicates that <code>myElement</code> contains one (and only one) <code>
+      dataElem1</code>
+        followed by zero or more <code>dataElem2</code>.</li>
+    </ul>
+  </li>
+  <li>
+To specify the order elements can appear in document depends on how the list of elements are grouped
+within the parentheses and what is used to separate them.&nbsp;</li>
+    <ul>
+      <li> The comma specifies that the tags are in strict
+order.&nbsp;</li>
+      <li>The pipe sign allows elements to appear in any order (e.g. <code>(dataElem1|dataElem2)</code>)</li>
+      <li>For example:<br>
+      <code><cite>&lt;!</cite><var>ELEMENT</var> myElement (dataElem1 | dataElem2 | (dataElemA, dataElemB+))<cite>&gt;</cite></code><p>Indicates that <code>
+      myElement</code> contains one (and only one) <code>dataElem1</code> one 
+      (and only one) <code>dataElem2</code> and an element group with <code>
+      dataElemA </code>followed by one or more <code>dataElemB</code>.&nbsp; 
+      However, <code>dataElement1</code>, <code>dataElement2</code> and the 
+      element group can appear in any order.</li>
+    </ul>
+  </ul>
+<hr>
+<h3>Elements with Character Data</h3>
+<ul>
+  <li>Elements containing character data can be declared as containing only 
+character data:
+  <br><code><cite>&lt;!</cite><var>ELEMENT</var> myElement (#PCDATA)<cite>&gt;</cite></code></li>
+  <li>Elements can contain a mixture of character data and elements in any order. 
+<ul>
+  <li>The mixed declaration requires #PCDATA to be first in the group, the group 
+  must allow elements to appear in any order, and the group must appear zero or 
+  more times:</li>
+  <br><code><cite>&lt;!</cite><var>ELEMENT</var> myElement (#PCDATA | dataElemB | dataElemC)*<cite>&gt;</cite></code></li>
+</ul>
+  </li>
+</ul>
+<ul>
+  <li>Note: &quot;PCDATA&quot; is short for &quot;Parsed Character 
+  DATA&quot;. The term comes from the fact that the text 
+  in the XML document following the element tag is parsed looking for more 
+  markup tags. </li>
+</ul>
+<hr>
+<h3>Other Elements</h3>
+<ul>
+  <li>EMPTY means that the element has no child elements or character data. 
+Empty elements often have attributes -- see below.</li>
+  <li>ANY means that the element can contain zero or more child elements of any 
+declared type, as well as character data. It is therefore a shorthand for mixed 
+content containing all declared elements.</li>
+</ul>
+<hr>
+<h2><span>XML Attributes</span></h2>
+<ul>
+  <li>Elements can also have attributes.&nbsp; The declaration can go anywhere within the DTD except for the
+    beginning.&nbsp;
+    <ul>
+      <li>It
+starts with the <code> <cite>&lt;!</cite>ATTLIST</code>. The next word is the element to which the
+attributes belong.</li>
+      <li>Then, for each attribute that belongs to that element, a triplet of
+information must be provided:
+        <ul>
+          <li>First, the attribute's name, again matching case</li>
+          <li>Second, the data type or possible values for the contents (CDATA);</li>
+          <li>Last, the specifications for the default values of the attribute, or a
+keyword specifying a behavior for the attribute.</li>
+        </ul>
+      </li>
+      <li>For example:</li>
+    </ul>
+  </li>
+  <ul>
+    <p><code><cite>&lt;!</cite><var>ELEMENT</var> dataElemA (#PCDATA)<cite>&gt;</cite><br>
+    <cite>&lt;!</cite>-- Declare an attribute a for element dataElemA --<cite>&gt;</cite><br>
+    <cite>&lt;!</cite>ATTLIST dataElemA max CDATA #IMPLIED<cite>&gt;</cite><br>
+    </code>
+</p>
+  </ul>
+  <li>Attributes can be optional, required, or have a fixed value. Optional 
+attributes can have a default; fixed attributes must have a default. For 
+example:<ul>
+  <li>Optional without a default: <code>&nbsp;<cite>&lt;!</cite>ATTLIST dataElemA max CDATA #IMPLIED<cite>&gt;</cite></code></li>
+</ul>
+  </li>
+  <ul>
+    <li>Optional with a default:&nbsp; <code>&nbsp;&nbsp; <cite>&lt;!</cite>ATTLIST dataElemA 
+    max CDATA &quot;50<cite>&quot;&gt;</cite></code><br>
+    </li>
+    <li>Required:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <code><cite>&lt;!</cite>ATTLIST dataElemA max CDATA #REQUIRED<cite>&gt;</cite></code></li>
+    <li>Fixed:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;!</cite>ATTLIST 
+    dataElemA max CDATA #FIXED &quot;100<cite>&quot;&gt;</cite></code><br>
+    </li>
+  </ul>
+  <li>Each attribute has a type:<ul>
+  <li>Character data:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <code>&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;!</cite>ATTLIST dataElemA max&nbsp; CDATA #IMPLIED<cite>&gt;</cite></code></li>
+  <li>A user-defined enumerated type:&nbsp; <code><cite>&lt;!</cite>ATTLIST dataElemA numeric (yes | no) 
+  &quot;yes<cite>&quot;&gt;</cite></code></li>
+  <li>ID: Names an element so it can be easily located - can be used like a 
+  primary-key because ID attributes must be unique within a single XML document.
+  <br>
+  <code><cite>&lt;!</cite>ATTLIST dataElemA id ID #REQUIRED<cite>&gt;</cite></code></li>
+  <li>IDREF: These attributes point from one element to another. The value of 
+  the IDREF attribute on the pointing element is the same as the value of the ID 
+  attribute on the pointed-to element. </li>
+</ul>
+  </li>
+  <ul>
+    <p><code><cite>&lt;!</cite>ATTLIST dataElemB ref IDREF #IMPLIED<cite>&gt;</cite></code></p>
+  </ul>
+</ul>
+<hr>
+<h2><span>Another XML/DTD Example</span></h2>
+<ul>
+  <li>In the XML example we had before, there was a <code> <cite>&lt;</cite>catalog<cite>&gt;</cite></code> root tag then a
+    set of
+    <code>
+<cite>&lt;</cite>item<cite>&gt;</cite></code>
+    tags.</li>
+  <li>In the real Outdoor Depot database there really are 3 separate tables: 
+  Item, Inventory and Category.</li>
+  <li>We can add all of the Outdoor Depot data to a single XML document either 
+  by:</li>
+</ul>
+<blockquote>
+  <ol>
+    <li>Indicating the catalog element can contain item, category and inventory 
+    elements:<br>
+    <code><cite>&lt;!</cite><var>ELEMENT</var> catalog (category*, item*, inventory*)<cite>&gt;</cite> <br>
+    </code>Then indicating a category element contains<br>
+    <code><cite>&lt;!</cite><var>ELEMENT</var> catgory (catID, catName)<cite>&gt;</cite> <br>
+    </code>and an inventory contains:<br>
+    <code><cite>&lt;!</cite><var>ELEMENT</var> inventory (itemID, catID, size, color, price, qoh)<cite>&gt;</cite>
+    <br>
+&nbsp;</code></li>
+    <li>Indicating the catalog element can contain only item elements:<br>
+    <code><cite>&lt;!</cite><var>ELEMENT</var> catalog (item*)<cite>&gt;</cite> <br>
+    </code>Then indicating a item element contains<br>
+    <code><cite>&lt;!</cite><var>ELEMENT</var> item&nbsp;<br>
+&nbsp;(category+, name, description, image, thumbnail, inventory+)<cite>&gt;</cite><br>
+    </code>and an inventory contains:<br>
+    <code><cite>&lt;!</cite><var>ELEMENT</var> inventory (size, color, price, qoh)<cite>&gt;</cite>
+    </code></li>
+  </ol>
+</blockquote>
+<ul>
+  <li>The XML document (with DTD) for the Outdoor Depot data would be (Case 2 <a href="../examples2/outdoor.xml"> 
+  outdoor.xml</a>):</li>
+</ul>
+<div><cite>&lt;</cite>pre<cite>&gt;</cite><cite>&lt;</cite>?xml version=&quot;1.0&quot;?<cite>&gt;</cite><br>
+  <cite>&lt;!</cite>DOCTYPE catalog [<br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> catalog&nbsp;(item*)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> item&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  (category+, name, description, image, thumbnail, inventory+)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> inventory (size, color, price, qoh)<cite>&gt;</cite> <br>
+  <br>
+&nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> category (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> name (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> description (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> image (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> thumbnail (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> size (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> color (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> price (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> qoh (#PCDATA)<cite>&gt;</cite>
+  <br>
+  <br>
+&nbsp;&nbsp;
+  <cite>&lt;!</cite>ATTLIST item id ID #REQUIRED<cite>&gt;</cite><br>
+  ]<cite>&gt;</cite><br>
+  <cite>&lt;</cite>catalog<cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;</cite>item id=&quot;1<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>category<cite>&gt;</cite>Women's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>category<cite>&gt;</cite>Men's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>name<cite>&gt;</cite>Hiking Shorts<cite>&lt;/</cite>name<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>description<cite>&gt;</cite>Soft, comfortable, lightweight cotton twill ...<cite>&lt;/</cite>description<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>image<cite>&gt;</cite>shorts.jpg<cite>&lt;/</cite>image<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>thumbnail<cite>&gt;</cite>shorts_thumb.jpg<cite>&lt;/</cite>thumbnail<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>size<cite>&gt;</cite>M<cite>&lt;/</cite>size<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>color<cite>&gt;</cite>Khaki<cite>&lt;/</cite>color<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>price<cite>&gt;</cite>29.95<cite>&lt;/</cite>price<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>qoh<cite>&gt;</cite>147<cite>&lt;/</cite>qoh<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>size<cite>&gt;</cite>L<cite>&lt;/</cite>size<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>color<cite>&gt;</cite>Khaki<cite>&lt;/</cite>color<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>price<cite>&gt;</cite>29.95<cite>&lt;/</cite>price<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>qoh<cite>&gt;</cite>0<cite>&lt;/</cite>qoh<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>size<cite>&gt;</cite>M<cite>&lt;/</cite>size<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>color<cite>&gt;</cite>Navy<cite>&lt;/</cite>color<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>price<cite>&gt;</cite>29.95<cite>&lt;/</cite>price<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>qoh<cite>&gt;</cite>137<cite>&lt;/</cite>qoh<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>size<cite>&gt;</cite>L<cite>&lt;/</cite>size<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>color<cite>&gt;</cite>Navy<cite>&lt;/</cite>color<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>price<cite>&gt;</cite>29.95<cite>&lt;/</cite>price<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>qoh<cite>&gt;</cite>115<cite>&lt;/</cite>qoh<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;/</cite>item<cite>&gt;</cite><br>
+  <br>
+  &nbsp;
+  <cite>&lt;</cite>item id=&quot;2<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>category<cite>&gt;</cite>Women's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>category<cite>&gt;</cite>Men's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>name<cite>&gt;</cite>Fleece Pullover<cite>&lt;/</cite>name<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>description<cite>&gt;</cite>A superb springtime layering choice, ...<cite>&lt;/</cite>description<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>image<cite>&gt;</cite>fleece.jpg<cite>&lt;/</cite>image<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>thumbnail<cite>&gt;</cite>fleece_thumb.jpg<cite>&lt;/</cite>thumbnail<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>size<cite>&gt;</cite>S<cite>&lt;/</cite>size<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>color<cite>&gt;</cite>Twilight<cite>&lt;/</cite>color<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>price<cite>&gt;</cite>59.95<cite>&lt;/</cite>price<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite>qoh<cite>&gt;</cite>135<cite>&lt;/</cite>qoh<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite>inventory<cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;/</cite>item<cite>&gt;</cite><br>
+  &nbsp;...<p><cite>&lt;/</cite>catalog<cite>&gt;</cite></div>
+<hr>
+<h2><span>DTD Location</h2>
+<ul>
+  <li>DTD's can be either internal or external.</li>
+  <li>Internal DTD's are included in the XML file right after the <code> <cite>&lt;</cite>?xml
+version=&quot;1.0&quot;?<cite>&gt;</cite> </code>tag and before the opening root tag
+    (<code><cite>&lt;</cite>catalog<cite>&gt;</cite> </code></span>in this example<span>).&nbsp;</li>
+  <li>To make this DTD external, you simply add a line to the XML file like this
+    (right below <code> <cite>&lt;</cite>?xml
+version=&quot;1.0&quot;?<cite>&gt;</cite></code>):</li>
+</ul>
+<p><code>&nbsp;&nbsp; <cite>&lt;!</cite>DOCTYPE catalog SYSTEM &quot;outdoor.dtd<cite>&quot;&gt;</cite></code></p>
+<ul>
+  <li>Then stick the DTD into an external file named
+  <a href="../examples2/outdoor.dtd">outdoor.dtd</a>.&nbsp; Note:
+    the <a href="../examples2/outdoor.dtd">external DTD</a> file <em>does not</em> have the opening line <code>
+<cite>&lt;!</cite>DOCTYPE catalog [ </code>or the closing line <code>]<cite>&gt;</cite></code>.</li>
+</ul>
+<hr-->
+
+<h2><span>XML Schema</span></h2>
+<ul>
+  <li>
+  <p class="intro">XML Schema is an XML based alternative to DTD.</li>
+  <li>
+  <p class="intro">The purpose of an XML Schema is to define the legal building blocks of an 
+  XML document, just like a DTD.</li>
+  <li>
+  <p class="intro">The XML Schema language is also referred to as XML Schema 
+  Definition (XSD).</li>
+</ul>
+<ul>
+  <li>An XML Schema:<ul>
+    <li>defines elements that can appear in a document </li>
+    <li>defines attributes that can appear in a document </li>
+    <li>defines which elements are child elements </li>
+    <li>defines the order of child elements </li>
+    <li>defines the number of child elements </li>
+    <li>defines whether an element is empty or can include text </li>
+    <li>defines data types for elements and attributes </li>
+    <li>defines default and fixed values for elements and attributes </li>
+  </ul>
+  </li>
+</ul>
+<ul>
+  <li>The W3C thinks that very soon XML Schemas will be used in most Web 
+  applications as a replacement for DTDs. Here are some reasons:<ul>
+    <li>XML Schemas are extensible to future additions </li>
+    <li>XML Schemas are richer and more useful than DTDs </li>
+    <li>XML Schemas are written in XML </li>
+    <li>XML Schemas support data types </li>
+    <li>XML Schemas support namespaces </li>
+  </ul>
+  </li>
+</ul>
+<!--hr><h2><span>Sample XML Schema</span></h2-->
+<ul>
+  <li>
+  <p align="left">The XML Schema for the catalog would be:</li>
+</ul>
+<div><cite>&lt;?xml version=&quot;1.0&quot; ?&gt;<br>
+  &lt;</cite><var>xs:schema id</var><cite>=&quot;</cite>catalog<cite>&quot;
+  </cite> <br>
+&nbsp;&nbsp;&nbsp; <var>targetNamespace</var><cite>=&quot;</cite>http://carbon.cudenver.edu/~dgregg/XML<cite>&quot;</cite>
+  <br>
+&nbsp;&nbsp;&nbsp; <var>xmlns:xs</var><cite>=&quot;</cite>http://www.w3.org/2001/XMLSchema<cite>&quot;
+  </cite> 
+  <br>
+  &nbsp;&nbsp;&nbsp; <var>attributeFormDefault</var><cite>=&quot;</cite>qualified&quot; <var>elementFormDefault</var><cite>=&quot;</cite>qualified<cite>&quot;&gt;</cite><br>
+  &nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>catalog<cite>&quot;</cite> msdata:IsDataSet<cite>=&quot;</cite>true<cite>&quot;</cite>
+  <var>msdata:EnforceConstraints</var><cite>=&quot;</cite>False<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;<cite>&lt;</cite><var>xs:complexType</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:choice</var> <var>maxOccurs</var><cite>=&quot;</cite>unbounded<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>item<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:complexType</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:sequence</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>category&quot;&nbsp;&nbsp;&nbsp; 
+  <var>type</var><cite>=&quot;</cite>xs:string<cite>&quot;</cite> <var>minOccurs</var><cite>=&quot;</cite>0<cite>&quot; /&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>name&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <var>type</var><cite>=&quot;</cite>xs:string<cite>&quot;</cite> <var>minOccurs</var><cite>=&quot;</cite>0<cite>&quot; /&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>description&quot;
+  <var>type</var><cite>=&quot;</cite>xs:string<cite>&quot;</cite> <var>minOccurs</var><cite>=&quot;</cite>0<cite>&quot; /&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>image&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <var>type</var><cite>=&quot;</cite>xs:string<cite>&quot;</cite> <var>minOccurs</var><cite>=&quot;</cite>0<cite>&quot; /&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>thumbnail&quot;&nbsp;&nbsp;<var>type</var><cite>=&quot;</cite>xs:string<cite>&quot;</cite>
+  <var>minOccurs</var><cite>=&quot;</cite>0<cite>&quot; /&gt;</cite><br>
+  <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element name</var><cite>=&quot;</cite>inventory&quot;&nbsp;&nbsp; minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded<cite>&quot;&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:complexType</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:sequence</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element</var><cite 
+  name=&quot;size&quot;&nbsp; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element</var><cite 
+  name=&quot;color&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element</var><cite 
+  name=&quot;price&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:element</var><cite 
+  name=&quot;qoh&quot;&nbsp;&nbsp; type=&quot;xs:integer&quot; minOccurs=&quot;0&quot; /<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:sequence</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:complexType</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:element</var><cite<cite>&gt;</cite><br-->
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:sequence</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite><var>xs:attribute</var>
+  <var>name</var><cite>=&quot;</cite>id<cite>&quot;</cite> <var>form</var><cite>=&quot;</cite>unqualified<cite>&quot;</cite>
+  <var>type</var><cite>=&quot;</cite>xs:string<cite>&quot;</cite> <cite>/&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:complexType</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:element</var><cite<cite><cite>&gt;</cite></cite><br>
+  &nbsp;&nbsp;&nbsp;<cite>&lt;/</cite><var>xs:choice</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;<cite>&lt;/</cite><var>xs:complexType</var><cite>&gt;</cite><br>
+  &nbsp;<cite>&lt;/</cite><var>xs:element</var><cite>&gt;</cite><br>
+  <cite>&lt;/</cite><var>xs:schema</var><cite>&gt;</cite></div>
+<ul>
+  <li>The <b>catalog </b>and<b> item<!--, item and inventory--></b> elements are said to be of a <b>
+  complex type</b> because they contain other elements. The other elements 
+  (category, name, description, image, thumbnail<!--, size, color, price &amp; qoh-->) are 
+  said to be <b>simple types</b> because they do not contain other elements.
+  </li>
+  <li>Just as an XML document references a DTD, they must reference the Schema:<br>
+  The XML document has a reference to an XML Schema:<p><cite>&lt;?xml version=&quot;1.0&quot;?&gt;</cite><code><cite><br>
+  &lt;</cite>catalog<br>
+&nbsp; xmlns=&quot;http://carbon.cudenver.edu&quot;<br>
+&nbsp; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br>
+&nbsp; xsi:schemaLocation=&quot;http://carbon.cudenver.edu outdoor.xsd<cite>&quot;&gt;</cite></code></li>
+  <li>The <code><cite>&lt;</cite>schema<cite>&gt;</cite></code> element is the root element of every XML Schema and may 
+  contain attributes (as above):<pre><code><cite>&lt;</cite>schema<cite>&gt;</cite> ... <cite>&lt;/</cite>schema<cite>&gt;</cite></code></pre>
+  <p>If a Namespace name is used to define the XMLSchema namespace then every tag 
+  must be preceded by the namespace name:<pre><code><cite>&lt;</cite>xs:schema<cite>&gt;</cite> ... <cite>&lt;/</cite>xs:schema<cite>&gt;</cite></code></pre>
+  
+  </li>
+</ul>
+<hr>
+<!--h2><span>Simple Elements</span></h2>
+<ul>
+  <li>A simple element is an XML element that can contain only text. It cannot 
+  contain any other elements or attributes.<ul>
+    <li>However, the &quot;only text&quot; restriction is quite misleading. The text can 
+    be of many different types. It can be one of the types that are included in 
+    the XML Schema definition (boolean, string, date, etc.), or it can be a 
+    custom type that you can define yourself.</li>
+    <li>You can also add restrictions (facets) to a data type in order to limit 
+    its content, and you can require the data to match a defined pattern.</li>
+  </ul>
+  </li>
+  <li>The syntax for defining a simple element is: 
+      <code><br>
+  <cite>&lt;</cite>element name=&quot;xxx&quot; type=&quot;yyy&quot;/<cite>&gt;</cite></code>
+  <p>
+  where xxx is the name of the element and yyy is the data type of the element.</p>
+  </li>
+  <li>Simple elements can have a default value OR a fixed value set.<p>A default 
+  value is automatically assigned to the element when no other value is 
+  specified. In the following example the default value is &quot;red&quot;:</p>
+  <code><cite>&lt;</cite>element name=&quot;date&quot; type=&quot;date&quot; default=&quot;1/1/2000&quot;/<cite>&gt;</cite></code>
+  </li>
+</ul>
+
+  <p>&nbsp;<hr>
+<h2><span>Attributes</span></h2>
+<ul>
+  <li>Simple elements cannot have attributes. If an element has attributes, it 
+  is considered to be of complex type. But the attribute itself is always 
+  declared as a simple type. This means that an element with attributes always 
+  has a complex type definition.</li>
+  <li>The syntax for defining an attribute is: <br>
+  <br>
+  <code><cite>&lt;</cite>attribute name=&quot;xxx&quot; type=&quot;yyy&quot;/<cite>&gt;</cite> <br>
+  </code><br>
+  where xxx is the name of the attribute and yyy is the data type of the 
+  attribute.</li>
+  <li>Attributes can have a default value OR a fixed value specified.</li>
+  <li>All attributes are optional by default. To explicitly specify that the 
+  attribute is optional, use the &quot;use&quot; attribute: <code>&nbsp; <br>
+  <br>
+  <cite>&lt;</cite>attribute name=&quot;currency&quot; type=&quot;string&quot; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  fixed=&quot;USD&quot; use=&quot;required&quot; /<cite>&gt;</cite> <br>
+&nbsp;</code></li>
+</ul>
+<hr>
+<h2><span>Complex Element</span></h2>
+<ul>
+  <li>A complex element is an XML element that contains other elements and/or 
+  attributes.</li>
+  <li>There are four kinds of complex elements:<ul>
+    <li>empty elements </li>
+    <li>elements that contain only other elements </li>
+    <li>elements that contain only text </li>
+    <li>elements that contain both other elements and text </li>
+  </ul>
+  </li>
+</ul>
+
+<p><b>Note:</b> Each of these elements may contain attributes as well!</p>
+<ul>
+  <li>Given the complex XML element, <code>inventory</code>, which contains only other 
+elements:</li>
+</ul><blockquote>
+<div><cite>&lt;</cite>inventory<cite>&gt;</cite><br>&nbsp;&nbsp; <cite>&lt;</cite>size<cite>&gt;</cite>S<cite>&lt;/</cite>size<cite>&gt;</cite> <br>&nbsp;&nbsp; <cite>&lt;</cite>color<cite>&gt;</cite>Twilight<cite>&lt;/</cite>color<cite>&gt;</cite> <br>&nbsp;&nbsp; <cite>&lt;</cite>price<cite>&gt;</cite>59.95<cite>&lt;/</cite>price<cite>&gt;</cite> <br>&nbsp;&nbsp; <cite>&lt;</cite>qoh<cite>&gt;</cite>135<cite>&lt;/</cite>qoh<cite>&gt;</cite> <br><cite>&lt;/</cite>inventory<cite>&gt;</cite></div>
+</blockquote>
+<ul>
+  <li>We can define a complex element in an XML Schema in different ways:.</li>
+</ul>
+<blockquote>
+  <ol>
+    <li>The <code>inventory</code> element can be declared directly by naming the element, 
+like this:</li>
+  </ol>
+<div>
+    <cite>&lt;</cite>element name=&quot;inventory<cite>&quot;&gt;</cite><br>&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>complexType<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>sequence<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;size&quot;&nbsp; type=&quot;xs:string&quot;  /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;color&quot; type=&quot;xs:string&quot;  /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;price&quot; type=&quot;xs:decimal&quot; /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;qoh&quot;&nbsp;&nbsp; type=&quot;xs:integer&quot; /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite>sequence<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;<cite>&lt;/</cite>complexType<cite>&gt;</cite><br><cite>&lt;/</cite>element<cite>&gt;</cite>
+    </div>
+<p>If you use the method described above, only the <code>inventory</code> 
+element can use the specified complex type. Notice that the child elements,
+<code>size</code>, 
+<code>color</code>, <code>price</code> and <code>qoh</code>, are surrounded by the 
+<code><cite>&lt;</cite>sequence<cite>&gt;</cite></code> indicator. This means 
+that the child elements must appear in the same order as they are declared.</p>
+  <ol start="2">
+    <li>&nbsp;An <code>inventory</code> element can have a type attribute that refers to the name 
+of the complex type to use:</li>
+  </ol>
+
+<div><cite>&lt;</cite>element name=&quot;inventory&quot; type=&quot;prodinfo&quot;/<cite>&gt;</cite><br>
+&nbsp;<cite>&lt;</cite>complexType name=&quot;prodinfo<cite>&quot;&gt;</cite>
+  <br>
+&nbsp;&nbsp; <cite>&lt;</cite>sequence<cite>&gt;</cite><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;size&quot;&nbsp; type=&quot;string&quot;  /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;color&quot; type=&quot;string&quot;  /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;price&quot; type=&quot;decimal&quot; /<cite>&gt;</cite><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<cite>&lt;</cite>element name=&quot;qoh&quot;&nbsp;&nbsp; type=&quot;integer&quot; /<cite>&gt;</cite><br>  &nbsp;&nbsp;  <cite>&lt;/</cite>sequence<cite>&gt;</cite><br>
+&nbsp;<cite>&lt;/</cite>complexType<cite>&gt;</cite></div>
+<p>If you use the method described above, several elements can refer to the same 
+complex type.</p></blockquote>
+<hr-->
+
+<h1>Well-formed and Valid XML Documents</h1>
+<ul>
+  <li>This brings up two terms that characterize XML documents: well-formed and
+valid.</li>
+  <li>Well-formed XML documents simply follow the XML specifications which, in
+accordance with the W3C, are:
+    <ul>
+      <li>The document must contain one or more elements;</li>
+      <li>The document must contain only one unique root element; and</li>
+      <li>All elements in the document must be properly nested.</li>
+      <li>If we took our previous example and made a typo with a case sensitivity or
+moved one or more of the end tags around, this would cause our example to become
+        <em>malformed</em>.</li>
+    </ul>
+  </li>
+  <li>Valid XML documents go a step farther, and check the structure and contents
+of the document against the schema.</li>
+  <li>With the DTD and Schema we have come up with for our example, this would be an example
+of an invalid document:</li>
+</ul>
+<p><code>&nbsp;&nbsp; <cite>&lt;!</cite><var>ELEMENT</var> catalog (item*)<cite>&gt;</cite> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code>or<code><br>
+&nbsp;&nbsp; <cite>&lt;</cite><var>element</var> <var>name</var>=&quot;catalog&quot; ...</code></p>
+<blockquote>
+  <p><code><cite>&lt;</cite><var>Catalog</var><cite>&gt;</cite><br>
+  <cite>&lt;</cite><var>item</var><cite>&gt;</cite>…<cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <cite>&lt;/</cite><var>Catalog</var><cite>&gt;</cite></code></p>
+</blockquote>
+<ul>
+  <li>This is an invalid document because the root tag is upper case, so it doesn't
+match the DOCTYPE's root, which is lower case.</li>
+  <li>When a client, a browser, a parser or whatever is reading the document
+against the DTD, when it first finds an invalid instance, it will immediately stop
+parsing the document, notify its application that the document is not valid, and indicate
+the reason why.</li>
+  <li>Well-formed XML documents are not necessarily valid, but by definition, valid
+    documents are well-formed. These are just two terms to keep in mind when
+describing XML documents.</li>
+</ul>
+
+<!-- hr>
+
+<h1><span>Namespaces</span></h1>
+<h2><span>Naming Conflicts</span></h2>
+<ul>
+  <li>The XML namespaces recommendation defines a way to distinguish between 
+  duplicate element type and attribute names. Such duplication might occur in a 
+  document that contains element types and attributes from two different DTDs.:</li>
+</ul>
+<ul>
+  <li>For example:</li>
+</ul>
+<blockquote>
+  <ul><li>This XML document carries information in a table:</li></ul>
+<div><cite>&lt;</cite>table<cite>&gt;</cite><br>
+   <cite>&lt;</cite>tr<cite>&gt;</cite><br>
+   <cite>&lt;</cite>td<cite>&gt;</cite>Apples<cite>&lt;/</cite>td<cite>&gt;</cite><br>
+   <cite>&lt;</cite>td<cite>&gt;</cite>Bananas<cite>&lt;/</cite>td<cite>&gt;</cite><br>
+   <cite>&lt;/</cite>tr<cite>&gt;</cite><br>
+<cite>&lt;/</cite>table<cite>&gt;</cite></div>
+<ul>
+  <li>This XML document carries information about a table (a piece of 
+  furniture):</li>
+</ul>
+<div><cite>&lt;</cite>table<cite>&gt;</cite><br>
+   <cite>&lt;</cite>name<cite>&gt;</cite>African Coffee Table<cite>&lt;/</cite>name<cite>&gt;</cite><br>
+   <cite>&lt;</cite>width<cite>&gt;</cite>80<cite>&lt;/</cite>width<cite>&gt;</cite><br>
+   <cite>&lt;</cite>length<cite>&gt;</cite>120<cite>&lt;/</cite>length<cite>&gt;</cite><br>
+<cite>&lt;/</cite>table<cite>&gt;</cite></div>
+<ul>
+  <li>If these two XML documents were added together, there would be an element 
+name conflict because both documents contain a <code><cite>&lt;</cite>table<cite>&gt;</cite></code> element with different 
+content and definition.</li></ul>
+</blockquote>
+<ul>
+  <li>One Way to solve name conflicts is to use a prefix</li>
+</ul>
+<blockquote>
+<div><cite>&lt;</cite>h:table<cite>&gt;</cite>
+   <br>
+&nbsp; <cite>&lt;</cite>h:tr<cite>&gt;</cite><br>
+&nbsp;&nbsp;&nbsp;
+   <cite>&lt;</cite>h:td<cite>&gt;</cite>Apples<cite>&lt;/</cite>h:td<cite>&gt;</cite>
+   <br>
+&nbsp;&nbsp;&nbsp; <cite>&lt;</cite>h:td<cite>&gt;</cite>Bananas<cite>&lt;/</cite>h:td<cite>&gt;</cite>
+   <br>
+&nbsp; <cite>&lt;/</cite>h:tr<cite>&gt;</cite>
+<br>
+  <cite>&lt;/</cite>h:table<cite>&gt;</cite></div>
+<p>VS:</p>
+<div><cite>&lt;</cite>f:table<cite>&gt;</cite><br>
+&nbsp;<cite>&lt;</cite>f:name<cite>&gt;</cite>African Coffee Table<cite>&lt;/</cite>f:name<cite>&gt;</cite><br>
+&nbsp;<cite>&lt;</cite>f:width<cite>&gt;</cite>80<cite>&lt;/</cite>f:width<cite>&gt;</cite><br>
+&nbsp;<cite>&lt;</cite>f:length<cite>&gt;</cite>120<cite>&lt;/</cite>f:length<cite>&gt;</cite><br>
+<cite>&lt;/</cite>f:table<cite>&gt;</cite></div>
+<ul>
+  <li>Now there will be no name conflict because the two documents use a different 
+name for their <code><cite>&lt;</cite>table<cite>&gt;</cite></code> element (<code><cite>&lt;</cite>h:table<cite>&gt;</cite></code> and 
+  <code><cite>&lt;</cite>f:table<cite>&gt;</cite></code>).</li>
+  <li>By using a prefix, we have created two different types of <code><cite>&lt;</cite>table<cite>&gt;</cite></code> elements.</li>
+</ul>
+</blockquote><hr>
+<h2><span>Namespaces</span></h2>
+<ul>
+  <li>An XML namespace is a collection of element type and attribute names. The 
+  namespace is identified by a unique name, which is a URI. Thus, any element 
+  type or attribute name in an XML namespace can be uniquely identified by a 
+  two-part name: the name of its XML namespace and its local name. <b>This 
+  two-part naming system is the only thing defined by the XML namespaces 
+  recommendation.</b></li>
+  <li>The XML namespace attribute is placed in the start tag of an element and has 
+the following syntax:<br>
+  <code>xmlns:<i>namespace-prefix</i>=&quot;<i>namespaceURI</i>&quot;</code></li>
+</ul>
+<ul>
+  <li>A namespace can be declared within any element tag, but is usually done 
+  within the root tag.&nbsp; <br>
+  If we want to associate a namespace with our XML document, it would look like 
+  this:&nbsp;<br>
+    <code><cite>&lt;</cite>catalog xmlns=&quot;http://www.cudenver.edu<cite>&quot;&gt;</cite><br>
+  </code></span>A namespace is just a longer naming convention for variable 
+  names it does not mean that a schema can be found at this location.</li>
+  <span>
+  <li>XML namespaces are declared with an <code>xmlns</code> attribute, which 
+  can associate a prefix with the namespace. The declaration is in scope for the 
+  element containing the attribute and all its descendants. For example:</li>
+</ul>
+<pre>  <code>  <cite>&lt;!</cite>-- Declares two XML namespaces. 
+         Their scope is the item and name elements. 
+         Currently both elements are using the default
+         www.bar.org namespace--<cite>&gt;</cite>
+    <cite>&lt;</cite>item xmlns:cud=&quot;http://www.cudenver.edu/&quot; 
+          xmlns=&quot;http://www.bar.org/<cite>&quot;&gt;</cite>
+       <cite>&lt;</cite>name<cite>&gt;</cite>Hiking Shorts<cite>&lt;/</cite>name<cite>&gt;</cite>
+    <cite>&lt;/</cite>item<cite>&gt;</cite></code>
+</pre>
+<ul>
+  <li>If an XML namespace declaration contains a prefix, you refer to element 
+  type and attribute names in that namespace with the prefix. For example:</li>
+</ul>
+<pre>  <code>  <cite>&lt;!</cite>-- item and name are in the http://www.cudenver.edu/
+         namespace, which is associated with the cud prefix. --<cite>&gt;</cite>
+    <cite>&lt;</cite>cud:item xmlns:cud=&quot;http://www.cudenver.edu/<cite>&quot;&gt;</cite>
+       <cite>&lt;</cite>cud:name<cite>&gt;</cite>Canvas Shoes<cite>&lt;/</cite>cud:name<cite>&gt;</cite>
+    <cite>&lt;/</cite>cud:item<cite>&gt;</cite></code></pre-->
+
+<span>
+<script language="JavaScript">writeFooter(2);</script>
+  <hr>
+<h1>Displaying XML Documents</h1>
+<ul>
+  <li>There are 2 methods for transforming &amp; rendering XML:<ul>
+  <li>The 
+  Extensible Stylesheet Language (XSL) describes the 
+  semantics of formatting XML.</li>
+  <li>Alternately, we can <em>transform </em>information using the Extensible Stylesheet Language Transformations (XSLT).</li>
+</ul>
+
+  </li>
+  <li>We use XML <em>namespaces</em> to distinguish which type of stylesheet we 
+  are defining (Without namespaces the XML parser would find 
+  the information ambiguous when identical names have been chosen by the 
+  designers of both XSL and XSLT).</li>
+  <li>The concept of style sheets in XML basically the same as that for HTML. A tag
+    is matched to a particular
+presentation format.</li>
+  <li>XSLT is the newer stylesheet specification and is the one in dominant use 
+  today.</li>
+</ul>
+<hr>
+<h2><span>XSLT</span></h2>
+<ul>
+  <li>XSLT describes a transformation instruction vocabulary that can, select &amp; 
+  manipulate the data found in an XML document in a way not possible with basic 
+  XSL.</li>
+  <li>The XSLT stylesheet/Namespace is referenced using: <font SIZE="2"><br>
+  </font></span><code>&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</code></li>
+
+<span>
+
+  <li>The XSLT stylesheet below displays a single item from the 
+  same <a href="../old_jsp/java_examples/xml/outdoordepot.xml">outdoor.xml</a> 
+  page.&nbsp; The item id to be displayed is currently hardcoded into the page.<li>The basic XSL tags used in my examples include:<ul>
+  <li><code>&lt;xsl:template match=&quot;catalog&quot;&gt;</code>: Creates a 
+  template for all the data matching the tag in &quot;match_name&quot;.&nbsp; However, it 
+  will not &quot;go inside&quot; an XML element to process child elements unless 
+  explicitly told to do so.</li>
+  <li><code>&lt;xsl:apply-templates</code><cite> </cite><code>
+  select=&quot;item[@id=1]&quot;/&gt;</code>: Indicates the stylesheet SHOULD go 
+  inside the first item element and apply appropriate templates to its child XML 
+  elements.</li>
+  <li><code>&lt;xsl:value-of select=&quot;name&quot;/&gt;</code>: Returns only the #PCDATA for 
+  the selected child tag.&nbsp; For example if the <code>&lt;xsl:value-of 
+  select=&quot;name&quot;/&gt;</code> is used inside a <code>&lt;xsl:template match=&quot;item&quot;&gt;
+  </code>template, then only the name data for the current item will be 
+  displayed.</li>
+
+  <li><code>&lt;xsl:value-of select=&quot;@id&quot;/&gt;</code>: Returns the attribute id.</li>
+</ul>
+  </li>
+
+  <li>To reference this stylesheet in an XML page (e.g. to tell the XML page to 
+  display itself using a stylesheet you need to include the following tag 
+  immediately after the <code>&lt;?xml ...&gt;</code> tag:<br>
+  <code>&lt;?xml-stylesheet href=&quot;outdoor_item.xsl&quot; type=&quot;text/xsl&quot;?&gt;</code></li>
+
+  </ul>
+
+<center>
+<p><a href="../xml_examples/outdoor_item.xml">outdoor_item.xml</a> <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;<a href="../xml_examples/outdoor_item.xsl">outdoor_item.xsl</a> <img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="http://carbom.cudenver.edu/~dgregg/xml_examples/outdoor_item.xml">Online
+Demo</a>&nbsp; </span></p>
+</center>
+<div><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br>
+  &lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;<br>
+  &nbsp;&lt;xsl:template match=&quot;catalog&quot;&gt;<br>
+  </code>&nbsp;&nbsp;&nbsp; &lt;FORM NAME=&quot;frmOrderItems&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;xsl:apply-templates select=&quot;item[@id=1]&quot;/&gt;</cite><br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;H4 ALIGN=&quot;CENTER&quot;&gt;Order Items&lt;/H4&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TABLE WIDTH=&quot;80%&quot; BORDER=&quot;5&quot; CELLSPACING=&quot;2&quot; 
+  CELLPADDING=&quot;2&quot; ALIGN=&quot;CENTER&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TR&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TH WIDTH=&quot;20%&quot;&gt;Selection&lt;/TH&gt;&lt;TH 
+  WIDTH=&quot;20%&quot;&gt;Size&lt;/TH&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TH WIDTH=&quot;20%&quot;&gt;Color&lt;/TH&gt;&lt;TH 
+  WIDTH=&quot;20%&quot;&gt;Price&lt;/TH&gt;&lt;TH WIDTH=&quot;20%&quot;&gt;In Stock?&lt;/TH&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/TR&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;xsl:apply-templates 
+  select=&quot;item[@id=1]/inventory&quot;/&gt;<br>
+  </cite>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/TABLE&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;P&gt; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>&lt;!--table displaying form controls --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </dfn>&lt;TABLE WIDTH=&quot;80%&quot; CELLSPACING=&quot;3&quot; 
+  CELLPADDING=&quot;5&quot; ALIGN=&quot;CENTER&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TR&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TD 
+  WIDTH=&quot;70%&quot;&gt;&lt;BIG&gt;Desired Quantity&lt;/BIG&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;INPUT 
+  TYPE=&quot;TEXT&quot; NAME=&quot;quantity&quot; SIZE=&quot;10&quot;/&gt; &lt;/TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TD ALIGN=&quot;RIGHT&quot; 
+  WIDTH=&quot;15%&quot;&gt;&lt;INPUT TYPE=&quot;BUTTON&quot; VALUE=&quot;Order Now&quot;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  onclick=&quot;createCookie(this.form);&quot;/&gt;&lt;/TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/TR&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/TABLE&gt;&lt;/P&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/FORM&gt;<br>
+  <code>&nbsp;&lt;/xsl:template&gt;<br>
+  <br>
+&nbsp;&lt;xsl:template match=&quot;item&quot;&gt;<br>
+  </code>&nbsp;&nbsp;&nbsp; &lt;TABLE WIDTH=&quot;80%&quot; ALIGN=&quot;CENTER&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;images/<cite>{image}</cite>&quot; 
+  WIDTH=&quot;240&quot; HEIGHT=&quot;180&quot; ALIGN=&quot;RIGHT&quot;/&gt;&lt;/TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;TD&gt;&lt;H2&gt;<cite>&lt;xsl:value-of 
+  select=&quot;name&quot;/&gt;</cite>&lt;/H2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;INPUT TYPE=&quot;hidden&quot; 
+  NAME=&quot;name&quot; VALUE=&quot;<cite>{name}</cite>&quot;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <cite>&lt;xsl:value-of 
+  select=&quot;description&quot;/&gt;</cite>&lt;/TD&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/TR&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/TABLE&gt;<br>
+  <code>&nbsp;&lt;/xsl:template&gt;<br>
+  <br>
+&nbsp;&lt;xsl:template match=&quot;inventory&quot;&gt;<br>
+  </code>&nbsp;&nbsp;&nbsp; &lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;x&quot; value=&quot;<cite>{size}|{color}|{price}</cite>&quot;/&gt;&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;<cite>&lt;xsl:value-of select=&quot;size&quot;/&gt;</cite>&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;<cite>&lt;xsl:value-of select=&quot;color&quot;/&gt;</cite>&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;$<cite>&lt;xsl:value-of select=&quot;price&quot;/&gt;</cite>&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;<cite>&lt;xsl:value-of select=&quot;qoh&quot;/&gt;</cite>&lt;/td&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/tr&gt;<br>
+  <code>&nbsp;&lt;/xsl:template&gt;<br>
+  &lt;/xsl:stylesheet&gt;</code></div>
+
+<span>
+
+  </span>
+
+<p align="center">
+<img border="0" src="../images2/prodXSTL.gif" width="485" height="550"></p>
+<hr><script language="JavaScript">writeFooter(3);</script>
+<h1>XML and PHP</h1>
+<ul>
+  <li>XML is the language used for business-to-business data transfer and it is 
+  likely that many future web applications will have to read and process XML 
+  data in a similar manner to database data.</li>
+</ul>
+<hr>
+<h2><span>Writing XML Documents</span></h2>
+<ul>
+  <li>Writing a program to output an XML document is unbelievably trivial.&nbsp; 
+  All you have to know is:</span><ul>
+    <li>The structure of the XML document and</li>
+    <li>How to write text to an output stream (e.g. to a file).</li>
+  </ul>
+  </li>
+  <li>The program below reads a series of items from a database and writes 
+  them to an XML file.</li>
+  <li>If you want the browser to treat the PHP page it receives as an XML 
+  document you need to send a header telling it the content type is an XML page.</li>
+</ul>
+<p align="center"><a href="../php_examples/xml.php">xml.php</a>
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="http://ouray.cudenver.edu/~dgregg/php_examples/xml.php">Online
+Demo</a></span></p>
+<div><cite><cite>&lt;</cite>?php<samp><br>
+&nbsp;// Set a header to tell Apache to send this page as an XML page<br>
+  </samp></cite>&nbsp;header(&quot;Content-type: text/xml&quot;);<br>
+  <cite>
+  <samp>&nbsp;</samp></cite><samp>// Include db connection file <br>
+  </samp>&nbsp;require(&quot;db.inc&quot;) ;<br>
+&nbsp;$itm = array(&quot;itemID&quot;, &quot;catID&quot;, &quot;name&quot;, &quot;description&quot;, &quot;image&quot;, 
+  &quot;thumbnail&quot; );<br>
+&nbsp;$col = array(&quot;ITEMID&quot;, &quot;CATID&quot;, &quot;ITEMNAME&quot;, &quot;ITEMDESC&quot;, &quot;ITEMIMAGE&quot;, &quot;ITEMTHUMB&quot; 
+  );<br>
+  <br>
+&nbsp;echo <var>&quot;&lt;?xml version=\&quot;1.0\&quot;?&gt;\n&quot;</var>;<br>
+&nbsp;echo <var>&quot;&lt;catalog&gt;\n&quot;</var> ;<br>
+  <br>
+  <samp>&nbsp;// select all items from the database<br>
+  </samp>&nbsp;$qry = <var>&quot;Select * from ITEM ;&quot;</var>; <br>
+&nbsp;$rs = mysql_query($qry) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or die(<var>'Query1 failed: '
+  </var>. mysql_error() . <var>'&lt;br&gt;'</var>);<br>
+  <br>
+  <samp>&nbsp;// loop through the item retrieved<br>
+  </samp>&nbsp;while($row = mysql_fetch_array($rs))<br>
+&nbsp;{<br>
+  <samp>&nbsp;&nbsp; // open item tag including id attribute<br>
+  </samp>&nbsp;&nbsp; echo <var>'&lt;item id=&quot;'</var> . $row[&quot;ITEMID&quot;] . <var>
+  &quot;\&quot;&gt;\n&quot;</var> ;<br>
+  <br>
+  <samp>&nbsp;&nbsp; // use item tag id &amp; database column number <br>
+&nbsp;&nbsp; // efficiently write database columns to XML<br>
+  </samp>&nbsp;&nbsp; for($j = 1; $j &lt; count($itm); $j++) <br>
+&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $data = htmlentities( $row[$col[$j]], ENT_QUOTES );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo <var>'&lt;</var><code>$itm[$j]</code><var><font face="Courier New">&gt;</font></var><code>$data</code>
+  <var>&lt;/</var><code>$itm[$j]</code><var><font face="Courier New">&gt;</font>\n&quot;</var> ;<br>
+&nbsp;&nbsp; }<br>
+&nbsp;&nbsp; echo <var>&quot;&lt;/item&gt;\n&quot;</var> ; <samp>//close item</samp><br>
+&nbsp;}<br>
+  <br>
+&nbsp;mysql_close($conn); <br>
+&nbsp;mysql_free_result($rs);<br>
+  <br>
+&nbsp;echo <var>'&lt;/catalog&gt;'</var> ; <samp>//close catalog</samp> <br>
+  <cite>?<cite>&gt;</cite></cite></div>
+<span>
+<ul>
+  <li>This will write the first XML example (above) using the data from the 
+  outdoor depot database.</li>
+  <li>The problem with this approach is encoding the entities. To make sure the 
+  entities are properly encoded, the <code>htmlentities</code> function must be 
+  called on each item (this makes sure there are no embedded &lt; &gt; ' &quot; etc ... in 
+  the XML data).<br>
+  <code>&nbsp;&nbsp;&nbsp;&nbsp; $data = htmlentities( $row[$col[$j]], 
+  ENT_QUOTES );</code></li>
+</ul>
+<ul>
+  <li><b>Note: </b>If you put this PHP code in <a href="../php_examples/xml.php">
+  xml.php</a> then the browser will not interpret the file as an XML file.&nbsp; 
+  The code will all be there but it will not display like you expect it too.&nbsp; 
+  What you CAN do (on an Apache Server) is put the code in an XML file (e.g.
+  <a href="../php_examples/php.xml">php.xml</a>) AND modify your
+  <a href="../php_examples/.htaccess">.htaccess </a>file so Apache looks for PHP 
+  code in all XML files: </span><code>AddType application/x-httpd-php .php .xml</code></li>
+</ul>
+<span>
+<hr>
+<h2><span>Reading XML Documents (Parsing)</span></h2>
+<ul>
+  <li>
+  Most programs you write are going to read documents written in a specific XML 
+  vocabulary. </li>
+  <li>Your programs will make assumptions about the content and structure of 
+  those documents, just as they now make assumptions about the content and 
+  structure of external objects. </li>
+  <li>Straight text parsing is not the appropriate tool with which to navigate 
+  an XML document. 
+<ul>
+  <li>The structure and semantics of an XML document is encoded in the 
+  document’s markup, its tags and its attributes; and </li>
+  <li>You need a tool that is designed to recognize and understand this 
+  structure as well as reporting any possible errors in this structure. </li>
+</ul>
+  </li>
+  <li>An <em>XML Parser</em> is the tool used for 
+  processing XML Documents: A software library  that reads the XML 
+document and checks it for well-formedness. Client applications use method calls 
+defined in the parser API to receive or request information the parser retrieves 
+from the XML document. </li>
+  <li>This PHP XML parser extension lets you create XML parsers and then define
+  <span class="emphasis"><i class="emphasis">handlers</i></span> for different 
+  XML events. </li>
+</ul>
+
+<hr>
+
+<h2><span>Reading XML using the DOM library</span></h2>
+</span>
+<ul>
+  <li>The easiest way to read a well-formed XML file is to use the Document Object 
+Model (DOM) library compiled into some installations of PHP. The DOM library 
+reads the entire XML document into memory and represents it as a tree of nodes, 
+(similar to the catalog tree shown above).</li>
+  <li>
+<p>The script below starts by creating a <code>new DOMdocument</code> object and 
+loading the catalog XML into that object using the <code>load</code> method.  </p>
+  </li>
+  <li>After that, the script uses the <code>getElementsByName</code> method to get a list of 
+all of the elements with the given name (e.g. item).</li>
+  <li>Within the loop of the <code>item</code> nodes, the script uses the <code>
+getElementsByName</code> method to get the <code>nodeValue</code> for the <code>
+  name</code>, <code>description</code>, and <code>thumbnail</code> tags. The <code>
+nodeValue</code> is the text within the node. The script then displays those 
+  values.</li>
+  <li><b>Notice:</b> this code is using an PHP classes (because we are using -&gt; 
+  to call methods).</li>
+  <li>The classes used to parse an XML document were changed between PHP 4 and 
+  PHP 5.&nbsp;&nbsp; The code below is for PHP 5. I have also attached a copy of 
+  the code that works in PHP 4 and on ouray.&nbsp; It is very similar but the 
+  function names are slightly different...</li>
+</ul>
+
+<p align="center"><a href="../xml_examples/parseOD.php">parseOD.php</a>
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="../xml_examples/parseOD4.php">parseOD4.php</a></span>
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="http://ouray.cudenver.edu/~dgregg/xml_examples/parseOD4">Online
+Demo</a> </span></p>
+
+<div>
+  &lt;table border=0&gt;<br>
+  <cite>&lt;?php </cite><br>
+  <samp>&nbsp;// open the XML document<br>
+  </samp>&nbsp;$doc = new DOMDocument(); <br>
+  &nbsp;$doc<cite>-&gt;</cite>load(<var>'od.xml'</var>); <br>
+  <br>
+  <samp>&nbsp;//get all item elements found in the document<br>
+  </samp>&nbsp;$items = $doc<cite>-&gt;</cite>getElementsByTagName(<var>&quot;item&quot;</var>);<br>
+  <br>
+  <samp>&nbsp;// loop through the item elements<br>
+  </samp>&nbsp;foreach($items as $oneitem) <br>
+&nbsp;{<br>
+  <samp>&nbsp;&nbsp; // get the catID element array for this item, then<br>
+&nbsp;&nbsp; // get the contents of the 1st (and only) catID in the array<br>
+  </samp>&nbsp;&nbsp; $catidE = $oneitem<cite>-&gt;</cite>getElementsByTagName(<var>&quot;catID&quot;</var>);<br>
+&nbsp;&nbsp; $catid = (int)$catidE<cite>-&gt;</cite>item(0)<cite>-&gt;</cite>nodeValue;<p>&nbsp;&nbsp; 
+  // Display only Women's Clothing<br>
+&nbsp;&nbsp; if($catid == 5) {<br>
+  <samp>&nbsp;&nbsp;&nbsp;&nbsp; // get an element for each tag_name in an item, then<br>
+&nbsp;&nbsp;&nbsp;&nbsp; // get the contents of the 1st (and only) item in the array<br>
+  </samp>&nbsp;&nbsp;&nbsp;&nbsp; $nameE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = $oneitem<cite>-&gt;</cite>getElementsByTagName(<var>&quot;name&quot;</var>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = $nameE<cite>-&gt;</cite>item(0)<cite>-&gt;</cite>nodeValue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $imageE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = $oneitem<cite>-&gt;</cite>getElementsByTagName(<var>&quot;thumbnail&quot;</var>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $image&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = $imageE<cite>-&gt;</cite>item(0)<cite>-&gt;</cite>nodeValue;<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; $iid = $oneitem<cite>-&gt;</cite>getAttribute(<var>&quot;id&quot;</var>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; echo <var>&quot;&lt;tr&gt;&lt;td&gt;&lt;img src='images/$image'&gt;&quot;</var> .<var><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;&lt;td&gt;&lt;a href='product.php?cat=5&amp;item=$iid'&gt;$name&lt;/a&gt;\n&quot;</var>;
+  <br>
+&nbsp;&nbsp; }<br>
+&nbsp;} <br>
+  <cite>?&gt;</cite><br>
+  &lt;/table&gt;</div>
+<span>
+<p align="center">
+<img border="0" src="../images2/xml_php.gif" width="450" height="488"></p>
+
+<ul>
+  <li>
+You cannot (currently) do queries on an XML document (e.g. to get all items that 
+have a catID=5).&nbsp; However you can get all elements and loop through them - 
+only displaying the ones that have a catID=5.</li>
+  <li>
+In addition, you CAN get an element based on its ID attribute (doesn't work in 
+all versions of PHP 4):<ul>
+  <li>PHP 5: <code>$oneitem = </code>
+
+
+
+</span>
+
+
+
+  <code>$doc-&gt;getElementById(&quot;2&quot;);</code></li>
+<span>
+  <li>PHP 4:</span>
+
+
+
+<code>$oneitem = $doc-&gt;get_element_by_id (&quot;2&quot;);</code></li>
+</ul>
+
+  </li>
+  <li>This makes PHP &amp; XML a viable alternative to using traditional databases 
+  when creating a database driven website.</li>
+</ul>
+
+<hr>
+<h2><span>Outdoor Depot - In XML &amp; PHP</span></h2>
+<ul>
+  <li>To make the Outdoor Depot in XML - using PHP to parse the file - you need 
+  an XML file with all of the Outdoor Depot data, including the category names 
+  and inventory items.</li>
+  <li>You have options in PHP that you do not have in a traditional database.<ul>
+    <li>You COULD make 3 different kinds of elements that sit directly inside 
+    the <code>&lt;catalog&gt;</code> element, <code>&lt;item&gt;</code>, <code>&lt;category&gt;
+    </code>and <code>&lt;inventory&gt;</code>.&nbsp; This would be analogous to the 3 
+    table structure of the outdoor depot database.</li>
+    <li>Alternatively, you could nest the <code>&lt;category&gt; </code>and the <code>
+    &lt;inventory&gt;</code>&nbsp; inside each item - so an XML item has one or more 
+    categories it is sold under and has one or more inventory items associated 
+    with it. </li>
+    <li>Each inventory item would then have the nested child elements <code>
+    &lt;size&gt;</code>, <code>&lt;color&gt;</code>, <code>&lt;price&gt;</code> and<code> &lt;qoh&gt;</code>.&nbsp; 
+    They do not need the item id because they are inside an item with an id.</li>
+  </ul>
+  </li>
+  <li>The nested structure XML document (with DTD) for the Outdoor Depot data is 
+  shown below:</li>
+</ul>
+<p align="center"><a href="../xml_examples/outdoor.xml">outdoor.xml</a>
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;</span><a href="../xml_examples/category5.php">category5.php</a>
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="../xml_examples/product.php">product.php</a></span>
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;&nbsp;<a href="http://ouray.cudenver.edu/~dgregg/xml_examples/index.php">Online
+Demo</a> <br>
+(code samples are for PHP 4)</span></p>
+<div><cite>&lt;</cite>?xml version=&quot;1.0&quot;?<cite>&gt;</cite><br>
+  </cite><cite>&lt;!</cite><cite>DOCTYPE catalog [</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> catalog&nbsp;(item*)<cite>&gt;</cite><br>
+    <font color="#808080">&nbsp;&nbsp; <cite>&lt;!</cite>-- the + following category &amp; inventory 
+    indicates there can be 1 or more --<cite>&gt;</cite><br>
+    </font>&nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> item&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  (category+, name, description, image, thumbnail, inventory+)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> inventory (size, color, price, qoh)<cite>&gt;</cite> <br>
+  <br>
+&nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> category (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> name (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> description (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> image (#PCDATA)<cite>&gt;</cite><br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> thumbnail (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> size (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> color (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> price (#PCDATA)<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ELEMENT</var> qoh (#PCDATA)<cite>&gt;</cite>
+  <br>
+  <br>
+&nbsp;&nbsp;
+  <cite>&lt;!</cite><var>ATTLIST</var> item id ID #REQUIRED<cite>&gt;</cite><br>
+  <cite>]&gt;</cite><br>
+  <cite>&lt;</cite><var>catalog</var><cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;</cite><var>item id</var>=&quot;1&quot;<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>category</var><cite>&gt;</cite>Women's Clothing<cite>&lt;/</cite><var>category</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>category</var><cite>&gt;</cite>Men's Clothing<cite>&lt;/</cite><var>category</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>name</var><cite>&gt;</cite>Hiking Shorts<cite>&lt;/</cite><var>name</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>description</var><cite>&gt;</cite>Soft, comfortable, lightweight cotton twill ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>image</var><cite>&gt;</cite>shorts.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>shorts_thumb.jpg<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>size</var><cite>&gt;</cite>M<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>color</var><cite>&gt;</cite>Khaki<cite>&lt;/</cite><var>color</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>price</var><cite>&gt;</cite>29.95<cite>&lt;/</cite><var>price</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>qoh</var><cite>&gt;</cite>147<cite>&lt;/</cite><var>qoh</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>size</var><cite>&gt;</cite>L<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>color</var><cite>&gt;</cite>Khaki<cite>&lt;/</cite><var>color</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>price</var><cite>&gt;</cite>29.95<cite>&lt;/</cite><var>price</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>qoh</var><cite>&gt;</cite>0<cite>&lt;/</cite><var>qoh</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>size</var><cite>&gt;</cite>M<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>color</var><cite>&gt;</cite>Navy<cite>&lt;/</cite><var>color</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>price</var><cite>&gt;</cite>29.95<cite>&lt;/</cite><var>price</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>qoh</var><cite>&gt;</cite>137<cite>&lt;/</cite><var>qoh</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>size</var><cite>&gt;</cite>L<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>color</var><cite>&gt;</cite>Navy<cite>&lt;/</cite><var>color</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>price</var><cite>&gt;</cite>29.95<cite>&lt;/</cite><var>price</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>qoh</var><cite>&gt;</cite>115<cite>&lt;/</cite><var>qoh</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <br>
+  &nbsp;
+  <cite>&lt;</cite><var>item id</var>=&quot;2&quot;<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>category</var><cite>&gt;</cite>Women's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>category</var><cite>&gt;</cite>Men's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>name</var><cite>&gt;</cite>Fleece Pullover<cite>&lt;/</cite><var>name</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>description</var><cite>&gt;</cite>A superb springtime layering choice, ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>image</var><cite>&gt;</cite>fleece.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>fleece_thumb.jpg<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>size</var><cite>&gt;</cite>S<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>color</var><cite>&gt;</cite>Twilight<cite>&lt;/</cite><var>color</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>price</var><cite>&gt;</cite>$59.95<cite>&lt;/</cite><var>price</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>qoh</var><cite>&gt;</cite>135<cite>&lt;/</cite><var>qoh</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;/</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;&nbsp; +<cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+    ...<br>
+  &nbsp;&nbsp; +<cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <br>
+  &nbsp;
+  <cite>&lt;</cite><var>item id</var>=&quot;3&quot;<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>category</var><cite>&gt;</cite>Women's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>name</var><cite>&gt;</cite>Airstream Canvas Shoes<cite>&lt;/</cite><var>name</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>description</var><cite>&gt;</cite>These comfortable shoes tackle ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>image</var><cite>&gt;</cite>shoes.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>shoes_thumb.jpg<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp; +<cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;...<br>
+  &nbsp;&nbsp; +<cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <br>
+  &nbsp;
+  <cite>&lt;</cite><var>item id</var>=&quot;4&quot;<cite>&gt;</cite><br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>category</var><cite>&gt;</cite>Women's Clothing<cite>&lt;/</cite>category<cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>name</var><cite>&gt;</cite>All-Weather Mountain Parka<cite>&lt;/</cite><var>name</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>description</var><cite>&gt;</cite>This two-layer parka offers ...<cite>&lt;/</cite><var>description</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp;
+  <cite>&lt;</cite><var>image</var><cite>&gt;</cite>parka.jpg<cite>&lt;/</cite><var>image</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp;&nbsp; <cite>&lt;</cite><var>thumbnail</var><cite>&gt;</cite>parka_thumb.jpg<cite>&lt;/</cite><var>size</var><cite>&gt;</cite> <br>
+  &nbsp;&nbsp; +<cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+    ...<br>
+    &nbsp; +<cite>&lt;</cite><var>inventory</var><cite>&gt;</cite><br>
+  &nbsp;
+  <cite>&lt;/</cite><var>item</var><cite>&gt;</cite><br>
+  <cite>&lt;/</cite><var>catalog</var><cite>&gt;</cite></div>
+<hr><script language="JavaScript">writeFooter(4);</script>
+<h1>XML &amp; AJAX</h1>
+<ul>
+  <li>AJAX (Asynchronous JavaScript and XML) is a new term for two powerful browser features:<ul>
+  <li>Make requests to the server without reloading the page (using <code>
+  XMLHttpRequest</code>)</li>
+  <li>Parse and work with XML documents or document fragments known as XML 
+  Messages.</li>
+</ul>
+  </li>
+  <li> Many Ajax applications receive XML Messages 
+  and have to convert them into HTML then display them in the AJAX content area 
+  of a Web page.&nbsp; This is especially common when you 
+  are displaying data from another organization in you webpage (e.g. car rental 
+  info on an airline page, supplier, stock quote ...). </li>
+  <li> An XML Message is a complete XML file or it can be a short bit of XML received 
+ as a response for information by the Web server.</li>
+  <li>When you receive an additional bit of XML data for your AJAX application, 
+  what do you do with it?
+  </li>
+  <li>There are essentially 3 approaches to for incorporating an XML Message 
+  Once you've successfully requested an XML Message with AJAX. These are:  </p>
+<ul>
+  <li><em>The server creates an HTML snippet</em>: This is a piece HTML code that is created with a server 
+  side script (e.g. PHP) and just dropped into the AJAX space on you web page 
+  (similar to our PHP parsing example above).</li>
+  <li><em>The XML Message is passed and is displayed in html using JavaScript</em>.&nbsp; The 
+  JavaScript must parse the XML page and extract the data of interest - then 
+  write it to the AJAX space in HTML.</li>
+  <li><em>An XML Message is passed and is displayed in html 
+  using XSLT</em>: A XSLT page is passed with the XML page and the client must 
+  process this page to determine how to display the XML Message.&nbsp; 
+  </li>
+</ul>
+  </li>
+  <li>I redeveloped the Outdoor Depot website in AJAX and using the 3 different 
+  methods (above). This is as an example only - this is NOT an ideal application 
+  for AJAX because of the inability to book mark internal pages in the site.</li>
+</ul>
+<hr>
+<h2><span>Using PHP</span></h2>
+<ul>
+  <li>This is a fairly good option.&nbsp; PHP parsing of XML code is relatively 
+  simple and you can create &quot;generic&quot; html just like the PHP parsing examples 
+  above.</li>
+  <li>The disadvantage is that sometimes clients want XML because it is more 
+  machine readable than HTML.&nbsp; However, this is less likely in a problem in 
+  an AJAX application because people cannot view source &amp; get access to the 
+  straight XML.</li>
+  <li><em>Challenge</em> - I could not embed JavaScript code the AJAX loaded 
+  page.&nbsp; The browser left the onclick event code but removed all of the 
+  code between <code>&lt;SCRIPT&gt;&lt;/SCRIPT&gt;</code> tags.&nbsp; I believe this may be 
+  because the AJAX text is being written by a script and you cannot have <code>
+  &lt;SCRIPT&gt;</code> embedded inside of a <code>&lt;SCRIPT&gt;</code>.<ul>
+  <li>This required me to call the shopping cart functions from the loadPage 
+  AJAX function instead of inside the page.&nbsp; The updated writeAJAXCart 
+  function is in the index.html page.</li>
+</ul>
+  </li>
+  <li>I redeveloped the Outdoor Depot website in AJAX and PHP writing the AJAX 
+  data to the table cell with the id=content.&nbsp; 
+  The AJAX function call (onclick): <code>loadPage('category5.php','content');
+  </code>was used to load the data into the content cell.&nbsp; The code is found in the following files:<ul style="list-style-image: url('../images/orangeball.gif'); ">
+  <li>Homepage: <a href="../xml_examples/AJAX_PHP/index.html">index.html</a> 
+  (with <a href="../xml_examples/AJAX_PHP/home.html">home.html</a> loaded into 
+  content to start)</li>
+  <li>XML file: <a href="../xml_examples/outdoor.xml">outdoor.xml</a></li>
+  <li>AJAX code: <a href="../xml_examples/scripts/ajax.js">ajax.js</a></li>
+  <li>Category PHP file: <a href="../xml_examples/AJAX_PHP/category5.php">
+  category5.php</a></li>
+  <li>Item PHP file:&nbsp; <a href="../xml_examples/AJAX_PHP/product.php">
+  product.php</a></li>
+</ul>
+  </li>
+</ul>
+<p align="center">
+&nbsp;<span>&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;</span><a href="http://carbon.cudenver.edu/~dgregg/xml_examples/AJAX_PHP/">Online Demo</a>&nbsp;
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;</span></p>
+<hr>
+  <h2><span>Using JavaScript Parsing</span></h2>
+  <ul>
+  <li>This is perhaps the most completely &quot;AJAX&quot; solution to the problem of 
+  incorporating an XML message into a named location on a Web page.</li>
+  <li>This solution relies exclusively on XML and JavaScript to asynchronously 
+  load an XML message into portion of a web page - without reloading the rest of 
+  the page.</li>
+  <li>This approach relies on current browser support for directly accessing XML data using JavaScript and the 
+  DOM.</li>
+  <li>The <b>Document Object Model</b> (<b>DOM</b>) is an API for HTML and XML 
+  documents. It provides a structural representation of the document, enabling 
+  you to modify its content and visual presentation. Essentially, it connects 
+  web pages to scripts or programming languages.</li>
+  <li>The DOM API provides numerous JavaScript functions for retrieving XML data 
+  from an XML document and writing that data to a set of nested HTML elements.</li>
+  <li>The support for the XML DOM API&nbsp; varies from browser to browser, 
+  However, the code below works on both Internet Explorer 6 and Firefox. </li>
+  <li><em>Disadvantage:</em> Code gets complex and error-prone when you mix HTML generation with 
+  application logic.  </li>
+  <li>You would need a custom JavaScript function (like the one below) to 
+  convert the XML to formatted HTML.</li>
+</ul>
+<div>function setCategoryXML()<br>
+  {&nbsp; <dfn>// Check to see if the AJAX page is done downloading</dfn><br>
+&nbsp; if (http_request.readyState == 4 &amp;&amp; http_request.status == 200)<br>
+&nbsp; {&nbsp; <dfn>// Get all of the item tags from the XML response</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp; var items = 
+  http_request.responseXML.getElementsByTagName('item');<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// create a div box to stick everything in</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp; var temp = document.createElement('div');<br>
+&nbsp;&nbsp;&nbsp;&nbsp; temp.id = 'ajax';<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// Create the text category heading &amp; 
+  put it in &lt;H2&gt;&lt;span&gt; tags.</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp; var cathead = document.createElement('H2');<br>
+&nbsp;&nbsp;&nbsp;&nbsp; var catspan = document.createElement('span');<br>
+&nbsp;&nbsp;&nbsp;&nbsp; var catname = document.createTextNode(&quot;Women's 
+  Clothing&quot;);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; catspan.appendChild(catname);<br>
+&nbsp;&nbsp;&nbsp;&nbsp; cathead.appendChild(catspan);&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp; temp.appendChild(cathead);&nbsp; <dfn>// add the heading to 
+  the div box</dfn><br>
+  <br>
+&nbsp;&nbsp;&nbsp; <dfn>// Create the table that the thumbnails &amp; links are in</dfn><br>
+&nbsp;&nbsp;&nbsp; var table = document.createElement('table');<br>
+&nbsp;&nbsp;&nbsp; <dfn>// loop through the array of items</dfn><br>
+&nbsp;&nbsp;&nbsp; for (var i=0; i &lt; items.length; i++)<br>
+&nbsp;&nbsp;&nbsp; {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var x = document.createElement('tr');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var y = document.createElement('td');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// create an image tag and set its src attribute 
+  to the thumbnail image</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var im = document.createElement('img');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; im.setAttribute(&quot;src&quot;, &quot;../images/&quot; + 
+  getNodeValue(items[i],'thumbnail'));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y.appendChild(im); <dfn>// add the image to the &lt;td&gt;</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x.appendChild(y);&nbsp; <dfn>// add the &lt;td&gt; to the &lt;tr&gt;</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var z = document.createElement('td');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <dfn>// create the hyperlink tag</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var a = document.createElement('a');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.setAttribute(&quot;onclick&quot;,&nbsp; <dfn>//  a cookie 
+  stores the itemID not a parameter</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot;loadXMLPage('../outdoor.xml', 
+  'content', setProductXML); document.cookie='item=&quot;+ i + &quot;';&quot; );<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var b = 
+  document.createTextNode(getNodeValue(items[i],'name'));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a.appendChild(b); <dfn><font face="Courier New">&nbsp;&nbsp;&nbsp; // add the name to the link</font></dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z.appendChild(a);&nbsp; <dfn>&nbsp;&nbsp; // add the link to the 
+  cell</dfn><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x.appendChild(z);&nbsp; <dfn>&nbsp;&nbsp; // add the cell to the 
+  row</dfn>&nbsp; <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; table.appendChild(x);&nbsp; <dfn>// add the row to the 
+  table</dfn><br>
+&nbsp;&nbsp;&nbsp; }<br>
+&nbsp;&nbsp;&nbsp; temp.appendChild(table);&nbsp; <dfn>//add the table to the div</dfn><br>
+&nbsp;&nbsp;&nbsp; <dfn>// add the contents of the div to the AJAX div in index.html</dfn><br>
+&nbsp;&nbsp;&nbsp; document.getElementById(fram).innerHTML = temp.innerHTML;<br>
+&nbsp; }<br>
+  }<br>
+  <dfn>// short-cut function to get data from an XML element</dfn><br>
+function getNodeValue(obj,tag)<br>
+{
+	return obj.getElementsByTagName(tag)[0].firstChild.nodeValue;
+}</div>
+<ul>
+  <li>I redeveloped the Outdoor Depot website in AJAX and JavaScript writing the AJAX 
+  data to the table cell with the id=content.&nbsp; 
+  The AJAX function call (onclick): <code>loadXMLPage('../outdoor.xml', 
+  'content', setCategoryXML);
+  </code>was used to load the XML file then call the custom JavScript writing 
+  function (<code>setCategoryXML</code>) to parse the XML file.&nbsp; The code is found in the following files:<ul style="list-style-image: url('../images/orangeball.gif'); ">
+  <li>Homepage: <a href="../xml_examples/AJAX_JavaScript/index.html">index.html</a> 
+  (with <a href="../xml_examples/AJAX_JavaScipt/home.html">home.html</a> loaded into 
+  content to start)</li>
+  <li>XML file: <a href="../xml_examples/outdoor.xml">outdoor.xml</a></li>
+  <li>AJAX code: <a href="../xml_examples/AJAX_JavaScipt/ajax.js">ajax.js</a> 
+  (contains the JavaScript parsing functions for the category and the product 
+  pages)</li>
+</ul>
+  </li>
+</ul>
+<p align="center">
+&nbsp;<span>&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;</span><a href="http://carbon.cudenver.edu/~dgregg/xml_examples/AJAX_JavaScript/">Online Demo</a>&nbsp;
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;</span></p>
+<hr>
+<h2><span>Using XSLT</span></h2>
+<ul>
+  <li>Extensible Stylesheet Language Transformations - is a language for 
+  transforming XML documents into other forms. XSLT is fairly well-supported in modern browsers and, although browser APIs 
+  vary, there are good cross-browser toolkits available. </li>
+  <li>XSLT is well-suited to rendering XML. An XML document is designed to 
+  encapsulate a data object, and an XSLT stylesheet is a strategy for presenting 
+  such objects. </li>
+  <li>AJAX based XSLT is slightly different from traditional XSLT. Here, the XML document does not 
+  constitute the contents of the entire page, but a response from an
+  <a title="XMLHttpRequest Call" href="http://ajaxpatterns.org/XMLHttpRequest_Call">
+  XMLHttpRequest Call</a> embedded in another page.</li>
+  <li>Ideally, the transformation to XHTML should take advantage of the 
+  browser's built-in XSLT support however current browsers (e.g. IE 6 and 
+  Firefox) do not apply the 
+  transformation to a document fragment (e.g. XML written to a <code>div</code>).
+<ul>
+  <li>Instead I had to use an IFRAME which is an internal frame embedded into a 
+  Web page, designed to display complete Web pages.<br>
+  <code>&lt;iframe frameBorder=0 name=iframe id=iframe src=&quot;home.html&quot; width=100% 
+  height=800 scrolling=no&gt;&lt;/iframe&gt;</code><br>
+  To dynamically load an XML page into the IFRAME you do not need to use
+  <a title="XMLHttpRequest Call" href="http://ajaxpatterns.org/XMLHttpRequest_Call">
+  XMLHttpRequest Call</a>, instead you just link to the IFRAME: <code>&lt;a target=iframe 
+  href=&quot;outdoor_category.xml&quot;&gt;...&lt;/a&gt;</code></li>
+</ul>
+  </li>
+  <li>Alternatively an XSLT processor can be 
+  implemented in JavaScript, building on the browser's more primitive XML 
+  features. This has the advantage that you can then transform XML in a &lt;div&gt; 
+  element over a wide variety of platforms, however it requires an 
+  implementation of XSL-T in JavaScript.&nbsp;
+<ul>
+  <li>Google has developed an implementation of XSLT specifically for AJAX 
+  called AJAXXSLT available at:&nbsp;
+  <a href="http://goog-ajaxslt.sourceforge.net">
+  http://goog-ajaxslt.sourceforge.net</a> </li>
+</ul>
+  </li>
+  <li>I redeveloped the Outdoor Depot website in AJAX and XSLT using IFRAMEs.&nbsp; 
+  The code is found in the following files:<ul style="list-style-image: url('../images/orangeball.gif'); ">
+  <li>Homepage: <a href="../xml_examples/AJAX_XSL/index.html">index.html</a> 
+  (with <a href="../xml_examples/AJAX_XSL/home.html">home.html</a> loaded into 
+  the iframe to start)</li>
+  <li>Category XML file: <a href="../xml_examples/AJAX_XSL/outdoor_category.xml">
+  outdoor_category.xml</a></li>
+  <li>Category XSL file: <a href="../xml_examples/AJAX_XSL/outdoor_category.xsl">
+  outdoor_category.xsl</a></li>
+  <li>Item XML file: <a href="../xml_examples/AJAX_XSL/outdoor_item.xml">
+  outdoor_item.xml</a></li>
+  <li>Item XSL file (named .php because it retrieves a cookie to set the itemID 
+  in the XSL file):&nbsp; <a href="../xml_examples/AJAX_XSL/outdoor_item.php">
+  outdoor_item.php</a></li>
+</ul>
+  </li>
+</ul>
+<p align="center">
+&nbsp;<span>&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;</span><a href="http://carbon.cudenver.edu/~dgregg/xml_examples/AJAX_XSL/">Online Demo</a>&nbsp;
+
+
+
+<span>
+
+&nbsp;<img src="../images/orangeball.gif" border="0" height="15" width="15">&nbsp;&nbsp;</span></p>
+<hr>
+
+  </li>
+
+<span>
+
+<h1>Other XML Materials</h1>
+
+
+
+<ul>
+  <li>Erik T. Ray, &quot;Learning XML: (Guide to) Creating Self-Describing Data&quot; 
+  Chapter 2: Markup and Core Concepts, O'Reilly, 2001. Available at
+  <a href="http://www.oreilly.com/catalog/learnxml/chapter/ch02.html">
+  http://www.oreilly.com/catalog/learnxml/chapter/ch02.html</a> </li>
+
+
+
+</span>
+
+
+
+  <li>
+
+
+
+W3C XML Schema Tutorial: <a href="http://www.w3schools.com/schema/default.asp">
+http://www.w3schools.com/schema/default.asp</a> </li>
+  <li>
+
+PHP XML Manual: <a href="http://us3.php.net/xml">http://us3.php.net/xml</a> or
+<a href="http://us3.php.net/manual/en/ref.xml.php"> </li>
+
+http://us3.php.net/manual/en/ref.xml.php</a>
+
+  <li>
+
+DOM methods for JavaScript: <a href="http://developer.mozilla.org/en/docs/DOM">
+http://developer.mozilla.org/en/docs/DOM</a>
+
+  <li>
+
+AJAX patterns:
+
+<a href="http://ajaxpatterns.org/XML_Data_Island">
+http://ajaxpatterns.org/XML_Data_Island</a>
+
+  </ul>
+
+
+
+<hr><script language="JavaScript">writeFooter(5);</script>
+
+</body>
+
+</html>

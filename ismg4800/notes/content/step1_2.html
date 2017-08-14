@@ -1,0 +1,24 @@
+      <ul>
+      <li>Next, after you've declared what will happen as soon as you receive the 
+    response, you need to actually make the request. You need to call the <code>
+    open()</code> and <code>send()</code> methods of the HTTP request class, 
+    like this: </li>
+    </ul>
+    <div><pre>http_request.open('GET', 'http://www.example.org/some.file', true);
+http_request.send(null);
+</pre></div>
+    <ul>
+      <li>The first parameter of the call to <code>open()</code> is the HTTP 
+      request method – (e.g. GET or POST). Keep the method capitalized as per the 
+      HTTP standard; otherwise some browsers (like Firefox) might not process 
+      the request. </li>
+      <li>The second parameter is the URL of the page you're requesting. As a 
+      security feature, you cannot call pages on 3rd-party domains. Be sure to 
+      use the exact domain name on all of your pages or you will get a 
+      'permission denied' error when you call open(). </li>
+      <li>The third parameter sets whether the request is asynchronous. If <code>
+      TRUE</code>, the execution of the JavaScript function will continue while 
+      the response of the server has not yet arrived. This is the A in AJAX.
+      </li>
+    </ul>
+    

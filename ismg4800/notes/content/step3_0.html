@@ -1,0 +1,21 @@
+      <span>
+    <p>Our JavaScript 
+    will request an HTML document, <code>test.html</code>,  and then put it in a
+    <code>&lt;div&gt;</code> element. </p>
+    <div><pre>var http_request = false;
+function loadPage(url) {
+  http_request = false;
+<font size="1">
+ </font> if (window.XMLHttpRequest) { <dfn>// Mozilla, Safari,...</dfn>
+    http_request = new XMLHttpRequest();
+    if (http_request.overrideMimeType)<font size="1"> </font><font size="2">http_request.overrideMimeType('text/xml');</font>
+  } else if (window.ActiveXObject) { <dfn>// IE</dfn>
+    try { http_request = new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+    } catch (e) {
+      try { <font size="2">http_request</font><font size="2"> = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);} catch(ex){}</font> }
+  }
+  if (!http_request) return false;
+  http_request.onreadystatechange = updateLayer;
+  http_request.open('GET', url, true);
+  http_request.send(null); }</pre></div>
+    
